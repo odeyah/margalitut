@@ -79,6 +79,8 @@
 				חזרה לתפריט
 			</router-link>
 		</div>
+		<!-- Tips Section -->
+		<CategoryTips v-if="category?.tips" :tips="category.tips" :categoryName="category.name" />
 	</div>
 
 	<!-- Category Not Found -->
@@ -95,6 +97,7 @@ import { useRoute } from 'vue-router';
 import { useMenuStore } from '../stores/menuStore';
 import { ProductCard } from '../components/menu';
 import { useHead } from '@vueuse/head';
+import { CategoryTips } from '../components/menu';
 
 const props = defineProps(['categoryId']);
 const menuStore = useMenuStore();

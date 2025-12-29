@@ -1,27 +1,27 @@
 <template>
 	<div class="menu-page">
 		<!-- Page Header -->
-		<header class="page-header">
+		<header class="page-header animate-on-scroll fade-up">
 			<h1 class="page-title">התפריט שלנו</h1>
 			<p class="page-subtitle">כל המאפים והמטעמים שלנו, מחולקים לקטגוריות</p>
 		</header>
 
 		<!-- Categories Grid -->
 		<section class="categories-section">
-			<h2 class="section-title">קטגוריות</h2>
+			<h2 class="section-title animate-on-scroll fade-up">קטגוריות</h2>
 			<div class="categories-grid">
 				<CategoryCard
 					v-for="(category, index) in categories"
 					:key="category.id"
 					:category="category"
-					:style="{ animationDelay: `${index * 80}ms` }"
-					class="category-item"
+					class="animate-on-scroll fade-up"
+					:class="`delay-${(index % 5) + 1}`"
 				/>
 			</div>
 		</section>
 
 		<!-- Divider -->
-		<div class="divider">
+		<div class="divider animate-on-scroll zoom-in">
 			<span class="divider-icon">🍰</span>
 		</div>
 
@@ -49,7 +49,8 @@ import { computed } from 'vue';
 import { useMenuStore } from '../stores/menuStore';
 import { CategoryCard, CategorySection } from '../components/menu';
 import { useHead } from '@vueuse/head';
-
+import { useScrollAnimation } from '../composables/useScrollAnimation';
+useScrollAnimation();
 useHead({
 	title: 'תפריט | מרגליתות - מאפייה ביתית בבית שמש',
 	meta: [
@@ -138,22 +139,6 @@ const categories = computed(() => menuStore.categories);
 	.categories-grid {
 		grid-template-columns: 1fr;
 		gap: 1rem;
-	}
-}
-
-.category-item {
-	opacity: 0;
-	animation: fadeInUp 0.5s ease forwards;
-}
-
-@keyframes fadeInUp {
-	from {
-		opacity: 0;
-		transform: translateY(20px);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0);
 	}
 }
 

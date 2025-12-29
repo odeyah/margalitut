@@ -1,7 +1,7 @@
 <template>
 	<div class="home-page">
 		<!-- Hero Section -->
-		<section class="hero-section">
+		<section class="hero-section animate-on-scroll fade-up">
 			<div class="hero-background">
 				<div class="hero-shape shape-1"></div>
 				<div class="hero-shape shape-2"></div>
@@ -54,7 +54,7 @@
 
 		<!-- Categories Preview -->
 		<section class="categories-section">
-			<div class="section-header">
+			<div class="section-header animate-on-scroll fade-up">
 				<h2 class="section-title">הקטגוריות שלנו</h2>
 				<p class="section-subtitle">גלו את כל המטעמים שלנו</p>
 			</div>
@@ -64,11 +64,9 @@
 					v-for="(category, index) in categories"
 					:key="category.id"
 					:to="`/menu/${category.id}`"
-					class="category-preview"
-					:style="{
-						'--category-color': category.color,
-						animationDelay: `${index * 80}ms`,
-					}"
+					class="category-preview animate-on-scroll zoom-in"
+					:class="`delay-${(index % 5) + 1}`"
+					:style="{ '--category-color': category.color }"
 				>
 					<span class="category-icon">{{ category.icon }}</span>
 					<span class="category-name">{{ category.name }}</span>
@@ -78,16 +76,23 @@
 
 		<!-- Popular Products -->
 		<section class="popular-section">
-			<div class="section-header">
+			<div class="section-header animate-on-scroll fade-up">
 				<h2 class="section-title">⭐ הפופולריים שלנו</h2>
 				<p class="section-subtitle">המוצרים הכי אהובים על הלקוחות</p>
 			</div>
 
 			<div class="products-grid">
-				<ProductCard v-for="product in popularProducts" :key="product.id" :product="product" />
+				<div
+					v-for="(product, index) in popularProducts"
+					:key="product.id"
+					class="animate-on-scroll fade-up"
+					:class="`delay-${(index % 5) + 1}`"
+				>
+					<ProductCard :product="product" />
+				</div>
 			</div>
 
-			<div class="section-action">
+			<div class="section-action animate-on-scroll fade-up">
 				<router-link to="/menu" class="view-all-link">
 					צפו בכל התפריט
 					<span class="link-arrow">←</span>
@@ -97,31 +102,31 @@
 
 		<!-- Features Section -->
 		<section class="features-section">
-			<div class="section-header">
+			<div class="section-header animate-on-scroll fade-up">
 				<h2 class="section-title">למה מרגליתות?</h2>
 			</div>
 			<div class="features-grid">
-				<div class="feature-card">
+				<div class="feature-card animate-on-scroll fade-up delay-1">
 					<span class="feature-icon">🌿</span>
 					<h3 class="feature-title">רכיבים איכותיים</h3>
 					<p class="feature-text">כל הרכיבים שלנו בכשרות מהדרין, טריים ואיכותיים</p>
 				</div>
-				<div class="feature-card">
+				<div class="feature-card animate-on-scroll fade-up delay-2">
 					<span class="feature-icon">👩‍🍳</span>
 					<h3 class="feature-title">עבודת יד</h3>
 					<p class="feature-text">כל מוצר מוכן בעבודת יד עם אהבה ותשומת לב לפרטים</p>
 				</div>
-				<div class="feature-card">
+				<div class="feature-card animate-on-scroll fade-up delay-3">
 					<span class="feature-icon">✨</span>
 					<h3 class="feature-title">ניקיון ברמה גבוהה</h3>
 					<p class="feature-text">המטבח שלנו נשמר תמיד נקי ומסודר ברמה הגבוהה ביותר</p>
 				</div>
-				<div class="feature-card">
+				<div class="feature-card animate-on-scroll fade-up delay-4">
 					<span class="feature-icon">🎂</span>
 					<h3 class="feature-title">התאמה אישית</h3>
 					<p class="feature-text">מתאימים לכל צורך: ללא גלוטן, ללא סוכר, טבעוני</p>
 				</div>
-				<div class="feature-card">
+				<div class="feature-card animate-on-scroll fade-up delay-5">
 					<span class="feature-icon">🚗</span>
 					<h3 class="feature-title">משלוחים</h3>
 					<p class="feature-text">משלוחים לכל אזור בית שמש והסביבה</p>
@@ -129,8 +134,13 @@
 			</div>
 		</section>
 
+		<!-- Testimonials Section -->
+		<div class="animate-on-scroll fade-up">
+			<TestimonialsSection />
+		</div>
+
 		<!-- CTA Section -->
-		<section class="cta-section">
+		<section class="cta-section animate-on-scroll zoom-in">
 			<div class="cta-card">
 				<div class="cta-content">
 					<span class="cta-icon">🎉</span>
@@ -157,7 +167,10 @@ import { useMenuStore } from '../stores/menuStore';
 import { ProductCard } from '../components/menu';
 import logo from '../assets/logo.png';
 import { useHead } from '@vueuse/head';
+import TestimonialsSection from '../components/home/TestimonialsSection.vue';
+import { useScrollAnimation } from '../composables/useScrollAnimation';
 
+useScrollAnimation();
 useHead({
 	title: 'תפריט | מרגליתות - מאפייה ביתית בבית שמש',
 	meta: [
@@ -485,8 +498,6 @@ const popularProducts = computed(() => menuStore.popularProducts.slice(0, 8));
 	text-decoration: none;
 	transition: all 0.3s ease;
 	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-	opacity: 0;
-	animation: fadeInUp 0.5s ease forwards;
 }
 
 .category-preview:hover {

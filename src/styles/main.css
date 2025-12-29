@@ -1,7 +1,7 @@
 /* ===== CSS Variables ===== */
 :root {
 	/* Colors */
-	--pink-primary: #ff6b9d;
+	--pink-primary: #d34a6e;
 	--pink-secondary: #ff8fab;
 	--pink-light: #fff0f5;
 	--border-pink: rgba(255, 107, 157, 0.3);
@@ -278,4 +278,67 @@ h6 {
 .slide-leave-to {
 	opacity: 0;
 	transform: translateX(20px);
+}
+/* ===== Scroll Animations ===== */
+.animate-on-scroll {
+	opacity: 0;
+	transform: translateY(30px);
+	transition: all 0.6s ease-out;
+}
+
+.animate-on-scroll.animate-in {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+/* Animation Variants */
+.animate-on-scroll.fade-up {
+	transform: translateY(30px);
+}
+
+.animate-on-scroll.fade-down {
+	transform: translateY(-30px);
+}
+
+.animate-on-scroll.fade-right {
+	transform: translateX(-30px);
+}
+
+.animate-on-scroll.fade-left {
+	transform: translateX(30px);
+}
+
+.animate-on-scroll.zoom-in {
+	transform: scale(0.9);
+}
+
+.animate-on-scroll.fade-up.animate-in,
+.animate-on-scroll.fade-down.animate-in {
+	transform: translateY(0);
+}
+
+.animate-on-scroll.fade-right.animate-in,
+.animate-on-scroll.fade-left.animate-in {
+	transform: translateX(0);
+}
+
+.animate-on-scroll.zoom-in.animate-in {
+	transform: scale(1);
+}
+
+/* Stagger Delays */
+.animate-on-scroll.delay-1 {
+	transition-delay: 0.1s;
+}
+.animate-on-scroll.delay-2 {
+	transition-delay: 0.2s;
+}
+.animate-on-scroll.delay-3 {
+	transition-delay: 0.3s;
+}
+.animate-on-scroll.delay-4 {
+	transition-delay: 0.4s;
+}
+.animate-on-scroll.delay-5 {
+	transition-delay: 0.5s;
 }

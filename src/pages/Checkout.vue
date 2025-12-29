@@ -427,7 +427,7 @@
 								<span class="item-price">₪{{ item.price * item.quantity }}</span>
 							</div>
 						</div>
-
+						<CouponInput />
 						<!-- Totals -->
 						<div class="summary-totals">
 							<div class="total-row">
@@ -437,19 +437,23 @@
 							<div class="total-row">
 								<span>משלוח</span>
 								<span v-if="deliveryOption === 'pickup'" class="free-delivery">חינם</span>
+								<span v-else-if="orderStore.hasFreeDelivery" class="free-delivery">חינם (קופון)</span>
 								<span v-else-if="deliveryPrice > 0">₪{{ deliveryPrice }}</span>
 								<span v-else-if="deliveryRequiresCall" class="call-note">ייקבע בטלפון</span>
 								<span v-else>-</span>
 							</div>
-							<div v-if="selectedLocationData && deliveryOption === 'delivery'" class="total-row location-row">
-								<span>אזור</span>
-								<span class="location-name-small">{{ selectedLocationData.name }}</span>
+
+							<!-- הנחת קופון -->
+							<div v-if="orderStore.appliedCoupon" class="total-row discount-row">
+								<span> הנחה ({{ orderStore.appliedCoupon.code }}) </span>
+								<span class="discount-value">-₪{{ orderStore.couponDiscount }}</span>
 							</div>
+
 							<div class="total-row final">
 								<span>סה"כ לתשלום</span>
 								<span class="final-price">
-									₪{{ orderTotal }}
-									<span v-if="deliveryRequiresCall" class="plus-delivery">+</span>
+									₪{{ orderStore.finalTotal }}
+									<span v-if="deliveryRequiresCall && !orderStore.hasFreeDelivery" class="plus-delivery">+</span>
 								</span>
 							</div>
 						</div>
@@ -484,6 +488,7 @@ import { ref, computed, watch } from 'vue';
 import { useOrderStore } from '../stores/orderStore';
 import { useUIStore } from '../stores/uiStore';
 import { useHead } from '@vueuse/head';
+import CouponInput from '../components/checkout/CouponInput.vue';
 
 useHead({
 	title: 'תפריט | מרגליתות - מאפייה ביתית בבית שמש',
@@ -637,7 +642,7 @@ const openCartDrawer = () => {
 
 // Confetti styles
 const getConfettiStyle = n => {
-	const colors = ['#ff6b9d', '#ffd700', '#ff8fab', '#667eea', '#27ae60'];
+	const colors = ['#d34a6e', '#ffd700', '#ff8fab', '#667eea', '#27ae60'];
 	return {
 		'--delay': `${Math.random() * 0.5}s`,
 		'--rotation': `${Math.random() * 360}deg`,
@@ -1835,5 +1840,18 @@ watch(isCartEmpty, empty => {
 	.back-btn {
 		order: 1;
 	}
+}
+/* Discount Row */
+.total-row.discount-row {
+	color: #276749;
+	background: rgba(72, 187, 120, 0.1);
+	margin: 0 -1rem;
+	padding: 0.5rem 1rem;
+	border-radius: 8px;
+}
+
+.discount-value {
+	font-weight: 700;
+	color: #276749;
 }
 </style>

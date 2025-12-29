@@ -22,7 +22,7 @@ const routes = [
 	{ path: '/admin', name: 'admin', component: Admin },
 	{ path: '/my-orders', name: 'my-orders', component: MyOrders },
 	{ path: '/workshops', name: 'workshops', component: BakingWorkshops }, // הוסף
-	{ path: '/:pathMatch(.*)*', redirect: '/' },
+	{ path: '/:pathMatch(.*)*', name: 'not-found', component: () => import('./pages/NotFound.vue') },
 ];
 
 const router = createRouter({

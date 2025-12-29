@@ -82,7 +82,7 @@ const handleStepClick = stepNumber => {
 
 .progress-fill {
 	height: 100%;
-	background: linear-gradient(90deg, #ff6b9d, #ff8fab);
+	background: linear-gradient(90deg, #d34a6e, #ff8fab);
 	border-radius: 2px;
 	transition: width 0.5s ease;
 }
@@ -123,15 +123,15 @@ const handleStepClick = stepNumber => {
 }
 
 .step-completed .step-indicator {
-	background: linear-gradient(135deg, #ff6b9d, #ff8fab);
+	background: linear-gradient(135deg, #d34a6e, #ff8fab);
 	color: white;
 	transform: scale(1);
 }
 
 .step-active .step-indicator {
 	background: white;
-	border: 3px solid #ff6b9d;
-	color: #ff6b9d;
+	border: 3px solid #d34a6e;
+	color: #d34a6e;
 	transform: scale(1.1);
 	box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
 }
@@ -149,7 +149,7 @@ const handleStepClick = stepNumber => {
 	position: absolute;
 	inset: -4px;
 	border-radius: 50%;
-	border: 2px solid #ff6b9d;
+	border: 2px solid #d34a6e;
 	opacity: 0;
 	animation: none;
 }
@@ -183,7 +183,7 @@ const handleStepClick = stepNumber => {
 }
 
 .step-active .step-title {
-	color: #ff6b9d;
+	color: #d34a6e;
 }
 
 .step-pending .step-title {

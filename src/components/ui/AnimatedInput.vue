@@ -108,11 +108,11 @@ const handleBlur = e => {
 }
 
 .input-wrapper.focused .input-label {
-	color: #ff6b9d;
+	color: #d34a6e;
 }
 
 .required-mark {
-	color: #ff6b9d;
+	color: #d34a6e;
 	margin-inline-start: 0.25rem;
 }
 
@@ -161,7 +161,7 @@ const handleBlur = e => {
 }
 
 .input-field:focus {
-	border-color: #ff6b9d;
+	border-color: #d34a6e;
 	box-shadow: 0 0 0 4px rgba(255, 107, 157, 0.1);
 }
 
@@ -215,7 +215,7 @@ const handleBlur = e => {
 	left: 50%;
 	width: 0;
 	height: 2px;
-	background: linear-gradient(90deg, #ff6b9d, #ff8fab);
+	background: linear-gradient(90deg, #d34a6e, #ff8fab);
 	transition: all 0.3s ease;
 	transform: translateX(-50%);
 	border-radius: 1px;

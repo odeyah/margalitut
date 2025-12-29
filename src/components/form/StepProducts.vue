@@ -141,7 +141,7 @@ const decrementQuantity = productId => {
 }
 
 .category-tab.active {
-	background: linear-gradient(135deg, #ff6b9d, #ff8fab);
+	background: linear-gradient(135deg, #d34a6e, #ff8fab);
 	color: white;
 	border-color: transparent;
 }
@@ -170,7 +170,7 @@ const decrementQuantity = productId => {
 }
 
 .product-card.selected {
-	border-color: #ff6b9d;
+	border-color: #d34a6e;
 	background: #fff5f8;
 }
 
@@ -186,7 +186,7 @@ const decrementQuantity = productId => {
 }
 
 .product-price {
-	color: #ff6b9d;
+	color: #d34a6e;
 	font-weight: 700;
 	font-size: 1.1rem;
 }
@@ -202,17 +202,17 @@ const decrementQuantity = productId => {
 .qty-btn {
 	width: 28px;
 	height: 28px;
-	border: 2px solid #ff6b9d;
+	border: 2px solid #d34a6e;
 	border-radius: 8px;
 	background: white;
-	color: #ff6b9d;
+	color: #d34a6e;
 	font-weight: bold;
 	cursor: pointer;
 	transition: all 0.2s ease;
 }
 
 .qty-btn:hover {
-	background: #ff6b9d;
+	background: #d34a6e;
 	color: white;
 }
 
@@ -228,7 +228,7 @@ const decrementQuantity = productId => {
 	width: 24px;
 	height: 24px;
 	border-radius: 50%;
-	background: #ff6b9d;
+	background: #d34a6e;
 	color: white;
 	display: flex;
 	align-items: center;
@@ -261,7 +261,7 @@ const decrementQuantity = productId => {
 	bottom: 0;
 	margin-top: 1.5rem;
 	padding: 1rem;
-	background: linear-gradient(135deg, #ff6b9d, #ff8fab);
+	background: linear-gradient(135deg, #d34a6e, #ff8fab);
 	border-radius: 16px;
 	color: white;
 }

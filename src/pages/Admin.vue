@@ -44,12 +44,11 @@
 			<!-- Header -->
 			<header class="admin-header">
 				<div class="header-right">
-					<h1 class="admin-title">📋 ניהול הזמנות</h1>
-					<span class="orders-count">{{ orders.length }} הזמנות</span>
+					<h1 class="admin-title">📋 לוח בקרה</h1>
 				</div>
 				<div class="header-left">
 					<span class="user-email">{{ userEmail }}</span>
-					<button class="refresh-btn" @click="loadOrders" :disabled="isLoading">
+					<button class="refresh-btn" @click="refreshData" :disabled="isLoading">
 						<span :class="{ spinning: isLoading }">🔄</span>
 						רענן
 					</button>
@@ -57,179 +56,282 @@
 				</div>
 			</header>
 
-			<!-- Stats Cards -->
-			<div class="stats-grid">
-				<div class="stat-card">
-					<span class="stat-icon">📦</span>
-					<div class="stat-content">
-						<span class="stat-value">{{ pendingOrders.length }}</span>
-						<span class="stat-label">ממתינות</span>
+			<!-- Main Tabs -->
+			<div class="main-tabs">
+				<button class="main-tab" :class="{ active: activeTab === 'orders' }" @click="activeTab = 'orders'">
+					<span class="tab-icon">📦</span>
+					<span class="tab-label">הזמנות</span>
+					<span class="tab-badge" v-if="pendingOrders.length > 0">{{ pendingOrders.length }}</span>
+				</button>
+				<button class="main-tab" :class="{ active: activeTab === 'reviews' }" @click="activeTab = 'reviews'">
+					<span class="tab-icon">⭐</span>
+					<span class="tab-label">ביקורות</span>
+					<span class="tab-badge" v-if="reviewCounts.pending > 0">{{ reviewCounts.pending }}</span>
+				</button>
+			</div>
+
+			<!-- ==================== ORDERS TAB ==================== -->
+			<div v-show="activeTab === 'orders'" class="orders-tab">
+				<!-- Stats Cards -->
+				<div class="stats-grid">
+					<div class="stat-card">
+						<span class="stat-icon">📦</span>
+						<div class="stat-content">
+							<span class="stat-value">{{ pendingOrders.length }}</span>
+							<span class="stat-label">ממתינות</span>
+						</div>
+					</div>
+					<div class="stat-card">
+						<span class="stat-icon">👨‍🍳</span>
+						<div class="stat-content">
+							<span class="stat-value">{{ preparingOrders.length }}</span>
+							<span class="stat-label">בהכנה</span>
+						</div>
+					</div>
+					<div class="stat-card">
+						<span class="stat-icon">✅</span>
+						<div class="stat-content">
+							<span class="stat-value">{{ completedToday.length }}</span>
+							<span class="stat-label">הושלמו היום</span>
+						</div>
+					</div>
+					<div class="stat-card">
+						<span class="stat-icon">💰</span>
+						<div class="stat-content">
+							<span class="stat-value">₪{{ todayRevenue }}</span>
+							<span class="stat-label">הכנסות היום</span>
+						</div>
 					</div>
 				</div>
-				<div class="stat-card">
-					<span class="stat-icon">👨‍🍳</span>
-					<div class="stat-content">
-						<span class="stat-value">{{ preparingOrders.length }}</span>
-						<span class="stat-label">בהכנה</span>
+
+				<!-- Filters -->
+				<div class="filters-bar">
+					<div class="filter-tabs">
+						<button
+							v-for="filter in statusFilters"
+							:key="filter.value"
+							class="filter-tab"
+							:class="{ active: currentFilter === filter.value }"
+							@click="currentFilter = filter.value"
+						>
+							<span class="filter-icon">{{ filter.icon }}</span>
+							<span class="filter-label">{{ filter.label }}</span>
+							<span class="filter-count">{{ getFilterCount(filter.value) }}</span>
+						</button>
+					</div>
+
+					<div class="search-box">
+						<input type="text" v-model="searchQuery" placeholder="חיפוש לפי שם או טלפון..." class="search-input" />
+						<span class="search-icon">🔍</span>
 					</div>
 				</div>
-				<div class="stat-card">
-					<span class="stat-icon">✅</span>
-					<div class="stat-content">
-						<span class="stat-value">{{ completedToday.length }}</span>
-						<span class="stat-label">הושלמו היום</span>
+
+				<!-- Orders List -->
+				<div class="orders-list">
+					<div v-if="isLoading" class="loading-state">
+						<span class="loading-spinner"></span>
+						<p>טוען הזמנות...</p>
 					</div>
-				</div>
-				<div class="stat-card">
-					<span class="stat-icon">💰</span>
-					<div class="stat-content">
-						<span class="stat-value">₪{{ todayRevenue }}</span>
-						<span class="stat-label">הכנסות היום</span>
+
+					<div v-else-if="filteredOrders.length === 0" class="empty-state">
+						<span class="empty-icon">📭</span>
+						<h3>אין הזמנות</h3>
+						<p>לא נמצאו הזמנות בקטגוריה זו</p>
 					</div>
+
+					<TransitionGroup v-else name="order-list" tag="div" class="orders-container">
+						<div v-for="order in filteredOrders" :key="order.id" class="order-card" :class="[`status-${order.status}`]">
+							<!-- Order Header -->
+							<div class="order-header">
+								<div class="order-id">
+									<span class="id-label">הזמנה</span>
+									<span class="id-value">#{{ order.orderId || order.id.slice(-6) }}</span>
+								</div>
+								<div class="order-time">
+									{{ formatDate(order.createdAt) }}
+								</div>
+								<div class="order-status" :class="order.status">
+									{{ getStatusLabel(order.status) }}
+								</div>
+							</div>
+
+							<!-- Customer Info -->
+							<div class="order-customer">
+								<div class="customer-name">
+									<span class="icon">👤</span>
+									{{ order.customer?.name }}
+								</div>
+								<a :href="`tel:${order.customer?.phone}`" class="customer-phone">
+									<span class="icon">📱</span>
+									{{ order.customer?.phone }}
+								</a>
+								<a
+									:href="`https://wa.me/972${order.customer?.phone?.replace(/^0/, '')}`"
+									target="_blank"
+									class="whatsapp-link"
+								>
+									💬 וואטסאפ
+								</a>
+							</div>
+
+							<!-- Delivery Info -->
+							<div class="order-delivery">
+								<span v-if="order.delivery?.option === 'pickup'" class="delivery-badge pickup"> 🏠 איסוף עצמי </span>
+								<span v-else class="delivery-badge delivery">
+									🚗 משלוח - {{ order.delivery?.location?.name }}
+									<span v-if="order.delivery?.price">(₪{{ order.delivery?.price }})</span>
+									<span v-else-if="order.delivery?.requiresCall">(לתאם מחיר)</span>
+								</span>
+								<span v-if="order.customer?.address" class="delivery-address"> 📍 {{ order.customer?.address }} </span>
+							</div>
+
+							<!-- Order Items -->
+							<div class="order-items">
+								<div v-for="item in order.items" :key="item.id" class="order-item">
+									<span class="item-emoji">{{ item.image }}</span>
+									<span class="item-name">{{ item.name }}</span>
+									<span class="item-qty">x{{ item.quantity }}</span>
+									<span class="item-price">₪{{ item.price * item.quantity }}</span>
+								</div>
+							</div>
+
+							<!-- Special Requests -->
+							<div v-if="order.specialRequests" class="order-notes">
+								<span class="notes-icon">📝</span>
+								<span class="notes-text">{{ order.specialRequests }}</span>
+							</div>
+
+							<!-- Date & Time -->
+							<div v-if="order.date || order.time" class="order-datetime">
+								<span v-if="order.date" class="datetime-item"> 📅 {{ order.date }} </span>
+								<span v-if="order.time" class="datetime-item"> 🕐 {{ order.time }} </span>
+							</div>
+
+							<!-- Order Footer -->
+							<div class="order-footer">
+								<div class="order-total">
+									<span class="total-label">סה"כ:</span>
+									<span class="total-value">₪{{ order.total }}</span>
+								</div>
+
+								<div class="payment-info">
+									<span class="payment-method">{{ getPaymentLabel(order.payment?.method) }}</span>
+									<span class="payment-status" :class="order.paymentStatus">
+										{{ getPaymentStatusLabel(order.paymentStatus) }}
+									</span>
+								</div>
+
+								<!-- Status Actions -->
+								<div class="status-actions">
+									<select :value="order.status" @change="changeStatus(order.id, $event.target.value)" class="status-select">
+										<option value="pending">ממתין</option>
+										<option value="confirmed">אושר</option>
+										<option value="preparing">בהכנה</option>
+										<option value="ready">מוכן</option>
+										<option value="delivered">נמסר</option>
+										<option value="cancelled">בוטל</option>
+									</select>
+
+									<select
+										:value="order.paymentStatus"
+										@change="changePaymentStatus(order.id, $event.target.value)"
+										class="payment-select"
+									>
+										<option value="pending">לא שולם</option>
+										<option value="awaiting">ממתין לתשלום</option>
+										<option value="paid">שולם</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</TransitionGroup>
 				</div>
 			</div>
 
-			<!-- Filters -->
-			<div class="filters-bar">
-				<div class="filter-tabs">
+			<!-- ==================== REVIEWS TAB ==================== -->
+			<div v-show="activeTab === 'reviews'" class="reviews-tab">
+				<!-- Reviews Filter -->
+				<div class="reviews-filter">
 					<button
-						v-for="filter in statusFilters"
-						:key="filter.value"
-						class="filter-tab"
-						:class="{ active: currentFilter === filter.value }"
-						@click="currentFilter = filter.value"
+						v-for="filter in [
+							{ id: 'all', label: 'הכל', icon: '📋' },
+							{ id: 'pending', label: 'ממתינות', icon: '⏳' },
+							{ id: 'approved', label: 'מאושרות', icon: '✓' },
+							{ id: 'rejected', label: 'נדחו', icon: '✕' },
+						]"
+						:key="filter.id"
+						class="filter-btn"
+						:class="{ active: reviewFilter === filter.id }"
+						@click="reviewFilter = filter.id"
 					>
-						<span class="filter-icon">{{ filter.icon }}</span>
-						<span class="filter-label">{{ filter.label }}</span>
-						<span class="filter-count">{{ getFilterCount(filter.value) }}</span>
+						<span>{{ filter.icon }}</span>
+						<span>{{ filter.label }}</span>
+						<span class="count">({{ reviewCounts[filter.id] }})</span>
 					</button>
 				</div>
 
-				<div class="search-box">
-					<input type="text" v-model="searchQuery" placeholder="חיפוש לפי שם או טלפון..." class="search-input" />
-					<span class="search-icon">🔍</span>
-				</div>
-			</div>
+				<!-- Reviews List -->
+				<div class="reviews-list">
+					<div v-if="filteredReviews.length === 0" class="empty-state">
+						<span class="empty-icon">⭐</span>
+						<h3>אין ביקורות</h3>
+						<p>אין ביקורות להצגה</p>
+					</div>
 
-			<!-- Orders List -->
-			<div class="orders-list">
-				<div v-if="isLoading" class="loading-state">
-					<span class="loading-spinner"></span>
-					<p>טוען הזמנות...</p>
-				</div>
-
-				<div v-else-if="filteredOrders.length === 0" class="empty-state">
-					<span class="empty-icon">📭</span>
-					<h3>אין הזמנות</h3>
-					<p>לא נמצאו הזמנות בקטגוריה זו</p>
-				</div>
-
-				<TransitionGroup v-else name="order-list" tag="div" class="orders-container">
-					<div v-for="order in filteredOrders" :key="order.id" class="order-card" :class="[`status-${order.status}`]">
-						<!-- Order Header -->
-						<div class="order-header">
-							<div class="order-id">
-								<span class="id-label">הזמנה</span>
-								<span class="id-value">#{{ order.orderId || order.id.slice(-6) }}</span>
+					<div v-for="review in filteredReviews" :key="review.id" class="review-card" :class="review.status">
+						<div class="review-header">
+							<div class="reviewer-info">
+								<div class="avatar">
+									<span>{{ review.name?.charAt(0) || '?' }}</span>
+								</div>
+								<div class="info">
+									<h4>{{ review.name }}</h4>
+									<span class="location">{{ review.location || 'לא צוין' }}</span>
+								</div>
 							</div>
-							<div class="order-time">
-								{{ formatDate(order.createdAt) }}
-							</div>
-							<div class="order-status" :class="order.status">
-								{{ getStatusLabel(order.status) }}
+							<div class="review-rating">
+								<span v-for="star in 5" :key="star" class="star" :class="{ filled: star <= review.rating }">★</span>
 							</div>
 						</div>
 
-						<!-- Customer Info -->
-						<div class="order-customer">
-							<div class="customer-name">
-								<span class="icon">👤</span>
-								{{ order.customer?.name }}
-							</div>
-							<a :href="`tel:${order.customer?.phone}`" class="customer-phone">
-								<span class="icon">📱</span>
-								{{ order.customer?.phone }}
-							</a>
-							<a
-								:href="`https://wa.me/972${order.customer?.phone?.replace(/^0/, '')}`"
-								target="_blank"
-								class="whatsapp-link"
-							>
-								💬 וואטסאפ
-							</a>
-						</div>
-
-						<!-- Delivery Info -->
-						<div class="order-delivery">
-							<span v-if="order.delivery?.option === 'pickup'" class="delivery-badge pickup"> 🏠 איסוף עצמי </span>
-							<span v-else class="delivery-badge delivery">
-								🚗 משלוח - {{ order.delivery?.location?.name }}
-								<span v-if="order.delivery?.price">(₪{{ order.delivery?.price }})</span>
-								<span v-else-if="order.delivery?.requiresCall">(לתאם מחיר)</span>
+						<div class="review-meta">
+							<span class="meta-item">
+								<span class="meta-icon">📦</span>
+								{{ review.product || 'לא צוין' }}
 							</span>
-							<span v-if="order.customer?.address" class="delivery-address"> 📍 {{ order.customer?.address }} </span>
+							<span class="meta-item">
+								<span class="meta-icon">📱</span>
+								{{ review.phone || 'לא צוין' }}
+							</span>
+							<span class="meta-item">
+								<span class="meta-icon">💬</span>
+								{{ review.source || 'אתר' }}
+							</span>
 						</div>
 
-						<!-- Order Items -->
-						<div class="order-items">
-							<div v-for="item in order.items" :key="item.id" class="order-item">
-								<span class="item-emoji">{{ item.image }}</span>
-								<span class="item-name">{{ item.name }}</span>
-								<span class="item-qty">x{{ item.quantity }}</span>
-								<span class="item-price">₪{{ item.price * item.quantity }}</span>
-							</div>
+						<p class="review-text">"{{ review.text }}"</p>
+
+						<div class="review-footer">
+							<span class="review-date">
+								{{ review.createdAt?.toDate ? review.createdAt.toDate().toLocaleDateString('he-IL') : 'לא ידוע' }}
+							</span>
+
+							<span class="status-badge" :class="review.status">
+								{{ review.status === 'pending' ? 'ממתין' : review.status === 'approved' ? 'מאושר' : 'נדחה' }}
+							</span>
 						</div>
 
-						<!-- Special Requests -->
-						<div v-if="order.specialRequests" class="order-notes">
-							<span class="notes-icon">📝</span>
-							<span class="notes-text">{{ order.specialRequests }}</span>
-						</div>
-
-						<!-- Date & Time -->
-						<div v-if="order.date || order.time" class="order-datetime">
-							<span v-if="order.date" class="datetime-item"> 📅 {{ order.date }} </span>
-							<span v-if="order.time" class="datetime-item"> 🕐 {{ order.time }} </span>
-						</div>
-
-						<!-- Order Footer -->
-						<div class="order-footer">
-							<div class="order-total">
-								<span class="total-label">סה"כ:</span>
-								<span class="total-value">₪{{ order.total }}</span>
-							</div>
-
-							<div class="payment-info">
-								<span class="payment-method">{{ getPaymentLabel(order.payment?.method) }}</span>
-								<span class="payment-status" :class="order.paymentStatus">
-									{{ getPaymentStatusLabel(order.paymentStatus) }}
-								</span>
-							</div>
-
-							<!-- Status Actions -->
-							<div class="status-actions">
-								<select :value="order.status" @change="changeStatus(order.id, $event.target.value)" class="status-select">
-									<option value="pending">ממתין</option>
-									<option value="confirmed">אושר</option>
-									<option value="preparing">בהכנה</option>
-									<option value="ready">מוכן</option>
-									<option value="delivered">נמסר</option>
-									<option value="cancelled">בוטל</option>
-								</select>
-
-								<select
-									:value="order.paymentStatus"
-									@change="changePaymentStatus(order.id, $event.target.value)"
-									class="payment-select"
-								>
-									<option value="pending">לא שולם</option>
-									<option value="awaiting">ממתין לתשלום</option>
-									<option value="paid">שולם</option>
-								</select>
-							</div>
+						<div class="review-actions">
+							<button v-if="review.status !== 'approved'" class="action-btn approve" @click="approveReview(review.id)">
+								✓ אשר
+							</button>
+							<button v-if="review.status !== 'rejected'" class="action-btn reject" @click="rejectReview(review.id)">
+								✕ דחה
+							</button>
+							<button class="action-btn delete" @click="removeReview(review.id)">🗑️ מחק</button>
 						</div>
 					</div>
-				</TransitionGroup>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -239,8 +341,21 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../firebase';
-import { getAllOrders, updateOrderStatus, updatePaymentStatus } from '../services/ordersService';
+import {
+	getAllOrders,
+	updateOrderStatus,
+	updatePaymentStatus,
+	getAllReviews,
+	updateReviewStatus,
+	deleteReview,
+} from '../services/ordersService';
+import { useToastStore } from '../stores/toastStore';
 
+const toastStore = useToastStore();
+// Reviews
+const reviews = ref([]);
+const activeTab = ref('orders'); // 'orders' או 'reviews'
+const reviewFilter = ref('all'); // all, pending, approved, rejected
 // Auth State
 const isLoggedIn = ref(false);
 const isLoggingIn = ref(false);
@@ -311,7 +426,62 @@ const todayRevenue = computed(() => {
 		})
 		.reduce((sum, o) => sum + (o.total || 0), 0);
 });
+// טעינת ביקורות
+async function loadReviews() {
+	try {
+		reviews.value = await getAllReviews();
+	} catch (error) {
+		console.error('Error loading reviews:', error);
+	}
+}
+async function refreshData() {
+	await loadOrders();
+	await loadReviews();
+}
+// סינון ביקורות
+const filteredReviews = computed(() => {
+	if (reviewFilter.value === 'all') return reviews.value;
+	return reviews.value.filter(r => r.status === reviewFilter.value);
+});
 
+// אישור ביקורת
+async function approveReview(reviewId) {
+	const success = await updateReviewStatus(reviewId, 'approved');
+	if (success) {
+		const review = reviews.value.find(r => r.id === reviewId);
+		if (review) review.status = 'approved';
+		toastStore.success('הביקורת אושרה ✓');
+	}
+}
+
+// דחיית ביקורת
+async function rejectReview(reviewId) {
+	const success = await updateReviewStatus(reviewId, 'rejected');
+	if (success) {
+		const review = reviews.value.find(r => r.id === reviewId);
+		if (review) review.status = 'rejected';
+		toastStore.info('הביקורת נדחתה');
+	}
+}
+
+// מחיקת ביקורת
+async function removeReview(reviewId) {
+	if (!confirm('האם למחוק את הביקורת?')) return;
+
+	const success = await deleteReview(reviewId);
+	if (success) {
+		reviews.value = reviews.value.filter(r => r.id !== reviewId);
+		toastStore.success('הביקורת נמחקה');
+	}
+}
+
+// ספירת ביקורות לפי סטטוס
+const reviewCounts = computed(() => ({
+	all: reviews.value.length,
+	pending: reviews.value.filter(r => r.status === 'pending').length,
+	approved: reviews.value.filter(r => r.status === 'approved').length,
+	rejected: reviews.value.filter(r => r.status === 'rejected').length,
+}));
 // Auth Methods
 async function login() {
 	if (!email.value || !password.value) return;
@@ -439,11 +609,12 @@ function formatDate(timestamp) {
 
 // Lifecycle
 onMounted(() => {
-	unsubscribeAuth = onAuthStateChanged(auth, user => {
+	unsubscribeAuth = onAuthStateChanged(auth, async user => {
 		if (user) {
 			isLoggedIn.value = true;
 			userEmail.value = user.email;
-			loadOrders();
+			await loadOrders();
+			await loadReviews();
 		} else {
 			isLoggedIn.value = false;
 			userEmail.value = '';
@@ -463,7 +634,317 @@ onUnmounted(() => {
 	min-height: 100vh;
 	background: var(--bg-gradient);
 }
+/* Main Tabs */
+.main-tabs {
+	display: flex;
+	gap: 1rem;
+	margin-bottom: 2rem;
+	border-bottom: 2px solid var(--border-color);
+	padding-bottom: 1rem;
+}
 
+.main-tab {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.75rem 1.5rem;
+	background: var(--bg-secondary);
+	border: 2px solid transparent;
+	border-radius: 12px;
+	font-size: 1rem;
+	font-weight: 600;
+	color: var(--text-secondary);
+	cursor: pointer;
+	transition: all 0.3s ease;
+	position: relative;
+}
+
+.main-tab:hover {
+	background: var(--pink-light);
+	color: var(--pink-primary);
+}
+
+.main-tab.active {
+	background: var(--pink-light);
+	border-color: var(--pink-primary);
+	color: var(--pink-primary);
+}
+
+.tab-icon {
+	font-size: 1.25rem;
+}
+
+.tab-badge {
+	position: absolute;
+	top: -8px;
+	right: -8px;
+	background: #e53e3e;
+	color: white;
+	font-size: 0.75rem;
+	font-weight: 700;
+	padding: 0.2rem 0.5rem;
+	border-radius: 10px;
+	min-width: 20px;
+	text-align: center;
+}
+
+/* Reviews Tab */
+.reviews-tab {
+	animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+.reviews-filter {
+	display: flex;
+	gap: 0.75rem;
+	margin-bottom: 1.5rem;
+	flex-wrap: wrap;
+}
+
+.reviews-filter .filter-btn {
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
+	padding: 0.6rem 1rem;
+	background: var(--bg-primary);
+	border: 2px solid var(--border-color);
+	border-radius: 25px;
+	font-size: 0.9rem;
+	font-weight: 600;
+	color: var(--text-secondary);
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.reviews-filter .filter-btn:hover {
+	border-color: var(--pink-primary);
+	color: var(--pink-primary);
+}
+
+.reviews-filter .filter-btn.active {
+	background: var(--pink-light);
+	border-color: var(--pink-primary);
+	color: var(--pink-primary);
+}
+
+.reviews-filter .count {
+	opacity: 0.7;
+}
+
+/* Reviews List */
+.reviews-list {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+/* Review Card */
+.review-card {
+	background: var(--bg-primary);
+	border-radius: 16px;
+	padding: 1.5rem;
+	box-shadow: var(--card-shadow);
+	border-right: 4px solid var(--border-color);
+	transition: all 0.3s ease;
+}
+
+.review-card.pending {
+	border-right-color: #ed8936;
+}
+
+.review-card.approved {
+	border-right-color: #48bb78;
+}
+
+.review-card.rejected {
+	border-right-color: #e53e3e;
+}
+
+.review-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 1rem;
+}
+
+.reviewer-info {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+}
+
+.reviewer-info .avatar {
+	width: 44px;
+	height: 44px;
+	background: linear-gradient(135deg, var(--pink-primary), var(--pink-secondary));
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	font-weight: 700;
+	font-size: 1.1rem;
+}
+
+.reviewer-info .info h4 {
+	margin: 0;
+	font-size: 1rem;
+	color: var(--text-primary);
+}
+
+.reviewer-info .location {
+	font-size: 0.8rem;
+	color: var(--text-muted);
+}
+
+.review-rating .star {
+	font-size: 1.1rem;
+	color: var(--border-color);
+}
+
+.review-rating .star.filled {
+	color: #fbbf24;
+}
+
+.review-meta {
+	display: flex;
+	gap: 1.5rem;
+	margin-bottom: 1rem;
+	flex-wrap: wrap;
+}
+
+.meta-item {
+	display: flex;
+	align-items: center;
+	gap: 0.3rem;
+	font-size: 0.85rem;
+	color: var(--text-secondary);
+}
+
+.review-text {
+	font-size: 1rem;
+	color: var(--text-primary);
+	line-height: 1.6;
+	font-style: italic;
+	margin: 0 0 1rem 0;
+	padding: 1rem;
+	background: var(--bg-secondary);
+	border-radius: 12px;
+}
+
+.review-footer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 1rem;
+}
+
+.review-date {
+	font-size: 0.85rem;
+	color: var(--text-muted);
+}
+
+.status-badge {
+	padding: 0.3rem 0.75rem;
+	border-radius: 20px;
+	font-size: 0.8rem;
+	font-weight: 600;
+}
+
+.status-badge.pending {
+	background: #feebc8;
+	color: #c05621;
+}
+
+.status-badge.approved {
+	background: #c6f6d5;
+	color: #276749;
+}
+
+.status-badge.rejected {
+	background: #fed7d7;
+	color: #c53030;
+}
+
+.review-actions {
+	display: flex;
+	gap: 0.75rem;
+	flex-wrap: wrap;
+}
+
+.action-btn {
+	padding: 0.5rem 1rem;
+	border-radius: 8px;
+	font-size: 0.9rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	border: none;
+}
+
+.action-btn.approve {
+	background: #c6f6d5;
+	color: #276749;
+}
+
+.action-btn.approve:hover {
+	background: #48bb78;
+	color: white;
+}
+
+.action-btn.reject {
+	background: #feebc8;
+	color: #c05621;
+}
+
+.action-btn.reject:hover {
+	background: #ed8936;
+	color: white;
+}
+
+.action-btn.delete {
+	background: #fed7d7;
+	color: #c53030;
+}
+
+.action-btn.delete:hover {
+	background: #e53e3e;
+	color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+	.main-tabs {
+		flex-direction: column;
+	}
+
+	.main-tab {
+		justify-content: center;
+	}
+
+	.review-header {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.75rem;
+	}
+
+	.review-meta {
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.review-actions {
+		justify-content: center;
+	}
+}
 /* Login Screen */
 .login-screen {
 	min-height: 100vh;

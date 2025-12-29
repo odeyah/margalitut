@@ -56,7 +56,7 @@ const goHome = () => {
 };
 
 const getConfettiStyle = n => {
-	const colors = ['#ff6b9d', '#ffd700', '#ff8fab', '#667eea', '#27ae60'];
+	const colors = ['#d34a6e', '#ffd700', '#ff8fab', '#667eea', '#27ae60'];
 	return {
 		'--delay': `${Math.random() * 0.5}s`,
 		'--rotation': `${Math.random() * 360}deg`,
@@ -221,7 +221,7 @@ const getConfettiStyle = n => {
 }
 
 .contact-link {
-	color: #ff6b9d;
+	color: #d34a6e;
 	text-decoration: none;
 	font-weight: 600;
 	font-size: 1.1rem;

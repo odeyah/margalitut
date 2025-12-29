@@ -76,3 +76,31 @@ export async function sendOrderEmail(order) {
 		return false;
 	}
 }
+// שליחת מייל על ביקורת חדשה
+export async function sendReviewEmail(review) {
+	try {
+		const stars = '⭐'.repeat(review.rating);
+
+		const templateParams = {
+			order_id: `ביקורת חדשה`,
+			customer_name: review.name,
+			customer_phone: review.phone || 'לא צוין',
+			customer_email: review.email || 'לא צוין',
+			delivery_info: `דירוג: ${stars} (${review.rating}/5)`,
+			date_time: new Date().toLocaleString('he-IL'),
+			items_list: `מוצר: ${review.product}`,
+			subtotal: '',
+			delivery_fee: '',
+			total: '',
+			payment_method: '',
+			special_requests: review.text,
+		};
+
+		const response = await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams);
+		console.log('Review email sent:', response);
+		return true;
+	} catch (error) {
+		console.error('Failed to send review email:', error);
+		return false;
+	}
+}

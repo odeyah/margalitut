@@ -170,7 +170,7 @@ const specialRequests = computed({
 .edit-btn {
 	background: none;
 	border: none;
-	color: #ff6b9d;
+	color: #d34a6e;
 	font-weight: 600;
 	cursor: pointer;
 	padding: 0.25rem 0.5rem;
@@ -242,7 +242,7 @@ const specialRequests = computed({
 }
 
 .item-price {
-	color: #ff6b9d;
+	color: #d34a6e;
 	font-weight: 600;
 }
 
@@ -275,7 +275,7 @@ const specialRequests = computed({
 .date-input:focus,
 .notes-input:focus {
 	outline: none;
-	border-color: #ff6b9d;
+	border-color: #d34a6e;
 }
 
 .notes-input {
@@ -307,7 +307,7 @@ const specialRequests = computed({
 }
 
 .total-price {
-	color: #ff6b9d;
+	color: #d34a6e;
 	font-size: 1.5rem;
 }
 

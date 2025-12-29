@@ -1,11 +1,70 @@
 import { defineStore } from 'pinia';
-import { ref, computed } from 'vue';
-import { createOrder } from '../services/ordersService';
+import { ref, computed, watch } from 'vue';
+import { createOrder, checkCouponUsage, saveCouponUsage } from '../services/ordersService';
 import { sendOrderEmail } from '../services/emailService';
+import { useToastStore } from './toastStore';
 
 export const useOrderStore = defineStore('order', () => {
 	// ===== STATE =====
-	const cart = ref([]);
+	// טעינת עגלה מ-localStorage
+	function loadCartFromStorage() {
+		try {
+			const saved = localStorage.getItem('margalitot_cart');
+			return saved ? JSON.parse(saved) : [];
+		} catch {
+			return [];
+		}
+	}
+
+	// שמירת עגלה ל-localStorage
+	function saveCartToStorage(cartData) {
+		try {
+			localStorage.setItem('margalitot_cart', JSON.stringify(cartData));
+		} catch (error) {
+			console.error('Failed to save cart:', error);
+		}
+	}
+
+	const cart = ref(loadCartFromStorage());
+	// ===== COUPONS =====
+	const appliedCoupon = ref(null);
+	const couponError = ref('');
+	const couponSuccess = ref('');
+
+	const availableCoupons = ref([
+		{
+			code: 'WELCOME10',
+			type: 'percent', // percent או fixed
+			value: 10,
+			minOrder: 50,
+			description: '10% הנחה על ההזמנה הראשונה',
+			active: true,
+		},
+		{
+			code: 'SWEET20',
+			type: 'fixed',
+			value: 20,
+			minOrder: 100,
+			description: '₪20 הנחה בהזמנה מעל ₪100',
+			active: true,
+		},
+		{
+			code: 'FAMILY10',
+			type: 'percent',
+			value: 10,
+			minOrder: 200,
+			description: '10% הנחה בהזמנה מעל ₪200',
+			active: true,
+		},
+		{
+			code: 'FREEDELIVERY',
+			type: 'freeDelivery',
+			value: 0,
+			minOrder: 250,
+			description: 'משלוח חינם בהזמנה מעל ₪250',
+			active: true,
+		},
+	]);
 	const customerInfo = ref({
 		name: '',
 		phone: '',
@@ -125,6 +184,29 @@ export const useOrderStore = defineStore('order', () => {
 		return cartTotal.value + deliveryPrice.value;
 	});
 
+	// חישוב הנחת קופון
+	const couponDiscount = computed(() => {
+		if (!appliedCoupon.value) return 0;
+
+		const coupon = appliedCoupon.value;
+
+		if (coupon.type === 'percent') {
+			return Math.round(cartTotal.value * (coupon.value / 100));
+		} else if (coupon.type === 'fixed') {
+			return coupon.value;
+		} else if (coupon.type === 'freeDelivery') {
+			return deliveryPrice.value;
+		}
+
+		return 0;
+	});
+
+	// סה"כ סופי אחרי הנחה
+	const finalTotal = computed(() => {
+		let total = orderTotal.value - couponDiscount.value;
+		return Math.max(total, 0); // לא פחות מ-0
+	});
+
 	const selectedPaymentMethod = computed(() => {
 		return paymentMethods.value.find(m => m.id === paymentMethod.value);
 	});
@@ -151,18 +233,31 @@ export const useOrderStore = defineStore('order', () => {
 
 	// ===== ACTIONS =====
 	function addToCart(product, quantity = 1) {
-		const existing = cart.value.find(item => item.id === product.id);
-		if (existing) {
-			existing.quantity += quantity;
+		const toastStore = useToastStore();
+
+		const existingItem = cart.value.find(item => item.id === product.id);
+
+		if (existingItem) {
+			existingItem.quantity += quantity;
+			toastStore.success(`הכמות עודכנה: ${product.name} (${existingItem.quantity})`);
 		} else {
-			cart.value.push({ ...product, quantity });
+			cart.value.push({
+				id: product.id,
+				name: product.name,
+				price: product.price,
+				image: product.image,
+				quantity,
+			});
+			toastStore.success(`${product.name} נוסף לסל 🛒`);
 		}
 	}
 
 	function removeFromCart(productId) {
-		const index = cart.value.findIndex(item => item.id === productId);
-		if (index > -1) {
-			cart.value.splice(index, 1);
+		const toastStore = useToastStore();
+		const item = cart.value.find(item => item.id === productId);
+		cart.value = cart.value.filter(item => item.id !== productId);
+		if (item) {
+			toastStore.info(`${item.name} הוסר מהסל`);
 		}
 	}
 
@@ -178,7 +273,10 @@ export const useOrderStore = defineStore('order', () => {
 	}
 
 	function clearCart() {
+		const toastStore = useToastStore();
 		cart.value = [];
+		localStorage.removeItem('margalitot_cart');
+		toastStore.info('הסל רוקן');
 	}
 
 	function setCustomerInfo(info) {
@@ -295,6 +393,7 @@ export const useOrderStore = defineStore('order', () => {
 	}
 
 	async function submitOrder() {
+		const toastStore = useToastStore();
 		isLoading.value = true;
 		try {
 			const orderId = generateOrderId();
@@ -306,24 +405,36 @@ export const useOrderStore = defineStore('order', () => {
 				delivery: {
 					option: deliveryOption.value,
 					location: selectedLocationData.value ? { ...selectedLocationData.value } : null,
-					price: deliveryPrice.value,
-					requiresCall: deliveryRequiresCall.value,
+					price: hasFreeDelivery.value ? 0 : deliveryPrice.value,
+					requiresCall: deliveryRequiresCall.value && !hasFreeDelivery.value,
 				},
 				payment: {
 					method: paymentMethod.value,
 				},
+				coupon: appliedCoupon.value
+					? {
+							code: appliedCoupon.value.code,
+							discount: couponDiscount.value,
+					  }
+					: null,
 				date: orderDate.value,
 				time: orderTime.value,
 				specialRequests: specialRequests.value,
 				subtotal: cartTotal.value,
-				deliveryFee: deliveryPrice.value,
-				total: orderTotal.value,
+				deliveryFee: hasFreeDelivery.value ? 0 : deliveryPrice.value,
+				discount: couponDiscount.value,
+				total: finalTotal.value,
 			};
 
 			// שמירה ב-Firebase
 			const savedOrder = await createOrder(orderData);
 
-			// שליחת אימייל (לא מחכים לתוצאה כדי לא לעכב)
+			// שמירת שימוש בקופון
+			if (appliedCoupon.value) {
+				await saveCouponUsage(appliedCoupon.value.code, customerInfo.value.phone, savedOrder.id);
+			}
+
+			// שליחת אימייל
 			sendOrderEmail(orderData).catch(err => {
 				console.error('Email notification failed:', err);
 			});
@@ -331,15 +442,15 @@ export const useOrderStore = defineStore('order', () => {
 			// שמירה מקומית
 			lastOrder.value = savedOrder;
 			orderHistory.value.unshift(savedOrder);
-
-			// שמירה ב-localStorage לפי טלפון
 			saveOrderToLocalStorage(savedOrder);
 
 			currentStep.value = 5;
+			toastStore.success('ההזמנה נשלחה בהצלחה! 🎉', 5000);
 
 			return savedOrder;
 		} catch (error) {
 			console.error('Order submission failed:', error);
+			toastStore.error('שגיאה בשליחת ההזמנה, נסו שוב');
 			throw error;
 		} finally {
 			isLoading.value = false;
@@ -387,7 +498,67 @@ export const useOrderStore = defineStore('order', () => {
 		currentStep.value = 1;
 		lastOrder.value = null;
 	}
+	// שמירה אוטומטית של העגלה בכל שינוי
+	watch(
+		cart,
+		newCart => {
+			saveCartToStorage(newCart);
+		},
+		{ deep: true },
+	);
+	// בדיקה והחלת קופון
+	async function applyCoupon(code) {
+		const toastStore = useToastStore();
+		couponError.value = '';
+		couponSuccess.value = '';
 
+		if (!code || code.trim() === '') {
+			couponError.value = 'נא להזין קוד קופון';
+			return false;
+		}
+
+		const coupon = availableCoupons.value.find(c => c.code.toUpperCase() === code.toUpperCase() && c.active);
+
+		if (!coupon) {
+			couponError.value = 'קוד הקופון לא תקין';
+			return false;
+		}
+
+		if (cartTotal.value < coupon.minOrder) {
+			couponError.value = `הקופון תקף להזמנה מעל ₪${coupon.minOrder}`;
+			return false;
+		}
+
+		if (!customerInfo.value.phone) {
+			couponError.value = 'נא להזין מספר טלפון קודם';
+			return false;
+		}
+
+		// בדיקה ב-Firebase - רק לפי טלפון
+		const usage = await checkCouponUsage(code, customerInfo.value.phone);
+
+		if (usage.used) {
+			couponError.value = 'הקופון כבר נוצל עם מספר טלפון זה';
+			return false;
+		}
+
+		appliedCoupon.value = coupon;
+		couponSuccess.value = coupon.description;
+		toastStore.success(`🎫 ${coupon.description}`);
+		return true;
+	}
+
+	// הסרת קופון
+	function removeCoupon() {
+		appliedCoupon.value = null;
+		couponError.value = '';
+		couponSuccess.value = '';
+	}
+
+	// בדיקה אם קופון משלוח חינם
+	const hasFreeDelivery = computed(() => {
+		return appliedCoupon.value?.type === 'freeDelivery';
+	});
 	return {
 		// State
 		cart,
@@ -438,5 +609,14 @@ export const useOrderStore = defineStore('order', () => {
 		submitOrder,
 		resetOrder,
 		getOrdersFromLocalStorage,
+		// Coupons
+		appliedCoupon,
+		couponError,
+		couponSuccess,
+		couponDiscount,
+		finalTotal,
+		hasFreeDelivery,
+		applyCoupon,
+		removeCoupon,
 	};
 });

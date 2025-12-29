@@ -42,6 +42,7 @@
 							<router-link to="/about">אודות</router-link>
 							<router-link to="/my-orders">ההזמנות שלי</router-link>
 							<router-link to="/quote">הצעת מחיר</router-link>
+							<router-link to="/faq">שאלות נפוצות</router-link>
 						</nav>
 					</div>
 

@@ -81,7 +81,7 @@ const handleClick = e => {
 
 /* Variants */
 .btn-primary {
-	background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 100%);
+	background: linear-gradient(135deg, #d34a6e 0%, #ff8fab 100%);
 	color: white;
 	box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
 }
@@ -98,8 +98,8 @@ const handleClick = e => {
 
 .btn-outline {
 	background: transparent;
-	border: 2px solid #ff6b9d;
-	color: #ff6b9d;
+	border: 2px solid #d34a6e;
+	color: #d34a6e;
 }
 
 .btn-outline:hover:not(.btn-disabled) {

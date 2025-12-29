@@ -14,6 +14,7 @@
 					<router-link class="nav-link" to="/about" @click="closeMobileMenu">אודות</router-link>
 					<router-link class="nav-link" to="/my-orders" @click="closeMobileMenu">ההזמנות שלי</router-link>
 					<router-link class="nav-link nav-link-primary" to="/quote" @click="closeMobileMenu"> הצעת מחיר </router-link>
+					<router-link class="nav-link" to="/faq" @click="closeMobileMenu">שאלות נפוצות</router-link>
 					<DarkModeToggle class="dark-toggle-mobile" />
 				</div>
 
@@ -48,6 +49,10 @@
 		<!-- Global Components -->
 		<CartDrawer />
 		<NotificationToast />
+		<!-- Toast Notifications -->
+		<ToastContainer />
+		<!-- WhatsApp Float Button -->
+		<WhatsAppButton />
 	</div>
 </template>
 
@@ -60,7 +65,9 @@ import NotificationToast from './components/ui/NotificationToast.vue';
 import DarkModeToggle from './components/ui/DarkModeToggle.vue';
 import AppFooter from './components/layout/AppFooter.vue';
 import SearchBar from './components/ui/SearchBar.vue';
+import ToastContainer from './components/ui/ToastContainer.vue';
 import { CartDrawer, CartButton } from './components/cart';
+import WhatsAppButton from './components/ui/WhatsAppButton.vue';
 import logo from './assets/logo.png';
 
 const route = useRoute();
@@ -117,7 +124,7 @@ watch(
 	--text-muted: #999;
 	--border-color: #f0f0f0;
 	--border-pink: #ffd6e7;
-	--pink-primary: #ff6b9d;
+	--pink-primary: #d34a6e;
 	--pink-secondary: #ff8fab;
 	--pink-light: #fff5f8;
 	--card-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
@@ -134,7 +141,7 @@ watch(
 	--text-muted: #707070;
 	--border-color: #2d2d44;
 	--border-pink: #4a3040;
-	--pink-primary: #ff6b9d;
+	--pink-primary: #d34a6e;
 	--pink-secondary: #ff8fab;
 	--pink-light: #2d2035;
 	--card-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);

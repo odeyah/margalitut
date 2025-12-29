@@ -138,3 +138,104 @@ export async function getTodayOrders() {
 		throw error;
 	}
 }
+export async function checkCouponUsage(couponCode, phone) {
+	try {
+		const phoneQuery = query(
+			collection(db, 'coupon_usage'),
+			where('couponCode', '==', couponCode.toUpperCase()),
+			where('phone', '==', phone),
+		);
+		const phoneSnapshot = await getDocs(phoneQuery);
+
+		return { used: !phoneSnapshot.empty };
+	} catch (error) {
+		console.error('Error checking coupon usage:', error);
+		return { used: false };
+	}
+}
+
+// שמירת שימוש בקופון
+export async function saveCouponUsage(couponCode, phone, orderId) {
+	try {
+		await addDoc(collection(db, 'coupon_usage'), {
+			couponCode: couponCode.toUpperCase(),
+			phone: phone,
+			orderId: orderId,
+			usedAt: serverTimestamp(),
+		});
+		return true;
+	} catch (error) {
+		console.error('Error saving coupon usage:', error);
+		return false;
+	}
+}
+
+// ===== REVIEWS =====
+
+// הוספת ביקורת חדשה
+export async function addReview(reviewData) {
+	try {
+		const docRef = await addDoc(collection(db, 'reviews'), {
+			...reviewData,
+			status: 'pending', // pending, approved, rejected
+			createdAt: serverTimestamp(),
+		});
+		return { id: docRef.id, ...reviewData };
+	} catch (error) {
+		console.error('Error adding review:', error);
+		throw error;
+	}
+}
+
+// קבלת כל הביקורות המאושרות
+export async function getApprovedReviews() {
+	try {
+		const q = query(collection(db, 'reviews'), where('status', '==', 'approved'), orderBy('createdAt', 'desc'));
+		const snapshot = await getDocs(q);
+		return snapshot.docs.map(doc => ({
+			id: doc.id,
+			...doc.data(),
+		}));
+	} catch (error) {
+		console.error('Error getting reviews:', error);
+		return [];
+	}
+}
+
+// קבלת כל הביקורות (לאדמין)
+export async function getAllReviews() {
+	try {
+		const q = query(collection(db, 'reviews'), orderBy('createdAt', 'desc'));
+		const snapshot = await getDocs(q);
+		return snapshot.docs.map(doc => ({
+			id: doc.id,
+			...doc.data(),
+		}));
+	} catch (error) {
+		console.error('Error getting all reviews:', error);
+		return [];
+	}
+}
+
+// עדכון סטטוס ביקורת (לאדמין)
+export async function updateReviewStatus(reviewId, status) {
+	try {
+		const reviewRef = doc(db, 'reviews', reviewId);
+		await updateDoc(reviewRef, { status });
+		return true;
+	} catch (error) {
+		console.error('Error updating review status:', error);
+		return false;
+	}
+}
+
+// מחיקת ביקורת
+export async function deleteReview(reviewId) {
+	try {
+		await deleteDoc(doc(db, 'reviews', reviewId));
+		return true;
+	} catch (error) {
+		console.error('Error deleting review:', error);
+		return false;
+	}
+}
