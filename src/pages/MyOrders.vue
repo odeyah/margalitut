@@ -161,12 +161,14 @@ async function searchOrders() {
 	isSearched.value = true;
 
 	try {
-		// נקה את המספר
 		const cleaned = phoneNumber.value.replace(/\D/g, '');
 		const formattedPhone = cleaned.startsWith('0') ? cleaned : `0${cleaned}`;
 
-		// חפש ב-Firebase
+		console.log('Searching for phone:', formattedPhone);
+
 		orders.value = await getOrdersByPhone(formattedPhone);
+
+		console.log('Found orders:', orders.value);
 	} catch (error) {
 		console.error('Failed to fetch orders:', error);
 		orders.value = [];

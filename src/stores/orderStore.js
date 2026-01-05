@@ -395,9 +395,9 @@ export const useOrderStore = defineStore('order', () => {
 	async function submitOrder() {
 		const toastStore = useToastStore();
 		isLoading.value = true;
+
 		try {
 			const orderId = generateOrderId();
-
 			const orderData = {
 				orderId,
 				items: [...cart.value],

@@ -5,9 +5,17 @@
 
 		<!-- Product Image/Emoji -->
 		<div class="product-image">
-			<span class="product-emoji">{{ product.image }}</span>
+			<!-- תמונה אמיתית -->
+			<img
+				v-if="product.image.startsWith('/')"
+				:src="product.image"
+				:alt="product.name"
+				class="product-img"
+				loading="lazy"
+			/>
+			<!-- אימוג'י (תמיכה לאחור) -->
+			<span v-else class="product-emoji">{{ product.image }}</span>
 		</div>
-
 		<!-- Product Info -->
 		<div class="product-info">
 			<h4 class="product-name">{{ product.name }}</h4>
@@ -135,8 +143,20 @@ const handleCardClick = () => {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	height: 80px;
+	height: 150px;
 	margin-bottom: 1rem;
+	border-radius: 12px;
+	overflow: hidden;
+	background: var(--bg-secondary);
+}
+
+.product-img {
+	object-fit: fit;
+	transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-img {
+	transform: scale(1.08);
 }
 
 .product-emoji {

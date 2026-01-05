@@ -39,7 +39,15 @@
 								<div class="item-actions">
 									<div class="quantity-controls">
 										<button class="qty-btn minus" @click="decrementQuantity(item.id)">−</button>
-										<span class="qty-value">{{ item.quantity }}</span>
+										<input
+											type="number"
+											class="qty-input"
+											:value="item.quantity"
+											@change="updateQuantity(item.id, $event)"
+											@focus="$event.target.select()"
+											min="1"
+											max="99"
+										/>
 										<button class="qty-btn plus" @click="incrementQuantity(item.id)">+</button>
 									</div>
 									<span class="item-total">₪{{ item.price * item.quantity }}</span>
@@ -119,6 +127,11 @@ const removeFromCart = productId => {
 		// Optional: show message
 	}
 };
+function updateQuantity(itemId, event) {
+	const value = parseInt(event.target.value) || 1;
+	const quantity = Math.max(1, Math.min(99, value));
+	orderStore.updateQuantity(itemId, quantity);
+}
 </script>
 
 <style scoped>
@@ -522,5 +535,28 @@ const removeFromCart = productId => {
 	.cart-item {
 		position: relative;
 	}
+}
+.qty-input {
+	width: 45px;
+	height: 32px;
+	border: none;
+	background: var(--bg-primary);
+	border-radius: 6px;
+	text-align: center;
+	font-size: 1rem;
+	font-weight: 600;
+	color: var(--text-primary);
+	-moz-appearance: textfield;
+}
+
+.qty-input::-webkit-outer-spin-button,
+.qty-input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+.qty-input:focus {
+	outline: 2px solid var(--pink-primary);
+	outline-offset: -2px;
 }
 </style>

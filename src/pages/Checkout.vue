@@ -345,7 +345,7 @@
 							<button class="submit-btn" @click="submitOrder" :disabled="!canCompleteOrder || isLoading">
 								<span v-if="isLoading" class="loading-spinner"></span>
 								<span v-else>
-									שליחת הזמנה בוואטסאפ
+									שליחת הזמנה במייל
 									<span class="btn-icon">📱</span>
 								</span>
 							</button>

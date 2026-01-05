@@ -524,17 +524,6 @@ const popularProducts = computed(() => menuStore.popularProducts.slice(0, 8));
 	text-align: center;
 }
 
-@keyframes fadeInUp {
-	from {
-		opacity: 0;
-		transform: translateY(20px);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
-}
-
 /* ========== POPULAR SECTION ========== */
 .popular-section {
 	padding: 3rem 0;
