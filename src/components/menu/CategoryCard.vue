@@ -2,7 +2,23 @@
 	<router-link :to="category.id === 'baking-workshops' ? '/workshops' : `/menu/${category.id}`" class="category-card">
 		<div class="card-background"></div>
 		<div class="card-content">
-			<span class="card-icon">{{ category.icon }}</span>
+			<!-- תמונה או placeholder -->
+			<div class="card-image">
+				<template v-if="category.image && category.image.startsWith('/')">
+					<img :src="category.image" :alt="category.name" class="category-img img-default" loading="lazy" />
+					<img
+						v-if="category.hoverImage"
+						:src="category.hoverImage"
+						:alt="category.name"
+						class="category-img img-hover"
+						loading="lazy"
+					/>
+				</template>
+				<div v-else class="image-placeholder">
+					<span class="placeholder-text">התמונה תעלה בקרוב...</span>
+					<span class="placeholder-subtext">הטעם כבר כאן! 😋</span>
+				</div>
+			</div>
 			<h3 class="card-title">{{ category.name }}</h3>
 			<p class="card-description">{{ category.description }}</p>
 			<div class="card-footer">
@@ -70,10 +86,86 @@ const productsCount = computed(() => {
 	z-index: 1;
 }
 
+/* Image Container */
+.card-image {
+	position: relative;
+	width: 100%;
+	height: 120px;
+	margin-bottom: 1rem;
+	border-radius: 12px;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: var(--bg-secondary);
+}
+
+.category-img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: all 0.4s ease;
+}
+
+/* תמונה ראשית */
+.img-default {
+	position: absolute;
+	inset: 0;
+	opacity: 1;
+}
+
+/* תמונת hover */
+.img-hover {
+	position: absolute;
+	inset: 0;
+	opacity: 0;
+}
+
+/* אפקט hover */
+.category-card:hover .img-default {
+	opacity: 0;
+	transform: scale(1.05);
+}
+
+.category-card:hover .img-hover {
+	opacity: 1;
+	transform: scale(1.05);
+}
+
+/* אם אין תמונת hover, רק zoom */
+.category-card:hover .img-default:only-child {
+	opacity: 1;
+	transform: scale(1.1);
+}
+/* Placeholder - אין תמונה */
+.image-placeholder {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	padding: 1rem;
+	height: 100%;
+	background: linear-gradient(135deg, var(--pink-light) 0%, var(--bg-secondary) 100%);
+	border-radius: 12px;
+}
+
+.placeholder-text {
+	font-size: 0.85rem;
+	font-weight: 600;
+	color: var(--text-secondary);
+	margin-bottom: 0.25rem;
+}
+
+.placeholder-subtext {
+	font-size: 0.8rem;
+	color: var(--pink-primary);
+	font-weight: 500;
+}
+
 .card-icon {
 	display: inline-block;
-	font-size: 3rem;
-	margin-bottom: 1rem;
+	font-size: 3.5rem;
 	transition: transform 0.4s ease;
 }
 
@@ -153,5 +245,16 @@ const productsCount = computed(() => {
 
 .dark .category-card:hover {
 	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+	.card-image {
+		height: 100px;
+	}
+
+	.card-icon {
+		font-size: 3rem;
+	}
 }
 </style>

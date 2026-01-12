@@ -3,19 +3,26 @@
 		<!-- Popular Badge -->
 		<span v-if="product.popular" class="popular-badge"> ⭐ פופולרי </span>
 
-		<!-- Product Image/Emoji -->
+		<!-- Product Image -->
 		<div class="product-image">
-			<!-- תמונה אמיתית -->
-			<img
-				v-if="product.image.startsWith('/')"
-				:src="product.image"
-				:alt="product.name"
-				class="product-img"
-				loading="lazy"
-			/>
-			<!-- אימוג'י (תמיכה לאחור) -->
-			<span v-else class="product-emoji">{{ product.image }}</span>
+			<!-- יש תמונה אמיתית -->
+			<template v-if="product.image && product.image.startsWith('/')">
+				<img :src="product.image" :alt="product.name" class="product-img img-default" loading="lazy" />
+				<img
+					v-if="product.hoverImage"
+					:src="product.hoverImage"
+					:alt="product.name"
+					class="product-img img-hover"
+					loading="lazy"
+				/>
+			</template>
+			<!-- אין תמונה - placeholder -->
+			<div v-else class="image-placeholder">
+				<span class="placeholder-text">התמונה תעלה בקרוב...</span>
+				<span class="placeholder-subtext">הטעם כבר כאן! 😋</span>
+			</div>
 		</div>
+
 		<!-- Product Info -->
 		<div class="product-info">
 			<h4 class="product-name">{{ product.name }}</h4>
@@ -35,7 +42,15 @@
 					<template v-else>
 						<div class="quantity-controls">
 							<button class="qty-btn minus" @click="decrementQuantity">−</button>
-							<span class="qty-value">{{ cartQuantity }}</span>
+							<input
+								type="number"
+								class="qty-input"
+								:value="cartQuantity"
+								@change="updateQuantity($event)"
+								@focus="$event.target.select()"
+								min="1"
+								max="99"
+							/>
 							<button class="qty-btn plus" @click="incrementQuantity">+</button>
 						</div>
 					</template>
@@ -97,6 +112,12 @@ const decrementQuantity = () => {
 	}
 };
 
+const updateQuantity = event => {
+	const value = parseInt(event.target.value) || 1;
+	const quantity = Math.max(1, Math.min(99, value));
+	orderStore.updateQuantity(props.product.id, quantity);
+};
+
 const handleCardClick = () => {
 	// Future: Open product modal with more details
 };
@@ -129,17 +150,19 @@ const handleCardClick = () => {
 	position: absolute;
 	top: 0.75rem;
 	right: 0.75rem;
-	background: linear-gradient(135deg, #ffd700, #ffb347);
-	color: #333;
+	background: linear-gradient(135deg, var(--pink-primary), var(--pink-secondary));
+	color: white;
 	font-size: 0.7rem;
 	font-weight: 700;
 	padding: 0.3rem 0.6rem;
 	border-radius: 20px;
 	z-index: 2;
+	box-shadow: 0 2px 8px rgba(255, 107, 157, 0.3);
 }
 
 /* Product Image */
 .product-image {
+	position: relative;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -150,22 +173,90 @@ const handleCardClick = () => {
 	background: var(--bg-secondary);
 }
 
+/* תמונות אמיתיות */
 .product-img {
-	object-fit: fit;
-	transition: transform 0.3s ease;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: all 0.4s ease;
 }
 
-.product-card:hover .product-img {
-	transform: scale(1.08);
+.img-default {
+	position: absolute;
+	inset: 0;
+	opacity: 1;
 }
 
-.product-emoji {
-	font-size: 3.5rem;
-	transition: transform 0.3s ease;
+.img-hover {
+	position: absolute;
+	inset: 0;
+	opacity: 0;
 }
 
-.product-card:hover .product-emoji {
+.product-card:hover .img-default {
+	opacity: 0;
+	transform: scale(1.05);
+}
+
+.product-card:hover .img-hover {
+	opacity: 1;
+	transform: scale(1.05);
+}
+
+/* אם אין תמונת hover */
+.product-card:hover .img-default:only-child {
+	opacity: 1;
 	transform: scale(1.1);
+}
+
+/* Placeholder - אין תמונה */
+.image-placeholder {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	padding: 1rem;
+	height: 100%;
+	background: linear-gradient(135deg, var(--pink-light) 0%, var(--bg-secondary) 100%);
+}
+
+.placeholder-text {
+	font-size: 0.9rem;
+	font-weight: 600;
+	color: var(--text-secondary);
+	margin-bottom: 0.25rem;
+}
+
+.placeholder-subtext {
+	font-size: 0.85rem;
+	color: var(--pink-primary);
+	font-weight: 500;
+}
+
+@keyframes pulse {
+	0%,
+	100% {
+		transform: scale(1);
+		opacity: 0.6;
+	}
+	50% {
+		transform: scale(1.1);
+		opacity: 0.8;
+	}
+}
+
+.placeholder-text {
+	font-size: 0.85rem;
+	font-weight: 600;
+	color: var(--text-secondary);
+	margin-bottom: 0.25rem;
+}
+
+.placeholder-subtext {
+	font-size: 0.75rem;
+	color: var(--pink-primary);
+	font-weight: 500;
 }
 
 /* Product Info */
@@ -188,6 +279,7 @@ const handleCardClick = () => {
 	line-height: 1.4;
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
+	line-clamp: 2;
 	-webkit-box-orient: vertical;
 	overflow: hidden;
 }
@@ -240,7 +332,7 @@ const handleCardClick = () => {
 .quantity-controls {
 	display: flex;
 	align-items: center;
-	gap: 0.5rem;
+	gap: 0.25rem;
 	background: var(--bg-primary);
 	border: 2px solid var(--pink-primary);
 	border-radius: 25px;
@@ -272,11 +364,27 @@ const handleCardClick = () => {
 	background: #e74c3c;
 }
 
-.qty-value {
-	min-width: 24px;
+.qty-input {
+	width: 40px;
+	height: 28px;
+	border: none;
+	background: transparent;
 	text-align: center;
+	font-size: 0.9rem;
 	font-weight: 700;
 	color: var(--text-primary);
+	appearance: textfield;
+	-moz-appearance: textfield;
+}
+
+.qty-input::-webkit-outer-spin-button,
+.qty-input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+.qty-input:focus {
+	outline: none;
 }
 
 /* Added Indicator */
@@ -338,5 +446,20 @@ const handleCardClick = () => {
 
 .dark .quantity-controls {
 	background: var(--bg-secondary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+	.product-image {
+		height: 120px;
+	}
+
+	.product-emoji {
+		font-size: 3rem;
+	}
+
+	.placeholder-text {
+		font-size: 0.75rem;
+	}
 }
 </style>
