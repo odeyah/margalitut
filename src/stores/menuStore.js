@@ -446,8 +446,8 @@ export const useMenuStore = defineStore('menu', () => {
 			id: 35,
 			name: 'סופלה שוקולד',
 			category: 'mixed-cakes',
-			price: 50,
-			image: '/cakes/bluberymafins.png',
+			price: 45,
+			image: '/cakes/sofle.png',
 			description: 'סופלה שוקולד איכותי - מארז חמישייה',
 		},
 		{
