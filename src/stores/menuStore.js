@@ -252,7 +252,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'עוגת שמרים חלבה',
 			category: 'yeast-cakes',
 			price: 50,
-			image: '/cakes/shmarim/cinamon.png',
+			image: '/cakes/shmarim/cinamen.png',
 			description: 'עוגת שמרים עם מילוי חלבה',
 		},
 		{
