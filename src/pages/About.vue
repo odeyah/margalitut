@@ -11,7 +11,7 @@
 		<section class="story-section animate-on-scroll fade-up">
 			<div class="story-card">
 				<div class="owner-image">
-					<img src="../assets/margalit.jpg" alt="מרגלית - הבעלים של מרגליתות" />
+					<img src="" alt="מרגלית - הבעלים של מרגליתות" />
 				</div>
 				<h2>היי, אני מרגלית! 👋</h2>
 				<p>
