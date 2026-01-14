@@ -356,11 +356,11 @@ export const useMenuStore = defineStore('menu', () => {
 		},
 		{
 			id: 24,
-			name: 'פאי חלבה פיצוחים',
+			name: 'פאי פיצוחים',
 			category: 'mixed-cakes',
 			price: 70,
 			image: '/cakes/payPitzuchim.png',
-			description: 'פאי חלבה פיצוחים',
+			description: 'פאי פיצוחים',
 		},
 		{
 			id: 25,
