@@ -450,8 +450,12 @@ const handleCardClick = () => {
 
 /* Responsive */
 @media (max-width: 768px) {
-	.product-image {
-		height: 120px;
+	/* תמונות אמיתיות */
+	.product-img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		transition: all 0.4s ease;
 	}
 
 	.product-emoji {
