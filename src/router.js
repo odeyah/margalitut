@@ -9,7 +9,8 @@ import Quote from './pages/Quote.vue';
 import Checkout from './pages/Checkout.vue';
 import Admin from './pages/Admin.vue';
 import MyOrders from './pages/MyOrders.vue';
-import BakingWorkshops from './pages/BakingWorkshops.vue'; // הוסף
+import BakingWorkshops from './pages/BakingWorkshops.vue';
+import Tasting from './pages/Tasting.vue';
 
 const routes = [
 	{ path: '/', name: 'home', component: Home },
@@ -21,7 +22,8 @@ const routes = [
 	{ path: '/checkout', name: 'checkout', component: Checkout },
 	{ path: '/admin', name: 'admin', component: Admin },
 	{ path: '/my-orders', name: 'my-orders', component: MyOrders },
-	{ path: '/workshops', name: 'workshops', component: BakingWorkshops }, // הוסף
+	{ path: '/workshops', name: 'workshops', component: BakingWorkshops },
+	{ path: '/tasting', name: 'tasting', component: Tasting },
 	{ path: '/:pathMatch(.*)*', name: 'not-found', component: () => import('./pages/NotFound.vue') },
 	{ path: '/faq', name: 'faq', component: () => import('./pages/FAQ.vue') },
 ];

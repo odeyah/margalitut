@@ -2,7 +2,7 @@
 	<div class="product-card" :class="{ 'is-in-cart': isInCart }" @click="handleCardClick">
 		<!-- Popular Badge -->
 		<span v-if="product.popular" class="popular-badge"> ⭐ פופולרי </span>
-
+		<span v-if="product.hasOptions" class="options-badge">בחירת אפשרויות</span>
 		<!-- Product Image -->
 		<div class="product-image">
 			<!-- יש תמונה אמיתית -->
@@ -33,7 +33,12 @@
 
 				<!-- Add to Cart Button -->
 				<div class="cart-actions" @click.stop>
-					<template v-if="!isInCart">
+					<template v-if="product.hasOptions">
+						<button class="add-btn options-btn" @click.stop="openOptionsModal">
+							<span class="add-text">בחר אפשרויות</span>
+						</button>
+					</template>
+					<template v-else-if="!isInCart">
 						<button class="add-btn" @click="addToCart">
 							<span class="add-icon">+</span>
 							<span class="add-text">הוסף</span>
@@ -62,6 +67,13 @@
 		<Transition name="pop">
 			<div v-if="showAddedIndicator" class="added-indicator">✓ נוסף לעגלה</div>
 		</Transition>
+		<!-- Options Modal -->
+		<ProductOptionsModal
+			:show="showOptionsModal"
+			:product="product"
+			@close="showOptionsModal = false"
+			@add="handleOptionsAdd"
+		/>
 	</div>
 </template>
 
@@ -69,6 +81,7 @@
 import { ref, computed } from 'vue';
 import { useOrderStore } from '../../stores/orderStore';
 import { useUIStore } from '../../stores/uiStore';
+import ProductOptionsModal from './ProductOptionsModal.vue';
 
 const props = defineProps({
 	product: {
@@ -80,6 +93,7 @@ const props = defineProps({
 const orderStore = useOrderStore();
 const uiStore = useUIStore();
 const showAddedIndicator = ref(false);
+const showOptionsModal = ref(false);
 
 const isInCart = computed(() => {
 	return orderStore.cart.some(item => item.id === props.product.id);
@@ -119,7 +133,33 @@ const updateQuantity = event => {
 };
 
 const handleCardClick = () => {
-	// Future: Open product modal with more details
+	if (props.product.hasOptions) {
+		openOptionsModal();
+	}
+};
+const openOptionsModal = () => {
+	showOptionsModal.value = true;
+};
+
+const handleOptionsAdd = data => {
+	const customProduct = {
+		id: `${props.product.id}-${data.flavor?.id || 'default'}-${data.size?.id || 'default'}-${Date.now()}`,
+		baseProductId: props.product.id,
+		name: `${props.product.name} ${data.flavor?.name || ''} ${data.size?.name || ''}`.trim(),
+		price: data.size?.price || props.product.price,
+		image: data.flavor?.icon || props.product.image,
+		flavor: data.flavor,
+		size: data.size,
+	};
+
+	orderStore.addToCart(customProduct, data.quantity);
+	showOptionsModal.value = false;
+	showAddedIndicator.value = true;
+	uiStore.showSuccess(`${customProduct.name} נוסף לעגלה`);
+
+	setTimeout(() => {
+		showAddedIndicator.value = false;
+	}, 1500);
 };
 </script>
 
@@ -465,5 +505,25 @@ const handleCardClick = () => {
 	.placeholder-text {
 		font-size: 0.75rem;
 	}
+}
+.add-btn.options-btn {
+	background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.add-btn.options-btn:hover {
+	box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.options-badge {
+	position: absolute;
+	top: 0.75rem;
+	left: 0.75rem;
+	background: linear-gradient(135deg, #667eea, #764ba2);
+	color: white;
+	font-size: 0.65rem;
+	font-weight: 700;
+	padding: 0.3rem 0.6rem;
+	border-radius: 20px;
+	z-index: 2;
 }
 </style>

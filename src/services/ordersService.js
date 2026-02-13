@@ -239,3 +239,25 @@ export async function deleteReview(reviewId) {
 		return false;
 	}
 }
+
+// חיפוש הזמנה לפי מספר הזמנה + טלפון
+export async function getOrderByIdAndPhone(orderId, phone) {
+	try {
+		const q = query(
+			collection(db, ORDERS_COLLECTION),
+			where('orderId', '==', orderId),
+			where('customer.phone', '==', phone),
+		);
+		const querySnapshot = await getDocs(q);
+
+		if (querySnapshot.empty) {
+			return null;
+		}
+
+		const doc = querySnapshot.docs[0];
+		return { id: doc.id, ...doc.data() };
+	} catch (error) {
+		console.error('Error getting order:', error);
+		throw error;
+	}
+}

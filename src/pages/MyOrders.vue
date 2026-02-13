@@ -8,15 +8,37 @@
 		<!-- Phone Input -->
 		<div v-if="!isSearched" class="phone-search">
 			<div class="search-card">
-				<h2>הכניסו את מספר הטלפון</h2>
-				<p>נמצא את ההזמנות שלכם</p>
+				<h2>חיפוש הזמנות</h2>
+				<p>מצאו את ההזמנות שלכם</p>
+
+				<!-- טאבים לבחירת סוג חיפוש -->
+				<div class="search-tabs">
+					<button class="tab-btn" :class="{ active: searchMode === 'phone' }" @click="searchMode = 'phone'">
+						🔍 לפי טלפון
+					</button>
+					<button class="tab-btn" :class="{ active: searchMode === 'order' }" @click="searchMode = 'order'">
+						📋 לפי מספר הזמנה
+					</button>
+				</div>
 
 				<div class="form-group">
 					<input
 						type="tel"
 						v-model="phoneNumber"
 						class="form-input"
-						placeholder="050-0000000"
+						placeholder="מספר טלפון"
+						dir="ltr"
+						@keyup.enter="searchOrders"
+					/>
+				</div>
+
+				<!-- שדה מספר הזמנה - מופיע רק במצב חיפוש לפי הזמנה -->
+				<div v-if="searchMode === 'order'" class="form-group">
+					<input
+						type="text"
+						v-model="orderIdSearch"
+						class="form-input"
+						placeholder="מספר הזמנה (לדוגמה: MRG-ABC123)"
 						dir="ltr"
 						@keyup.enter="searchOrders"
 					/>
@@ -25,7 +47,7 @@
 				<button class="search-btn" @click="searchOrders" :disabled="!isValidPhone || isLoading">
 					<span v-if="isLoading" class="loading-spinner small"></span>
 					<span v-else>
-						חיפוש הזמנות
+						{{ searchMode === 'order' ? 'חפש הזמנה' : 'הצג כל ההזמנות' }}
 						<span class="btn-icon">🔍</span>
 					</span>
 				</button>
@@ -128,7 +150,7 @@
 import { ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
 import { useOrderStore } from '../stores/orderStore';
-import { getOrdersByPhone } from '../services/ordersService';
+import { getOrdersByPhone, getOrderByIdAndPhone } from '../services/ordersService';
 import { useHead } from '@vueuse/head';
 
 useHead({
@@ -145,9 +167,11 @@ const router = useRouter();
 const orderStore = useOrderStore();
 
 const phoneNumber = ref('');
+const orderIdSearch = ref('');
 const orders = ref([]);
 const isLoading = ref(false);
 const isSearched = ref(false);
+const searchMode = ref('phone'); // 'phone' or 'order'
 
 const isValidPhone = computed(() => {
 	const cleaned = phoneNumber.value.replace(/\D/g, '');
@@ -164,11 +188,14 @@ async function searchOrders() {
 		const cleaned = phoneNumber.value.replace(/\D/g, '');
 		const formattedPhone = cleaned.startsWith('0') ? cleaned : `0${cleaned}`;
 
-		console.log('Searching for phone:', formattedPhone);
-
-		orders.value = await getOrdersByPhone(formattedPhone);
-
-		console.log('Found orders:', orders.value);
+		// אם יש מספר הזמנה - חפש הזמנה ספציפית
+		if (orderIdSearch.value.trim()) {
+			const order = await getOrderByIdAndPhone(orderIdSearch.value.trim().toUpperCase(), formattedPhone);
+			orders.value = order ? [order] : [];
+		} else {
+			// אחרת - חפש את כל ההזמנות לפי טלפון
+			orders.value = await getOrdersByPhone(formattedPhone);
+		}
 	} catch (error) {
 		console.error('Failed to fetch orders:', error);
 		orders.value = [];
@@ -180,6 +207,7 @@ async function searchOrders() {
 function resetSearch() {
 	isSearched.value = false;
 	orders.value = [];
+	orderIdSearch.value = '';
 }
 
 function reorder(order) {
@@ -765,5 +793,35 @@ function formatDate(timestamp) {
 		flex-direction: column;
 		align-items: flex-start;
 	}
+}
+/* Search Tabs */
+.search-tabs {
+	display: flex;
+	gap: 0.5rem;
+	margin-bottom: 1.5rem;
+}
+
+.tab-btn {
+	flex: 1;
+	padding: 0.75rem 1rem;
+	background: var(--bg-secondary);
+	border: 2px solid transparent;
+	border-radius: 10px;
+	font-size: 0.9rem;
+	font-weight: 600;
+	color: var(--text-secondary);
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+	background: var(--pink-light);
+	color: var(--pink-primary);
+}
+
+.tab-btn.active {
+	background: var(--pink-light);
+	border-color: var(--pink-primary);
+	color: var(--pink-primary);
 }
 </style>
