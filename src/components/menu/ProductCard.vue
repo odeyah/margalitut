@@ -81,7 +81,7 @@
 import { ref, computed } from 'vue';
 import { useOrderStore } from '../../stores/orderStore';
 import { useUIStore } from '../../stores/uiStore';
-import ProductOptionsModal from './ProductOptionsModal.vue';
+import ProductOptionsModal from '../ui/ProductOptionsModal.vue';
 
 const props = defineProps({
 	product: {
