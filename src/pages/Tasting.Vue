@@ -90,7 +90,7 @@ const texts = {
 	},
 	en: {
 		title: 'Thank you for visiting us! 💛',
-		subtitle: 'We're so happy you discovered Margalitut 🍓 Order now or request a quote.',
+		subtitle: 'We are so happy you discovered Margalitut 🍓 Order now or request an event quote.',
 		productsTitle: 'Our Products',
 		add: 'Add',
 		checkout: 'Checkout',
@@ -98,7 +98,7 @@ const texts = {
 		popular: 'Popular',
 		items: 'items',
 		contactTitle: 'Questions? Talk to us!',
-		contactText: 'We\'re happy to help with any question or special request',
+		contactText: "We're happy to help with any question or special request",
 	},
 };
 
@@ -154,11 +154,11 @@ const products = computed(() => [
 // Cart state
 const cartItems = ref([]);
 
-const isInCart = (id) => cartItems.value.some(item => item.id === id);
-const getQty = (id) => cartItems.value.find(item => item.id === id)?.qty || 0;
+const isInCart = id => cartItems.value.some(item => item.id === id);
+const getQty = id => cartItems.value.find(item => item.id === id)?.qty || 0;
 
 const totalItems = computed(() => cartItems.value.reduce((sum, item) => sum + item.qty, 0));
-const totalPrice = computed(() => cartItems.value.reduce((sum, item) => sum + (item.price * item.qty), 0));
+const totalPrice = computed(() => cartItems.value.reduce((sum, item) => sum + item.price * item.qty, 0));
 
 function addToCart(product) {
 	const existing = cartItems.value.find(item => item.id === product.id);

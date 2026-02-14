@@ -10,7 +10,7 @@ import Checkout from './pages/Checkout.vue';
 import Admin from './pages/Admin.vue';
 import MyOrders from './pages/MyOrders.vue';
 import BakingWorkshops from './pages/BakingWorkshops.vue';
-// import Tasting from './pages/Tasting.vue';
+import Tasting from './pages/Tasting.vue';
 
 const routes = [
 	{ path: '/', name: 'home', component: Home },
