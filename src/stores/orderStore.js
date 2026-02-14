@@ -33,6 +33,15 @@ export const useOrderStore = defineStore('order', () => {
 
 	const availableCoupons = ref([
 		{
+		    code: 'TASTING5',
+    		type: 'percent',
+    		value: 5,
+		    minOrder: 40,
+		    description: '5% הנחה למשתתפי יריד הטעימות',
+		    active: true,
+		    expiresAt: new Date('2025-02-19T20:00:00'), // יום רביעי 20:00
+		},
+		{
 			code: 'WELCOME10',
 			type: 'percent', // percent או fixed
 			value: 10,
