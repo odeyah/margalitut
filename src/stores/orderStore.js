@@ -39,7 +39,7 @@ export const useOrderStore = defineStore('order', () => {
 		    minOrder: 40,
 		    description: '5% הנחה למשתתפי יריד הטעימות',
 		    active: true,
-		    expiresAt: new Date('2025-02-19T20:00:00'), // יום רביעי 20:00
+		    expiresAt: new Date('2025-02-18T20:00:00'), // יום רביעי 20:00
 		},
 		{
 			code: 'WELCOME10',
