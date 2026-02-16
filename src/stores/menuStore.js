@@ -21,7 +21,7 @@ export const useMenuStore = defineStore('menu', () => {
 		{
 			id: 'mixed-cakes',
 			name: 'עוגות בחושות',
-			image: '/cakes/maple.jpg',
+			image: '/cakes/maple cake.jpeg',
 			hoverImage: '/cakes/lemonCake.png',
 			description: 'עוגות בחושות ביתיות ועשירות',
 			color: '#DDA0DD',

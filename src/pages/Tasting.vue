@@ -2,12 +2,12 @@
 	<div class="tasting-page" :class="{ rtl: lang === 'he' }">
 		<!-- SALE BANNER -->
 		<div v-if="isPromoActive" class="promo-banner">
-    		<span class="promo-icon">🎉</span>
-    		<div class="promo-text">
-        	<strong>מבצע מיוחד למשתתפי הטעימות!</strong>
-        	<span>הזינו קוד <code>TASTING5</code> לקבלת 5% הנחה</span>
-    		</div>
-    		<span class="promo-expires">בתוקף עד יום רביעי 20:00</span>
+			<span class="promo-icon">🎉</span>
+			<div class="promo-text">
+				<strong>מבצע מיוחד למשתתפי הטעימות!</strong>
+				<span>הזינו קוד <code>TASTING5</code> לקבלת 5% הנחה</span>
+			</div>
+			<span class="promo-expires">בתוקף עד יום רביעי 20:00</span>
 		</div>
 		<!-- HERO -->
 		<section class="hero">
@@ -23,6 +23,27 @@
 					<span class="btn-icon">📋</span>
 					{{ t.quote }}
 				</button>
+			</div>
+		</section>
+
+		<!-- WHY MARGALITUT -->
+		<section class="why-section">
+			<div class="why-grid">
+				<div class="why-card">
+					<span class="why-icon">🏠</span>
+					<h3>{{ lang === 'he' ? 'ביתי ואותנטי' : 'Homemade' }}</h3>
+					<p>{{ lang === 'he' ? 'הכל נאפה בבית עם אהבה' : 'Everything baked at home with love' }}</p>
+				</div>
+				<div class="why-card">
+					<span class="why-icon">✨</span>
+					<h3>{{ lang === 'he' ? 'טרי ונקי' : 'Fresh & Clean' }}</h3>
+					<p>{{ lang === 'he' ? 'רכיבים איכותיים בכשרות מהדרין' : 'Quality ingredients, Mehadrin kosher' }}</p>
+				</div>
+				<div class="why-card">
+					<span class="why-icon">❤️</span>
+					<h3>{{ lang === 'he' ? 'עבודת יד' : 'Handcrafted' }}</h3>
+					<p>{{ lang === 'he' ? 'תשומת לב לכל פרט' : 'Attention to every detail' }}</p>
+				</div>
 			</div>
 		</section>
 
@@ -72,6 +93,15 @@
 				<a href="https://wa.me/972528460331" target="_blank" class="contact-link whatsapp"> 💬 WhatsApp </a>
 			</div>
 		</section>
+		<!-- FLOATING WHATSAPP -->
+		<a
+			href="https://wa.me/972528460331?text=היי%20מרגלית!%20הגעתי%20מיריד%20הטעימות%20ויש%20לי%20שאלה"
+			target="_blank"
+			class="whatsapp-float"
+		>
+			<span class="whatsapp-icon">💬</span>
+			<span class="whatsapp-text">{{ lang === 'he' ? 'שאלות?' : 'Questions?' }}</span>
+		</a>
 	</div>
 </template>
 
@@ -118,48 +148,69 @@ const products = computed(() => [
 		id: 1,
 		name: lang.value === 'he' ? 'עוגת שמרים' : 'Yeast Cake',
 		description: lang.value === 'he' ? 'עוגת שמרים טרייה ורכה' : 'Fresh and soft yeast cake',
-		price: 50,
-		image: '/images/yeast.jpg',
+		price: 60,
+		image: '/cakes/shmarim/yeast.jpeg',
 		popular: true,
 	},
 	{
 		id: 2,
-		name: lang.value === 'he' ? 'בראוניז עשיר' : 'Rich Brownies',
-		description: lang.value === 'he' ? 'בראוניז שוקולד עשיר ולח' : 'Rich and moist chocolate brownies',
-		price: 55,
-		image: '/images/brownies.jpg',
+		name: lang.value === 'he' ? 'עוגת מייפל' : 'maple cake',
+		description: lang.value === 'he' ? 'עוגת מייפל אגוזים' : 'maple and nuts cake',
+		price: 60,
+		image: '/cakes/mapel cake.jpeg',
 	},
 	{
 		id: 3,
-		name: lang.value === 'he' ? 'קופסת עוגיות' : 'Cookie Box',
-		description: lang.value === 'he' ? 'מבחר עוגיות טריות' : 'Assorted fresh cookies',
-		price: 45,
-		image: '/images/cookies.jpg',
+		name: lang.value === 'he' ? 'שוקולד ציפס' : 'chocolate chips',
+		description: lang.value === 'he' ? 'עוגיות שוקולד ציפס' : 'chocolate chips cookies',
+		price: 50,
+		image: '/cookies/chocChip.jpeg',
 	},
 	{
 		id: 4,
-		name: lang.value === 'he' ? 'קיש ביתי' : 'Homemade Quiche',
-		description: lang.value === 'he' ? 'קיש טרי במילויים לבחירה' : 'Fresh quiche with your choice of filling',
-		price: 65,
-		image: '/images/quiche.jpg',
+		name: lang.value === 'he' ? 'חיתוכיות תות תפוח' : 'strawberry apple bars',
+		description: lang.value === 'he' ? 'חיתוכיות תות תפוח' : 'strawberry and apple bars',
+		price: 55,
+		image: '/cookies/appleBars.jpeg',
 		popular: true,
 	},
 	{
 		id: 5,
-		name: lang.value === 'he' ? 'פיצה ביתית' : 'Homemade Pizza',
-		description: lang.value === 'he' ? 'פיצה ביתית עם תוספות' : 'Homemade pizza with toppings',
-		price: 60,
-		image: '/images/pizza.jpg',
+		name: lang.value === 'he' ? 'מגולגלות תמרים' : 'date rolls',
+		description: lang.value === 'he' ? 'מגולגלות תמרים' : 'date rolls',
+		price: 50,
+		image: '/cookies/dateRolls.jpeg',
 	},
 	{
 		id: 6,
-		name: lang.value === 'he' ? 'מארז מתנה' : 'Premium Gift Box',
-		description: lang.value === 'he' ? 'מארז מפנק במיוחד' : 'Special pampering gift box',
+		name: lang.value === 'he' ? 'משלוח מנות מושקע' : 'Purim Mishloach Manot',
+		description: lang.value === 'he' ? 'משלוח מנות מפנק' : 'Premium Purim Mishloach Manot',
 		price: 250,
-		image: '/images/gift.jpg',
+		image: '/specialEvents/Purim.jpeg',
 	},
 ]);
-
+const testimonials = [
+	{
+		name: 'Rabi Lary Shain',
+		text: 'They are excelent!! כל הכבוד',
+		product: 'ספינג',
+	},
+	{
+		name: 'Levi Blumenfeld',
+		text: 'Was mamash deliciouse! Thanks very much!',
+		product: 'ספינג',
+	},
+	{
+		name: 'יוסי ל.',
+		text: 'העוגיות הכי טעימות! הילדים מתים על השוקולד צ׳יפס',
+		product: 'עוגיות שוקולד צ׳יפס',
+	},
+	{
+		name: 'רחל א.',
+		text: 'סוף סוף מצאתי עוגות ללא גלוטן טעימות!',
+		product: 'עוגת שוקולד ללא גלוטן',
+	},
+];
 // Cart state
 const cartItems = ref([]);
 
@@ -169,10 +220,10 @@ const getQty = id => cartItems.value.find(item => item.id === id)?.qty || 0;
 const totalItems = computed(() => cartItems.value.reduce((sum, item) => sum + item.qty, 0));
 const totalPrice = computed(() => cartItems.value.reduce((sum, item) => sum + item.price * item.qty, 0));
 const isPromoActive = computed(() => {
-    const now = new Date();
-    const start = new Date('2025-02-18T20:00:00'); // יום שלישי 20:00
-    const end = new Date('2025-02-19T20:00:00');   // יום רביעי 20:00
-    return now >= start && now <= end;
+	const now = new Date();
+	const start = new Date('2025-02-18T20:00:00'); // יום שלישי 20:00
+	const end = new Date('2025-02-19T20:00:00'); // יום רביעי 20:00
+	return now >= start && now <= end;
 });
 function addToCart(product) {
 	const existing = cartItems.value.find(item => item.id === product.id);
@@ -583,38 +634,175 @@ function goQuote() {
 	}
 }
 .promo-banner {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem 1.5rem;
-    background: linear-gradient(135deg, #d34a6e, #ff8fab);
-    color: white;
-    border-radius: 12px;
-    margin-bottom: 1.5rem;
-    flex-wrap: wrap;
-    justify-content: center;
-    text-align: center;
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	padding: 1rem 1.5rem;
+	background: linear-gradient(135deg, #d34a6e, #ff8fab);
+	color: white;
+	border-radius: 12px;
+	margin-bottom: 1.5rem;
+	flex-wrap: wrap;
+	justify-content: center;
+	text-align: center;
 }
 
 .promo-icon {
-    font-size: 1.5rem;
+	font-size: 1.5rem;
 }
 
 .promo-text {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
 }
 
 .promo-text code {
-    background: rgba(255,255,255,0.2);
-    padding: 0.2rem 0.5rem;
-    border-radius: 4px;
-    font-weight: 700;
+	background: rgba(255, 255, 255, 0.2);
+	padding: 0.2rem 0.5rem;
+	border-radius: 4px;
+	font-weight: 700;
 }
 
 .promo-expires {
-    font-size: 0.85rem;
-    opacity: 0.9;
+	font-size: 0.85rem;
+	opacity: 0.9;
+}
+/* TESTIMONIALS */
+.testimonials-section {
+	margin-bottom: 2rem;
+}
+
+.section-title {
+	font-size: 1.5rem;
+	font-weight: 700;
+	text-align: center;
+	margin-bottom: 1.5rem;
+	color: var(--text-primary, #333);
+}
+
+.testimonials-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+	gap: 1rem;
+}
+
+.testimonial-card {
+	background: var(--bg-primary, white);
+	border-radius: 12px;
+	padding: 1.25rem;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.testimonial-text {
+	font-size: 0.95rem;
+	color: var(--text-secondary, #666);
+	margin: 0 0 1rem 0;
+	line-height: 1.6;
+	font-style: italic;
+}
+
+.testimonial-footer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
+
+.testimonial-name {
+	font-weight: 600;
+	font-size: 0.9rem;
+	color: var(--text-primary, #333);
+}
+
+.testimonial-product {
+	font-size: 0.8rem;
+	color: var(--pink-primary, #d34a6e);
+	background: var(--pink-light, #fff0f5);
+	padding: 0.2rem 0.6rem;
+	border-radius: 12px;
+}
+/* WHY SECTION */
+.why-section {
+	margin-bottom: 2rem;
+}
+
+.why-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1rem;
+}
+
+.why-card {
+	text-align: center;
+	padding: 1.5rem 1rem;
+	background: var(--bg-primary, white);
+	border-radius: 12px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.why-icon {
+	font-size: 2rem;
+	display: block;
+	margin-bottom: 0.5rem;
+}
+
+.why-card h3 {
+	font-size: 1rem;
+	font-weight: 700;
+	margin: 0 0 0.25rem 0;
+	color: var(--text-primary, #333);
+}
+
+.why-card p {
+	font-size: 0.85rem;
+	color: var(--text-secondary, #666);
+	margin: 0;
+}
+
+@media (max-width: 600px) {
+	.why-grid {
+		grid-template-columns: 1fr;
+	}
+}
+/* FLOATING WHATSAPP */
+.whatsapp-float {
+	position: fixed;
+	bottom: 5rem;
+	left: 1.5rem;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.75rem 1.25rem;
+	background: #25d366;
+	color: white;
+	border-radius: 50px;
+	text-decoration: none;
+	font-weight: 600;
+	box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+	z-index: 50;
+	transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+	transform: scale(1.05);
+	box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+}
+
+.whatsapp-icon {
+	font-size: 1.25rem;
+}
+
+.whatsapp-text {
+	font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+	.whatsapp-float {
+		bottom: 6rem;
+		left: 1rem;
+		padding: 0.6rem 1rem;
+	}
 }
 </style>
