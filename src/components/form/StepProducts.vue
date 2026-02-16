@@ -52,17 +52,31 @@
 <script setup>
 import { ref, computed } from 'vue';
 import { useOrderStore } from '../../stores/orderStore';
+import { useMenuStore } from '../../stores/menuStore';
 
 const orderStore = useOrderStore();
+const menuStore = useMenuStore();
 
-const categories = ['הכל', 'עוגות', 'עוגיות', 'מאפים', 'סלטים'];
+const categories = ['הכל', 'עוגות שמרים', 'עוגות בחושות', 'עוגיות', 'לחמים', 'גלידות', 'ארוחות חלביות'];
 const activeCategory = ref('הכל');
 
 const filteredProducts = computed(() => {
 	if (activeCategory.value === 'הכל') {
-		return orderStore.products;
+		return menuStore.products;
 	}
-	return orderStore.products.filter(p => p.category === activeCategory.value);
+
+	// מיפוי שמות קטגוריות לID
+	const categoryMap = {
+		'עוגות שמרים': 'yeast-cakes',
+		'עוגות בחושות': 'mixed-cakes',
+		עוגיות: 'cookies',
+		לחמים: 'breads',
+		גלידות: 'ice-cream',
+		'ארוחות חלביות': 'dairy-meals',
+	};
+
+	const categoryId = categoryMap[activeCategory.value];
+	return menuStore.getProductsByCategory(categoryId);
 });
 
 const cartItemCount = computed(() => orderStore.cartItemCount);
