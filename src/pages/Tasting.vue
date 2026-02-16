@@ -118,6 +118,7 @@ const texts = {
 	he: {
 		title: 'תודה שהשתתפתם ביריד הטעימות! 💛',
 		subtitle: 'שמחים שהכרתם את מרגליתות 🍓 הזמינו עכשיו או בקשו הצעת מחיר לאירוע.',
+		quoteSubtitle: 'האתר שלנו בהקמה',
 		productsTitle: 'המוצרים שלנו',
 		add: 'הוסף',
 		checkout: 'לתשלום',
@@ -128,8 +129,9 @@ const texts = {
 		contactText: 'נשמח לעזור בכל שאלה או בקשה מיוחדת',
 	},
 	en: {
-		title: 'Thank you for visiting us! 💛',
+		title: 'Thank you for visiting us at the tasting fair! 💛',
 		subtitle: 'We are so happy you discovered Margalitut 🍓 Order now or request an event quote.',
+		quoteSubtitle: 'Our website is under construction',
 		productsTitle: 'Our Products',
 		add: 'Add',
 		checkout: 'Checkout',
@@ -172,7 +174,6 @@ const products = computed(() => [
 		description: lang.value === 'he' ? 'חיתוכיות תות תפוח' : 'strawberry and apple bars',
 		price: 55,
 		image: '/cookies/appleBars.jpeg',
-		popular: true,
 	},
 	{
 		id: 5,
@@ -180,6 +181,7 @@ const products = computed(() => [
 		description: lang.value === 'he' ? 'מגולגלות תמרים' : 'date rolls',
 		price: 50,
 		image: '/cookies/dateRolls.jpeg',
+		popular: true,
 	},
 	{
 		id: 6,

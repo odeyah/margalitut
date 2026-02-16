@@ -23,7 +23,15 @@
 				:class="{ selected: isSelected(product.id) }"
 				@click="toggleProduct(product)"
 			>
-				<div class="product-emoji">{{ product.image }}</div>
+				<div class="product-image-container">
+					<template v-if="product.image && product.image.startsWith('/')">
+						<img :src="product.image" :alt="product.name" class="product-img" loading="lazy" />
+					</template>
+					<div v-else class="image-placeholder">
+						<span class="placeholder-text">התמונה עוד לא זמינה</span>
+						<span class="placeholder-subtext">אבל הטעם כבר פה! 😋</span>
+					</div>
+				</div>
 				<div class="product-info">
 					<div class="product-name">{{ product.name }}</div>
 					<div class="product-price">₪{{ product.price }}</div>
@@ -313,5 +321,44 @@ const decrementQuantity = productId => {
 
 .products-move {
 	transition: transform 0.4s ease;
+}
+.product-image-container {
+	height: 100px;
+	margin-bottom: 0.75rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.product-img {
+	max-width: 100%;
+	max-height: 100%;
+	object-fit: contain;
+	border-radius: 8px;
+}
+
+.image-placeholder {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	padding: 0.5rem;
+	height: 100%;
+	background: linear-gradient(135deg, #fff5f8, #f8f8f8);
+	border-radius: 8px;
+	width: 100%;
+}
+
+.placeholder-text {
+	font-size: 0.75rem;
+	color: #999;
+	margin-bottom: 0.25rem;
+}
+
+.placeholder-subtext {
+	font-size: 0.8rem;
+	color: #d34a6e;
+	font-weight: 600;
 }
 </style>
