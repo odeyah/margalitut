@@ -185,8 +185,8 @@ const products = computed(() => [
 	},
 	{
 		id: 6,
-		name: lang.value === 'he' ? 'משלוח מנות פרמיום' : 'Premium Mishloach Manot',
-		description: lang.value === 'he' ? 'משלוח מנות פרמיום לפורים' : 'Premium Purim Mishloach Manot',
+		name: lang.value === 'he' ? 'משלוח מנות פרימיום' : 'Premium Mishloach Manot',
+		description: lang.value === 'he' ? 'משלוח מנות פרימיום לפורים' : 'Premium Purim Mishloach Manot',
 		price: 275,
 		image: '/specialEvents/Purim.jpeg',
 	},
@@ -406,7 +406,7 @@ function goQuote() {
 .product-image img {
 	width: 100%;
 	height: 100%;
-	object-fit: cover;
+	object-fit: contain;
 	transition: transform 0.3s ease;
 }
 
