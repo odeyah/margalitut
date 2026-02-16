@@ -14,6 +14,7 @@
 			<div class="hero-badge">🍓</div>
 			<h1 class="hero-title">{{ t.title }}</h1>
 			<p class="hero-subtitle">{{ t.subtitle }}</p>
+			<p class="quote-subtitle">{{ t.quoteSubtitle }}</p>
 			<div class="hero-buttons">
 				<button class="btn primary" @click="goCheckout">
 					<span class="btn-icon">🛒</span>
