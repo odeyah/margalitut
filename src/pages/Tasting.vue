@@ -148,7 +148,7 @@ const t = computed(() => texts[lang.value]);
 const products = computed(() => [
 	{
 		id: 1,
-		name: lang.value === 'he' ? 'עוגת שמרים שוקולד' : 'choclate Yeast Cake',
+		name: lang.value === 'he' ? 'שמרים שוקולד' : 'choclate Yeast',
 		description: lang.value === 'he' ? 'עוגת שמרים טרייה ורכה' : 'Fresh and soft yeast cake',
 		price: 60,
 		image: '/cakes/shmarim/yeast.jpeg',
@@ -156,7 +156,7 @@ const products = computed(() => [
 	},
 	{
 		id: 2,
-		name: lang.value === 'he' ? 'עוגת מייפל אגוזים' : 'maple and nuts cake',
+		name: lang.value === 'he' ? 'מייפל אגוזים' : 'maple and nuts',
 		description: lang.value === 'he' ? 'עוגת מייפל אגוזים' : 'maple and nuts cake',
 		price: 60,
 		image: '/cakes/mapel cake.jpeg',
@@ -185,8 +185,8 @@ const products = computed(() => [
 	},
 	{
 		id: 6,
-		name: lang.value === 'he' ? 'משלוח מנות מושקע' : 'Purim Mishloach Manot',
-		description: lang.value === 'he' ? 'משלוח מנות מפנק' : 'Premium Purim Mishloach Manot',
+		name: lang.value === 'he' ? 'משלוח מנות פרמיום' : 'Premium Mishloach Manot',
+		description: lang.value === 'he' ? 'משלוח מנות פרמיום לפורים' : 'Premium Purim Mishloach Manot',
 		price: 275,
 		image: '/specialEvents/Purim.jpeg',
 	},
