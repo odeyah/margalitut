@@ -168,7 +168,7 @@ const products = computed(() => [
 		name: lang.value === 'he' ? 'שוקולד ציפס' : 'chocolate chips',
 		description: lang.value === 'he' ? 'עוגיות שוקולד ציפס' : 'chocolate chips cookies',
 		price: 50,
-		image: '/cookies/chocChip.jpeg',
+		image: '/cookies/chocoChip.jpeg',
 	},
 	{
 		id: 4,
@@ -808,5 +808,11 @@ function goQuote() {
 		left: 1rem;
 		padding: 0.6rem 1rem;
 	}
+}
+.quote-subtitle {
+	font-size: 0.95rem;
+	color: #e74c3c;
+	font-weight: 600;
+	margin: 0 0 1rem 0;
 }
 </style>
