@@ -225,8 +225,8 @@ const totalItems = computed(() => cartItems.value.reduce((sum, item) => sum + it
 const totalPrice = computed(() => cartItems.value.reduce((sum, item) => sum + item.price * item.qty, 0));
 const isPromoActive = computed(() => {
 	const now = new Date();
-	const start = new Date('2025-02-17T20:00:00'); // יום שלישי 20:00
-	const end = new Date('2025-02-18T20:00:00'); // יום רביעי 20:00
+	const start = new Date('2025-02-18T00:00:00'); // מתחילת היום
+	const end = new Date('2025-02-19T20:00:00'); // עד מחר 20:00
 	return now >= start && now <= end;
 });
 function addToCart(product) {
