@@ -7,7 +7,7 @@
 				<strong>מבצע מיוחד למשתתפי הטעימות!</strong>
 				<span>הזינו קוד <code>TASTING5</code> לקבלת 5% הנחה</span>
 			</div>
-			<span class="promo-expires">בתוקף עד יום רביעי 20:00</span>
+			<span class="promo-expires">בתוקף עד יום רביעי 22:00</span>
 		</div>
 		<!-- HERO -->
 		<section class="hero">
@@ -226,8 +226,8 @@ const totalItems = computed(() => cartItems.value.reduce((sum, item) => sum + it
 const totalPrice = computed(() => cartItems.value.reduce((sum, item) => sum + item.price * item.qty, 0));
 const isPromoActive = computed(() => {
 	const now = new Date();
-	const start = new Date('2025-02-18T00:00:00'); // מתחילת היום
-	const end = new Date('2025-02-19T20:00:00'); // עד מחר 20:00
+	const start = new Date('2026-02-17T20:00:00'); // מתחילת היום
+	const end = new Date('2026-02-18T22:00:00'); // עד מחר 22:00
 	return now >= start && now <= end;
 });
 function addToCart(product) {
