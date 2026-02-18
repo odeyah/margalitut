@@ -110,6 +110,7 @@
 <script setup>
 import { ref, computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+import { useOrderStore } from '../stores/orderStore';
 
 const route = useRoute();
 const router = useRouter();
@@ -255,8 +256,22 @@ function decrementQty(id) {
 }
 
 function goCheckout() {
-	localStorage.setItem('tasting-cart', JSON.stringify(cartItems.value));
-	router.push('/checkout?src=tasting');
+	const orderStore = useOrderStore();
+	orderStore.clearCart();
+
+	cartItems.value.forEach(item => {
+		orderStore.addToCart(
+			{
+				id: item.id,
+				name: item.name,
+				price: item.price,
+				image: item.image,
+			},
+			item.qty,
+		);
+	});
+
+	router.push('/checkout');
 }
 
 function goQuote() {
