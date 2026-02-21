@@ -20,6 +20,10 @@
 
 				<!-- Right Side Actions -->
 				<div class="nav-actions">
+					<!-- Language Switch -->
+					<router-link v-if="englishPath" :to="englishPath" class="lang-btn" :title="isEnglishPage ? 'עברית' : 'English'">
+						{{ isEnglishPage ? 'עב' : 'EN' }}
+					</router-link>
 					<SearchBar />
 					<DarkModeToggle class="dark-toggle-desktop" />
 					<CartButton />
@@ -80,6 +84,39 @@ const transitionName = ref('fade');
 
 const toggleMobileMenu = () => uiStore.toggleMobileMenu();
 const closeMobileMenu = () => uiStore.closeMobileMenu();
+// Pages with English versions - הוסף דפים חדשים כאן
+const pagesWithEnglish = {
+	'/purim': '/purim-en',
+	'/purim-en': '/purim',
+	'/tasting': '/tasting?lang=en',
+};
+
+// Check if current page has English version
+const isEnglishPage = computed(() => {
+	return route.path.includes('-en') || route.query.lang === 'en';
+});
+
+const englishPath = computed(() => {
+	const currentPath = route.path;
+
+	// If on English page, return Hebrew path
+	if (currentPath.includes('-en')) {
+		return currentPath.replace('-en', '');
+	}
+
+	// If has ?lang=en query, return without it
+	if (route.query.lang === 'en') {
+		return currentPath;
+	}
+
+	// If page has English version, return it
+	if (pagesWithEnglish[currentPath]) {
+		return pagesWithEnglish[currentPath];
+	}
+
+	// No English version
+	return null;
+});
 
 // Determine transition direction based on route order
 const routeOrder = ['/', '/menu', '/gallery', '/about', '/quote', '/checkout'];
@@ -154,7 +191,9 @@ body {
 	min-height: 100vh;
 	direction: rtl;
 	color: var(--text-primary);
-	transition: background 0.3s ease, color 0.3s ease;
+	transition:
+		background 0.3s ease,
+		color 0.3s ease;
 }
 
 .container {
@@ -209,7 +248,9 @@ a {
 	border-radius: 16px;
 	padding: 1.5rem;
 	box-shadow: var(--card-shadow);
-	transition: background 0.3s ease, box-shadow 0.3s ease;
+	transition:
+		background 0.3s ease,
+		box-shadow 0.3s ease;
 }
 
 /* Grid Layouts */
@@ -427,7 +468,9 @@ a {
 		padding: 2rem;
 		gap: 1rem;
 		transform: translateX(100%);
-		transition: transform 0.3s ease, background 0.3s ease;
+		transition:
+			transform 0.3s ease,
+			background 0.3s ease;
 		z-index: 99;
 		margin-inline-start: 0;
 	}
@@ -454,5 +497,26 @@ a {
 	.nav-actions {
 		margin-inline-start: auto;
 	}
+}
+/* Language Switch Button */
+.lang-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	background: var(--pink-light);
+	color: var(--pink-primary);
+	font-weight: 700;
+	font-size: 0.75rem;
+	transition: all 0.3s ease;
+	border: 2px solid transparent;
+}
+
+.lang-btn:hover {
+	background: var(--pink-primary);
+	color: white;
+	transform: scale(1.05);
 }
 </style>

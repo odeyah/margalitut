@@ -177,7 +177,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'שמרים שוקולד',
 			category: 'yeast-cakes',
 			price: 60,
-			image: '/cakes/shmarim/Choclate.png',
+			image: '/cakes/shmarim/bobka.jpeg',
 			description: 'עוגת שמרים עם שכבות שוקולד עשיר',
 			popular: true,
 		},
@@ -186,7 +186,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'שמרים קינמון',
 			category: 'yeast-cakes',
 			price: 60,
-			image: '/cakes/shmarim/cinemonCranch.png',
+			image: '/cakes/shmarim/cinamonBobka.jpeg',
 			description: 'עוגת שמרים עם קינמון וסוכר חום',
 		},
 		{
@@ -311,7 +311,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'מאפינס אוכמניות',
 			category: 'mixed-cakes',
 			price: 55,
-			image: '/cakes/bluberymafins.png',
+			image: '/cakes/blueberrysMafins.jpeg',
 			description: 'מאפינס אוכמניות מארז 5 יחידות',
 		},
 		{
@@ -327,7 +327,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'פס לימון',
 			category: 'mixed-cakes',
 			price: 45,
-			image: '/cakes/lemonCake.png',
+			image: '/cakes/lemon.jpeg',
 			description: 'עוגת לימון',
 		},
 		{
@@ -335,7 +335,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'סולת תפוז',
 			category: 'mixed-cakes',
 			price: 45,
-			image: '/cakes/milchikSoletTapuz.png',
+			image: '/cakes/soletTapuz.jpeg',
 			description: 'עוגת סולת תפוז חלבית',
 		},
 		{
@@ -343,7 +343,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'עוגת פירות יבשים',
 			category: 'mixed-cakes',
 			price: 70,
-			image: '/cakes/drayedFruits.png',
+			image: '/cakes/dryedFrutesCake.jpeg',
 			description: 'עוגת פירות יבשים',
 		},
 		{
@@ -458,7 +458,7 @@ export const useMenuStore = defineStore('menu', () => {
 			category: 'cookies',
 			price: 55,
 			image: '/cookies/choclatechips.jpg',
-			description: "מופלאות שוקולד צ'יפס חום או לבן",
+			description: 'פריכות ממכרת. שוקולד איכותי בנדיבות. איזון מדויק בין מתוק למריר. אזהרה: נא להצטייד בכמות כפולה',
 			popular: true,
 		},
 		{
@@ -554,11 +554,11 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'מארז לחמניות הבית לבן',
 			category: ['vegan', 'breads'],
 			price: 25,
-			image: '',
+			image: '/bread/rolls.jpeg',
 			description: 'לחמניות קמח לבן (5 יח)',
 			popular: true,
 		},
-		{ id: 71, name: 'חלה', category: ['vegan', 'breads'], price: 25, image: '', description: 'חלה לשבת' },
+		{ id: 71, name: 'חלה', category: ['vegan', 'breads'], price: 25, image: '/bread/chala.jpeg', description: 'חלה לשבת' },
 		{
 			id: 72,
 			name: 'מארז לחמניות הבית כוסמין 80%',

@@ -11,6 +11,8 @@ import Admin from './pages/Admin.vue';
 import MyOrders from './pages/MyOrders.vue';
 import BakingWorkshops from './pages/BakingWorkshops.vue';
 import Tasting from './pages/Tasting.vue';
+import Purim from './pages/Purim.vue';
+import PurimEn from './pages/PurimEn.vue';
 
 const routes = [
 	{ path: '/', name: 'home', component: Home },
@@ -24,6 +26,8 @@ const routes = [
 	{ path: '/my-orders', name: 'my-orders', component: MyOrders },
 	{ path: '/workshops', name: 'workshops', component: BakingWorkshops },
 	{ path: '/tasting', name: 'tasting', component: Tasting },
+	{ path: '/purim', name: 'purim', component: Purim },
+	{ path: '/purim-en', name: 'purim-en', component: PurimEn },
 	{ path: '/:pathMatch(.*)*', name: 'not-found', component: () => import('./pages/NotFound.vue') },
 	{ path: '/faq', name: 'faq', component: () => import('./pages/FAQ.vue') },
 ];
