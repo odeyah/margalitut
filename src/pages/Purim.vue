@@ -24,10 +24,20 @@
 
 		<!-- TABS -->
 		<div class="tabs">
-			<button class="tab" :class="{ active: activeTab === 'packages' }" @click="activeTab = 'packages'">
+			<button 
+				class="tab" 
+				:class="{ active: activeTab === 'packages' }"
+				@click="activeTab = 'packages'"
+			>
 				📦 חבילות מוכנות
 			</button>
-			<button class="tab" :class="{ active: activeTab === 'custom' }" @click="activeTab = 'custom'">🎨 הרכיבו בעצמכם</button>
+			<button 
+				class="tab" 
+				:class="{ active: activeTab === 'custom' }"
+				@click="activeTab = 'custom'"
+			>
+				🎨 הרכיבו בעצמכם
+			</button>
 		</div>
 
 		<!-- PACKAGES TAB -->
@@ -36,8 +46,8 @@
 			<div class="budget-filter">
 				<span class="filter-label">סננו לפי תקציב:</span>
 				<div class="budget-tags">
-					<button
-						v-for="budget in budgets"
+					<button 
+						v-for="budget in budgets" 
 						:key="budget.id"
 						class="budget-tag"
 						:class="{ active: selectedBudget === budget.id }"
@@ -50,17 +60,20 @@
 
 			<!-- Packages Grid -->
 			<div class="packages-grid">
-				<div
-					v-for="pkg in filteredPackages"
-					:key="pkg.id"
+				<div 
+					v-for="pkg in filteredPackages" 
+					:key="pkg.id" 
 					class="package-card"
 					:class="{ popular: pkg.popular, selected: selectedPackage?.id === pkg.id }"
 					@click="selectPackage(pkg)"
 				>
 					<span v-if="pkg.popular" class="popular-badge">🌟 פופולרי</span>
 					<div class="package-image">
-						<img v-if="pkg.image && pkg.image.startsWith('/')" :src="pkg.image" :alt="pkg.name" class="package-img" />
-						<span v-else class="package-emoji">{{ pkg.image }}</span>
+						<img v-if="pkg.image" :src="pkg.image" :alt="pkg.name" class="pkg-img" />
+						<div v-else class="image-placeholder">
+							<span class="placeholder-text">התמונה עוד לא כאן</span>
+							<span class="placeholder-subtext">אבל הטעם כבר פה!</span>
+						</div>
 					</div>
 					<h3 class="package-name">{{ pkg.name }}</h3>
 					<p class="package-description">{{ pkg.description }}</p>
@@ -78,19 +91,24 @@
 		<!-- CUSTOM BUILDER TAB -->
 		<section v-if="activeTab === 'custom'" class="custom-section">
 			<p class="custom-intro">בחרו את המוצרים שאתם רוצים ובנו משלוח מנות בדיוק כמו שאתם אוהבים</p>
-
+			
 			<!-- Categories -->
 			<div v-for="category in customCategories" :key="category.id" class="custom-category">
 				<h3 class="category-title">{{ category.icon }} {{ category.name }}</h3>
 				<div class="custom-items-grid">
-					<div
-						v-for="item in category.items"
+					<div 
+						v-for="item in category.items" 
 						:key="item.id"
 						class="custom-item"
 						:class="{ selected: isItemSelected(item.id) }"
 						@click="toggleItem(item)"
 					>
-						<span class="item-image">{{ item.image }}</span>
+						<div class="item-image-container">
+							<img v-if="item.image" :src="item.image" :alt="item.name" class="item-img" />
+							<div v-else class="item-image-placeholder">
+								<span class="placeholder-mini-text">בקרוב תמונה</span>
+							</div>
+						</div>
 						<span class="item-name">{{ item.name }}</span>
 						<span class="item-price">₪{{ item.price }}</span>
 						<div v-if="isItemSelected(item.id)" class="item-qty" @click.stop>
@@ -110,7 +128,9 @@
 					<span class="summary-count">{{ totalItems }} פריטים</span>
 					<span class="summary-total">₪{{ totalPrice }}</span>
 				</div>
-				<button class="order-btn" @click="proceedToOrder">להזמנה →</button>
+				<button class="order-btn" @click="proceedToOrder">
+					להזמנה →
+				</button>
 			</div>
 		</Transition>
 
@@ -137,19 +157,14 @@
 			<p>נשמח לעזור!</p>
 			<div class="contact-links">
 				<a href="tel:0528460331" class="contact-link">📱 052-846-0331</a>
-				<a
-					href="https://wa.me/972528460331?text=היי%20מרגלית!%20אני%20רוצה%20להזמין%20משלוח%20מנות%20לפורים"
-					target="_blank"
-					class="contact-link whatsapp"
-					>💬 WhatsApp</a
-				>
+				<a href="https://wa.me/972528460331?text=היי%20מרגלית!%20אני%20רוצה%20להזמין%20משלוח%20מנות%20לפורים" target="_blank" class="contact-link whatsapp">💬 WhatsApp</a>
 			</div>
 		</section>
 
 		<!-- FLOATING WHATSAPP -->
-		<a
-			href="https://wa.me/972528460331?text=היי%20מרגלית!%20אני%20רוצה%20להזמין%20משלוח%20מנות%20לפורים"
-			target="_blank"
+		<a 
+			href="https://wa.me/972528460331?text=היי%20מרגלית!%20אני%20רוצה%20להזמין%20משלוח%20מנות%20לפורים" 
+			target="_blank" 
 			class="whatsapp-float"
 		>
 			<span>💬</span>
@@ -186,13 +201,14 @@ const budgets = [
 // מחירון: קאפקייק 8₪, עוגיות 45-55₪, עוגה 50-60₪, עוגה גדולה 70-95₪, יין קטן 5₪, יין גדול 35₪
 // אריזה 10₪, אריזה מהודרת 20₪, שוקולד 10₪, שוקולד פרימיום 20₪, בונבוניירה 10₪, פירות יבשים 25₪
 // חצי קילו גלידה 70₪, קילו גלידה 135₪
+// image: null = יציג placeholder, image: '/path/to/image.jpg' = יציג תמונה
 const packages = ref([
 	// 20-50
 	{
 		id: 1,
 		name: 'בייסיק',
 		description: 'משלוח מנות קטן ומתוק',
-		image: '🧁',
+		image: null,
 		price: 20,
 		budget: '20-50',
 		items: ['קאפקייק מעוצב', 'בקבוק יין קטן', 'אריזה עם בונבוניירה'],
@@ -201,7 +217,7 @@ const packages = ref([
 		id: 2,
 		name: 'מתוק קלאסי',
 		description: 'שילוב מושלם של מתוק',
-		image: '🍪',
+		image: null,
 		price: 40,
 		budget: '20-50',
 		items: ['2 קאפקייקס מעוצבים', 'בקבוק יין קטן', 'שוקולד', 'אריזה עם בונבוניירה'],
@@ -210,7 +226,7 @@ const packages = ref([
 		id: 3,
 		name: 'שמח ומתוק',
 		description: 'חבילה שמחה לפורים',
-		image: '🎉',
+		image: null,
 		price: 50,
 		budget: '20-50',
 		popular: true,
@@ -221,7 +237,7 @@ const packages = ref([
 		id: 4,
 		name: 'משפחתי',
 		description: 'מושלם למשפחה',
-		image: '👨‍👩‍👧‍👦',
+		image: null,
 		price: 65,
 		budget: '50-80',
 		items: ['עוגה', 'בקבוק יין קטן', 'אריזה'],
@@ -230,7 +246,7 @@ const packages = ref([
 		id: 5,
 		name: 'חגיגי',
 		description: 'חגיגה של טעמים',
-		image: '🎊',
+		image: null,
 		price: 80,
 		budget: '50-80',
 		popular: true,
@@ -241,7 +257,7 @@ const packages = ref([
 		id: 6,
 		name: 'גלידה מתוקה',
 		description: 'לאוהבי הגלידה',
-		image: '🍦',
+		image: null,
 		price: 85,
 		budget: '81-110',
 		items: ['½ קילו גלידה ביתית', 'בקבוק יין קטן', 'אריזה'],
@@ -250,7 +266,7 @@ const packages = ref([
 		id: 7,
 		name: 'מלכותי',
 		description: 'עוגה ועוגיות',
-		image: '👑',
+		image: null,
 		price: 95,
 		budget: '81-110',
 		items: ['עוגה', 'מארז עוגיות', 'אריזה'],
@@ -259,7 +275,7 @@ const packages = ref([
 		id: 8,
 		name: 'פרימיום',
 		description: 'איכות ללא פשרות',
-		image: '⭐',
+		image: null,
 		price: 110,
 		budget: '81-110',
 		popular: true,
@@ -270,7 +286,7 @@ const packages = ref([
 		id: 9,
 		name: 'גלידה משפחתי',
 		description: 'גלידה ויין לכל המשפחה',
-		image: '🍦',
+		image: null,
 		price: 115,
 		budget: '111-150',
 		items: ['½ קילו גלידה ביתית', 'בקבוק יין גדול', 'אריזה'],
@@ -279,7 +295,7 @@ const packages = ref([
 		id: 10,
 		name: 'גרנד',
 		description: 'עוגה גדולה ויין',
-		image: '🏆',
+		image: null,
 		price: 120,
 		budget: '111-150',
 		items: ['עוגה גדולה', 'בקבוק יין גדול', 'אריזה'],
@@ -288,7 +304,7 @@ const packages = ref([
 		id: 11,
 		name: 'אקסקלוסיב',
 		description: 'עוגה, עוגיות ויין',
-		image: '💎',
+		image: null,
 		price: 130,
 		budget: '111-150',
 		popular: true,
@@ -298,7 +314,7 @@ const packages = ref([
 		id: 12,
 		name: 'גלידה פרימיום',
 		description: 'גלידה ועוגיות',
-		image: '🍦',
+		image: null,
 		price: 130,
 		budget: '111-150',
 		items: ['½ קילו גלידה ביתית', 'מארז עוגיות', 'אריזה'],
@@ -307,7 +323,7 @@ const packages = ref([
 		id: 13,
 		name: 'VIP',
 		description: 'עוגה גדולה ועוגיות',
-		image: '🌟',
+		image: null,
 		price: 145,
 		budget: '111-150',
 		items: ['עוגה גדולה', 'מארז עוגיות פרימיום', 'אריזה מהודרת'],
@@ -316,7 +332,7 @@ const packages = ref([
 		id: 14,
 		name: 'גלידה גרנד',
 		description: 'קילו גלידה ויין',
-		image: '🍦',
+		image: null,
 		price: 150,
 		budget: '111-150',
 		popular: true,
@@ -326,7 +342,7 @@ const packages = ref([
 		id: 15,
 		name: 'דה-לוקס',
 		description: 'עוגה גדולה מפנקת',
-		image: '✨',
+		image: null,
 		price: 150,
 		budget: '111-150',
 		items: ['עוגה גדולה', 'בקבוק יין גדול', 'שוקולד', 'אריזה מהודרת'],
@@ -336,7 +352,7 @@ const packages = ref([
 		id: 16,
 		name: 'משפחה מורחבת',
 		description: '2 עוגות ויין',
-		image: '🏠',
+		image: null,
 		price: 160,
 		budget: '150-200',
 		items: ['2 עוגות', 'בקבוק יין גדול', 'אריזה'],
@@ -345,7 +361,7 @@ const packages = ref([
 		id: 17,
 		name: 'גלידה משפחה',
 		description: 'קילו גלידה ויין גדול',
-		image: '🍦',
+		image: null,
 		price: 175,
 		budget: '150-200',
 		items: ['קילו גלידה ביתית', 'בקבוק יין גדול', 'אריזה'],
@@ -354,7 +370,7 @@ const packages = ref([
 		id: 18,
 		name: 'רויאל',
 		description: 'עוגה גדולה, עוגיות ויין',
-		image: '👸',
+		image: null,
 		price: 180,
 		budget: '150-200',
 		popular: true,
@@ -364,7 +380,7 @@ const packages = ref([
 		id: 19,
 		name: 'גלידה VIP',
 		description: 'קילו גלידה ועוגיות',
-		image: '🍦',
+		image: null,
 		price: 200,
 		budget: '150-200',
 		items: ['קילו גלידה ביתית', 'מארז עוגיות פרימיום', 'אריזה מהודרת'],
@@ -374,7 +390,7 @@ const packages = ref([
 		id: 20,
 		name: 'סופר VIP',
 		description: 'עוגה גדולה מושלמת',
-		image: '💫',
+		image: null,
 		price: 210,
 		budget: '200+',
 		items: ['עוגה גדולה פרימיום', 'מארז עוגיות פרימיום', 'בקבוק יין גדול', 'שוקולד פרימיום', 'אריזה מהודרת'],
@@ -383,7 +399,7 @@ const packages = ref([
 		id: 21,
 		name: 'מלכותי פלוס',
 		description: '2 עוגות ועוגיות',
-		image: '👑',
+		image: null,
 		price: 220,
 		budget: '200+',
 		items: ['2 עוגות', 'מארז עוגיות פרימיום', 'בקבוק יין גדול', 'אריזה מהודרת'],
@@ -392,7 +408,7 @@ const packages = ref([
 		id: 22,
 		name: 'גלידה רויאל',
 		description: 'קילו גלידה, עוגה ויין',
-		image: '🍦',
+		image: null,
 		price: 240,
 		budget: '200+',
 		items: ['קילו גלידה ביתית', 'עוגה', 'בקבוק יין גדול', 'אריזה מהודרת'],
@@ -401,7 +417,7 @@ const packages = ref([
 		id: 23,
 		name: 'אולטימטיבי',
 		description: 'החבילה המושלמת',
-		image: '🎭',
+		image: null,
 		price: 250,
 		budget: '200+',
 		popular: true,
@@ -411,7 +427,7 @@ const packages = ref([
 		id: 24,
 		name: 'גלידה אולטימטיבי',
 		description: 'קילו גלידה, עוגה ועוגיות',
-		image: '🍦',
+		image: null,
 		price: 275,
 		budget: '200+',
 		items: ['קילו גלידה ביתית', 'עוגה', 'מארז עוגיות פרימיום', 'בקבוק יין גדול', 'אריזה מהודרת'],
@@ -420,7 +436,7 @@ const packages = ref([
 		id: 25,
 		name: 'מארז עוגיות מלכותי',
 		description: '7 סוגי עוגיות ונשיקות',
-		image: '/specialEvents/Purim.jpeg',
+		image: null,
 		price: 275,
 		budget: '200+',
 		popular: true,
@@ -430,7 +446,7 @@ const packages = ref([
 		id: 26,
 		name: 'הכל כלול',
 		description: 'הכי גדול שיש!',
-		image: '🎁',
+		image: null,
 		price: 320,
 		budget: '200+',
 		items: ['עוגה גדולה XL', 'מארז עוגיות פרימיום', 'קילו גלידה ביתית', 'בקבוק יין גדול', 'אריזה מהודרת'],
@@ -438,16 +454,15 @@ const packages = ref([
 ]);
 
 // Custom builder categories
-// מחירון: קאפקייק 8₪, עוגיות 45-55₪, עוגה 50-60₪, עוגה גדולה 70-95₪, יין קטן 5₪, יין גדול 35₪
-// אריזה 10₪, אריזה מהודרת 20₪, שוקולד 10₪, בונבוניירה 10₪, חצי קילו גלידה 70₪, קילו גלידה 135₪
+// image: null = יציג placeholder, image: '/path/to/image.jpg' = יציג תמונה
 const customCategories = [
 	{
 		id: 'icecream',
 		name: 'גלידה ביתית',
 		icon: '🍦',
 		items: [
-			{ id: 'ice1', name: '½ קילו גלידה', price: 70, image: '🍦' },
-			{ id: 'ice2', name: 'קילו גלידה', price: 135, image: '🍦' },
+			{ id: 'ice1', name: '½ קילו גלידה', price: 70, image: null },
+			{ id: 'ice2', name: 'קילו גלידה', price: 135, image: null },
 		],
 	},
 	{
@@ -455,11 +470,11 @@ const customCategories = [
 		name: 'עוגות',
 		icon: '🎂',
 		items: [
-			{ id: 'c1', name: 'עוגה', price: 50, image: '🍰' },
-			{ id: 'c2', name: 'עוגה פרימיום', price: 60, image: '🍰' },
-			{ id: 'c3', name: 'עוגה גדולה', price: 70, image: '🎂' },
-			{ id: 'c4', name: 'עוגה גדולה פרימיום', price: 85, image: '🎂' },
-			{ id: 'c5', name: 'עוגה גדולה XL', price: 95, image: '🎂' },
+			{ id: 'c1', name: 'עוגה', price: 50, image: null },
+			{ id: 'c2', name: 'עוגה פרימיום', price: 60, image: null },
+			{ id: 'c3', name: 'עוגה גדולה', price: 70, image: null },
+			{ id: 'c4', name: 'עוגה גדולה פרימיום', price: 85, image: null },
+			{ id: 'c5', name: 'עוגה גדולה XL', price: 95, image: null },
 		],
 	},
 	{
@@ -467,8 +482,12 @@ const customCategories = [
 		name: 'עוגיות',
 		icon: '🍪',
 		items: [
-			{ id: 'co1', name: 'מארז עוגיות', price: 45, image: '🍪' },
-			{ id: 'co2', name: 'מארז עוגיות פרימיום', price: 55, image: '🍪' },
+			{ id: 'co1', name: 'מארז עוגיות', price: 45, image: null },
+			{ id: 'co2', name: 'מארז עוגיות פרימיום', price: 55, image: null },
+			{ id: 'co3', name: 'מארז עוגיות גדול', price: 65, image: null },
+			{ id: 'co4', name: 'מארז עוגיות גדול פרימיום', price: 75, image: null },
+			{ id: 'haman1', name: 'אוזני המן', price: 50, image: null },
+			{ id: 'haman2', name: 'אוזני המן ללא סוכר', price: 55, image: null },
 		],
 	},
 	{
@@ -476,9 +495,9 @@ const customCategories = [
 		name: 'קאפקייקס',
 		icon: '🧁',
 		items: [
-			{ id: 'cup1', name: 'קאפקייק מעוצב', price: 8, image: '🧁' },
-			{ id: 'cup4', name: 'מארז 4 קאפקייקס', price: 30, image: '🧁' },
-			{ id: 'cup6', name: 'מארז 6 קאפקייקס', price: 45, image: '🧁' },
+			{ id: 'cup1', name: 'קאפקייק מעוצב', price: 8, image: null },
+			{ id: 'cup4', name: 'מארז 4 קאפקייקס', price: 30, image: null },
+			{ id: 'cup6', name: 'מארז 6 קאפקייקס', price: 45, image: null },
 		],
 	},
 	{
@@ -486,9 +505,9 @@ const customCategories = [
 		name: 'משקאות',
 		icon: '🍷',
 		items: [
-			{ id: 'd1', name: 'בקבוק יין קטן', price: 5, image: '🍷' },
-			{ id: 'd2', name: 'בקבוק יין גדול', price: 35, image: '🍷' },
-			{ id: 'd3', name: 'מיץ ענבים', price: 15, image: '🧃' },
+			{ id: 'd1', name: 'בקבוק יין קטן', price: 5, image: null },
+			{ id: 'd2', name: 'בקבוק יין גדול', price: 35, image: null },
+			{ id: 'd3', name: 'מיץ ענבים', price: 15, image: null },
 		],
 	},
 	{
@@ -496,12 +515,12 @@ const customCategories = [
 		name: 'תוספות',
 		icon: '🎁',
 		items: [
-			{ id: 'e1', name: 'שוקולד', price: 10, image: '🍫' },
-			{ id: 'e2', name: 'שוקולד פרימיום', price: 20, image: '🍫' },
-			{ id: 'e3', name: 'בונבוניירה', price: 10, image: '🍬' },
-			{ id: 'e4', name: 'פירות יבשים', price: 25, image: '🥜' },
-			{ id: 'e5', name: 'אריזה', price: 10, image: '🎀' },
-			{ id: 'e6', name: 'אריזה מהודרת', price: 20, image: '🎁' },
+			{ id: 'e1', name: 'שוקולד', price: 10, image: null },
+			{ id: 'e2', name: 'שוקולד פרימיום', price: 20, image: null },
+			{ id: 'e3', name: 'בונבוניירה', price: 10, image: null },
+			{ id: 'e4', name: 'פירות יבשים', price: 25, image: null },
+			{ id: 'e5', name: 'אריזה', price: 10, image: null },
+			{ id: 'e6', name: 'אריזה מהודרת', price: 20, image: null },
 		],
 	},
 ];
@@ -529,11 +548,11 @@ const totalPrice = computed(() => {
 	if (activeTab.value === 'packages' && selectedPackage.value) {
 		return selectedPackage.value.price;
 	}
-	return customItems.value.reduce((sum, item) => sum + item.price * item.qty, 0);
+	return customItems.value.reduce((sum, item) => sum + (item.price * item.qty), 0);
 });
 
 // Methods
-const selectPackage = pkg => {
+const selectPackage = (pkg) => {
 	if (selectedPackage.value?.id === pkg.id) {
 		selectedPackage.value = null;
 	} else {
@@ -542,16 +561,16 @@ const selectPackage = pkg => {
 	}
 };
 
-const isItemSelected = id => {
+const isItemSelected = (id) => {
 	return customItems.value.some(item => item.id === id);
 };
 
-const getItemQty = id => {
+const getItemQty = (id) => {
 	const item = customItems.value.find(item => item.id === id);
 	return item?.qty || 0;
 };
 
-const toggleItem = item => {
+const toggleItem = (item) => {
 	const existing = customItems.value.find(i => i.id === item.id);
 	if (existing) {
 		customItems.value = customItems.value.filter(i => i.id !== item.id);
@@ -561,12 +580,12 @@ const toggleItem = item => {
 	}
 };
 
-const incrementItem = id => {
+const incrementItem = (id) => {
 	const item = customItems.value.find(i => i.id === id);
 	if (item) item.qty++;
 };
 
-const decrementItem = id => {
+const decrementItem = (id) => {
 	const item = customItems.value.find(i => i.id === id);
 	if (item) {
 		if (item.qty > 1) {
@@ -582,26 +601,20 @@ const proceedToOrder = () => {
 	orderStore.clearCart();
 
 	if (activeTab.value === 'packages' && selectedPackage.value) {
-		orderStore.addToCart(
-			{
-				id: `purim-pkg-${selectedPackage.value.id}`,
-				name: `משלוח מנות "${selectedPackage.value.name}"`,
-				price: selectedPackage.value.price,
-				image: selectedPackage.value.image,
-			},
-			1,
-		);
+		orderStore.addToCart({
+			id: `purim-pkg-${selectedPackage.value.id}`,
+			name: `משלוח מנות "${selectedPackage.value.name}"`,
+			price: selectedPackage.value.price,
+			image: selectedPackage.value.image,
+		}, 1);
 	} else {
 		customItems.value.forEach(item => {
-			orderStore.addToCart(
-				{
-					id: `purim-custom-${item.id}`,
-					name: item.name,
-					price: item.price,
-					image: item.image,
-				},
-				item.qty,
-			);
+			orderStore.addToCart({
+				id: `purim-custom-${item.id}`,
+				name: item.name,
+				price: item.price,
+				image: item.image,
+			}, item.qty);
 		});
 	}
 
@@ -670,35 +683,14 @@ const proceedToOrder = () => {
 	animation: float 3s ease-in-out infinite;
 }
 
-.deco-1 {
-	top: 10%;
-	left: 10%;
-	animation-delay: 0s;
-}
-.deco-2 {
-	top: 20%;
-	right: 10%;
-	animation-delay: 0.5s;
-}
-.deco-3 {
-	bottom: 20%;
-	left: 15%;
-	animation-delay: 1s;
-}
-.deco-4 {
-	bottom: 10%;
-	right: 15%;
-	animation-delay: 1.5s;
-}
+.deco-1 { top: 10%; left: 10%; animation-delay: 0s; }
+.deco-2 { top: 20%; right: 10%; animation-delay: 0.5s; }
+.deco-3 { bottom: 20%; left: 15%; animation-delay: 1s; }
+.deco-4 { bottom: 10%; right: 15%; animation-delay: 1.5s; }
 
 @keyframes float {
-	0%,
-	100% {
-		transform: translateY(0) rotate(0deg);
-	}
-	50% {
-		transform: translateY(-10px) rotate(5deg);
-	}
+	0%, 100% { transform: translateY(0) rotate(0deg); }
+	50% { transform: translateY(-10px) rotate(5deg); }
 }
 
 .hero-title {
@@ -819,6 +811,8 @@ const proceedToOrder = () => {
 	transition: all 0.3s ease;
 	position: relative;
 	border: 2px solid transparent;
+	display: flex;
+	flex-direction: column;
 }
 
 .package-card:hover {
@@ -848,9 +842,78 @@ const proceedToOrder = () => {
 }
 
 .package-image {
-	font-size: 3rem;
-	text-align: center;
+	height: 100px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	margin-bottom: 1rem;
+	border-radius: 12px;
+	overflow: hidden;
+	flex-shrink: 0;
+}
+
+.pkg-img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 12px;
+}
+
+.image-placeholder {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	padding: 1rem;
+	background: linear-gradient(135deg, #fff5f8, #f8f8f8);
+	border-radius: 12px;
+	width: 100%;
+	height: 100%;
+}
+
+.placeholder-text {
+	font-size: 0.75rem;
+	color: #bbb;
+	margin-bottom: 0.2rem;
+}
+
+.placeholder-subtext {
+	font-size: 0.8rem;
+	color: #d34a6e;
+	font-weight: 600;
+}
+
+.item-image-container {
+	height: 60px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 0.5rem;
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.item-img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 8px;
+}
+
+.item-image-placeholder {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: linear-gradient(135deg, #fff5f8, #f8f8f8);
+	border-radius: 8px;
+}
+
+.placeholder-mini-text {
+	font-size: 0.65rem;
+	color: #bbb;
 }
 
 .package-name {
@@ -873,6 +936,7 @@ const proceedToOrder = () => {
 	margin: 0 0 1rem 0;
 	font-size: 0.85rem;
 	color: #555;
+	flex-grow: 1;
 }
 
 .package-items li {
@@ -907,6 +971,7 @@ const proceedToOrder = () => {
 	font-weight: 700;
 	cursor: pointer;
 	transition: all 0.3s ease;
+	margin-top: auto;
 }
 
 .select-btn:hover {
@@ -963,12 +1028,6 @@ const proceedToOrder = () => {
 .custom-item.selected {
 	border-color: #d34a6e;
 	background: #fff5f8;
-}
-
-.item-image {
-	font-size: 2rem;
-	display: block;
-	margin-bottom: 0.5rem;
 }
 
 .item-name {

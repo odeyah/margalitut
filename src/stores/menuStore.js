@@ -7,8 +7,8 @@ export const useMenuStore = defineStore('menu', () => {
 		{
 			id: 'yeast-cakes',
 			name: 'עוגות שמרים',
-			image: '/cakes/shmarim/Choclate.png',
-			hoverImage: '/cakes/shmarim/cinemonCranch.png',
+			image: '/cakes/shmarim/yeast.jpeg',
+			hoverImage: '/cakes/shmarim/cinamonBobka.jpeg',
 			description: 'עוגות שמרים טריות ורכות',
 			color: '#F4A460',
 			tips: [
@@ -21,8 +21,8 @@ export const useMenuStore = defineStore('menu', () => {
 		{
 			id: 'mixed-cakes',
 			name: 'עוגות בחושות',
-			image: '/cakes/maple cake.jpeg',
-			hoverImage: '/cakes/lemonCake.png',
+			image: '/cakes/mapelCake.jpeg',
+			hoverImage: '/cakes/lemon.jpeg',
 			description: 'עוגות בחושות ביתיות ועשירות',
 			color: '#DDA0DD',
 			tips: [
@@ -35,8 +35,8 @@ export const useMenuStore = defineStore('menu', () => {
 		{
 			id: 'cookies',
 			name: 'עוגיות',
-			image: '/cakes/chocletCookies.jpg',
-			hoverImage: '',
+			image: '/cookies/dateRolls.jpeg',
+			hoverImage: '/cookies/almonds.jpeg',
 			description: 'עוגיות פריכות וטעימות',
 			color: '#D2691E',
 			tips: [
@@ -67,7 +67,7 @@ export const useMenuStore = defineStore('menu', () => {
 		{
 			id: 'sugar-free',
 			name: 'ללא סוכר',
-			image: '',
+			image: '/cookies/dateRolls.jpeg',
 			hoverImage: '',
 			description: 'מתוקים בריאים ללא סוכר',
 			color: '#90EE90',
@@ -95,7 +95,7 @@ export const useMenuStore = defineStore('menu', () => {
 		{
 			id: 'vegan',
 			name: 'טבעוני',
-			image: '',
+			image: '/bread/chalakosmin.png',
 			hoverImage: '',
 			description: 'מאפים טבעוניים ללא מוצרי בעלי חיים',
 			color: '#98FB98',
@@ -212,7 +212,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'שמרים שוקולד חלב',
 			category: 'yeast-cakes',
 			price: 65,
-			image: '/cakes/shmarim/Choclate.png',
+			image: '/cakes/shmarim/bobka.jpeg',
 			description: 'עוגת שמרים עם שכבות שוקולד חלבי',
 		},
 		{
@@ -220,7 +220,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'שמרים פרג',
 			category: 'yeast-cakes',
 			price: 65,
-			image: '/cakes/shmarim/cinamen.png',
+			image: '/cakes/shmarim/cinamonBobka.jpeg',
 			description: 'עוגת שמרים עם מילוי פרג מסורתי',
 		},
 		{
@@ -228,7 +228,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'שמרים טבלת שוקולד',
 			category: 'yeast-cakes',
 			price: 65,
-			image: '/cakes/shmarim/shmarim.jpg',
+			image: '/cakes/shmarim/bobka.jpeg',
 			description: 'עוגת שמרים עם מילוי שוקולד אמיתי',
 		},
 		{
@@ -236,7 +236,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'שמרים תותים וקוקוס',
 			category: 'yeast-cakes',
 			price: 65,
-			image: '/cakes/shmarim/cinamen.png',
+			image: '/cakes/shmarim/cinamonBobka.jpeg',
 			description: 'עוגת שמרים עם מילוי תותים וקוקוס',
 		},
 		{
@@ -244,7 +244,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'שמרים ללא סוכר',
 			category: ['yeast-cakes', 'sugar-free'],
 			price: 70,
-			image: '/cakes/shmarim/chocolate2.png',
+			image: '/cakes/shmarim/bobka.jpeg',
 			description: 'עוגת שמרים ללא סוכר',
 		},
 		{
@@ -252,7 +252,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'חלבה שוקולד',
 			category: 'yeast-cakes',
 			price: 60,
-			image: '/cakes/shmarim/cinamen.png',
+			image: '/cakes/shmarim/cinamonBobka.jpeg',
 			description: 'עוגת שמרים עם מילוי חלבה שוקולד',
 		},
 		{
@@ -260,7 +260,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'שמרים בטעם נוטלה',
 			category: 'yeast-cakes',
 			price: 65,
-			image: '/cakes/shmarim/Choclate.png',
+			image: '/cakes/shmarim/bobka.jpeg',
 			description: 'עוגת שמרים עם מילוי בטעם נוטלה',
 		},
 		{
@@ -276,7 +276,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'שבלולי קינמון/שוקולד',
 			category: 'yeast-cakes',
 			price: 65,
-			image: '/cakes/shmarim/cinamonSnails.png',
+			image: '/cakes/shmarim/cinimonRogalach.jpg',
 			description: 'שבלולי קינמון/שוקולד',
 		},
 		{
@@ -367,7 +367,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'גבינה אוכמניות',
 			category: 'mixed-cakes',
 			price: 180,
-			image: '/cakes/cheaseBloberyes.png',
+			image: '',
 			description: 'עוגת גבינה אוכמניות קוטר 24',
 		},
 		{
@@ -375,7 +375,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'עוגה אנגלית חלבית',
 			category: 'mixed-cakes',
 			price: 55,
-			image: '/cakes/englishcake.png',
+			image: '',
 			description: 'עוגה אנגלית חלבית עם קליפות הדרים',
 		},
 		{
@@ -383,7 +383,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'מייפל אגוזים',
 			category: 'mixed-cakes',
 			price: 50,
-			image: '/cakes/maple.jpg',
+			image: '/cakes/mapelCake.jpeg',
 			description: 'עוגת מייפל אגוזים',
 		},
 		{
@@ -391,7 +391,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'מייפל טבעי ואגוזים',
 			category: 'mixed-cakes',
 			price: 55,
-			image: '/cakes/maple.jpg',
+			image: '/cakes/mapelCake.jpeg',
 			description: 'עוגת מייפל אגוזים עם מייפל טבעי',
 		},
 		{
@@ -399,7 +399,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'עוגת טו בשבט',
 			category: 'mixed-cakes',
 			price: 70,
-			image: '/cakes/tubeshvatcake.jpg',
+			image: '',
 			description: 'עוגת שוקולד מעוצבת טו בשבט',
 		},
 		{
@@ -407,7 +407,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'דמקה שכבות גבינה',
 			category: 'mixed-cakes',
 			price: 80,
-			image: '/cakes/damkaCake.png',
+			image: '',
 			description: 'עוגת דמקה שכבות גבינה',
 		},
 		{
@@ -431,7 +431,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'גבינה אוריאו',
 			category: 'mixed-cakes',
 			price: 180,
-			image: '/cakes/oreocheasecake.png',
+			image: '/cakes/oreoChese.jpeg',
 			description: 'עוגת גבינה אוריאו קוטר 24',
 		},
 		{
@@ -439,7 +439,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'סופלה שוקולד',
 			category: 'mixed-cakes',
 			price: 45,
-			image: '/cakes/sofle.png',
+			image: '/cakes/sofle.jpeg',
 			description: 'סופלה שוקולד איכותי - מארז חמישייה',
 		},
 		{
@@ -555,17 +555,27 @@ export const useMenuStore = defineStore('menu', () => {
 			category: ['vegan', 'breads'],
 			price: 25,
 			image: '/bread/rolls.jpeg',
-			description: 'לחמניות קמח לבן (5 יח)',
+			description:
+				'לחמניות ביתיות טריות מקמח לבן - מארז 5 יח׳. לחמניות רכות מושלמות לסנדוויצ׳ים והמבורגר ביתי. אפייה טרייה יומית במאפיית מרגליתות בית שמש',
 			popular: true,
 		},
-		{ id: 71, name: 'חלה', category: ['vegan', 'breads'], price: 25, image: '/bread/chala.jpeg', description: 'חלה לשבת' },
+		{
+			id: 71,
+			name: 'חלה',
+			category: ['vegan', 'breads'],
+			price: 25,
+			image: '/bread/chala.jpeg',
+			description:
+				'חלה ביתית לשבת - חלה קלועה רכה וטרייה מקמח איכותי. מתכון מסורתי משפחתי מדור לדור. ניחוח של ערב שבת ישראלי - מאפיית מרגליתות בית שמש',
+		},
 		{
 			id: 72,
 			name: 'מארז לחמניות הבית כוסמין 80%',
 			category: ['vegan', 'breads'],
 			price: 35,
 			image: '/bread/rolls.png',
-			description: 'לחמניות כוסמין 80% (5 יח)',
+			description:
+				'לחמניות כוסמין 80% בריאות - מארז 5 יח׳. לחמניות מקמח מלא עשירות בסיבים תזונתיים וויטמינים. לחם בריא וטעים לכל המשפחה - אפייה ביתית בבית שמש',
 		},
 		{
 			id: 73,
@@ -573,7 +583,8 @@ export const useMenuStore = defineStore('menu', () => {
 			category: ['vegan', 'breads'],
 			price: 35,
 			image: '/bread/chalaKosmin3.png',
-			description: 'חלת כוסמין 80%',
+			description:
+				'חלת כוסמין 80% בריאה לשבת - חלה מקמח מלא עם ערך תזונתי גבוה. חלה טעימה ובריאה בלי פשרות על הטעם. מאפיית מרגליתות בית שמש',
 		},
 		{
 			id: 74,
@@ -581,7 +592,8 @@ export const useMenuStore = defineStore('menu', () => {
 			category: ['vegan', 'breads'],
 			price: 40,
 			image: '/bread/garlicRolls.png',
-			description: "לחמניות שום כוסמין 80% (5 יח')",
+			description:
+				"לחמניות שום בריאות מכוסמין 80% - מארז 5 יח'. לחמניות ארומטיות בטעם שום ועשבי תיבול טריים. מושלמות לצד מרק, פסטה או סלט - מבית שמש",
 		},
 		{
 			id: 75,
@@ -589,7 +601,8 @@ export const useMenuStore = defineStore('menu', () => {
 			category: ['vegan', 'breads'],
 			price: 12,
 			image: '',
-			description: 'פיתה זעתר ושומשום',
+			description:
+				'פיתה ביתית טרייה עם זעתר ושומשום - תיבול ישראלי אותנטי. פיתה רכה מושלמת לארוחת בוקר ישראלית עם חומוס, לבנה וסלט. מאפיית מרגליתות',
 		},
 		{
 			id: 76,
@@ -597,7 +610,8 @@ export const useMenuStore = defineStore('menu', () => {
 			category: ['vegan', 'breads'],
 			price: 30,
 			image: '/bread/garlicBread1.png',
-			description: 'לחמניות שום (5 יח)',
+			description:
+				'לחמניות שום ביתיות ארומטיות - מארז 5 יח׳. לחמניות רכות בטעם שום עשיר וחמאתי. מושלמות לצד פסטה איטלקית, מרקים וסלטים - מבית שמש',
 		},
 		{
 			id: 77,
@@ -605,7 +619,8 @@ export const useMenuStore = defineStore('menu', () => {
 			category: 'breads',
 			price: 45,
 			image: '/bread/sweetRools.png',
-			description: 'לחמניות מתוקות עם צימוקים (5 יח)',
+			description:
+				'לחמניות מתוקות עם צימוקים עסיסיים - מארז 5 יח׳. לחמניות רכות ומתוקות בסגנון ביתי לארוחת בוקר מפנקת. אהובות על ילדים - מאפיית מרגליתות בית שמש',
 		},
 
 		// ללא סוכר

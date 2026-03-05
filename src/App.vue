@@ -86,8 +86,10 @@ const toggleMobileMenu = () => uiStore.toggleMobileMenu();
 const closeMobileMenu = () => uiStore.closeMobileMenu();
 // Pages with English versions - הוסף דפים חדשים כאן
 const pagesWithEnglish = {
-	'/purim': '/purim-en',
-	'/purim-en': '/purim',
+	'/Purim': '/Purim-en',
+	'/Purim-en': '/Purim',
+	'/Pesach': '/Pesach-en',
+	'/Pesach-en': '/Pesach',
 	'/tasting': '/tasting?lang=en',
 };
 
@@ -463,16 +465,17 @@ a {
 		right: 0;
 		left: 0;
 		bottom: 0;
-		background: var(--bg-primary);
+		background: linear-gradient(135deg, var(--pink-primary) 0%, var(--pink-secondary) 100%);
 		flex-direction: column;
 		padding: 2rem;
-		gap: 1rem;
+		gap: 0.5rem;
 		transform: translateX(100%);
 		transition:
 			transform 0.3s ease,
 			background 0.3s ease;
 		z-index: 99;
 		margin-inline-start: 0;
+		overflow-y: auto;
 	}
 
 	.nav-links.open {
@@ -482,12 +485,33 @@ a {
 	.nav-link {
 		width: 100%;
 		text-align: center;
-		padding: 1rem;
-		font-size: 1.1rem;
+		padding: 1rem 1.5rem;
+		font-size: 1.2rem;
+		font-weight: 700;
+		color: white;
+		background: rgba(255, 255, 255, 0.15);
+		border-radius: 12px;
+		backdrop-filter: blur(5px);
+		transition: all 0.3s ease;
+	}
+
+	.nav-link:hover,
+	.nav-link.router-link-active {
+		background: rgba(255, 255, 255, 0.3);
+		color: white;
+		transform: scale(1.02);
 	}
 
 	.nav-link-primary {
+		background: white !important;
+		color: var(--pink-primary) !important;
 		margin-top: 1rem;
+		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+	}
+
+	.nav-link-primary:hover {
+		transform: scale(1.02);
+		box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
 	}
 
 	.app.menu-open {
@@ -497,7 +521,29 @@ a {
 	.nav-actions {
 		margin-inline-start: auto;
 	}
+
+	/* Dark mode mobile menu */
+	.dark .nav-links {
+		background: linear-gradient(135deg, #2d2035 0%, #1a1a2e 100%);
+	}
+
+	.dark .nav-link {
+		background: rgba(255, 255, 255, 0.1);
+		color: #f0f0f0;
+	}
+
+	.dark .nav-link:hover,
+	.dark .nav-link.router-link-active {
+		background: rgba(255, 255, 255, 0.2);
+		color: white;
+	}
+
+	.dark .nav-link-primary {
+		background: var(--pink-primary) !important;
+		color: white !important;
+	}
 }
+
 /* Language Switch Button */
 .lang-btn {
 	display: flex;

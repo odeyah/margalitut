@@ -13,6 +13,8 @@ import BakingWorkshops from './pages/BakingWorkshops.vue';
 import Tasting from './pages/Tasting.vue';
 import Purim from './pages/Purim.vue';
 import PurimEn from './pages/PurimEn.vue';
+import Pesach from './pages/Pesach.vue';
+import PesachEn from './pages/PesachEn.vue';
 
 const routes = [
 	{ path: '/', name: 'home', component: Home },
@@ -28,6 +30,8 @@ const routes = [
 	{ path: '/tasting', name: 'tasting', component: Tasting },
 	{ path: '/purim', name: 'purim', component: Purim },
 	{ path: '/purim-en', name: 'purim-en', component: PurimEn },
+	{ path: '/Pesach', name: 'pesach', component: Pesach },
+	{ path: '/Pesach-en', name: 'pesach-en', component: PesachEn },
 	{ path: '/:pathMatch(.*)*', name: 'not-found', component: () => import('./pages/NotFound.vue') },
 	{ path: '/faq', name: 'faq', component: () => import('./pages/FAQ.vue') },
 ];

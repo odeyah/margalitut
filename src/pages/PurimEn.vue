@@ -61,8 +61,11 @@
 				>
 					<span v-if="pkg.popular" class="popular-badge">🌟 Popular</span>
 					<div class="package-image">
-						<img v-if="pkg.image && pkg.image.startsWith('/')" :src="pkg.image" :alt="pkg.name" class="package-img" />
-						<span v-else class="package-emoji">{{ pkg.image }}</span>
+						<img v-if="pkg.image" :src="pkg.image" :alt="pkg.name" class="pkg-img" />
+						<div v-else class="image-placeholder">
+							<span class="placeholder-text">Picture coming soon</span>
+							<span class="placeholder-subtext">But the taste is already here!</span>
+						</div>
 					</div>
 					<h3 class="package-name">{{ pkg.name }}</h3>
 					<p class="package-description">{{ pkg.description }}</p>
@@ -92,7 +95,12 @@
 						:class="{ selected: isItemSelected(item.id) }"
 						@click="toggleItem(item)"
 					>
-						<span class="item-image">{{ item.image }}</span>
+						<div class="item-image-container">
+							<img v-if="item.image" :src="item.image" :alt="item.name" class="item-img" />
+							<div v-else class="item-image-placeholder">
+								<span class="placeholder-mini-text">Photo soon</span>
+							</div>
+						</div>
 						<span class="item-name">{{ item.name }}</span>
 						<span class="item-price">₪{{ item.price }}</span>
 						<div v-if="isItemSelected(item.id)" class="item-qty" @click.stop>
@@ -185,13 +193,14 @@ const budgets = [
 ];
 
 // Ready Packages - 26 calculated packages
+// image: null = shows placeholder, image: '/path/to/image.jpg' = shows image
 const packages = ref([
 	// 20-50
 	{
 		id: 1,
 		name: 'Basic',
 		description: 'Small & sweet gift package',
-		image: '🧁',
+		image: null,
 		price: 20,
 		budget: '20-50',
 		items: ['Decorated cupcake', 'Small wine bottle', 'Gift box with treats'],
@@ -200,7 +209,7 @@ const packages = ref([
 		id: 2,
 		name: 'Sweet Classic',
 		description: 'Perfect sweet combination',
-		image: '🍪',
+		image: null,
 		price: 40,
 		budget: '20-50',
 		items: ['2 Decorated cupcakes', 'Small wine bottle', 'Chocolate', 'Gift box with treats'],
@@ -209,7 +218,7 @@ const packages = ref([
 		id: 3,
 		name: 'Happy & Sweet',
 		description: 'Joyful Purim package',
-		image: '🎉',
+		image: null,
 		price: 50,
 		budget: '20-50',
 		popular: true,
@@ -220,7 +229,7 @@ const packages = ref([
 		id: 4,
 		name: 'Family',
 		description: 'Perfect for families',
-		image: '👨‍👩‍👧‍👦',
+		image: null,
 		price: 65,
 		budget: '50-80',
 		items: ['Cake', 'Small wine bottle', 'Gift box'],
@@ -229,7 +238,7 @@ const packages = ref([
 		id: 5,
 		name: 'Festive',
 		description: 'A celebration of flavors',
-		image: '🎊',
+		image: null,
 		price: 80,
 		budget: '50-80',
 		popular: true,
@@ -240,7 +249,7 @@ const packages = ref([
 		id: 6,
 		name: 'Sweet Ice Cream',
 		description: 'For ice cream lovers',
-		image: '🍦',
+		image: null,
 		price: 85,
 		budget: '81-110',
 		items: ['½ kg Homemade ice cream', 'Small wine bottle', 'Gift box'],
@@ -249,7 +258,7 @@ const packages = ref([
 		id: 7,
 		name: 'Royal',
 		description: 'Cake & cookies',
-		image: '👑',
+		image: null,
 		price: 95,
 		budget: '81-110',
 		items: ['Cake', 'Cookie box', 'Gift box'],
@@ -258,7 +267,7 @@ const packages = ref([
 		id: 8,
 		name: 'Premium',
 		description: 'Quality without compromise',
-		image: '⭐',
+		image: null,
 		price: 110,
 		budget: '81-110',
 		popular: true,
@@ -269,7 +278,7 @@ const packages = ref([
 		id: 9,
 		name: 'Ice Cream Family',
 		description: 'Ice cream & wine for the family',
-		image: '🍦',
+		image: null,
 		price: 115,
 		budget: '111-150',
 		items: ['½ kg Homemade ice cream', 'Large wine bottle', 'Gift box'],
@@ -278,7 +287,7 @@ const packages = ref([
 		id: 10,
 		name: 'Grand',
 		description: 'Large cake & wine',
-		image: '🏆',
+		image: null,
 		price: 120,
 		budget: '111-150',
 		items: ['Large cake', 'Large wine bottle', 'Gift box'],
@@ -287,7 +296,7 @@ const packages = ref([
 		id: 11,
 		name: 'Exclusive',
 		description: 'Cake, cookies & wine',
-		image: '💎',
+		image: null,
 		price: 130,
 		budget: '111-150',
 		popular: true,
@@ -297,7 +306,7 @@ const packages = ref([
 		id: 12,
 		name: 'Ice Cream Premium',
 		description: 'Ice cream & cookies',
-		image: '🍦',
+		image: null,
 		price: 130,
 		budget: '111-150',
 		items: ['½ kg Homemade ice cream', 'Cookie box', 'Gift box'],
@@ -306,7 +315,7 @@ const packages = ref([
 		id: 13,
 		name: 'VIP',
 		description: 'Large cake & cookies',
-		image: '🌟',
+		image: null,
 		price: 145,
 		budget: '111-150',
 		items: ['Large cake', 'Premium cookie box', 'Elegant gift box'],
@@ -315,7 +324,7 @@ const packages = ref([
 		id: 14,
 		name: 'Ice Cream Grand',
 		description: '1kg ice cream & wine',
-		image: '🍦',
+		image: null,
 		price: 150,
 		budget: '111-150',
 		popular: true,
@@ -325,7 +334,7 @@ const packages = ref([
 		id: 15,
 		name: 'Deluxe',
 		description: 'Indulgent large cake',
-		image: '✨',
+		image: null,
 		price: 150,
 		budget: '111-150',
 		items: ['Large cake', 'Large wine bottle', 'Chocolate', 'Elegant gift box'],
@@ -335,7 +344,7 @@ const packages = ref([
 		id: 16,
 		name: 'Extended Family',
 		description: '2 cakes & wine',
-		image: '🏠',
+		image: null,
 		price: 160,
 		budget: '150-200',
 		items: ['2 Cakes', 'Large wine bottle', 'Gift box'],
@@ -344,7 +353,7 @@ const packages = ref([
 		id: 17,
 		name: 'Ice Cream Family XL',
 		description: '1kg ice cream & large wine',
-		image: '🍦',
+		image: null,
 		price: 175,
 		budget: '150-200',
 		items: ['1 kg Homemade ice cream', 'Large wine bottle', 'Gift box'],
@@ -353,7 +362,7 @@ const packages = ref([
 		id: 18,
 		name: 'Royal Plus',
 		description: 'Large cake, cookies & wine',
-		image: '👸',
+		image: null,
 		price: 180,
 		budget: '150-200',
 		popular: true,
@@ -363,7 +372,7 @@ const packages = ref([
 		id: 19,
 		name: 'Ice Cream VIP',
 		description: '1kg ice cream & cookies',
-		image: '🍦',
+		image: null,
 		price: 200,
 		budget: '150-200',
 		items: ['1 kg Homemade ice cream', 'Premium cookie box', 'Elegant gift box'],
@@ -373,7 +382,7 @@ const packages = ref([
 		id: 20,
 		name: 'Super VIP',
 		description: 'Ultimate large cake package',
-		image: '💫',
+		image: null,
 		price: 210,
 		budget: '200+',
 		items: ['Premium large cake', 'Premium cookie box', 'Large wine bottle', 'Premium chocolate', 'Elegant gift box'],
@@ -382,7 +391,7 @@ const packages = ref([
 		id: 21,
 		name: 'Royal Deluxe',
 		description: '2 cakes & cookies',
-		image: '👑',
+		image: null,
 		price: 220,
 		budget: '200+',
 		items: ['2 Cakes', 'Premium cookie box', 'Large wine bottle', 'Elegant gift box'],
@@ -391,7 +400,7 @@ const packages = ref([
 		id: 22,
 		name: 'Ice Cream Royal',
 		description: '1kg ice cream, cake & wine',
-		image: '🍦',
+		image: null,
 		price: 240,
 		budget: '200+',
 		items: ['1 kg Homemade ice cream', 'Cake', 'Large wine bottle', 'Elegant gift box'],
@@ -400,7 +409,7 @@ const packages = ref([
 		id: 23,
 		name: 'Ultimate',
 		description: 'The perfect package',
-		image: '🎭',
+		image: null,
 		price: 250,
 		budget: '200+',
 		popular: true,
@@ -417,7 +426,7 @@ const packages = ref([
 		id: 24,
 		name: 'Ice Cream Ultimate',
 		description: '1kg ice cream, cake & cookies',
-		image: '🍦',
+		image: null,
 		price: 275,
 		budget: '200+',
 		items: ['1 kg Homemade ice cream', 'Cake', 'Premium cookie box', 'Large wine bottle', 'Elegant gift box'],
@@ -426,7 +435,7 @@ const packages = ref([
 		id: 25,
 		name: 'Royal Cookie Collection',
 		description: '7 types of cookies & meringues',
-		image: '/specialEvents/Purim.jpeg',
+		image: null,
 		price: 275,
 		budget: '200+',
 		popular: true,
@@ -436,7 +445,7 @@ const packages = ref([
 		id: 26,
 		name: 'All Inclusive',
 		description: 'The biggest package!',
-		image: '🎁',
+		image: null,
 		price: 320,
 		budget: '200+',
 		items: ['XL Large cake', 'Premium cookie box', '1 kg Homemade ice cream', 'Large wine bottle', 'Elegant gift box'],
@@ -444,14 +453,15 @@ const packages = ref([
 ]);
 
 // Custom builder categories
+// image: null = shows placeholder, image: '/path/to/image.jpg' = shows image
 const customCategories = [
 	{
 		id: 'icecream',
 		name: 'Homemade Ice Cream',
 		icon: '🍦',
 		items: [
-			{ id: 'ice1', name: '½ kg Ice Cream', price: 70, image: '🍦' },
-			{ id: 'ice2', name: '1 kg Ice Cream', price: 135, image: '🍦' },
+			{ id: 'ice1', name: '½ kg Ice Cream', price: 70, image: null },
+			{ id: 'ice2', name: '1 kg Ice Cream', price: 135, image: null },
 		],
 	},
 	{
@@ -459,11 +469,11 @@ const customCategories = [
 		name: 'Cakes',
 		icon: '🎂',
 		items: [
-			{ id: 'c1', name: 'Cake', price: 50, image: '🍰' },
-			{ id: 'c2', name: 'Premium Cake', price: 60, image: '🍰' },
-			{ id: 'c3', name: 'Large Cake', price: 70, image: '🎂' },
-			{ id: 'c4', name: 'Premium Large Cake', price: 85, image: '🎂' },
-			{ id: 'c5', name: 'XL Large Cake', price: 95, image: '🎂' },
+			{ id: 'c1', name: 'Cake', price: 50, image: null },
+			{ id: 'c2', name: 'Premium Cake', price: 60, image: null },
+			{ id: 'c3', name: 'Large Cake', price: 70, image: null },
+			{ id: 'c4', name: 'Premium Large Cake', price: 85, image: null },
+			{ id: 'c5', name: 'XL Large Cake', price: 95, image: null },
 		],
 	},
 	{
@@ -471,12 +481,12 @@ const customCategories = [
 		name: 'Cookies',
 		icon: '🍪',
 		items: [
-			{ id: 'co1', name: 'Cookie Box', price: 45, image: '🍪' },
-			{ id: 'co2', name: 'Premium Cookie Box', price: 55, image: '🍪' },
-			{ id: 'co3', name: 'Large Cookie Box', price: 65, image: '🍪' },
-			{ id: 'co4', name: 'Large Premium Cookie Box', price: 75, image: '🍪' },
-			{ id: 'haman1', name: 'Hamantaschen', price: 50, image: '🥟' },
-			{ id: 'haman2', name: 'Sugar-Free Hamantaschen', price: 55, image: '🥟' },
+			{ id: 'co1', name: 'Cookie Box', price: 45, image: null },
+			{ id: 'co2', name: 'Premium Cookie Box', price: 55, image: null },
+			{ id: 'co3', name: 'Large Cookie Box', price: 65, image: null },
+			{ id: 'co4', name: 'Large Premium Cookie Box', price: 75, image: null },
+			{ id: 'haman1', name: 'Hamantaschen', price: 50, image: null },
+			{ id: 'haman2', name: 'Sugar-Free Hamantaschen', price: 55, image: null },
 		],
 	},
 	{
@@ -484,9 +494,9 @@ const customCategories = [
 		name: 'Cupcakes',
 		icon: '🧁',
 		items: [
-			{ id: 'cup1', name: 'Decorated Cupcake', price: 8, image: '🧁' },
-			{ id: 'cup4', name: '4 Cupcakes Box', price: 30, image: '🧁' },
-			{ id: 'cup6', name: '6 Cupcakes Box', price: 45, image: '🧁' },
+			{ id: 'cup1', name: 'Decorated Cupcake', price: 8, image: null },
+			{ id: 'cup4', name: '4 Cupcakes Box', price: 30, image: null },
+			{ id: 'cup6', name: '6 Cupcakes Box', price: 45, image: null },
 		],
 	},
 	{
@@ -494,9 +504,9 @@ const customCategories = [
 		name: 'Drinks',
 		icon: '🍷',
 		items: [
-			{ id: 'd1', name: 'Small Wine Bottle', price: 5, image: '🍷' },
-			{ id: 'd2', name: 'Large Wine Bottle', price: 35, image: '🍷' },
-			{ id: 'd3', name: 'Grape Juice', price: 15, image: '🧃' },
+			{ id: 'd1', name: 'Small Wine Bottle', price: 5, image: null },
+			{ id: 'd2', name: 'Large Wine Bottle', price: 35, image: null },
+			{ id: 'd3', name: 'Grape Juice', price: 15, image: null },
 		],
 	},
 	{
@@ -504,12 +514,12 @@ const customCategories = [
 		name: 'Extras',
 		icon: '🎁',
 		items: [
-			{ id: 'e1', name: 'Chocolate', price: 10, image: '🍫' },
-			{ id: 'e2', name: 'Premium Chocolate', price: 20, image: '🍫' },
-			{ id: 'e3', name: 'Treats', price: 10, image: '🍬' },
-			{ id: 'e4', name: 'Dried Fruits', price: 25, image: '🥜' },
-			{ id: 'e5', name: 'Gift Box', price: 10, image: '🎀' },
-			{ id: 'e6', name: 'Elegant Gift Box', price: 20, image: '🎁' },
+			{ id: 'e1', name: 'Chocolate', price: 10, image: null },
+			{ id: 'e2', name: 'Premium Chocolate', price: 20, image: null },
+			{ id: 'e3', name: 'Treats', price: 10, image: null },
+			{ id: 'e4', name: 'Dried Fruits', price: 25, image: null },
+			{ id: 'e5', name: 'Gift Box', price: 10, image: null },
+			{ id: 'e6', name: 'Elegant Gift Box', price: 20, image: null },
 		],
 	},
 ];
@@ -831,6 +841,8 @@ const proceedToOrder = () => {
 	transition: all 0.3s ease;
 	position: relative;
 	border: 2px solid transparent;
+	display: flex;
+	flex-direction: column;
 }
 
 .package-card:hover {
@@ -850,7 +862,7 @@ const proceedToOrder = () => {
 .popular-badge {
 	position: absolute;
 	top: -10px;
-	right: 1rem;
+	left: 1rem;
 	background: linear-gradient(135deg, #ffd700, #ffb347);
 	color: #333;
 	padding: 0.3rem 0.75rem;
@@ -860,9 +872,78 @@ const proceedToOrder = () => {
 }
 
 .package-image {
-	font-size: 3rem;
-	text-align: center;
+	height: 100px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	margin-bottom: 1rem;
+	border-radius: 12px;
+	overflow: hidden;
+	flex-shrink: 0;
+}
+
+.pkg-img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 12px;
+}
+
+.image-placeholder {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	padding: 1rem;
+	background: linear-gradient(135deg, #fff5f8, #f8f8f8);
+	border-radius: 12px;
+	width: 100%;
+	height: 100%;
+}
+
+.placeholder-text {
+	font-size: 0.75rem;
+	color: #bbb;
+	margin-bottom: 0.2rem;
+}
+
+.placeholder-subtext {
+	font-size: 0.8rem;
+	color: #d34a6e;
+	font-weight: 600;
+}
+
+.item-image-container {
+	height: 60px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 0.5rem;
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.item-img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 8px;
+}
+
+.item-image-placeholder {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: linear-gradient(135deg, #fff5f8, #f8f8f8);
+	border-radius: 8px;
+}
+
+.placeholder-mini-text {
+	font-size: 0.65rem;
+	color: #bbb;
 }
 
 .package-name {
@@ -885,6 +966,7 @@ const proceedToOrder = () => {
 	margin: 0 0 1rem 0;
 	font-size: 0.85rem;
 	color: #555;
+	flex-grow: 1;
 }
 
 .package-items li {
@@ -919,6 +1001,7 @@ const proceedToOrder = () => {
 	font-weight: 700;
 	cursor: pointer;
 	transition: all 0.3s ease;
+	margin-top: auto;
 }
 
 .select-btn:hover {
@@ -975,12 +1058,6 @@ const proceedToOrder = () => {
 .custom-item.selected {
 	border-color: #d34a6e;
 	background: #fff5f8;
-}
-
-.item-image {
-	font-size: 2rem;
-	display: block;
-	margin-bottom: 0.5rem;
 }
 
 .item-name {

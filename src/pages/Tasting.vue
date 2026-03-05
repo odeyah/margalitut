@@ -182,7 +182,7 @@ const products = computed(() => [
 		id: 5,
 		name: lang.value === 'he' ? 'מגולגלות תמרים' : 'date rolls',
 		description: lang.value === 'he' ? 'מגולגלות תמרים' : 'date rolls',
-		price: 50,
+		price: 55,
 		image: '/cookies/dateRolls.jpeg',
 		popular: true,
 	},
