@@ -213,56 +213,29 @@ export const useMenuStore = defineStore('menu', () => {
 			popular: true,
 		},
 		{
-			id: 5,
-			name: 'שמרים שוקולד חלב',
-			category: 'yeast-cakes',
-			price: 65,
-			image: '/cakes/shmarim/bobka.jpeg',
-			description:
-				'בובקה שוקולד חלב בלגי עם שכבות עשירות וקרמיות במיוחד. עוגת שמרים חלבית רכה ומתוקה. אהובה על ילדים ומבוגרים - מאפיית מרגליתות בית שמש',
-		},
-		{
 			id: 6,
 			name: 'שמרים פרג',
 			category: 'yeast-cakes',
 			price: 65,
-			image: '/cakes/shmarim/cinamonBobka.jpeg',
+			image: '',
 			description:
 				'עוגת שמרים פרג מסורתית עם מילוי פרג אמיתי ועשיר. מתכון משפחתי מקורי מדור לדור בטעם נוסטלגי של פעם. מאפיית מרגליתות בית שמש',
-		},
-		{
-			id: 7,
-			name: 'שמרים טבלת שוקולד',
-			category: 'yeast-cakes',
-			price: 65,
-			image: '/cakes/shmarim/bobka.jpeg',
-			description:
-				'בובקה פרימיום עם פיסות שוקולד בלגי אמיתי שנמסות בתוך הבצק. עוגת שמרים עשירה לחובבי שוקולד אמיתיים. חוויה שוקולדית - מאפיית מרגליתות בית שמש',
 		},
 		{
 			id: 8,
 			name: 'שמרים תותים וקוקוס',
 			category: 'yeast-cakes',
 			price: 65,
-			image: '/cakes/shmarim/cinamonBobka.jpeg',
+			image: '',
 			description:
 				'עוגת שמרים במילוי תותים וקוקוס טרופי - שילוב מרענן ומיוחד. עוגה קייצית ומפנקת בטעם פירותי. מאפיית מרגליתות בית שמש - טעם ייחודי',
-		},
-		{
-			id: 9,
-			name: 'שמרים ללא סוכר',
-			category: ['yeast-cakes', 'sugar-free'],
-			price: 70,
-			image: '/cakes/shmarim/bobka.jpeg',
-			description:
-				'עוגת שמרים ללא סוכר מוסף ממותקת בתחליפים טבעיים. מתאימה לסוכרתיים, לדיאטה ולמודעים לבריאות. כל הטעם בלי הסוכר - מאפיית מרגליתות בית שמש',
 		},
 		{
 			id: 10,
 			name: 'חלבה שוקולד',
 			category: 'yeast-cakes',
 			price: 60,
-			image: '/cakes/shmarim/cinamonBobka.jpeg',
+			image: '',
 			description:
 				'עוגת שמרים במילוי חלבה טחינה ושוקולד מריר - שילוב ישראלי מקורי של טעמים מזרחיים. עוגה ייחודית בטעם של הבית. מאפיית מרגליתות בית שמש',
 		},
@@ -271,7 +244,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'שמרים בטעם נוטלה',
 			category: 'yeast-cakes',
 			price: 65,
-			image: '/cakes/shmarim/bobka.jpeg',
+			image: '',
 			description:
 				'בובקה עם ממרח בטעם נוטלה שוקולד אגוזים עשיר וקרמי. עוגת שמרים אהובה על ילדים ומבוגרים. פינוק מתוק לכל המשפחה - מאפיית מרגליתות בית שמש',
 		},
@@ -289,7 +262,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'שבלולי קינמון/שוקולד',
 			category: 'yeast-cakes',
 			price: 65,
-			image: '/cakes/shmarim/cinimonRogalach.jpg',
+			image: '',
 			description:
 				'שבלולי קינמון או שוקולד - סינבון ביתי אמיתי כמו בבית קפה. מגש כ-9 שבלולים עם בצק רך וציפוי קרם מתוק. מאפיית מרגליתות בית שמש',
 		},
@@ -307,7 +280,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'קוראסון שוקולד אמיתי',
 			category: 'yeast-cakes',
 			price: 65,
-			image: '/cakes/shmarim/ChocletCroson.jpg',
+			image: '',
 			description:
 				'קרואסון שוקולד צרפתי אותנטי עם שוקולד בלגי אמיתי בפנים. בצק חמאה שכבות פריך ורך כמו בקונדיטוריה בפריז. מאפיית מרגליתות בית שמש',
 		},
@@ -387,10 +360,10 @@ export const useMenuStore = defineStore('menu', () => {
 				'פאי פיצוחים עשיר עם פקאן, אגוזי מלך ושקדים בקרמל ביתי. עוגה אמריקאית קלאסית - קינוח חגיגי לאירועים ולחגים. מאפיית מרגליתות בית שמש',
 		},
 		{
-			id: 25,
+			id: 37,
 			name: 'גבינה אוכמניות',
 			category: 'mixed-cakes',
-			price: 180,
+			price: 250,
 			image: '',
 			description:
 				'עוגת גבינה אפויה קרמית עם שכבת אוכמניות טריות - קוטר 24 ס"מ, כ-12 מנות. עוגת גבינה יוקרתית לאירועים ולימי הולדת. מאפיית מרגליתות בית שמש',
@@ -442,9 +415,9 @@ export const useMenuStore = defineStore('menu', () => {
 		},
 		{
 			id: 31,
-			name: 'פס גבינה פירורים',
+			name: 'גבינה פירורים',
 			category: 'mixed-cakes',
-			price: 60,
+			price: 250,
 			image: '/cakes/chesecake.png',
 			description:
 				'עוגת גבינה אפויה ישראלית קלאסית עם שכבת פירורים חמאתית פריכה. טעם נוסטלגי של פעם - עוגת גבינה ביתית אמיתית. מאפיית מרגליתות בית שמש',
@@ -453,19 +426,19 @@ export const useMenuStore = defineStore('menu', () => {
 			id: 32,
 			name: 'עוגת גבינה קרה',
 			category: 'mixed-cakes',
-			price: 50,
+			price: 65,
 			image: '/cakes/cheseChoclateCake.png',
 			description:
-				'עוגת גבינה קרה קלילה בציפוי גנאש שוקולד מריר - ללא אפייה. עוגה קרמית ומרעננת מושלמת לקיץ ולאירוח. מאפיית מרגליתות בית שמש',
+				'עוגת פס גבינה קרה קלילה בציפוי גנאש שוקולד מריר - ללא אפייה. עוגה קרמית ומרעננת מושלמת לקיץ ולאירוח. מאפיית מרגליתות בית שמש',
 		},
 		{
 			id: 34,
 			name: 'גבינה אוריאו',
 			category: 'mixed-cakes',
-			price: 180,
+			price: 250,
 			image: '/cakes/oreoChese.jpeg',
 			description:
-				'עוגת גבינה אוריאו מפנקת - קוטר 24 ס"מ, כ-12 מנות. עוגת גבינה קרמית עם עוגיות אוריאו מעל ובפנים. פינוק אמריקאי - מאפיית מרגליתות בית שמש',
+				'עוגת גלידה גבינה אוריאו מפנקת - קוטר 24 ס"מ, כ-12 מנות. עוגת גבינה קרמית עם עוגיות אוריאו מעל ובפנים. פינוק אמריקאי - מאפיית מרגליתות בית שמש',
 		},
 		{
 			id: 35,
