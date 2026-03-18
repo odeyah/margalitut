@@ -7,20 +7,8 @@
 					<span class="logo-text">מרגליתות <span aria-hidden="true">🍓</span></span>
 				</router-link>
 
-				<!-- Desktop Navigation -->
-				<div class="nav-links" :class="{ open: isMobileMenuOpen }">
-					<router-link class="nav-link" to="/menu" @click="closeMobileMenu">תפריט</router-link>
-					<router-link class="nav-link" to="/gallery" @click="closeMobileMenu">גלריה</router-link>
-					<router-link class="nav-link" to="/about" @click="closeMobileMenu">אודות</router-link>
-					<router-link class="nav-link" to="/my-orders" @click="closeMobileMenu">ההזמנות שלי</router-link>
-					<router-link class="nav-link nav-link-primary" to="/quote" @click="closeMobileMenu"> הצעת מחיר </router-link>
-					<router-link class="nav-link" to="/faq" @click="closeMobileMenu">שאלות נפוצות</router-link>
-					<DarkModeToggle class="dark-toggle-mobile" />
-				</div>
-
 				<!-- Right Side Actions -->
 				<div class="nav-actions">
-					<!-- Language Switch -->
 					<router-link v-if="englishPath" :to="englishPath" class="lang-btn" :title="isEnglishPage ? 'עברית' : 'English'">
 						{{ isEnglishPage ? 'עב' : 'EN' }}
 					</router-link>
@@ -28,7 +16,6 @@
 					<DarkModeToggle class="dark-toggle-desktop" />
 					<CartButton />
 
-					<!-- Mobile Menu Button -->
 					<button class="mobile-menu-btn" @click="toggleMobileMenu" aria-label="תפריט">
 						<span class="hamburger" :class="{ active: isMobileMenuOpen }">
 							<span></span>
@@ -37,8 +24,35 @@
 						</span>
 					</button>
 				</div>
+
+				<!-- Desktop Navigation - רק לדסקטופ -->
+				<div class="nav-links-desktop">
+					<router-link class="nav-link" to="/menu">תפריט</router-link>
+					<router-link class="nav-link" to="/gallery">גלריה</router-link>
+					<router-link class="nav-link" to="/about">אודות</router-link>
+					<router-link class="nav-link" to="/my-orders">ההזמנות שלי</router-link>
+					<router-link class="nav-link nav-link-primary" to="/quote">הצעת מחיר</router-link>
+					<router-link class="nav-link" to="/faq">שאלות נפוצות</router-link>
+				</div>
 			</nav>
 		</header>
+
+		<!-- Mobile Menu - מחוץ ל-header! -->
+		<Transition name="slide-menu">
+			<div v-if="isMobileMenuOpen" class="mobile-menu-overlay" @click="closeMobileMenu">
+				<div class="mobile-menu" @click.stop>
+					<router-link class="mobile-nav-link" to="/menu" @click="closeMobileMenu">תפריט</router-link>
+					<router-link class="mobile-nav-link" to="/gallery" @click="closeMobileMenu">גלריה</router-link>
+					<router-link class="mobile-nav-link" to="/about" @click="closeMobileMenu">אודות</router-link>
+					<router-link class="mobile-nav-link" to="/my-orders" @click="closeMobileMenu">ההזמנות שלי</router-link>
+					<router-link class="mobile-nav-link mobile-nav-link-primary" to="/quote" @click="closeMobileMenu"
+						>הצעת מחיר</router-link
+					>
+					<router-link class="mobile-nav-link" to="/faq" @click="closeMobileMenu">שאלות נפוצות</router-link>
+					<DarkModeToggle class="dark-toggle-mobile" />
+				</div>
+			</div>
+		</Transition>
 
 		<main class="main container">
 			<router-view v-slot="{ Component, route }">
@@ -268,8 +282,6 @@ a {
 .grid-3 {
 	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
-</style>
-
 <style scoped>
 /* Header */
 .header {
@@ -309,8 +321,8 @@ a {
 	background-clip: text;
 }
 
-/* Navigation Links */
-.nav-links {
+/* Desktop Navigation */
+.nav-links-desktop {
 	display: flex;
 	align-items: center;
 	gap: 0.5rem;
@@ -325,11 +337,7 @@ a {
 	transition: all 0.3s ease;
 }
 
-.nav-link:hover {
-	color: var(--pink-primary);
-	background: var(--pink-light);
-}
-
+.nav-link:hover,
 .nav-link.router-link-active {
 	color: var(--pink-primary);
 	background: var(--pink-light);
@@ -344,7 +352,6 @@ a {
 .nav-link-primary:hover {
 	transform: translateY(-2px);
 	box-shadow: 0 6px 20px rgba(255, 107, 157, 0.4);
-	background: linear-gradient(135deg, var(--pink-primary) 0%, var(--pink-secondary) 100%);
 }
 
 /* Nav Actions */
@@ -352,6 +359,27 @@ a {
 	display: flex;
 	align-items: center;
 	gap: 0.75rem;
+}
+
+/* Language Switch Button */
+.lang-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	background: var(--pink-light);
+	color: var(--pink-primary);
+	font-weight: 700;
+	font-size: 0.75rem;
+	transition: all 0.3s ease;
+}
+
+.lang-btn:hover {
+	background: var(--pink-primary);
+	color: white;
+	transform: scale(1.05);
 }
 
 /* Dark Mode Toggle */
@@ -364,7 +392,7 @@ a {
 	margin-top: 1rem;
 }
 
-/* Mobile Menu Button */
+/* Mobile Menu Button - Hidden on Desktop */
 .mobile-menu-btn {
 	display: none;
 	background: none;
@@ -398,6 +426,72 @@ a {
 
 .hamburger.active span:nth-child(3) {
 	transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 9998;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	width: 280px;
+	background: linear-gradient(135deg, #d34a6e 0%, #ff8fab 100%);
+	padding: 100px 1.5rem 2rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+	z-index: 9999;
+	overflow-y: auto;
+}
+
+.mobile-nav-link {
+	width: 100%;
+	text-align: center;
+	padding: 1rem 1.5rem;
+	font-size: 1.1rem;
+	font-weight: 700;
+	color: white;
+	background: rgba(255, 255, 255, 0.15);
+	border-radius: 12px;
+	transition: all 0.3s ease;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link.router-link-active {
+	background: rgba(255, 255, 255, 0.3);
+}
+
+.mobile-nav-link-primary {
+	background: white !important;
+	color: #d34a6e !important;
+	margin-top: 0.5rem;
+}
+
+/* Slide Menu Transition */
+.slide-menu-enter-active,
+.slide-menu-leave-active {
+	transition: all 0.3s ease;
+}
+
+.slide-menu-enter-from,
+.slide-menu-leave-to {
+	opacity: 0;
+}
+
+.slide-menu-enter-from .mobile-menu,
+.slide-menu-leave-to .mobile-menu {
+	transform: translateX(100%);
 }
 
 /* Main Content */
@@ -444,8 +538,12 @@ a {
 	transform: translateX(-30px);
 }
 
-/* Mobile Responsive */
+/* ========== Mobile Responsive ========== */
 @media (max-width: 768px) {
+	.nav-links-desktop {
+		display: none;
+	}
+
 	.mobile-menu-btn {
 		display: block;
 	}
@@ -459,110 +557,60 @@ a {
 		justify-content: center;
 	}
 
-	.nav-links {
-		position: fixed;
-		top: 70px;
-		right: 0;
-		left: 0;
-		bottom: 0;
-		background: linear-gradient(135deg, var(--pink-primary) 0%, var(--pink-secondary) 100%);
-		flex-direction: column;
-		padding: 2rem;
-		gap: 0.5rem;
-		transform: translateX(100%);
-		transition:
-			transform 0.3s ease,
-			background 0.3s ease;
-		z-index: 99;
-		margin-inline-start: 0;
-		overflow-y: auto;
+	.nav-actions {
+		margin-inline-start: auto;
+		gap: 0.25rem;
 	}
 
-	.nav-links.open {
-		transform: translateX(0);
+	.logo-text {
+		font-size: 1.1rem;
 	}
 
-	.nav-link {
-		width: 100%;
-		text-align: center;
-		padding: 1rem 1.5rem;
-		font-size: 1.2rem;
-		font-weight: 700;
-		color: white;
-		background: rgba(255, 255, 255, 0.15);
-		border-radius: 12px;
-		backdrop-filter: blur(5px);
-		transition: all 0.3s ease;
+	.logo-img {
+		height: 40px;
 	}
 
-	.nav-link:hover,
-	.nav-link.router-link-active {
-		background: rgba(255, 255, 255, 0.3);
-		color: white;
-		transform: scale(1.02);
-	}
-
-	.nav-link-primary {
-		background: white !important;
-		color: var(--pink-primary) !important;
-		margin-top: 1rem;
-		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-	}
-
-	.nav-link-primary:hover {
-		transform: scale(1.02);
-		box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+	.lang-btn {
+		width: 30px;
+		height: 30px;
+		font-size: 0.65rem;
 	}
 
 	.app.menu-open {
 		overflow: hidden;
 	}
+}
 
+@media (max-width: 400px) {
 	.nav-actions {
-		margin-inline-start: auto;
+		gap: 0.15rem;
 	}
 
-	/* Dark mode mobile menu */
-	.dark .nav-links {
-		background: linear-gradient(135deg, #2d2035 0%, #1a1a2e 100%);
+	.logo-text {
+		font-size: 1rem;
 	}
 
-	.dark .nav-link {
-		background: rgba(255, 255, 255, 0.1);
-		color: #f0f0f0;
-	}
-
-	.dark .nav-link:hover,
-	.dark .nav-link.router-link-active {
-		background: rgba(255, 255, 255, 0.2);
-		color: white;
-	}
-
-	.dark .nav-link-primary {
-		background: var(--pink-primary) !important;
-		color: white !important;
+	.logo-img {
+		height: 36px;
 	}
 }
 
-/* Language Switch Button */
-.lang-btn {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 36px;
-	height: 36px;
-	border-radius: 50%;
-	background: var(--pink-light);
-	color: var(--pink-primary);
-	font-weight: 700;
-	font-size: 0.75rem;
-	transition: all 0.3s ease;
-	border: 2px solid transparent;
+/* ========== Dark Mode ========== */
+.dark .mobile-menu {
+	background: linear-gradient(135deg, #2d2035 0%, #1a1a2e 100%);
 }
 
-.lang-btn:hover {
-	background: var(--pink-primary);
-	color: white;
-	transform: scale(1.05);
+.dark .mobile-nav-link {
+	background: rgba(255, 255, 255, 0.1);
+}
+
+.dark .mobile-nav-link:hover,
+.dark .mobile-nav-link.router-link-active {
+	background: rgba(255, 255, 255, 0.2);
+}
+
+.dark .mobile-nav-link-primary {
+	background: #d34a6e !important;
+	color: white !important;
 }
 </style>
