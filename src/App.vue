@@ -25,18 +25,23 @@
 					</button>
 				</div>
 
-				<!-- Desktop Navigation - רק לדסקטופ -->
+				<!-- Desktop Navigation -->
 				<div class="nav-links-desktop">
 					<router-link class="nav-link" to="/menu">תפריט</router-link>
 					<router-link class="nav-link" to="/gallery">גלריה</router-link>
 					<router-link class="nav-link" to="/about">אודות</router-link>
 					<router-link class="nav-link" to="/my-orders">ההזמנות שלי</router-link>
 
-					<!-- תפריט חגים -->
+					<!-- פסח - ישירות בתפריט הראשי -->
+					<router-link class="nav-link nav-link-pesach" to="/Pesach">
+						<span class="pesach-icon">🍷</span>
+						פסח
+					</router-link>
+
+					<!-- תפריט חגים אחרים -->
 					<div class="nav-dropdown">
 						<span class="nav-link nav-link-dropdown">חגים 🎉</span>
 						<div class="dropdown-menu">
-							<router-link class="dropdown-item" to="/Pesach">🍷 פסח</router-link>
 							<router-link class="dropdown-item" to="/Purim">🎭 פורים</router-link>
 						</div>
 					</div>
@@ -47,26 +52,29 @@
 			</nav>
 		</header>
 
-		<!-- Mobile Menu - מחוץ ל-header! -->
+		<!-- Mobile Menu -->
 		<Transition name="slide-menu">
 			<div v-if="isMobileMenuOpen" class="mobile-menu-overlay" @click="closeMobileMenu">
-				<!-- Mobile Menu -->
 				<div class="mobile-menu" @click.stop>
 					<router-link class="mobile-nav-link" to="/menu" @click="closeMobileMenu">תפריט</router-link>
 					<router-link class="mobile-nav-link" to="/gallery" @click="closeMobileMenu">גלריה</router-link>
 					<router-link class="mobile-nav-link" to="/about" @click="closeMobileMenu">אודות</router-link>
 					<router-link class="mobile-nav-link" to="/my-orders" @click="closeMobileMenu">ההזמנות שלי</router-link>
 
+					<!-- פסח - בולט במובייל -->
+					<router-link class="mobile-nav-link mobile-nav-link-pesach" to="/Pesach" @click="closeMobileMenu">
+						🍷 פסח
+					</router-link>
+
 					<!-- חגים במובייל -->
 					<div class="mobile-nav-section">חגים 🎉</div>
-					<router-link class="mobile-nav-link mobile-nav-link-sub" to="/Pesach" @click="closeMobileMenu">🍷 פסח</router-link>
-					<router-link class="mobile-nav-link mobile-nav-link-sub" to="/Purim" @click="closeMobileMenu"
-						>🎭 פורים</router-link
-					>
+					<router-link class="mobile-nav-link mobile-nav-link-sub" to="/Purim" @click="closeMobileMenu">
+						🎭 פורים
+					</router-link>
 
-					<router-link class="mobile-nav-link mobile-nav-link-primary" to="/quote" @click="closeMobileMenu"
-						>הצעת מחיר</router-link
-					>
+					<router-link class="mobile-nav-link mobile-nav-link-primary" to="/quote" @click="closeMobileMenu">
+						הצעת מחיר
+					</router-link>
 					<router-link class="mobile-nav-link" to="/faq" @click="closeMobileMenu">שאלות נפוצות</router-link>
 					<DarkModeToggle class="dark-toggle-mobile" />
 				</div>
@@ -86,9 +94,7 @@
 		<!-- Global Components -->
 		<CartDrawer />
 		<NotificationToast />
-		<!-- Toast Notifications -->
 		<ToastContainer />
-		<!-- WhatsApp Float Button -->
 		<WhatsAppButton />
 	</div>
 </template>
@@ -117,7 +123,7 @@ const transitionName = ref('fade');
 
 const toggleMobileMenu = () => uiStore.toggleMobileMenu();
 const closeMobileMenu = () => uiStore.closeMobileMenu();
-// Pages with English versions - הוסף דפים חדשים כאן
+
 const pagesWithEnglish = {
 	'/Purim': '/Purim-en',
 	'/Purim-en': '/Purim',
@@ -126,34 +132,18 @@ const pagesWithEnglish = {
 	'/tasting': '/tasting?lang=en',
 };
 
-// Check if current page has English version
 const isEnglishPage = computed(() => {
 	return route.path.includes('-en') || route.query.lang === 'en';
 });
 
 const englishPath = computed(() => {
 	const currentPath = route.path;
-
-	// If on English page, return Hebrew path
-	if (currentPath.includes('-en')) {
-		return currentPath.replace('-en', '');
-	}
-
-	// If has ?lang=en query, return without it
-	if (route.query.lang === 'en') {
-		return currentPath;
-	}
-
-	// If page has English version, return it
-	if (pagesWithEnglish[currentPath]) {
-		return pagesWithEnglish[currentPath];
-	}
-
-	// No English version
+	if (currentPath.includes('-en')) return currentPath.replace('-en', '');
+	if (route.query.lang === 'en') return currentPath;
+	if (pagesWithEnglish[currentPath]) return pagesWithEnglish[currentPath];
 	return null;
 });
 
-// Determine transition direction based on route order
 const routeOrder = ['/', '/menu', '/gallery', '/about', '/quote', '/checkout'];
 
 watch(
@@ -162,17 +152,11 @@ watch(
 		const newIndex = routeOrder.indexOf(newPath);
 		const oldIndex = routeOrder.indexOf(oldPath || '/');
 
-		if (newIndex > oldIndex) {
-			transitionName.value = 'slide-left';
-		} else if (newIndex < oldIndex) {
-			transitionName.value = 'slide-right';
-		} else {
-			transitionName.value = 'fade';
-		}
+		if (newIndex > oldIndex) transitionName.value = 'slide-left';
+		else if (newIndex < oldIndex) transitionName.value = 'slide-right';
+		else transitionName.value = 'fade';
 
 		previousPath.value = oldPath;
-
-		// Close mobile menu on navigation
 		closeMobileMenu();
 	},
 );
@@ -187,7 +171,6 @@ watch(
 }
 
 :root {
-	/* Light Theme */
 	--bg-primary: #fff;
 	--bg-secondary: #f8f9fa;
 	--bg-gradient: linear-gradient(135deg, #fff5f8 0%, #fff 50%, #f8f9fa 100%);
@@ -201,10 +184,11 @@ watch(
 	--pink-light: #fff5f8;
 	--card-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
 	--header-bg: rgba(255, 255, 255, 0.95);
+	--pesach-gold: #c9973a;
+	--pesach-light: #fdf6e3;
 }
 
 .dark {
-	/* Dark Theme */
 	--bg-primary: #1a1a2e;
 	--bg-secondary: #16213e;
 	--bg-gradient: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f1a 100%);
@@ -218,6 +202,8 @@ watch(
 	--pink-light: #2d2035;
 	--card-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 	--header-bg: rgba(26, 26, 46, 0.95);
+	--pesach-gold: #d4a843;
+	--pesach-light: #2a2010;
 }
 
 body {
@@ -242,7 +228,6 @@ a {
 	text-decoration: none;
 }
 
-/* Button Base Styles */
 .btn {
 	display: inline-flex;
 	align-items: center;
@@ -277,7 +262,6 @@ a {
 	border-color: var(--pink-primary);
 }
 
-/* Card Base Style */
 .card {
 	background: var(--bg-primary);
 	border-radius: 16px;
@@ -288,16 +272,13 @@ a {
 		box-shadow 0.3s ease;
 }
 
-/* Grid Layouts */
 .grid {
 	display: grid;
 	gap: 1.5rem;
 }
-
 .grid-2 {
 	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
-
 .grid-3 {
 	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
@@ -364,6 +345,33 @@ a {
 	background: var(--pink-light);
 }
 
+/* פסח - קישור ייחודי */
+.nav-link-pesach {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.3rem;
+	color: var(--pesach-gold) !important;
+	background: var(--pesach-light);
+	border: 1.5px solid color-mix(in srgb, var(--pesach-gold) 30%, transparent);
+	font-weight: 700;
+	padding: 0.45rem 0.9rem;
+	border-radius: 10px;
+	transition: all 0.3s ease;
+}
+
+.nav-link-pesach:hover,
+.nav-link-pesach.router-link-active {
+	background: var(--pesach-gold);
+	color: white !important;
+	border-color: var(--pesach-gold);
+	transform: translateY(-1px);
+	box-shadow: 0 4px 12px rgba(201, 151, 58, 0.3);
+}
+
+.pesach-icon {
+	font-size: 1rem;
+}
+
 .nav-link-primary {
 	background: linear-gradient(135deg, var(--pink-primary) 0%, var(--pink-secondary) 100%);
 	color: white !important;
@@ -382,7 +390,6 @@ a {
 	gap: 0.75rem;
 }
 
-/* Language Switch Button */
 .lang-btn {
 	display: flex;
 	align-items: center;
@@ -403,17 +410,14 @@ a {
 	transform: scale(1.05);
 }
 
-/* Dark Mode Toggle */
 .dark-toggle-desktop {
 	display: block;
 }
-
 .dark-toggle-mobile {
 	display: none;
 	margin-top: 1rem;
 }
 
-/* Mobile Menu Button - Hidden on Desktop */
 .mobile-menu-btn {
 	display: none;
 	background: none;
@@ -440,11 +444,9 @@ a {
 .hamburger.active span:nth-child(1) {
 	transform: rotate(45deg) translate(6px, 6px);
 }
-
 .hamburger.active span:nth-child(2) {
 	opacity: 0;
 }
-
 .hamburger.active span:nth-child(3) {
 	transform: rotate(-45deg) translate(6px, -6px);
 }
@@ -460,7 +462,6 @@ a {
 	z-index: 9998;
 }
 
-/* Mobile Menu */
 .mobile-menu {
 	position: fixed;
 	top: 0;
@@ -493,6 +494,19 @@ a {
 	background: rgba(255, 255, 255, 0.3);
 }
 
+/* פסח במובייל - בולט */
+.mobile-nav-link-pesach {
+	background: rgba(201, 151, 58, 0.4) !important;
+	border: 1.5px solid rgba(255, 220, 120, 0.5);
+	color: #fff5cc !important;
+	font-size: 1.15rem;
+}
+
+.mobile-nav-link-pesach:hover,
+.mobile-nav-link-pesach.router-link-active {
+	background: rgba(201, 151, 58, 0.65) !important;
+}
+
 .mobile-nav-link-primary {
 	background: white !important;
 	color: #d34a6e !important;
@@ -504,12 +518,10 @@ a {
 .slide-menu-leave-active {
 	transition: all 0.3s ease;
 }
-
 .slide-menu-enter-from,
 .slide-menu-leave-to {
 	opacity: 0;
 }
-
 .slide-menu-enter-from .mobile-menu,
 .slide-menu-leave-to .mobile-menu {
 	transform: translateX(100%);
@@ -526,7 +538,6 @@ a {
 .fade-leave-active {
 	transition: opacity 0.3s ease;
 }
-
 .fade-enter-from,
 .fade-leave-to {
 	opacity: 0;
@@ -543,17 +554,14 @@ a {
 	opacity: 0;
 	transform: translateX(-30px);
 }
-
 .slide-left-leave-to {
 	opacity: 0;
 	transform: translateX(30px);
 }
-
 .slide-right-enter-from {
 	opacity: 0;
 	transform: translateX(30px);
 }
-
 .slide-right-leave-to {
 	opacity: 0;
 	transform: translateX(-30px);
@@ -564,39 +572,31 @@ a {
 	.nav-links-desktop {
 		display: none;
 	}
-
 	.mobile-menu-btn {
 		display: block;
 	}
-
 	.dark-toggle-desktop {
 		display: none;
 	}
-
 	.dark-toggle-mobile {
 		display: flex;
 		justify-content: center;
 	}
-
 	.nav-actions {
 		margin-inline-start: auto;
 		gap: 0.25rem;
 	}
-
 	.logo-text {
 		font-size: 1.1rem;
 	}
-
 	.logo-img {
 		height: 40px;
 	}
-
 	.lang-btn {
 		width: 30px;
 		height: 30px;
 		font-size: 0.65rem;
 	}
-
 	.app.menu-open {
 		overflow: hidden;
 	}
@@ -606,11 +606,9 @@ a {
 	.nav-actions {
 		gap: 0.15rem;
 	}
-
 	.logo-text {
 		font-size: 1rem;
 	}
-
 	.logo-img {
 		height: 36px;
 	}
@@ -634,11 +632,11 @@ a {
 	background: #d34a6e !important;
 	color: white !important;
 }
-/* Dropdown Menu - Desktop */
+
+/* Dropdown Menu */
 .nav-dropdown {
 	position: relative;
 }
-
 .nav-link-dropdown {
 	cursor: pointer;
 }
@@ -679,7 +677,7 @@ a {
 	color: var(--pink-primary);
 }
 
-/* Mobile Menu - Section Header */
+/* Mobile Sections */
 .mobile-nav-section {
 	width: 100%;
 	text-align: center;

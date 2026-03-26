@@ -188,8 +188,8 @@ const orderStore = useOrderStore();
 const cakes = ref([
 	{
 		id: 'cake-1',
-		name: 'עוגת שקדים שוקולד המלכה',
-		description: 'עוגת שקדים עשירה בציפוי שוקולד מריר, ללא חשש שרויה',
+		name: 'עוגת שקדים שוקולד המלכה לפסח',
+		description: 'עוגת שקדים עשירה בציפוי שוקולד מריר לפסח, ללא חשש שרויה',
 		price: 75,
 		image: '/pesach/chocletTheQ.jpeg',
 		dairy: false,
@@ -197,8 +197,8 @@ const cakes = ref([
 	},
 	{
 		id: 'cake-2',
-		name: 'עוגת שוקולד אגוזים',
-		description: 'עוגת שוקולד עשירה עם אגוזים קלויים, ללא חשש שרויה',
+		name: 'עוגת שוקולד אגוזים לפסח',
+		description: 'עוגת שוקולד עשירה עם אגוזים קלויים לפסח, ללא חשש שרויה',
 		price: 75,
 		image: '/pesach/nutsPesachCake.jpeg',
 		dairy: false,
@@ -206,8 +206,8 @@ const cakes = ref([
 	},
 	{
 		id: 'cake-3',
-		name: 'עוגת שקדים תפוז',
-		description: 'עוגת שקדים עם ארומת תפוז טבעית, ללא חשש שרויה',
+		name: 'עוגת שקדים תפוז לפסח',
+		description: 'עוגת שקדים עם ארומת תפוז טבעית לפסח, ללא חשש שרויה',
 		price: 75,
 		image: '/pesach/orangePesachCake.jpeg',
 		dairy: false,
@@ -215,8 +215,8 @@ const cakes = ref([
 	},
 	{
 		id: 'cake-4',
-		name: 'עוגת תפוחים אגוזים',
-		description: 'עוגה ביתית עם תפוחים טריים ואגוזים, ללא חשש שרויה',
+		name: 'עוגת תפוחים אגוזים לפסח',
+		description: 'עוגה ביתית עם תפוחים טריים ואגוזים לפסח, ללא חשש שרויה',
 		price: 75,
 		image: '/pesach/appleNutsPesachCake.jpeg',
 		dairy: false,
@@ -227,8 +227,8 @@ const cakes = ref([
 const cookies = ref([
 	{
 		id: 'cookie-1',
-		name: 'עוגיות שקדים',
-		description: 'מארז עוגיות שקדים פריכות ועדינות, ללא חשש שרויה',
+		name: 'עוגיות שקדים לפסח',
+		description: 'מארז עוגיות שקדים פריכות ועדינות לפסח, ללא חשש שרויה',
 		price: 65,
 		image: '/pesach/almondsPesach.jpeg',
 		dairy: true,
@@ -236,8 +236,8 @@ const cookies = ref([
 	},
 	{
 		id: 'cookie-2',
-		name: 'עוגיות שוקוציפס',
-		description: 'מארז עוגיות עם שוקולד ציפס בלגי, ללא חשש שרויה',
+		name: 'עוגיות שוקוציפס לפסח',
+		description: 'מארז עוגיות עם שוקולד ציפס בלגי לפסח, ללא חשש שרויה',
 		price: 55,
 		image: '/pesach/pesachChoclateChips.jpeg',
 		dairy: false,
@@ -245,8 +245,8 @@ const cookies = ref([
 	},
 	{
 		id: 'cookie-3',
-		name: 'עוגיות קינמון אגוזים',
-		description: 'מארז עוגיות קינמון עם אגוזים קלויים, ללא חשש שרויה',
+		name: 'עוגיות קינמון אגוזים לפסח',
+		description: 'מארז עוגיות קינמון עם אגוזים קלויים לפסח, ללא חשש שרויה',
 		price: 55,
 		image: '/pesach/cinamonNuts.jpeg',
 		dairy: false,
@@ -254,8 +254,8 @@ const cookies = ref([
 	},
 	{
 		id: 'cookie-4',
-		name: 'מגולגלות תמרים',
-		description: 'מארז עוגיות מגולגלות תמרים, ללא חשש שרויה ללא סוכר',
+		name: 'מגולגלות תמרים לפסח',
+		description: 'מארז עוגיות מגולגלות תמרים לפסח, ללא חשש שרויה ללא סוכר',
 		price: 70,
 		image: '/cookies/dateRolls.jpeg',
 		dairy: false,

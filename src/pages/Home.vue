@@ -1,5 +1,14 @@
 <template>
 	<div class="home-page">
+		<!-- Language Toggle -->
+		<div class="lang-toggle-wrapper">
+			<button class="lang-toggle" @click="toggleLang" :aria-label="lang === 'he' ? 'Switch to English' : 'עבור לעברית'">
+				<span class="lang-option" :class="{ active: lang === 'he' }">עב</span>
+				<span class="lang-divider">|</span>
+				<span class="lang-option" :class="{ active: lang === 'en' }">EN</span>
+			</button>
+		</div>
+
 		<!-- Hero Section -->
 		<section class="hero-section animate-on-scroll fade-up">
 			<div class="hero-background">
@@ -11,33 +20,31 @@
 			<div class="hero-content">
 				<div class="hero-text">
 					<h1 class="hero-title">
-						ברוכים הבאים ל
+						{{ t.heroWelcome }}
 						<span class="brand-name">מרגליתות</span>
 						<span class="hero-emoji">🍓</span>
 					</h1>
-					<p class="hero-subtitle">
-						מאפייה ביתית עם אהבה למתוק ולחלבי: עוגות, עוגיות, לחמים, גלידות וארוחות חלביות — הכול טרי, נקי וטעים.
-					</p>
+					<p class="hero-subtitle">{{ t.heroSubtitle }}</p>
 					<div class="hero-badges">
 						<span class="badge">
 							<span class="badge-icon">✡️</span>
-							כל הרכיבים בכשרות מהדרין
+							{{ t.badgeKosher }}
 						</span>
 						<span class="badge">
 							<span class="badge-icon">🏠</span>
-							אפייה ביתית
+							{{ t.badgeHomemade }}
 						</span>
 						<span class="badge">
 							<span class="badge-icon">❤️</span>
-							עבודת יד
+							{{ t.badgeHandmade }}
 						</span>
 					</div>
 					<div class="hero-actions">
 						<router-link to="/menu" class="btn-primary">
-							<span>לתפריט</span>
+							<span>{{ t.btnMenu }}</span>
 							<span class="btn-arrow">←</span>
 						</router-link>
-						<router-link to="/quote" class="btn-secondary"> בקשת הצעת מחיר </router-link>
+						<router-link to="/quote" class="btn-secondary">{{ t.btnQuote }}</router-link>
 					</div>
 				</div>
 				<div class="hero-image">
@@ -55,8 +62,8 @@
 		<!-- Categories Preview -->
 		<section class="categories-section">
 			<div class="section-header animate-on-scroll fade-up">
-				<h2 class="section-title">הקטגוריות שלנו</h2>
-				<p class="section-subtitle">גלו את כל המטעמים שלנו</p>
+				<h2 class="section-title">{{ t.categoriesTitle }}</h2>
+				<p class="section-subtitle">{{ t.categoriesSubtitle }}</p>
 			</div>
 
 			<div class="categories-grid">
@@ -77,8 +84,8 @@
 		<!-- Popular Products -->
 		<section class="popular-section">
 			<div class="section-header animate-on-scroll fade-up">
-				<h2 class="section-title">⭐ הפופולריים שלנו</h2>
-				<p class="section-subtitle">המוצרים הכי אהובים על הלקוחות</p>
+				<h2 class="section-title">⭐ {{ t.popularTitle }}</h2>
+				<p class="section-subtitle">{{ t.popularSubtitle }}</p>
 			</div>
 
 			<div class="products-grid">
@@ -94,7 +101,7 @@
 
 			<div class="section-action animate-on-scroll fade-up">
 				<router-link to="/menu" class="view-all-link">
-					צפו בכל התפריט
+					{{ t.viewAll }}
 					<span class="link-arrow">←</span>
 				</router-link>
 			</div>
@@ -103,33 +110,33 @@
 		<!-- Features Section -->
 		<section class="features-section">
 			<div class="section-header animate-on-scroll fade-up">
-				<h2 class="section-title">למה מרגליתות?</h2>
+				<h2 class="section-title">{{ t.whyTitle }}</h2>
 			</div>
 			<div class="features-grid">
 				<div class="feature-card animate-on-scroll fade-up delay-1">
 					<span class="feature-icon">🌿</span>
-					<h3 class="feature-title">רכיבים איכותיים</h3>
-					<p class="feature-text">כל הרכיבים שלנו בכשרות מהדרין, טריים ואיכותיים</p>
+					<h3 class="feature-title">{{ t.feature1Title }}</h3>
+					<p class="feature-text">{{ t.feature1Text }}</p>
 				</div>
 				<div class="feature-card animate-on-scroll fade-up delay-2">
 					<span class="feature-icon">👩‍🍳</span>
-					<h3 class="feature-title">עבודת יד</h3>
-					<p class="feature-text">כל מוצר מוכן בעבודת יד עם אהבה ותשומת לב לפרטים</p>
+					<h3 class="feature-title">{{ t.feature2Title }}</h3>
+					<p class="feature-text">{{ t.feature2Text }}</p>
 				</div>
 				<div class="feature-card animate-on-scroll fade-up delay-3">
 					<span class="feature-icon">✨</span>
-					<h3 class="feature-title">ניקיון ברמה גבוהה</h3>
-					<p class="feature-text">המטבח שלנו נשמר תמיד נקי ומסודר ברמה הגבוהה ביותר</p>
+					<h3 class="feature-title">{{ t.feature3Title }}</h3>
+					<p class="feature-text">{{ t.feature3Text }}</p>
 				</div>
 				<div class="feature-card animate-on-scroll fade-up delay-4">
 					<span class="feature-icon">🎂</span>
-					<h3 class="feature-title">התאמה אישית</h3>
-					<p class="feature-text">מתאימים לכל צורך: ללא גלוטן, ללא סוכר, טבעוני</p>
+					<h3 class="feature-title">{{ t.feature4Title }}</h3>
+					<p class="feature-text">{{ t.feature4Text }}</p>
 				</div>
 				<div class="feature-card animate-on-scroll fade-up delay-5">
 					<span class="feature-icon">🚗</span>
-					<h3 class="feature-title">משלוחים</h3>
-					<p class="feature-text">משלוחים לכל אזור בית שמש והסביבה</p>
+					<h3 class="feature-title">{{ t.feature5Title }}</h3>
+					<p class="feature-text">{{ t.feature5Text }}</p>
 				</div>
 			</div>
 		</section>
@@ -144,10 +151,10 @@
 			<div class="cta-card">
 				<div class="cta-content">
 					<span class="cta-icon">🎉</span>
-					<h2 class="cta-title">מתכננים אירוע?</h2>
-					<p class="cta-text">ימי הולדת, בריתות, חינות, שבתות ואירועים - נשמח להכין עבורכם הזמנה מיוחדת!</p>
+					<h2 class="cta-title">{{ t.ctaTitle }}</h2>
+					<p class="cta-text">{{ t.ctaText }}</p>
 					<router-link to="/quote" class="cta-btn">
-						דברו איתנו
+						{{ t.ctaBtn }}
 						<span class="btn-arrow">←</span>
 					</router-link>
 				</div>
@@ -162,7 +169,7 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { ref, computed } from 'vue';
 import { useMenuStore } from '../stores/menuStore';
 import { ProductCard } from '../components/menu';
 import logo from '../assets/logo.png';
@@ -171,8 +178,77 @@ import TestimonialsSection from '../components/home/TestimonialsSection.vue';
 import { useScrollAnimation } from '../composables/useScrollAnimation';
 
 useScrollAnimation();
+
+// ─── Language ───────────────────────────────────────────────
+const lang = ref('he');
+const toggleLang = () => (lang.value = lang.value === 'he' ? 'en' : 'he');
+
+const translations = {
+	he: {
+		heroWelcome: 'ברוכים הבאים ל',
+		heroSubtitle: 'מאפייה ביתית עם אהבה למתוק ולחלבי: עוגות, עוגיות, לחמים, גלידות וארוחות חלביות — הכול טרי, נקי וטעים.',
+		badgeKosher: 'כל הרכיבים בכשרות מהדרין',
+		badgeHomemade: 'אפייה ביתית',
+		badgeHandmade: 'עבודת יד',
+		btnMenu: 'לתפריט',
+		btnQuote: 'בקשת הצעת מחיר',
+		categoriesTitle: 'הקטגוריות שלנו',
+		categoriesSubtitle: 'גלו את כל המטעמים שלנו',
+		popularTitle: 'הפופולריים שלנו',
+		popularSubtitle: 'המוצרים הכי אהובים על הלקוחות',
+		viewAll: 'צפו בכל התפריט',
+		whyTitle: 'למה מרגליתות?',
+		feature1Title: 'רכיבים איכותיים',
+		feature1Text: 'כל הרכיבים שלנו בכשרות מהדרין, טריים ואיכותיים',
+		feature2Title: 'עבודת יד',
+		feature2Text: 'כל מוצר מוכן בעבודת יד עם אהבה ותשומת לב לפרטים',
+		feature3Title: 'ניקיון ברמה גבוהה',
+		feature3Text: 'המטבח שלנו נשמר תמיד נקי ומסודר ברמה הגבוהה ביותר',
+		feature4Title: 'התאמה אישית',
+		feature4Text: 'מתאימים לכל צורך: ללא גלוטן, ללא סוכר, טבעוני',
+		feature5Title: 'משלוחים',
+		feature5Text: 'משלוחים לכל אזור בית שמש והסביבה',
+		ctaTitle: 'מתכננים אירוע?',
+		ctaText: 'ימי הולדת, בריתות, חינות, שבתות ואירועים - נשמח להכין עבורכם הזמנה מיוחדת!',
+		ctaBtn: 'דברו איתנו',
+	},
+	en: {
+		heroWelcome: 'Welcome to',
+		heroSubtitle:
+			'A home bakery with a love for dairy sweets: cakes, cookies, breads, ice creams and dairy meals — all fresh, clean and delicious.',
+		badgeKosher: 'Mehadrin kosher certified',
+		badgeHomemade: 'Home baked',
+		badgeHandmade: 'Handcrafted',
+		btnMenu: 'Our Menu',
+		btnQuote: 'Request a Quote',
+		categoriesTitle: 'Our Categories',
+		categoriesSubtitle: 'Explore all our treats',
+		popularTitle: 'Our Favorites',
+		popularSubtitle: "Customers' most loved products",
+		viewAll: 'View Full Menu',
+		whyTitle: 'Why Margalitot?',
+		feature1Title: 'Quality Ingredients',
+		feature1Text: 'All our ingredients are mehadrin kosher, fresh and top quality',
+		feature2Title: 'Handcrafted',
+		feature2Text: 'Every product is made by hand with love and attention to detail',
+		feature3Title: 'Highest Cleanliness',
+		feature3Text: 'Our kitchen is always kept clean and organized to the highest standard',
+		feature4Title: 'Customization',
+		feature4Text: 'Adapted to any need: gluten-free, sugar-free, vegan',
+		feature5Title: 'Delivery',
+		feature5Text: 'Delivering to all areas of Beit Shemesh and surroundings',
+		ctaTitle: 'Planning an Event?',
+		ctaText:
+			'Birthdays, brises, henna nights, Shabbat and celebrations — we would love to create something special for you!',
+		ctaBtn: 'Get in Touch',
+	},
+};
+
+const t = computed(() => translations[lang.value]);
+
+// ─── SEO ─────────────────────────────────────────────────────
 useHead({
-	title: 'תפריט | מרגליתות - מאפייה ביתית בבית שמש',
+	title: 'מרגליתות - מאפייה ביתית בבית שמש',
 	meta: [
 		{
 			name: 'description',
@@ -182,8 +258,8 @@ useHead({
 	],
 });
 
+// ─── Store ────────────────────────────────────────────────────
 const menuStore = useMenuStore();
-
 const categories = computed(() => menuStore.categories);
 const popularProducts = computed(() => menuStore.popularProducts.slice(0, 8));
 </script>
@@ -192,6 +268,47 @@ const popularProducts = computed(() => menuStore.popularProducts.slice(0, 8));
 .home-page {
 	max-width: 1200px;
 	margin: 0 auto;
+}
+
+/* ========== LANGUAGE TOGGLE ========== */
+.lang-toggle-wrapper {
+	display: flex;
+	justify-content: flex-start;
+	padding: 0.75rem 0 0;
+}
+
+.lang-toggle {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+	padding: 0.4rem 1rem;
+	background: var(--bg-primary);
+	border: 2px solid var(--border-pink);
+	border-radius: 20px;
+	cursor: pointer;
+	transition: all 0.25s ease;
+	font-weight: 700;
+	font-size: 0.8rem;
+	color: var(--text-secondary);
+}
+
+.lang-toggle:hover {
+	border-color: var(--pink-primary);
+	box-shadow: 0 2px 10px rgba(211, 74, 110, 0.15);
+}
+
+.lang-option {
+	color: var(--text-muted);
+	transition: color 0.25s ease;
+	letter-spacing: 0.03em;
+}
+
+.lang-option.active {
+	color: var(--pink-primary);
+}
+
+.lang-divider {
+	color: var(--border-pink);
 }
 
 /* ========== HERO SECTION ========== */
@@ -292,6 +409,7 @@ const popularProducts = computed(() => menuStore.popularProducts.slice(0, 8));
 	color: var(--text-secondary);
 	line-height: 1.7;
 	margin: 0 0 1.5rem 0;
+	transition: all 0.3s ease;
 }
 
 .hero-badges {
@@ -464,14 +582,12 @@ const popularProducts = computed(() => menuStore.popularProducts.slice(0, 8));
 	margin: 0;
 }
 
-/* Categories Grid */
 .categories-grid {
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
 	gap: 1.5rem;
 }
 
-/* Tablet */
 @media (max-width: 1024px) {
 	.categories-grid {
 		grid-template-columns: repeat(3, 1fr);
@@ -479,7 +595,6 @@ const popularProducts = computed(() => menuStore.popularProducts.slice(0, 8));
 	}
 }
 
-/* Mobile */
 @media (max-width: 600px) {
 	.categories-grid {
 		grid-template-columns: 1fr;
@@ -503,9 +618,6 @@ const popularProducts = computed(() => menuStore.popularProducts.slice(0, 8));
 .category-preview:hover {
 	transform: translateY(-6px);
 	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-	background: linear-gradient(135deg, var(--category-color) 0%, transparent 100%);
-	background-size: 200% 200%;
-	background-position: 0 0;
 }
 
 .category-preview:hover .category-icon {
@@ -658,10 +770,8 @@ const popularProducts = computed(() => menuStore.popularProducts.slice(0, 8));
 .cta-text {
 	font-size: 1.05rem;
 	color: var(--text-secondary);
-	margin: 0 0 1.5rem 0;
+	margin: 0 auto 1.5rem;
 	max-width: 500px;
-	margin-left: auto;
-	margin-right: auto;
 	line-height: 1.6;
 }
 
