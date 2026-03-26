@@ -31,6 +31,16 @@
 					<router-link class="nav-link" to="/gallery">גלריה</router-link>
 					<router-link class="nav-link" to="/about">אודות</router-link>
 					<router-link class="nav-link" to="/my-orders">ההזמנות שלי</router-link>
+
+					<!-- תפריט חגים -->
+					<div class="nav-dropdown">
+						<span class="nav-link nav-link-dropdown">חגים 🎉</span>
+						<div class="dropdown-menu">
+							<router-link class="dropdown-item" to="/Pesach">🍷 פסח</router-link>
+							<router-link class="dropdown-item" to="/Purim">🎭 פורים</router-link>
+						</div>
+					</div>
+
 					<router-link class="nav-link nav-link-primary" to="/quote">הצעת מחיר</router-link>
 					<router-link class="nav-link" to="/faq">שאלות נפוצות</router-link>
 				</div>
@@ -40,11 +50,20 @@
 		<!-- Mobile Menu - מחוץ ל-header! -->
 		<Transition name="slide-menu">
 			<div v-if="isMobileMenuOpen" class="mobile-menu-overlay" @click="closeMobileMenu">
+				<!-- Mobile Menu -->
 				<div class="mobile-menu" @click.stop>
 					<router-link class="mobile-nav-link" to="/menu" @click="closeMobileMenu">תפריט</router-link>
 					<router-link class="mobile-nav-link" to="/gallery" @click="closeMobileMenu">גלריה</router-link>
 					<router-link class="mobile-nav-link" to="/about" @click="closeMobileMenu">אודות</router-link>
 					<router-link class="mobile-nav-link" to="/my-orders" @click="closeMobileMenu">ההזמנות שלי</router-link>
+
+					<!-- חגים במובייל -->
+					<div class="mobile-nav-section">חגים 🎉</div>
+					<router-link class="mobile-nav-link mobile-nav-link-sub" to="/Pesach" @click="closeMobileMenu">🍷 פסח</router-link>
+					<router-link class="mobile-nav-link mobile-nav-link-sub" to="/Purim" @click="closeMobileMenu"
+						>🎭 פורים</router-link
+					>
+
 					<router-link class="mobile-nav-link mobile-nav-link-primary" to="/quote" @click="closeMobileMenu"
 						>הצעת מחיר</router-link
 					>
@@ -282,6 +301,8 @@ a {
 .grid-3 {
 	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
+</style>
+
 <style scoped>
 /* Header */
 .header {
@@ -612,5 +633,72 @@ a {
 .dark .mobile-nav-link-primary {
 	background: #d34a6e !important;
 	color: white !important;
+}
+/* Dropdown Menu - Desktop */
+.nav-dropdown {
+	position: relative;
+}
+
+.nav-link-dropdown {
+	cursor: pointer;
+}
+
+.dropdown-menu {
+	position: absolute;
+	top: 100%;
+	right: 0;
+	background: var(--bg-primary);
+	border-radius: 12px;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+	padding: 0.5rem;
+	min-width: 150px;
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(10px);
+	transition: all 0.3s ease;
+	z-index: 200;
+}
+
+.nav-dropdown:hover .dropdown-menu {
+	opacity: 1;
+	visibility: visible;
+	transform: translateY(0);
+}
+
+.dropdown-item {
+	display: block;
+	padding: 0.75rem 1rem;
+	border-radius: 8px;
+	font-weight: 600;
+	color: var(--text-secondary);
+	transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+	background: var(--pink-light);
+	color: var(--pink-primary);
+}
+
+/* Mobile Menu - Section Header */
+.mobile-nav-section {
+	width: 100%;
+	text-align: center;
+	padding: 0.75rem 1rem;
+	font-size: 0.9rem;
+	font-weight: 700;
+	color: rgba(255, 255, 255, 0.7);
+	margin-top: 0.5rem;
+	border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.mobile-nav-link-sub {
+	background: rgba(255, 255, 255, 0.1) !important;
+	font-size: 1rem;
+	padding: 0.75rem 1.5rem;
+}
+
+.mobile-nav-link-sub:hover,
+.mobile-nav-link-sub.router-link-active {
+	background: rgba(255, 255, 255, 0.25) !important;
 }
 </style>
