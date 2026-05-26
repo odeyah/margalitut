@@ -9,8 +9,9 @@
 
 				<!-- Right Side Actions -->
 				<div class="nav-actions">
-					<router-link v-if="englishPath" :to="englishPath" class="lang-btn" :title="isEnglishPage ? 'עברית' : 'English'">
-						{{ isEnglishPage ? 'עב' : 'EN' }}
+					<router-link v-if="englishPath" :to="englishPath" class="lang-switch-btn" :title="isEnglishPage ? 'עברית' : 'English'">
+						<span class="lang-icon">🌐</span>
+						<span class="lang-text">{{ isEnglishPage ? 'עברית' : 'English' }}</span>
 					</router-link>
 					<SearchBar />
 					<DarkModeToggle class="dark-toggle-desktop" />
@@ -32,19 +33,7 @@
 					<router-link class="nav-link" to="/about">אודות</router-link>
 					<router-link class="nav-link" to="/my-orders">ההזמנות שלי</router-link>
 
-					<!-- פסח - ישירות בתפריט הראשי -->
-					<router-link class="nav-link nav-link-pesach" to="/Pesach">
-						<span class="pesach-icon">🍷</span>
-						פסח
-					</router-link>
 
-					<!-- תפריט חגים אחרים -->
-					<div class="nav-dropdown">
-						<span class="nav-link nav-link-dropdown">חגים 🎉</span>
-						<div class="dropdown-menu">
-							<router-link class="dropdown-item" to="/Purim">🎭 פורים</router-link>
-						</div>
-					</div>
 
 					<router-link class="nav-link nav-link-primary" to="/quote">הצעת מחיר</router-link>
 					<router-link class="nav-link" to="/faq">שאלות נפוצות</router-link>
@@ -61,22 +50,21 @@
 					<router-link class="mobile-nav-link" to="/about" @click="closeMobileMenu">אודות</router-link>
 					<router-link class="mobile-nav-link" to="/my-orders" @click="closeMobileMenu">ההזמנות שלי</router-link>
 
-					<!-- פסח - בולט במובייל -->
-					<router-link class="mobile-nav-link mobile-nav-link-pesach" to="/Pesach" @click="closeMobileMenu">
-						🍷 פסח
-					</router-link>
 
-					<!-- חגים במובייל -->
-					<div class="mobile-nav-section">חגים 🎉</div>
-					<router-link class="mobile-nav-link mobile-nav-link-sub" to="/Purim" @click="closeMobileMenu">
-						🎭 פורים
-					</router-link>
 
 					<router-link class="mobile-nav-link mobile-nav-link-primary" to="/quote" @click="closeMobileMenu">
 						הצעת מחיר
 					</router-link>
 					<router-link class="mobile-nav-link" to="/faq" @click="closeMobileMenu">שאלות נפוצות</router-link>
 					<DarkModeToggle class="dark-toggle-mobile" />
+
+					<!-- כפתור החלפת שפה במובייל -->
+					<div v-if="englishPath" class="mobile-lang-wrapper">
+						<router-link :to="englishPath" class="mobile-lang-btn" @click="closeMobileMenu">
+							<span class="lang-icon">🌐</span>
+							{{ isEnglishPage ? 'עבור לעברית' : 'Switch to English' }}
+						</router-link>
+					</div>
 				</div>
 			</div>
 		</Transition>
@@ -125,6 +113,7 @@ const toggleMobileMenu = () => uiStore.toggleMobileMenu();
 const closeMobileMenu = () => uiStore.closeMobileMenu();
 
 const pagesWithEnglish = {
+	'/': '/?lang=en',
 	'/Purim': '/Purim-en',
 	'/Purim-en': '/Purim',
 	'/Pesach': '/Pesach-en',
@@ -390,24 +379,29 @@ a {
 	gap: 0.75rem;
 }
 
-.lang-btn {
+.lang-switch-btn {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 36px;
-	height: 36px;
-	border-radius: 50%;
-	background: var(--pink-light);
-	color: var(--pink-primary);
+	gap: 0.4rem;
+	padding: 0.4rem 1rem;
+	border-radius: 20px;
+	border: 2px solid var(--border-pink);
+	background: var(--bg-primary);
+	color: var(--text-secondary);
 	font-weight: 700;
-	font-size: 0.75rem;
-	transition: all 0.3s ease;
+	font-size: 0.8rem;
+	transition: all 0.25s ease;
 }
 
-.lang-btn:hover {
-	background: var(--pink-primary);
-	color: white;
-	transform: scale(1.05);
+.lang-switch-btn:hover {
+	border-color: var(--pink-primary);
+	color: var(--pink-primary);
+	box-shadow: 0 2px 10px rgba(211, 74, 110, 0.15);
+}
+
+.lang-icon {
+	font-size: 1rem;
 }
 
 .dark-toggle-desktop {
@@ -494,17 +488,9 @@ a {
 	background: rgba(255, 255, 255, 0.3);
 }
 
-/* פסח במובייל - בולט */
+/* פסח לא בשימוש כרגע בצורה בולטת במובייל כי הוא תחת חגים */
 .mobile-nav-link-pesach {
-	background: rgba(201, 151, 58, 0.4) !important;
-	border: 1.5px solid rgba(255, 220, 120, 0.5);
-	color: #fff5cc !important;
-	font-size: 1.15rem;
-}
-
-.mobile-nav-link-pesach:hover,
-.mobile-nav-link-pesach.router-link-active {
-	background: rgba(201, 151, 58, 0.65) !important;
+	display: none;
 }
 
 .mobile-nav-link-primary {
@@ -592,10 +578,12 @@ a {
 	.logo-img {
 		height: 40px;
 	}
-	.lang-btn {
-		width: 30px;
-		height: 30px;
-		font-size: 0.65rem;
+	.lang-switch-btn {
+		padding: 0.3rem 0.6rem;
+		font-size: 0.75rem;
+	}
+	.lang-switch-btn .lang-text {
+		display: none;
 	}
 	.app.menu-open {
 		overflow: hidden;
@@ -698,5 +686,30 @@ a {
 .mobile-nav-link-sub:hover,
 .mobile-nav-link-sub.router-link-active {
 	background: rgba(255, 255, 255, 0.25) !important;
+}
+
+/* שפה במובייל */
+.mobile-lang-wrapper {
+	margin-top: 1rem;
+	display: flex;
+	justify-content: center;
+}
+
+.mobile-lang-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.75rem 1.5rem;
+	background: rgba(255, 255, 255, 0.2);
+	color: white;
+	border-radius: 20px;
+	font-weight: 700;
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	text-decoration: none;
+	transition: all 0.3s ease;
+}
+
+.mobile-lang-btn:hover {
+	background: rgba(255, 255, 255, 0.4);
 }
 </style>

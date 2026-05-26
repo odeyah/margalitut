@@ -1,13 +1,6 @@
 <template>
 	<div class="home-page">
-		<!-- Language Toggle -->
-		<div class="lang-toggle-wrapper">
-			<button class="lang-toggle" @click="toggleLang" :aria-label="lang === 'he' ? 'Switch to English' : 'עבור לעברית'">
-				<span class="lang-option" :class="{ active: lang === 'he' }">עב</span>
-				<span class="lang-divider">|</span>
-				<span class="lang-option" :class="{ active: lang === 'en' }">EN</span>
-			</button>
-		</div>
+
 
 		<!-- Hero Section -->
 		<section class="hero-section animate-on-scroll fade-up">
@@ -170,6 +163,7 @@
 
 <script setup>
 import { ref, computed } from 'vue';
+import { useRoute } from 'vue-router';
 import { useMenuStore } from '../stores/menuStore';
 import { ProductCard } from '../components/menu';
 import logo from '../assets/logo.png';
@@ -180,8 +174,8 @@ import { useScrollAnimation } from '../composables/useScrollAnimation';
 useScrollAnimation();
 
 // ─── Language ───────────────────────────────────────────────
-const lang = ref('he');
-const toggleLang = () => (lang.value = lang.value === 'he' ? 'en' : 'he');
+const route = useRoute();
+const lang = computed(() => route.query.lang === 'en' ? 'en' : 'he');
 
 const translations = {
 	he: {
@@ -270,46 +264,7 @@ const popularProducts = computed(() => menuStore.popularProducts.slice(0, 8));
 	margin: 0 auto;
 }
 
-/* ========== LANGUAGE TOGGLE ========== */
-.lang-toggle-wrapper {
-	display: flex;
-	justify-content: flex-start;
-	padding: 0.75rem 0 0;
-}
 
-.lang-toggle {
-	display: inline-flex;
-	align-items: center;
-	gap: 0.4rem;
-	padding: 0.4rem 1rem;
-	background: var(--bg-primary);
-	border: 2px solid var(--border-pink);
-	border-radius: 20px;
-	cursor: pointer;
-	transition: all 0.25s ease;
-	font-weight: 700;
-	font-size: 0.8rem;
-	color: var(--text-secondary);
-}
-
-.lang-toggle:hover {
-	border-color: var(--pink-primary);
-	box-shadow: 0 2px 10px rgba(211, 74, 110, 0.15);
-}
-
-.lang-option {
-	color: var(--text-muted);
-	transition: color 0.25s ease;
-	letter-spacing: 0.03em;
-}
-
-.lang-option.active {
-	color: var(--pink-primary);
-}
-
-.lang-divider {
-	color: var(--border-pink);
-}
 
 /* ========== HERO SECTION ========== */
 .hero-section {

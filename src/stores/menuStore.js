@@ -643,6 +643,15 @@ export const useMenuStore = defineStore('menu', () => {
 			description:
 				'חיתוכיות חמאת בוטנים ושוקולד - שילוב אמריקאי קלאסי ואהוב. עוגיות עשירות בחלבון - פינוק לכל המשפחה. מאפיית מרגליתות בית שמש',
 		},
+		{
+			id: 34,
+			name: 'גבינה ניו יורק',
+			category: 'mixed-cakes',
+			price: 320,
+			image: '',
+			description:
+				'עוגת גבינת שמנת קרמית מפנקת - קוטר 26 ס"מ, כ-20 מנות. עוגת גבינה קרמית עם תחתית עוגיות בחמאה או לוטוס. פינוק אמריקאי - מאפיית מרגליתות בית שמש',
+		},
 
 		// לחמים
 		{
@@ -668,7 +677,7 @@ export const useMenuStore = defineStore('menu', () => {
 			id: 72,
 			name: 'מארז לחמניות הבית כוסמין 80%',
 			category: ['vegan', 'breads'],
-			price: 35,
+			price: 30,
 			image: '/bread/rolls.jpeg',
 			description:
 				'לחמניות כוסמין 80% בריאות - מארז 5 יח׳. לחמניות מקמח מלא עשירות בסיבים תזונתיים וויטמינים. לחם בריא וטעים לכל משפחה - אפייה ביתית בבית שמש',
@@ -686,7 +695,7 @@ export const useMenuStore = defineStore('menu', () => {
 			id: 74,
 			name: 'לחמניות שום כוסמין 80%',
 			category: ['vegan', 'breads'],
-			price: 40,
+			price: 35,
 			image: '/bread/garlicRolls.png',
 			description:
 				"לחמניות שום בריאות מכוסמין 80% - מארז 5 יח'. לחמניות ארומטיות בטעם שום ועשבי תיבול טריים. מושלמות לצד מרק, פסטה או סלט - מבית שמש",
@@ -914,7 +923,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'פיצה הבית',
 			category: 'dairy-meals',
 			subcategory: 'pizzas',
-			price: 70,
+			price: 80,
 			image: '',
 			description:
 				'פיצה ביתית איטלקית עם רוטב עגבניות טרי, מוצרלה נמשכת + 2 תוספות לבחירה. בצק טרי יומי אפוי בתנור ביתי. מאפיית מרגליתות בית שמש',
@@ -927,17 +936,12 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'קיש',
 			category: 'dairy-meals',
 			subcategory: 'quiches',
-			price: null,
+			price: 185,
 			image: '',
 			description:
-				'קיש ביתי טרי בטעמים לבחירה - בטטה, ברוקולי, תרד, פטריות או מנגולד. קיש צרפתי אותנטי מושלם לאירוח, לארוחת בוקר ולשבת. מאפיית מרגליתות בית שמש',
-			popular: true,
+				'קיש ביתי טרי בטעמים לבחירה - בטטה, ברוקולי, תרד, פטריות או מנגולד. קיש מושלם לאירוח קוטר 24 ס"מ, לארוחת בוקר ולשבת. מאפיית מרגליתות בית שמש מינימום הזמנה: 2 יחידות',
+			popular: false,
 			hasOptions: true,
-			sizes: [
-				{ id: 'small', name: 'קטן (14)', price: 110, minQty: 3, note: 'המחיר מותנה בקניית 3' },
-				{ id: 'medium', name: 'בינוני (20)', price: 150, minQty: 2, note: 'המחיר מותנה בקניית 2' },
-				{ id: 'large', name: 'גדול (24)', price: 180, minQty: 2, note: 'המחיר מותנה בקניית 2' },
-			],
 			flavors: [
 				{ id: 'sweet-potato', name: 'בטטה', icon: '🍠' },
 				{ id: 'broccoli', name: 'ברוקולי', icon: '🥦' },
@@ -973,10 +977,20 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'שבלול פילו גדול',
 			category: 'dairy-meals',
 			subcategory: 'borax',
-			price: 170,
+			price: 180,
 			image: '',
 			description:
-				'שבלול פילו גדול ומרשים במילוי גבינות עשיר - מאפה פילו פריך לאירוח. מתאים לכ-10 מנות, מושלם לארוחת בוקר שישי ושבת. מאפיית מרגליתות בית שמש',
+				'שבלול פילו גדול ומרשים במילוי גבינות עשיר מנגולד או תרד - מאפה פילו פריך לאירוח. קוטר 26 ס"מ מתאים לכ-8 מנות, מושלם לארוחת בוקר שישי ושבת. מאפיית מרגליתות בית שמש',
+		},
+		{
+			id: 153,
+			name: 'שבלול פילו קטן',
+			category: 'dairy-meals',
+			subcategory: 'borax',
+			price: 140,
+			image: '',
+			description:
+				'שבלול פילו בינוני במילוי גבינות עשיר עם מנגולד או תרד - מאפה פילו פריך לאירוח. מתאים לכ-6 מנות, מושלם לארוחת בוקר שישי ושבת. מאפיית מרגליתות בית שמש',
 		},
 
 		// פסטות
@@ -985,7 +999,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'רביולי אלפרדו',
 			category: 'dairy-meals',
 			subcategory: 'pastas',
-			price: 150,
+			price: 180,
 			image: '',
 			description:
 				'רביולי גבינה ברוטב אלפרדו ביתי - 400 גרם פסטה איטלקית ברוטב שמנת ופרמזן קרמי. מתאים לכ-3-5 סועדים. מאפיית מרגליתות בית שמש',
@@ -996,7 +1010,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'רביולי עגבניות',
 			category: 'dairy-meals',
 			subcategory: 'pastas',
-			price: 150,
+			price: 180,
 			image: '',
 			description:
 				'רביולי גבינה ברוטב עגבניות ביתי - 400 גרם פסטה איטלקית קלאסית ברוטב עגבניות טרי. מתאים לכ-3-5 סועדים. מאפיית מרגליתות בית שמש',
@@ -1006,7 +1020,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'רביולי פסטו',
 			category: 'dairy-meals',
 			subcategory: 'pastas',
-			price: 150,
+			price: 180,
 			image: '',
 			description:
 				'רביולי גבינה ברוטב פסטו טרי - 400 גרם פסטה איטלקית ברוטב בזיליקום ואגוזי צנובר. פסטה ירוקה ורעננת. מאפיית מרגליתות בית שמש',
