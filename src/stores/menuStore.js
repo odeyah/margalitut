@@ -648,7 +648,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'גבינה ניו יורק',
 			category: 'mixed-cakes',
 			price: 320,
-			image: '',
+			image: '/cakes/newYork.jpeg',
 			description:
 				'עוגת גבינת שמנת קרמית מפנקת - קוטר 26 ס"מ, כ-20 מנות. עוגת גבינה קרמית עם תחתית עוגיות בחמאה או לוטוס ומגוון ציפויים לבחירתכם: פירות יער, ריבת חלב, לוטוס, גנאש... פינוק אמריקאי - מאפיית מרגליתות בית שמש',
 		},
@@ -933,7 +933,7 @@ export const useMenuStore = defineStore('menu', () => {
 			category: 'dairy-meals',
 			subcategory: 'pizzas',
 			price: 80,
-			image: '',
+			image: '/milkMeals/pizza.jpeg',
 			description:
 				'פיצה ביתית איטלקית עם רוטב עגבניות טרי, מוצרלה נמשכת + 2 תוספות לבחירה. בצק טרי יומי אפוי בתנור ביתי. מאפיית מרגליתות בית שמש',
 			popular: true,
@@ -946,7 +946,7 @@ export const useMenuStore = defineStore('menu', () => {
 			category: 'dairy-meals',
 			subcategory: 'quiches',
 			price: 185,
-			image: '',
+			image: '/milkMeals/brocoly.jpeg',
 			description:
 				'קיש ביתי טרי בטעמים לבחירה - בטטה, ברוקולי, תרד, פטריות או מנגולד. קיש מושלם לאירוח קוטר 24 ס"מ, לארוחת בוקר ולשבת. מאפיית מרגליתות בית שמש מינימום הזמנה: 2 יחידות',
 			popular: false,
@@ -1031,7 +1031,7 @@ export const useMenuStore = defineStore('menu', () => {
 				'רביולי גבינה ברוטב אלפרדו ביתי - 400 גרם פסטה איטלקית ברוטב שמנת ופרמזן קרמי. מתאים לכ-3-5 סועדים. מאפיית מרגליתות בית שמש',
 			popular: true,
 			hasAddOns: true,
-			addOns: [{ id: 'cheese-cream', name: 'קרמה גבינה צהובה', price: 20 }],
+			addOns: [{ id: 'cheese-cream', name: 'תוספת הקרמת גבינה צהובה', price: 20 }],
 		},
 		{
 			id: 161,
@@ -1043,7 +1043,7 @@ export const useMenuStore = defineStore('menu', () => {
 			description:
 				'רביולי גבינה ברוטב עגבניות ביתי - 400 גרם פסטה איטלקית קלאסית ברוטב עגבניות טרי. מתאים לכ-3-5 סועדים. מאפיית מרגליתות בית שמש',
 			hasAddOns: true,
-			addOns: [{ id: 'cheese-cream', name: 'קרמה גבינה צהובה', price: 20 }],
+			addOns: [{ id: 'cheese-cream', name: 'תוספת הקרמת גבינה צהובה', price: 20 }],
 		},
 		{
 			id: 162,
@@ -1054,6 +1054,8 @@ export const useMenuStore = defineStore('menu', () => {
 			image: '',
 			description:
 				'רביולי גבינה ברוטב פסטו טרי - 400 גרם פסטה איטלקית ברוטב בזיליקום ואגוזי צנובר. פסטה ירוקה ורעננת. מאפיית מרגליתות בית שמש',
+			hasAddOns: true,
+			addOns: [{ id: 'cheese-cream', name: 'תוספת הקרמת גבינה צהובה', price: 20 }],
 		},
 		{
 			id: 163,
@@ -1094,7 +1096,7 @@ export const useMenuStore = defineStore('menu', () => {
 			description:
 				'תפוח אדמה מוקרם ברוטב שמנת, פיטריות וערמונים. תפוח אדמה טרי מוקרם דק וגולדי, משולב ברוטב שמנת קרמי עשיר עם פיטריות טריות וערמונים המוסיפים טעם עדין. מנה חגיגית ומרשימה לאירוח ולימי חג. מתאים לכ-6 סועדים. מאפיית מרגליתות בית שמש',
 			hasAddOns: true,
-			addOns: [{ id: 'cheese-cream', name: 'קרמה גבינה צהובה', price: 20 }],
+			addOns: [{ id: 'cheese-cream', name: 'תוספת הקרמת גבינה צהובה', price: 20 }],
 		},
 
 		// מגשי אירועים
