@@ -1031,9 +1031,7 @@ export const useMenuStore = defineStore('menu', () => {
 				'רביולי גבינה ברוטב אלפרדו ביתי - 400 גרם פסטה איטלקית ברוטב שמנת ופרמזן קרמי. מתאים לכ-3-5 סועדים. מאפיית מרגליתות בית שמש',
 			popular: true,
 			hasAddOns: true,
-			addOns: [
-				{ id: 'cheese-cream', name: 'קרמה גבינה צהובה', price: 20 },
-			],
+			addOns: [{ id: 'cheese-cream', name: 'קרמה גבינה צהובה', price: 20 }],
 		},
 		{
 			id: 161,
@@ -1045,9 +1043,7 @@ export const useMenuStore = defineStore('menu', () => {
 			description:
 				'רביולי גבינה ברוטב עגבניות ביתי - 400 גרם פסטה איטלקית קלאסית ברוטב עגבניות טרי. מתאים לכ-3-5 סועדים. מאפיית מרגליתות בית שמש',
 			hasAddOns: true,
-			addOns: [
-				{ id: 'cheese-cream', name: 'קרמה גבינה צהובה', price: 20 },
-			],
+			addOns: [{ id: 'cheese-cream', name: 'קרמה גבינה צהובה', price: 20 }],
 		},
 		{
 			id: 162,
@@ -1097,6 +1093,8 @@ export const useMenuStore = defineStore('menu', () => {
 			image: '',
 			description:
 				'תפוח אדמה מוקרם ברוטב שמנת, פיטריות וערמונים. תפוח אדמה טרי מוקרם דק וגולדי, משולב ברוטב שמנת קרמי עשיר עם פיטריות טריות וערמונים המוסיפים טעם עדין. מנה חגיגית ומרשימה לאירוח ולימי חג. מתאים לכ-6 סועדים. מאפיית מרגליתות בית שמש',
+			hasAddOns: true,
+			addOns: [{ id: 'cheese-cream', name: 'קרמה גבינה צהובה', price: 20 }],
 		},
 
 		// מגשי אירועים
