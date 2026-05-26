@@ -650,7 +650,7 @@ export const useMenuStore = defineStore('menu', () => {
 			price: 320,
 			image: '',
 			description:
-				'עוגת גבינת שמנת קרמית מפנקת - קוטר 26 ס"מ, כ-20 מנות. עוגת גבינה קרמית עם תחתית עוגיות בחמאה או לוטוס. פינוק אמריקאי - מאפיית מרגליתות בית שמש',
+				'עוגת גבינת שמנת קרמית מפנקת - קוטר 26 ס"מ, כ-20 מנות. עוגת גבינה קרמית עם תחתית עוגיות בחמאה או לוטוס ומגוון ציפויים לבחירתכם: פירות יער, ריבת חלב, לוטוס, גנאש... פינוק אמריקאי - מאפיית מרגליתות בית שמש',
 		},
 
 		// לחמים
@@ -726,6 +726,15 @@ export const useMenuStore = defineStore('menu', () => {
 			image: '/bread/sweetRools.png',
 			description:
 				'לחמניות מתוקות עם צימוקים עסיסיים - מארז 5 יח׳. לחמניות רכות ומתוקות בסגנון ביתי לארוחת בוקר מפנקת. אהובות על ילדים - מאפיית מרגליתות בית שמש',
+		},
+		{
+			id: 78,
+			name: 'חלה מתוקה',
+			category: 'breads',
+			price: 45,
+			image: '/bread/sweetRools.png',
+			description:
+				'חלה מתוקה עם צימוקים עסיסיים. חלה רכה ומתוקה בסגנון ביתי לארוחת בוקר מפנקת. אהובות על ילדים - מאפיית מרגליתות בית שמש',
 		},
 
 		// ==================== ללא סוכר ====================
@@ -811,7 +820,7 @@ export const useMenuStore = defineStore('menu', () => {
 			id: 110,
 			name: 'גלידת וניל',
 			category: ['ice-cream', 'gluten-free'],
-			price: 120,
+			price: 130,
 			image: '',
 			description:
 				'גלידת וניל ביתית קילו - גלידה איטלקית קרמית בטעם וניל מדגסקר קלאסי. ללא חומרים משמרים, ללא גלוטן. מאפיית מרגליתות בית שמש',
@@ -821,7 +830,7 @@ export const useMenuStore = defineStore('menu', () => {
 			id: 111,
 			name: 'גלידת שוקולד',
 			category: 'ice-cream',
-			price: 120,
+			price: 130,
 			image: '',
 			description:
 				'גלידת שוקולד בלגי ביתית קילו - גלידה איטלקית עשירה בטעם שוקולד כהה אינטנסיבי. לחובבי שוקולד אמיתיים. מאפיית מרגליתות בית שמש',
@@ -830,7 +839,7 @@ export const useMenuStore = defineStore('menu', () => {
 			id: 112,
 			name: 'גלידת תות שמנת',
 			category: 'ice-cream',
-			price: 120,
+			price: 130,
 			image: '',
 			description:
 				'גלידת תות שמנת ביתית קילו - גלידה קרמית עם תותים טריים אמיתיים. גלידה פירותית אהובה על ילדים ומבוגרים. מאפיית מרגליתות בית שמש',
@@ -839,7 +848,7 @@ export const useMenuStore = defineStore('menu', () => {
 			id: 113,
 			name: 'גלידת אוראו',
 			category: 'ice-cream',
-			price: 120,
+			price: 130,
 			image: '',
 			description:
 				'גלידת אוראו ביתית קילו - גלידה איטלקית קרמית עם פיסות עוגיות אוריאו פריכות. גלידה חגיגית לכל המשפחה. מאפיית מרגליתות בית שמש',
@@ -848,7 +857,7 @@ export const useMenuStore = defineStore('menu', () => {
 			id: 114,
 			name: 'גלידת מנגו',
 			category: 'ice-cream',
-			price: 120,
+			price: 130,
 			image: '',
 			description:
 				'גלידת מנגו טרופית ביתית קילו - גלידה מרעננת בטעם מנגו טרי ואקזוטי. גלידה קייצית מושלמת לימים חמים. מאפיית מרגליתות בית שמש',
@@ -857,7 +866,7 @@ export const useMenuStore = defineStore('menu', () => {
 			id: 115,
 			name: 'גלידת לימון',
 			category: 'ice-cream',
-			price: 120,
+			price: 130,
 			image: '',
 			description:
 				'גלידת לימון ביתית קילו - סורבה איטלקי מרענן בטעם לימון חמצמץ וקליל. גלידה קייצית מושלמת לקינוח מרענן. מאפיית מרגליתות בית שמש',
@@ -866,7 +875,7 @@ export const useMenuStore = defineStore('menu', () => {
 			id: 116,
 			name: 'גלידת לוטוס',
 			category: 'ice-cream',
-			price: 120,
+			price: 130,
 			image: '',
 			description:
 				'גלידת לוטוס ביתית קילו - גלידה קרמית בטעם ביסקוויט לוטוס בלגי עם פיסות עוגיות פריכות. טעם ממכר. מאפיית מרגליתות בית שמש',
@@ -875,7 +884,7 @@ export const useMenuStore = defineStore('menu', () => {
 			id: 117,
 			name: 'גלידת רבע לשבע',
 			category: 'ice-cream',
-			price: 120,
+			price: 130,
 			image: '',
 			description:
 				'גלידת רבע לשבע ביתית קילו - גלידה נוסטלגית בטעם השוקולד הישראלי האהוב. טעם של ילדות לכל המשפחה. מאפיית מרגליתות בית שמש',
@@ -902,7 +911,7 @@ export const useMenuStore = defineStore('menu', () => {
 			id: 120,
 			name: 'גלידת פירות יער',
 			category: 'ice-cream',
-			price: 120,
+			price: 130,
 			image: '',
 			description:
 				'גלידת פירות יער ביתית קילו - גלידה פירותית עם תותים, אוכמניות ופטל טריים. גלידה מרעננת וטעימה. מאפיית מרגליתות בית שמש',
@@ -911,7 +920,7 @@ export const useMenuStore = defineStore('menu', () => {
 			id: 121,
 			name: 'גלידת תפוז',
 			category: 'ice-cream',
-			price: 120,
+			price: 130,
 			image: '',
 			description:
 				'גלידת תפוז ביתית קילו - סורבה איטלקי מרענן בטעם תפוז טבעי והדרים. גלידה קייצית קלילה ומרעננת. מאפיית מרגליתות בית שמש',
@@ -954,23 +963,21 @@ export const useMenuStore = defineStore('menu', () => {
 		// בורקס
 		{
 			id: 150,
-			name: 'בורקס תפוח אדמה',
+			name: 'מאפינס גבינות',
 			category: 'dairy-meals',
 			subcategory: 'borax',
-			price: 10,
+			price: 12,
 			image: '',
-			description:
-				'בורקס תפוח אדמה ביתי - בורקס פריך וזהוב במילוי פירה תפו"א קרמי. בורקס טורקי מקורי ליחידה. מאפיית מרגליתות בית שמש',
+			description: 'מאפים מלוחים אישיים במילוי גבינות איכותיות. אפויים עד להזהבה מושלמת. מאפיית מרגליתות בית שמש',
 		},
 		{
 			id: 151,
-			name: 'בורקס גבינה',
+			name: 'מאפה עלים בצל ופטריות',
 			category: 'dairy-meals',
 			subcategory: 'borax',
-			price: 10,
+			price: 85,
 			image: '',
-			description:
-				'בורקס גבינה ביתי - בורקס פריך במילוי גבינה בולגרית ופטה עשירה. בורקס ישראלי קלאסי בטעם של בית. מאפיית מרגליתות בית שמש',
+			description: 'קליעת בצק עלים פריכה עם מילוי בצל ופטריות, אפוי. מאפיית מרגליתות בית שמש',
 		},
 		{
 			id: 152,
@@ -992,6 +999,25 @@ export const useMenuStore = defineStore('menu', () => {
 			description:
 				'שבלול פילו בינוני במילוי גבינות עשיר עם מנגולד או תרד - מאפה פילו פריך לאירוח. מתאים לכ-6 מנות, מושלם לארוחת בוקר שישי ושבת. מאפיית מרגליתות בית שמש',
 		},
+		{
+			id: 154,
+			name: 'סלט גדול',
+			category: 'dairy-meals',
+			subcategory: 'quiches',
+			price: 180,
+			image: '',
+			description:
+				'מגוון סלטים צבעוניים ורעננים לבחירתכם. יווני או כרוב או בורגול או טונה או חלומי מאפיית מרגליתות בית שמש מינימום הזמנה: 2 יחידות',
+			popular: false,
+			hasOptions: true,
+			flavors: [
+				{ id: 'greek', name: 'יווני', icon: '🍠' },
+				{ id: 'cabage', name: 'כרוב', icon: '🥦' },
+				{ id: 'borgul', name: 'בורגול/קינואה', icon: '🥬' },
+				{ id: 'tuna', name: 'טונה', icon: '🍄' },
+				{ id: 'halumi', name: 'חלומי', icon: '🌿' },
+			],
+		},
 
 		// פסטות
 		{
@@ -999,38 +1025,85 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'רביולי אלפרדו',
 			category: 'dairy-meals',
 			subcategory: 'pastas',
-			price: 180,
+			price: 150,
 			image: '',
 			description:
 				'רביולי גבינה ברוטב אלפרדו ביתי - 400 גרם פסטה איטלקית ברוטב שמנת ופרמזן קרמי. מתאים לכ-3-5 סועדים. מאפיית מרגליתות בית שמש',
 			popular: true,
+			hasAddOns: true,
+			addOns: [
+				{ id: 'cheese-cream', name: 'קרמה גבינה צהובה', price: 20 },
+			],
 		},
 		{
 			id: 161,
 			name: 'רביולי עגבניות',
 			category: 'dairy-meals',
 			subcategory: 'pastas',
-			price: 180,
+			price: 150,
 			image: '',
 			description:
 				'רביולי גבינה ברוטב עגבניות ביתי - 400 גרם פסטה איטלקית קלאסית ברוטב עגבניות טרי. מתאים לכ-3-5 סועדים. מאפיית מרגליתות בית שמש',
+			hasAddOns: true,
+			addOns: [
+				{ id: 'cheese-cream', name: 'קרמה גבינה צהובה', price: 20 },
+			],
 		},
 		{
 			id: 162,
 			name: 'רביולי פסטו',
 			category: 'dairy-meals',
 			subcategory: 'pastas',
-			price: 180,
+			price: 150,
 			image: '',
 			description:
 				'רביולי גבינה ברוטב פסטו טרי - 400 גרם פסטה איטלקית ברוטב בזיליקום ואגוזי צנובר. פסטה ירוקה ורעננת. מאפיית מרגליתות בית שמש',
+		},
+		{
+			id: 163,
+			name: 'דג סלמון שלם בפסטו ושקדים',
+			category: 'dairy-meals',
+			subcategory: 'pastas',
+			price: 300,
+			image: '',
+			description: 'דג סלמון שלם בפסטו ושקדים מעוצב - כ1.5 ק"ג. מאפיית מרגליתות בית שמש',
+		},
+		{
+			id: 164,
+			name: 'פלטת ירקות',
+			category: 'dairy-meals',
+			subcategory: 'pastas',
+			price: 300,
+			image: '',
+			description:
+				'פלטת ירקות טריים מעוצבת. מגוון ירקות עונתיים צבעוניים. פלטה מרשימה ובריאה לאירועים, למסיבות ולארוח אורחים. מעוצבת בדיוק בקו העיצוב של מאפיית מרגליתות בית שמש.',
+		},
+		{
+			id: 165,
+			name: 'פלטת פירות',
+			category: 'dairy-meals',
+			subcategory: 'pastas',
+			price: 300,
+			image: '',
+			description:
+				'פלטת פירות מעוצבת. מגוון פירות עונתיים צבעוניים. פלטה מרשימה ובריאה לאירועים, למסיבות ולארוח אורחים. מעוצבת בדיוק בקו העיצוב של מאפיית מרגליתות בית שמש.',
+		},
+		{
+			id: 166,
+			name: 'תפוח אדמה מוקרם',
+			category: 'dairy-meals',
+			subcategory: 'pastas',
+			price: 150,
+			image: '',
+			description:
+				'תפוח אדמה מוקרם ברוטב שמנת, פיטריות וערמונים. תפוח אדמה טרי מוקרם דק וגולדי, משולב ברוטב שמנת קרמי עשיר עם פיטריות טריות וערמונים המוסיפים טעם עדין. מנה חגיגית ומרשימה לאירוח ולימי חג. מתאים לכ-6 סועדים. מאפיית מרגליתות בית שמש',
 		},
 
 		// מגשי אירועים
 
 		{
 			id: 170,
-			name: 'קינוחי כוסות מעוצבים',
+			name: 'קינוחי כוסות מעוצבים חלבי',
 			category: 'events',
 			subcategory: 'events',
 			price: 300,
