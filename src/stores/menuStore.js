@@ -324,6 +324,15 @@ export const useMenuStore = defineStore('menu', () => {
 				'עוגת לימון ביתית רעננה עם גלייז לימון חמצמץ וניחוח הדרים. עוגה קלילה מושלמת לקיץ ולאירוח קליל. מאפיית מרגליתות בית שמש',
 		},
 		{
+			id: 33,
+			name: 'פס תפוז',
+			category: 'mixed-cakes',
+			price: 45,
+			image: '/cakes/orangeCake.jpeg',
+			description:
+				'עוגת תפוז ביתית רעננה עם גלייז תפוז מתקתק וניחוח הדרים. עוגה קלילה מושלמת לקיץ ולאירוח קליל. מאפיית מרגליתות בית שמש',
+		},
+		{
 			id: 21,
 			name: 'סולת תפוז',
 			category: 'mixed-cakes',
@@ -540,7 +549,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'קוקילידה',
 			category: 'cookies',
 			price: 14,
-			image: '/cookies/cookilida.jpeg',
+			image: '/cookies/coocilida.jpg',
 			description:
 				'קוקילידה ביתית - עוגיית קוקוס שוקולד גדולה ופריכה ליחידה. עוגייה נוסטלגית בטעם של פעם שמזכירה את הילדות. מאפיית מרגליתות בית שמש',
 		},
@@ -612,7 +621,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'עוגיות קפה ארומטיות',
 			category: 'cookies',
 			price: 50,
-			image: '',
+			image: '/cookies/coffeCookies.jpeg',
 			description:
 				'עוגיות קפה ארומטיות עם אספרסו אמיתי - עוגיות לאוהבי קפה עם ניחוח וטעם קפה עשיר. מושלמות לצד קפה. מאפיית מרגליתות בית שמש',
 		},
@@ -867,7 +876,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'גלידת אוראו',
 			category: 'ice-cream',
 			price: 130,
-			image: '/desserts/icecream.jpg',
+			image: '/desserts/icecreamOreo.jpg',
 			description:
 				'גלידת אוראו ביתית קילו - גלידה איטלקית קרמית עם פיסות עוגיות אוריאו פריכות. גלידה חגיגית לכל המשפחה. מאפיית מרגליתות בית שמש',
 		},
@@ -885,7 +894,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'גלידת לימון',
 			category: 'ice-cream',
 			price: 130,
-			image: '/desserts/icecream.jpg',
+			image: '/desserts/icecreamLemon.jpg',
 			description:
 				'גלידת לימון ביתית קילו - סורבה איטלקי מרענן בטעם לימון חמצמץ וקליל. גלידה קייצית מושלמת לקינוח מרענן. מאפיית מרגליתות בית שמש',
 		},
@@ -894,7 +903,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'גלידת לוטוס',
 			category: 'ice-cream',
 			price: 130,
-			image: '/desserts/icecream.jpg',
+			image: '/desserts/icecreamLotus.jpg',
 			description:
 				'גלידת לוטוס ביתית קילו - גלידה קרמית בטעם ביסקוויט לוטוס בלגי עם פיסות עוגיות פריכות. טעם ממכר. מאפיית מרגליתות בית שמש',
 		},
@@ -903,7 +912,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'גלידת רבע לשבע',
 			category: 'ice-cream',
 			price: 130,
-			image: '/desserts/icecream.jpg',
+			image: '/desserts/icecreamReva.jpg',
 			description:
 				'גלידת רבע לשבע ביתית קילו - גלידה נוסטלגית בטעם השוקולד הישראלי האהוב. טעם של ילדות לכל המשפחה. מאפיית מרגליתות בית שמש',
 		},
@@ -1043,8 +1052,8 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'רביולי אלפרדו',
 			category: 'dairy-meals',
 			subcategory: 'pastas',
-			price: 150,
-			image: '',
+			price: 180,
+			image: '/milkMeals/ravioli.jpeg',
 			description:
 				'רביולי גבינה ברוטב אלפרדו ביתי - 400 גרם פסטה איטלקית ברוטב שמנת ופרמזן קרמי. מתאים לכ-3-5 סועדים. מאפיית מרגליתות בית שמש',
 			popular: true,
@@ -1056,8 +1065,8 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'רביולי עגבניות',
 			category: 'dairy-meals',
 			subcategory: 'pastas',
-			price: 150,
-			image: '',
+			price: 180,
+			image: '/milkMeals/ravioli.jpeg',
 			description:
 				'רביולי גבינה ברוטב עגבניות ביתי - 400 גרם פסטה איטלקית קלאסית ברוטב עגבניות טרי. מתאים לכ-3-5 סועדים. מאפיית מרגליתות בית שמש',
 			hasAddOns: true,
@@ -1068,8 +1077,8 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'רביולי פסטו',
 			category: 'dairy-meals',
 			subcategory: 'pastas',
-			price: 150,
-			image: '',
+			price: 180,
+			image: '/milkMeals/ravioli.jpeg',
 			description:
 				'רביולי גבינה ברוטב פסטו טרי - 400 גרם פסטה איטלקית ברוטב בזיליקום ואגוזי צנובר. פסטה ירוקה ורעננת. מאפיית מרגליתות בית שמש',
 			hasAddOns: true,
@@ -1080,7 +1089,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'דג סלמון שלם בפסטו ושקדים',
 			category: 'dairy-meals',
 			subcategory: 'pastas',
-			price: 300,
+			price: 350,
 			image: '',
 			description: 'דג סלמון שלם בפסטו ושקדים מעוצב - כ1.5 ק"ג. מאפיית מרגליתות בית שמש',
 		},
@@ -1165,7 +1174,7 @@ export const useMenuStore = defineStore('menu', () => {
 			category: 'events',
 			subcategory: 'events',
 			price: 190,
-			image: '',
+			image: '/cookies/sigars.jpeg',
 			description:
 				'סיגרים מרוקאיים במילוי שקדים - כ-30 יחידות. סיגרי פילו מטוגנים זהובים במילוי שקדים קלויים. קינוח חגיגי למימונה ולאירועים. מאפיית מרגליתות בית שמש',
 		},
