@@ -340,7 +340,7 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
-import { auth } from '../firebase';
+import { auth } from '../../firebase';
 import {
 	getAllOrders,
 	updateOrderStatus,
