@@ -81,8 +81,8 @@ export const useMenuStore = defineStore('menu', () => {
 		{
 			id: 'gluten-free',
 			name: 'ללא גלוטן',
-			image: '',
-			hoverImage: '',
+			image: 'pesachChoclateNuts.jpeg',
+			hoverImage: 'pesachChoclateNuts.jpeg',
 			description: 'אפייה ללא גלוטן',
 			color: '#F0E68C',
 			tips: [
@@ -96,7 +96,7 @@ export const useMenuStore = defineStore('menu', () => {
 			id: 'vegan',
 			name: 'טבעוני',
 			image: '/bread/chalakosmin.png',
-			hoverImage: '',
+			hoverImage: '/bread/garlicRools.png',
 			description: 'מאפים טבעוניים ללא מוצרי בעלי חיים',
 			color: '#98FB98',
 			tips: [
@@ -109,8 +109,8 @@ export const useMenuStore = defineStore('menu', () => {
 		{
 			id: 'ice-cream',
 			name: 'גלידות',
-			image: '',
-			hoverImage: '',
+			image: '/desserts/icecream.jpg',
+			hoverImage: '/desserts/icecreamTrikolad.jpeg',
 			description: 'גלידות ביתיות בטעמים מיוחדים',
 			color: '#FFB6C1',
 			tips: [
@@ -123,8 +123,8 @@ export const useMenuStore = defineStore('menu', () => {
 		{
 			id: 'dairy-meals',
 			name: 'ארוחות חלביות',
-			image: '',
-			hoverImage: '',
+			image: '/milkMeals/shablul.jpeg',
+			hoverImage: '/milkMeals/pizza.jpeg',
 			description: 'ארוחות חלביות טריות וטעימות',
 			color: '#FFA07A',
 			hasSubcategories: true,
@@ -138,8 +138,8 @@ export const useMenuStore = defineStore('menu', () => {
 		{
 			id: 'birthday-cakes',
 			name: 'עוגות יום הולדת חגים ואירועים',
-			image: '',
-			hoverImage: '',
+			image: '/cakes/birthdayCakes/birthdaycake.png',
+			hoverImage: '/cakes/birthdayCakes/kidsbirthday.jpg',
 			description: 'עוגות מעוצבות ליום הולדת חגים ואירועים מיוחדים',
 			color: '#FF69B4',
 			tips: [
@@ -152,8 +152,8 @@ export const useMenuStore = defineStore('menu', () => {
 		{
 			id: 'baking-workshops',
 			name: 'חוגי אפייה',
-			image: '',
-			hoverImage: '',
+			image: '/margalitaf1.jpeg',
+			hoverImage: '/margalitaf2.jpeg',
 			color: '#d34a6e',
 			description: 'חוגי אפייה לילדים בכל הגילאים',
 			isExternal: false,
@@ -162,11 +162,10 @@ export const useMenuStore = defineStore('menu', () => {
 
 	// ===== DAIRY MEALS SUBCATEGORIES =====
 	const dairySubcategories = ref([
-		{ id: 'pizzas', name: 'פיצות', image: '', hoverImage: '' },
-		{ id: 'quiches', name: 'קישים', image: '', hoverImage: '' },
-		{ id: 'salads', name: 'סלטים', image: '', hoverImage: '' },
-		{ id: 'pastas', name: 'פסטות', image: '', hoverImage: '' },
-		{ id: 'soups', name: 'מרקים', image: '', hoverImage: '' },
+		{ id: 'pizzas', name: 'פיצות', image: '/milkMeals/pizza.jpeg', hoverImage: '/milkMeals/glutenfreePizza.jpg' },
+		{ id: 'quiches', name: 'קישים', image: '/milkMeals/quiche.jpg', hoverImage: '/milkMeals/sweetPotato.jpeg' },
+		{ id: 'salads', name: 'סלטים', image: '/milkMeals/salad.jpeg', hoverImage: '/milkMeals/saladHover.jpeg' },
+		{ id: 'pastas', name: 'פסטות', image: '/milkMeals/ravioli.jpeg', hoverImage: '/milkMeals/pastaHover.jpeg' },
 	]);
 
 	// ===== PRODUCTS =====
@@ -177,7 +176,7 @@ export const useMenuStore = defineStore('menu', () => {
 			id: 1,
 			name: 'שמרים שוקולד',
 			category: 'yeast-cakes',
-			price: 60,
+			price: 70,
 			image: '/cakes/shmarim/bobka.jpeg',
 			description:
 				'בובקה שוקולד ביתית עם שכבות שוקולד בלגי עשיר ונמס. עוגת שמרים רכה ולחה אפויה טרייה במאפיית מרגליתות בית שמש. מושלמת לשבת, לאירועים ולמתנה',
@@ -187,7 +186,7 @@ export const useMenuStore = defineStore('menu', () => {
 			id: 2,
 			name: 'שמרים קינמון',
 			category: 'yeast-cakes',
-			price: 60,
+			price: 70,
 			image: '/cakes/shmarim/cinamonBobka.jpeg',
 			description:
 				'בובקה קינמון קלאסית עם סוכר חום וקינמון ציילוני אמיתי. עוגת שמרים ביתית רכה עם ניחוח שממלא את הבית. טעם של שבת ישראלית - מאפיית מרגליתות בית שמש',
@@ -196,7 +195,7 @@ export const useMenuStore = defineStore('menu', () => {
 			id: 3,
 			name: 'קראנץ גבינה',
 			category: 'yeast-cakes',
-			price: 65,
+			price: 75,
 			image: '/cakes/shmarim/chease.jpg',
 			description:
 				'קראנץ גבינה מתוקה עם בצק שמרים רך ושכבות מילוי גבינה קרמי עשיר. עוגת שמרים חלבית מושלמת לארוחת בוקר שישי ושבת. מאפיית מרגליתות בית שמש',
@@ -206,53 +205,53 @@ export const useMenuStore = defineStore('menu', () => {
 			id: 4,
 			name: 'קראנץ תפוחים',
 			category: 'yeast-cakes',
-			price: 65,
+			price: 75,
 			image: '/cakes/shmarim/apple.jpeg',
 			description:
 				'קראנץ תפוחים ביתי עם תפוחי עץ טריים, קינמון וסוכר חום. עוגת שמרים עם מילוי פירות טבעי בטעם של בית סבתא. מאפיית מרגליתות בית שמש - אפייה טרייה',
 			popular: true,
 		},
-		{
-			id: 6,
-			name: 'שמרים פרג',
-			category: 'yeast-cakes',
-			price: 65,
-			image: '',
-			description:
-				'עוגת שמרים פרג מסורתית עם מילוי פרג אמיתי ועשיר. מתכון משפחתי מקורי מדור לדור בטעם נוסטלגי של פעם. מאפיית מרגליתות בית שמש',
-		},
-		{
-			id: 8,
-			name: 'שמרים תותים וקוקוס',
-			category: 'yeast-cakes',
-			price: 65,
-			image: '',
-			description:
-				'עוגת שמרים במילוי תותים וקוקוס טרופי - שילוב מרענן ומיוחד. עוגה קייצית ומפנקת בטעם פירותי. מאפיית מרגליתות בית שמש - טעם ייחודי',
-		},
-		{
-			id: 10,
-			name: 'חלבה שוקולד',
-			category: 'yeast-cakes',
-			price: 60,
-			image: '',
-			description:
-				'עוגת שמרים במילוי חלבה טחינה ושוקולד מריר - שילוב ישראלי מקורי של טעמים מזרחיים. עוגה ייחודית בטעם של הבית. מאפיית מרגליתות בית שמש',
-		},
-		{
-			id: 11,
-			name: 'שמרים בטעם נוטלה',
-			category: 'yeast-cakes',
-			price: 65,
-			image: '',
-			description:
-				'בובקה עם ממרח בטעם נוטלה שוקולד אגוזים עשיר וקרמי. עוגת שמרים אהובה על ילדים ומבוגרים. פינוק מתוק לכל המשפחה - מאפיית מרגליתות בית שמש',
-		},
+		// {
+		// 	id: 6,
+		// 	name: 'שמרים פרג',
+		// 	category: 'yeast-cakes',
+		// 	price: 75,
+		// 	image: '',
+		// 	description:
+		// 		'עוגת שמרים פרג מסורתית עם מילוי פרג אמיתי ועשיר. מתכון משפחתי מקורי מדור לדור בטעם נוסטלגי של פעם. מאפיית מרגליתות בית שמש',
+		// },
+		// {
+		// 	id: 8,
+		// 	name: 'שמרים תותים וקוקוס',
+		// 	category: 'yeast-cakes',
+		// 	price: 75,
+		// 	image: '',
+		// 	description:
+		// 		'עוגת שמרים במילוי תותים וקוקוס טרופי - שילוב מרענן ומיוחד. עוגה קייצית ומפנקת בטעם פירותי. מאפיית מרגליתות בית שמש - טעם ייחודי',
+		// },
+		// {
+		// 	id: 10,
+		// 	name: 'שמרים חלבה שוקולד',
+		// 	category: 'yeast-cakes',
+		// 	price: 70,
+		// 	image: '',
+		// 	description:
+		// 		'עוגת שמרים במילוי חלבה טחינה ושוקולד מריר - שילוב ישראלי מקורי של טעמים מזרחיים. עוגה ייחודית בטעם של הבית. מאפיית מרגליתות בית שמש',
+		// },
+		// {
+		// 	id: 11,
+		// 	name: 'שמרים בטעם נוטלה',
+		// 	category: 'yeast-cakes',
+		// 	price: 75,
+		// 	image: '',
+		// 	description:
+		// 		'בובקה עם ממרח בטעם נוטלה שוקולד אגוזים עשיר וקרמי. עוגת שמרים אהובה על ילדים ומבוגרים. פינוק מתוק לכל המשפחה - מאפיית מרגליתות בית שמש',
+		// },
 		{
 			id: 12,
 			name: 'רוגלך שוקולד/קינמון',
 			category: 'yeast-cakes',
-			price: 65,
+			price: 75,
 			image: '/cakes/shmarim/cinimonRogalach.jpg',
 			description:
 				'רוגלך ביתי במילוי שוקולד או קינמון לבחירה - מגש כ-12 יחידות. בצק שמרים רך עם מילוי עשיר. מושלם לאירוח ולשבת - מאפיית מרגליתות בית שמש',
@@ -261,8 +260,8 @@ export const useMenuStore = defineStore('menu', () => {
 			id: 13,
 			name: 'שבלולי קינמון/שוקולד',
 			category: 'yeast-cakes',
-			price: 65,
-			image: '',
+			price: 75,
+			image: '/cakes/shmarim/cinamenRolls.jpeg',
 			description:
 				'שבלולי קינמון או שוקולד - סינבון ביתי אמיתי כמו בבית קפה. מגש כ-9 שבלולים עם בצק רך וציפוי קרם מתוק. מאפיית מרגליתות בית שמש',
 		},
@@ -280,22 +279,22 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'קוראסון שוקולד אמיתי',
 			category: 'yeast-cakes',
 			price: 65,
-			image: '',
+			image: '/cakes/shmarim/croassant.jpeg',
 			description:
 				'קרואסון שוקולד צרפתי אותנטי עם שוקולד בלגי אמיתי בפנים. בצק חמאה שכבות פריך ורך כמו בקונדיטוריה בפריז. מאפיית מרגליתות בית שמש',
 		},
 
 		// עוגות בחושות
-		{
-			id: 17,
-			name: 'פס שוקולד עשיר',
-			category: 'mixed-cakes',
-			price: 45,
-			image: '',
-			description:
-				'עוגת שוקולד כהה עשירה ולחה במיוחד - מתכון סודי של מאפיית מרגליתות. עוגת שוקולד ביתית שנמסה בפה, מושלמת לשבת ולאירועים. בית שמש',
-			popular: true,
-		},
+		// {
+		// 	id: 17,
+		// 	name: 'פס שוקולד עשיר',
+		// 	category: 'mixed-cakes',
+		// 	price: 45,
+		// 	image: '',
+		// 	description:
+		// 		'עוגת שוקולד כהה עשירה ולחה במיוחד - מתכון סודי של מאפיית מרגליתות. עוגת שוקולד ביתית שנמסה בפה, מושלמת לשבת ולאירועים. בית שמש',
+		// 	popular: true,
+		// },
 		{
 			id: 18,
 			name: 'מאפינס אוכמניות',
@@ -316,9 +315,9 @@ export const useMenuStore = defineStore('menu', () => {
 		},
 		{
 			id: 20,
-			name: 'פס לימון',
+			name: 'פס לימון נדיר',
 			category: 'mixed-cakes',
-			price: 45,
+			price: 65,
 			image: '/cakes/lemon.jpeg',
 			description:
 				'עוגת לימון ביתית רעננה עם גלייז לימון חמצמץ וניחוח הדרים. עוגה קלילה מושלמת לקיץ ולאירוח קליל. מאפיית מרגליתות בית שמש',
@@ -370,10 +369,10 @@ export const useMenuStore = defineStore('menu', () => {
 		},
 		{
 			id: 37,
-			name: 'גבינה אוכמניות',
+			name: 'גבינה אוכמניות / פירות יער',
 			category: 'mixed-cakes',
-			price: 250,
-			image: '',
+			price: 300,
+			image: '/cakes/cheaseBeries.jpeg',
 			description:
 				'עוגת גבינה אפויה קרמית עם שכבת אוכמניות טריות - קוטר 24 ס"מ, כ-12 מנות. עוגת גבינה יוקרתית לאירועים ולימי הולדת. מאפיית מרגליתות בית שמש',
 		},
@@ -381,8 +380,8 @@ export const useMenuStore = defineStore('menu', () => {
 			id: 26,
 			name: 'עוגה אנגלית חלבית',
 			category: 'mixed-cakes',
-			price: 55,
-			image: '',
+			price: 70,
+			image: '/cakes/englishCake.jpg',
 			description:
 				'עוגה אנגלית חלבית קלאסית עם קליפות הדרים מסוכרות בסגנון בריטי מקורי. מושלמת לתה אחר הצהריים ולאירוח. מאפיית מרגליתות בית שמש',
 		},
@@ -404,30 +403,30 @@ export const useMenuStore = defineStore('menu', () => {
 			description:
 				'עוגת מייפל פרימיום עם סירופ מייפל טבעי 100% מקנדה ואגוזים. גרסה יוקרתית בטעם עשיר ומיוחד לחובבי מייפל אמיתיים. מאפיית מרגליתות בית שמש',
 		},
-		{
-			id: 29,
-			name: 'עוגת טו בשבט',
-			category: 'mixed-cakes',
-			price: 70,
-			image: '',
-			description:
-				'עוגת שוקולד מעוצבת לטו בשבט עם פירות יבשים ואגוזים. עוגה חגיגית לחג האילנות - מתאימה לכיתות, למשפחות ולמתנות. מאפיית מרגליתות בית שמש',
-		},
-		{
-			id: 30,
-			name: 'דמקה שכבות גבינה',
-			category: 'mixed-cakes',
-			price: 80,
-			image: '',
-			description:
-				'עוגת דמקה מרשימה עם שכבות גבינה ושוקולד בדוגמת שחמט. עוגה מיוחדת ויפהפיה לאירועים - כ-12 מנות. מאפיית מרגליתות בית שמש',
-		},
+		// {
+		// 	id: 29,
+		// 	name: 'עוגת טו בשבט',
+		// 	category: 'mixed-cakes',
+		// 	price: 70,
+		// 	image: '',
+		// 	description:
+		// 		'עוגת שוקולד מעוצבת לטו בשבט עם פירות יבשים ואגוזים. עוגה חגיגית לחג האילנות - מתאימה לכיתות, למשפחות ולמתנות. מאפיית מרגליתות בית שמש',
+		// },
+		// {
+		// 	id: 30,
+		// 	name: 'דמקה שכבות גבינה',
+		// 	category: 'mixed-cakes',
+		// 	price: 80,
+		// 	image: '',
+		// 	description:
+		// 		'עוגת דמקה מרשימה עם שכבות גבינה ושוקולד בדוגמת שחמט. עוגה מיוחדת ויפהפיה לאירועים - כ-12 מנות. מאפיית מרגליתות בית שמש',
+		// },
 		{
 			id: 31,
 			name: 'גבינה פירורים',
 			category: 'mixed-cakes',
-			price: 250,
-			image: '/cakes/chesecake.png',
+			price: 320,
+			image: '/cakes/cheasecake.jpeg',
 			description:
 				'עוגת גבינה אפויה ישראלית קלאסית עם שכבת פירורים חמאתית פריכה. טעם נוסטלגי של פעם - עוגת גבינה ביתית אמיתית. מאפיית מרגליתות בית שמש',
 		},
@@ -453,7 +452,7 @@ export const useMenuStore = defineStore('menu', () => {
 			id: 35,
 			name: 'סופלה שוקולד',
 			category: 'mixed-cakes',
-			price: 45,
+			price: 50,
 			image: '/cakes/sofle.jpeg',
 			description:
 				'סופלה שוקולד ביתי - מארז 5 יחידות. לבבות שוקולד עם מרכז נוזלי וחם שנמס בפה. קינוח רומנטי ומרשים לאירועים. מאפיית מרגליתות בית שמש',
@@ -476,6 +475,14 @@ export const useMenuStore = defineStore('menu', () => {
 			description:
 				'עוגת גבינה פירורים קוטר 24 עגול או לב. עוגת גבינה קרה עם שכבת פירורים פריכה וטעימה. עוגת גבינה ביתית אמיתית - מאפיית מרגליתות בית שמש',
 		},
+		{
+			id: 38,
+			name: 'פס תפוחים ואגוזים',
+			category: 'chease-cakes',
+			price: 80,
+			image: '/cakes/appleNuts.jpeg',
+			description: 'עוגת פס תפוחים אגוזים וקינמון - מאפיית מרגליתות בית שמש',
+		},
 
 		// עוגיות
 		{
@@ -485,7 +492,7 @@ export const useMenuStore = defineStore('menu', () => {
 			price: 60,
 			image: '/cookies/choclatechips.jpg',
 			description:
-				"עוגיות שוקולד צ'יפס ביתיות פריכות עם שוקולד בלגי איכותי בנדיבות. עוגיות אמריקאיות כמו בבית קפה - נמכרות כמו לחמניות חמות. מאפיית מרגליתות בית שמש",
+				"עוגיות שוקולד צ'יפס ביתיות פריכות עם שוקולד בלגי איכותי בנדיבות. כ-11 עוגיות אמריקאיות כמו בבית קפה - נמכרות כמו לחמניות חמות. מאפיית מרגליתות בית שמש",
 			popular: true,
 		},
 		{
@@ -503,34 +510,34 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'עוגיות חמאה פקאן',
 			category: 'cookies',
 			price: 70,
-			image: '',
+			image: '/cookies/pekancookies.jpeg',
 			description:
-				'עוגיות חמאה פריכות עם אגוזי פקאן קלויים בסגנון צרפתי יוקרתי. עוגיות חמאה איכותיות לאירוח מיוחד ולמתנות. מאפיית מרגליתות בית שמש',
+				'עוגיות חמאה פריכות עם אגוזי פקאן קלויים בסגנון צרפתי יוקרתי. כ-10 עוגיות חמאה איכותיות לאירוח מיוחד ולמתנות. מאפיית מרגליתות בית שמש',
 		},
 		{
 			id: 46,
 			name: 'סהרוני שקדים',
 			category: 'cookies',
 			price: 70,
-			image: '',
+			image: '/cookies/almonds.jpeg',
 			description:
 				'עוגיות סהרוני שקדים פריכות בצורת ירח עם אבקת סוכר עדינה. עוגיות חג קלאסיות שנמסות בפה - מתכון אירופאי מסורתי. מאפיית מרגליתות בית שמש',
 		},
-		{
-			id: 47,
-			name: 'עוגיות בריאות',
-			category: 'cookies',
-			price: 60,
-			image: '',
-			description:
-				'עוגיות בריאות עם שיבולת שועל, דבש טבעי וזרעים מזינים. עוגיות טעימות ומזינות לארוחת עשר ולילדים - בריא וטעים ביחד. מאפיית מרגליתות בית שמש',
-		},
+		// {
+		// 	id: 47,
+		// 	name: 'עוגיות בריאות',
+		// 	category: 'cookies',
+		// 	price: 60,
+		// 	image: '',
+		// 	description:
+		// 		'עוגיות בריאות עם שיבולת שועל, דבש טבעי וזרעים מזינים. עוגיות טעימות ומזינות לארוחת עשר ולילדים - בריא וטעים ביחד. מאפיית מרגליתות בית שמש',
+		// },
 		{
 			id: 48,
 			name: 'פרח ריבה',
 			category: 'cookies',
 			price: 60,
-			image: '',
+			image: '/cookies/jamflower.jpeg',
 			description:
 				'עוגיות פרח ריבה - עוגיות חמאה פריכות בצורת פרח עם ריבת תות באמצע. עוגיות קלאסיות צבעוניות ויפות לאירוח ולילדים. מאפיית מרגליתות בית שמש',
 			popular: true,
@@ -566,29 +573,29 @@ export const useMenuStore = defineStore('menu', () => {
 			id: 52,
 			name: 'עוגיות לוקום',
 			category: 'cookies',
-			price: 60,
+			price: 70,
 			image: '/cookies/rachtLokemCokies.jpg',
 			description:
-				'עוגיות רחת לוקום - עוגיות חמאה עדינות עם קוביות לוקום ורדים. עוגיות מזרחיות אלגנטיות בטעם מיוחד וייחודי. מאפיית מרגליתות בית שמש',
+				'עוגיות רחת לוקום - כ-10 עוגיות חמאה עדינות עם קוביות לוקום ורדים. עוגיות מזרחיות אלגנטיות בטעם מיוחד וייחודי. מאפיית מרגליתות בית שמש',
 		},
-		{
-			id: 53,
-			name: 'עוגיות קוקוס ושוקולד',
-			category: 'cookies',
-			price: 50,
-			image: '',
-			description:
-				"עוגיות קוקוס פריכות עם שוקולד צ'יפס - שילוב טרופי ושוקולדי מנצח. עוגיות אהובות על ילדים ומבוגרים. מאפיית מרגליתות בית שמש",
-		},
-		{
-			id: 55,
-			name: 'שומשומיות',
-			category: 'cookies',
-			price: 50,
-			image: '',
-			description:
-				'שומשומיות ביתיות פריכות - עוגיות שומשום מסורתיות בסגנון מזרחי. עוגיות בריאות ומזינות במתכון של סבתא. מאפיית מרגליתות בית שמש',
-		},
+		// {
+		// 	id: 53,
+		// 	name: 'עוגיות קוקוס ושוקולד',
+		// 	category: 'cookies',
+		// 	price: 50,
+		// 	image: '',
+		// 	description:
+		// 		"עוגיות קוקוס פריכות עם שוקולד צ'יפס - שילוב טרופי ושוקולדי מנצח. עוגיות אהובות על ילדים ומבוגרים. מאפיית מרגליתות בית שמש",
+		// },
+		// {
+		// 	id: 55,
+		// 	name: 'שומשומיות',
+		// 	category: 'cookies',
+		// 	price: 50,
+		// 	image: '',
+		// 	description:
+		// 		'שומשומיות ביתיות פריכות - עוגיות שומשום מסורתיות בסגנון מזרחי. עוגיות בריאות ומזינות במתכון של סבתא. מאפיית מרגליתות בית שמש',
+		// },
 		{
 			id: 56,
 			name: 'ריפאת',
@@ -603,19 +610,19 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'אצבעות פילו במגוון מילויים',
 			category: 'cookies',
 			price: 60,
-			image: '',
+			image: '/cakes/filoFingers.jpeg',
 			description:
 				'אצבעות פילו פריכות - 5 יח׳ במילוי חלבה, שקדים או אגוזים לבחירה, בזיגוג מייפל או סילאן. קינוח מזרחי מפנק. מאפיית מרגליתות בית שמש',
 		},
-		{
-			id: 58,
-			name: 'לימוניות',
-			category: 'cookies',
-			price: 50,
-			image: '',
-			description:
-				'עוגיות לימון רעננות עם גלייז לימון חמצמץ בטעם הדרים. עוגיות קייציות מרעננות מושלמות לאחר הצהריים. מאפיית מרגליתות בית שמש',
-		},
+		// {
+		// 	id: 58,
+		// 	name: 'לימוניות',
+		// 	category: 'cookies',
+		// 	price: 50,
+		// 	image: '',
+		// 	description:
+		// 		'עוגיות לימון רעננות עם גלייז לימון חמצמץ בטעם הדרים. עוגיות קייציות מרעננות מושלמות לאחר הצהריים. מאפיית מרגליתות בית שמש',
+		// },
 		{
 			id: 59,
 			name: 'עוגיות קפה ארומטיות',
@@ -643,15 +650,15 @@ export const useMenuStore = defineStore('menu', () => {
 			description:
 				'מגולגלות חלבה פריכות - עוגיות מעמול במילוי חלבה טחינה עשירה שנמסות בפה. עוגיות ישראליות מקוריות בטעם של הבית. מאפיית מרגליתות בית שמש',
 		},
-		{
-			id: 62,
-			name: 'עוגיות אגוזים קינמון',
-			category: 'cookies',
-			price: 60,
-			image: '',
-			description:
-				'עוגיות אגוזים וקינמון חורפיות עם אגוזי מלך קלויים וקינמון ארומטי. ניחוח ביתי חם מושלם לחורף. מאפיית מרגליתות בית שמש',
-		},
+		// {
+		// 	id: 62,
+		// 	name: 'עוגיות אגוזים קינמון',
+		// 	category: 'cookies',
+		// 	price: 60,
+		// 	image: '',
+		// 	description:
+		// 		'עוגיות אגוזים וקינמון חורפיות עם אגוזי מלך קלויים וקינמון ארומטי. ניחוח ביתי חם מושלם לחורף. מאפיית מרגליתות בית שמש',
+		// },
 		{
 			id: 64,
 			name: 'חיתוכיות חמאת בוטנים',
@@ -685,7 +692,7 @@ export const useMenuStore = defineStore('menu', () => {
 			id: 70,
 			name: 'מארז לחמניות הבית לבן',
 			category: ['vegan', 'breads'],
-			price: 25,
+			price: 30,
 			image: '/bread/rolls.jpeg',
 			description:
 				'לחמניות ביתיות טריות מקמח לבן - מארז 5 יח׳. לחמניות רכות מושלמות לסנדוויצ׳ים והמבורגר ביתי. אפייה טרייה יומית במאפיית מרגליתות בית שמש',
@@ -695,7 +702,7 @@ export const useMenuStore = defineStore('menu', () => {
 			id: 71,
 			name: 'חלה',
 			category: ['vegan', 'breads'],
-			price: 25,
+			price: 30,
 			image: '/bread/chala.jpeg',
 			description:
 				'חלה ביתית לשבת - חלה קלועה רכה וטרייה מקמח איכותי. מתכון מסורתי משפחתי מדור לדור. ניחוח של ערב שבת ישראלי - מאפיית מרגליתות בית שמש',
@@ -704,7 +711,7 @@ export const useMenuStore = defineStore('menu', () => {
 			id: 72,
 			name: 'מארז לחמניות הבית כוסמין 80%',
 			category: ['vegan', 'breads'],
-			price: 30,
+			price: 35,
 			image: '/bread/rolls.jpeg',
 			description:
 				'לחמניות כוסמין 80% בריאות - מארז 5 יח׳. לחמניות מקמח מלא עשירות בסיבים תזונתיים וויטמינים. לחם בריא וטעים לכל משפחה - אפייה ביתית בבית שמש',
@@ -722,25 +729,25 @@ export const useMenuStore = defineStore('menu', () => {
 			id: 74,
 			name: 'לחמניות שום כוסמין 80%',
 			category: ['vegan', 'breads'],
-			price: 35,
+			price: 40,
 			image: '/bread/garlicRolls.png',
 			description:
 				"לחמניות שום בריאות מכוסמין 80% - מארז 5 יח'. לחמניות ארומטיות בטעם שום ועשבי תיבול טריים. מושלמות לצד מרק, פסטה או סלט - מבית שמש",
 		},
-		{
-			id: 75,
-			name: 'פיתה זעתר ושומשום',
-			category: ['vegan', 'breads'],
-			price: 12,
-			image: '',
-			description:
-				'פיתה ביתית טרייה עם זעתר ושומשום - תיבול ישראלי אותנטי. פיתה רכה מושלמת לארוחת בוקר ישראלית עם חומוס, לבנה וסלט. מאפיית מרגליתות',
-		},
+		// {
+		// 	id: 75,
+		// 	name: 'פיתה זעתר ושומשום',
+		// 	category: ['vegan', 'breads'],
+		// 	price: 12,
+		// 	image: '',
+		// 	description:
+		// 		'פיתה ביתית טרייה עם זעתר ושומשום - תיבול ישראלי אותנטי. פיתה רכה מושלמת לארוחת בוקר ישראלית עם חומוס, לבנה וסלט. מאפיית מרגליתות',
+		// },
 		{
 			id: 76,
 			name: 'לחמניות שום',
 			category: ['vegan', 'breads'],
-			price: 30,
+			price: 80,
 			image: '/bread/garlicBread1.png',
 			description:
 				'לחמניות שום ביתיות ארומטיות - מארז 5 יח׳. לחמניות רכות בטעם שום עשיר וחמאתי. מושלמות לצד פסטה איטלקית, מרקים וסלטים - מבית שמש',
@@ -765,33 +772,33 @@ export const useMenuStore = defineStore('menu', () => {
 		},
 
 		// ==================== ללא סוכר ====================
-		{
-			id: 81,
-			name: 'עוגיות שיבולת שועל ללא סוכר',
-			category: ['cookies', 'sugar-free'],
-			price: 65,
-			image: '',
-			description:
-				'עוגיות שיבולת שועל בריאות ללא סוכר מוסף - ממותקות בדבש טבעי וזרעים. עוגיות מזינות לסוכרתיים, לדיאטה ולכל המשפחה. מאפיית מרגליתות בית שמש',
-		},
-		{
-			id: 82,
-			name: 'פס גבינה אפויה ללא סוכר',
-			category: ['cookies', 'sugar-free'],
-			price: 75,
-			image: '',
-			description:
-				'עוגת גבינה אפויה ללא סוכר מוסף - עוגת גבינה קרמית ועשירה מתאימה לסוכרתיים ולדיאטה. כל הטעם בלי הסוכר. מאפיית מרגליתות בית שמש',
-		},
-		{
-			id: 83,
-			name: 'פס גבינה קרה ללא סוכר',
-			category: ['cakes', 'sugar-free'],
-			price: 95,
-			image: '',
-			description:
-				'עוגת גבינה קרה ללא סוכר מוסף - קינוח קליל וקרמי לסוכרתיים, לדיאטה ולמודעים לבריאות. טעם מלא בלי פשרות. מאפיית מרגליתות בית שמש',
-		},
+		// {
+		// 	id: 81,
+		// 	name: 'עוגיות שיבולת שועל ללא סוכר',
+		// 	category: ['cookies', 'sugar-free'],
+		// 	price: 65,
+		// 	image: '',
+		// 	description:
+		// 		'עוגיות שיבולת שועל בריאות ללא סוכר מוסף - ממותקות בדבש טבעי וזרעים. עוגיות מזינות לסוכרתיים, לדיאטה ולכל המשפחה. מאפיית מרגליתות בית שמש',
+		// },
+		// {
+		// 	id: 82,
+		// 	name: 'פס גבינה אפויה ללא סוכר',
+		// 	category: ['cookies', 'sugar-free'],
+		// 	price: 75,
+		// 	image: '',
+		// 	description:
+		// 		'עוגת גבינה אפויה ללא סוכר מוסף - עוגת גבינה קרמית ועשירה מתאימה לסוכרתיים ולדיאטה. כל הטעם בלי הסוכר. מאפיית מרגליתות בית שמש',
+		// },
+		// {
+		// 	id: 83,
+		// 	name: 'פס גבינה קרה ללא סוכר',
+		// 	category: ['cakes', 'sugar-free'],
+		// 	price: 95,
+		// 	image: '',
+		// 	description:
+		// 		'עוגת גבינה קרה ללא סוכר מוסף - קינוח קליל וקרמי לסוכרתיים, לדיאטה ולמודעים לבריאות. טעם מלא בלי פשרות. מאפיית מרגליתות בית שמש',
+		// },
 
 		// ==================== ללא גלוטן ====================
 		{
@@ -799,53 +806,80 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'פס שוקולד עשיר',
 			category: ['gluten-free', 'cakes'],
 			price: 75,
-			image: '',
+			image: '/pesach/chocletTheQ.jpeg',
 			description:
 				'עוגת שוקולד ללא גלוטן על בסיס קמח שקדים איכותי. עוגה עשירה ולחה לצליאקים ולרגישים לגלוטן. טעם מלא כמו עוגה רגילה. מאפיית מרגליתות בית שמש',
 		},
 		{
 			id: 91,
-			name: 'עוגיות קוקוס',
+			name: 'עוגיות קינמון אגוזים',
 			category: ['gluten-free', 'cookies'],
 			price: 65,
-			image: '',
+			image: '/pesach/cinamonNuts.jpeg',
 			description:
-				'עוגיות קוקוס ללא גלוטן - עוגיות פריכות מקוקוס טהור. מתאימות לצליאקים ולרגישים לגלוטן, גם טבעוניות. מאפיית מרגליתות בית שמש',
+				'עוגיות קוקוס ללא גלוטן - עוגיות פריכות מאגוזים וקינמון. מתאימות לצליאקים ולרגישים לגלוטן. מאפיית מרגליתות בית שמש',
 		},
+		// {
+		// 	id: 92,
+		// 	name: 'פס גבינה',
+		// 	category: ['gluten-free', 'cakes'],
+		// 	price: 95,
+		// 	image: '',
+		// 	description:
+		// 		'עוגת גבינה אפויה ללא גלוטן - עוגת גבינה קרמית על בסיס שקדים. מתאימה לצליאקים ולרגישים לגלוטן. טעימה כמו הרגיל. מאפיית מרגליתות בית שמש',
+		// },
 		{
-			id: 92,
-			name: 'פס גבינה',
+			id: 93,
+			name: 'שוקולד אגוזים',
 			category: ['gluten-free', 'cakes'],
 			price: 95,
-			image: '',
+			image: '/pesach/nutsPesachCake.jpeg',
 			description:
 				'עוגת גבינה אפויה ללא גלוטן - עוגת גבינה קרמית על בסיס שקדים. מתאימה לצליאקים ולרגישים לגלוטן. טעימה כמו הרגיל. מאפיית מרגליתות בית שמש',
 		},
+		{
+			id: 95,
+			name: 'עוגיות שקדים',
+			category: ['gluten-free', 'cookies'],
+			price: 65,
+			image: '/pesach/almondsPesach.jpeg',
+			description:
+				'עוגיות קוקוס ללא גלוטן - עוגיות פריכות משקדים. מתאימות לצליאקים ולרגישים לגלוטן. מאפיית מרגליתות בית שמש',
+		},
+		{
+			id: 96,
+			name: 'עוגיות שוקולד ציפס',
+			category: ['gluten-free', 'cookies'],
+			price: 65,
+			image: '/pesach/pesachChoclateChips.jpeg',
+			description:
+				'עוגיות קוקוס ללא גלוטן - עוגיות פריכות משקדים. מתאימות לצליאקים ולרגישים לגלוטן. מאפיית מרגליתות בית שמש',
+		},
 
 		// ==================== טבעוני ====================
-		{
-			id: 100,
-			name: 'עוגיות טבעוניות',
-			category: ['vegan', 'cookies'],
-			price: 70,
-			image: '',
-			description:
-				'עוגיות שוקולד טבעוניות - עוגיות טעימות ללא ביצים וללא חלב. מתאימות לטבעונים ולרגישים ללקטוז. מתכון ייחודי של מאפיית מרגליתות בית שמש',
-		},
-		{
-			id: 101,
-			name: 'מאפינס טבעוניים',
-			category: ['vegan', 'cakes'],
-			price: 70,
-			image: '',
-			description:
-				'מאפינס אוכמניות טבעוניים - מאפינס רכים ולחים ללא מוצרי חלב וביצים. טעימים כמו מאפינס רגילים. מתאימים לטבעונים. מאפיית מרגליתות בית שמש',
-		},
+		// {
+		// 	id: 100,
+		// 	name: 'עוגיות טבעוניות',
+		// 	category: ['vegan', 'cookies'],
+		// 	price: 70,
+		// 	image: '',
+		// 	description:
+		// 		'עוגיות שוקולד טבעוניות - עוגיות טעימות ללא ביצים וללא חלב. מתאימות לטבעונים ולרגישים ללקטוז. מתכון ייחודי של מאפיית מרגליתות בית שמש',
+		// },
+		// {
+		// 	id: 101,
+		// 	name: 'מאפינס טבעוניים',
+		// 	category: ['vegan', 'cakes'],
+		// 	price: 70,
+		// 	image: '',
+		// 	description:
+		// 		'מאפינס אוכמניות טבעוניים - מאפינס רכים ולחים ללא מוצרי חלב וביצים. טעימים כמו מאפינס רגילים. מתאימים לטבעונים. מאפיית מרגליתות בית שמש',
+		// },
 
 		// גלידות
 		{
 			id: 110,
-			name: 'גלידת וניל',
+			name: 'וניל',
 			category: ['ice-cream', 'gluten-free'],
 			price: 130,
 			image: '/desserts/icecream.jpg',
@@ -855,7 +889,7 @@ export const useMenuStore = defineStore('menu', () => {
 		},
 		{
 			id: 111,
-			name: 'גלידת שוקולד',
+			name: 'שוקולד',
 			category: 'ice-cream',
 			price: 130,
 			image: '/desserts/icecream.jpg',
@@ -864,7 +898,7 @@ export const useMenuStore = defineStore('menu', () => {
 		},
 		{
 			id: 112,
-			name: 'גלידת תות שמנת',
+			name: 'תות שמנת',
 			category: 'ice-cream',
 			price: 130,
 			image: '/desserts/icecream.jpg',
@@ -873,7 +907,7 @@ export const useMenuStore = defineStore('menu', () => {
 		},
 		{
 			id: 113,
-			name: 'גלידת אוראו',
+			name: 'אוראו',
 			category: 'ice-cream',
 			price: 130,
 			image: '/desserts/icecreamOreo.jpg',
@@ -882,7 +916,7 @@ export const useMenuStore = defineStore('menu', () => {
 		},
 		{
 			id: 114,
-			name: 'גלידת מנגו',
+			name: 'מנגו',
 			category: 'ice-cream',
 			price: 130,
 			image: '/desserts/icecream.jpg',
@@ -891,7 +925,7 @@ export const useMenuStore = defineStore('menu', () => {
 		},
 		{
 			id: 115,
-			name: 'גלידת לימון',
+			name: 'לימון',
 			category: 'ice-cream',
 			price: 130,
 			image: '/desserts/icecreamLemon.jpg',
@@ -900,7 +934,7 @@ export const useMenuStore = defineStore('menu', () => {
 		},
 		{
 			id: 116,
-			name: 'גלידת לוטוס',
+			name: 'לוטוס',
 			category: 'ice-cream',
 			price: 130,
 			image: '/desserts/icecreamLotus.jpg',
@@ -909,7 +943,7 @@ export const useMenuStore = defineStore('menu', () => {
 		},
 		{
 			id: 117,
-			name: 'גלידת רבע לשבע',
+			name: 'רבע לשבע',
 			category: 'ice-cream',
 			price: 130,
 			image: '/desserts/icecreamReva.jpg',
@@ -918,7 +952,7 @@ export const useMenuStore = defineStore('menu', () => {
 		},
 		{
 			id: 118,
-			name: 'גלידת דובאי',
+			name: 'דובאי',
 			category: 'ice-cream',
 			price: 130,
 			image: '/desserts/icecream.jpg',
@@ -927,16 +961,16 @@ export const useMenuStore = defineStore('menu', () => {
 		},
 		{
 			id: 119,
-			name: 'גלידת טריפל שוקולד',
+			name: 'טריקולד',
 			category: 'ice-cream',
 			price: 130,
-			image: '/desserts/icecream.jpg',
+			image: '/desserts/icecreamTrikolad.jpeg',
 			description:
 				'גלידת טריפל שוקולד ביתית קילו - גלידה אינטנסיבית עם 3 סוגי שוקולד עשירים. לחובבי שוקולד אמיתיים בלבד. מאפיית מרגליתות בית שמש',
 		},
 		{
 			id: 120,
-			name: 'גלידת פירות יער',
+			name: 'פירות יער',
 			category: 'ice-cream',
 			price: 130,
 			image: '/desserts/icecreamBerrys.jpg',
@@ -945,12 +979,30 @@ export const useMenuStore = defineStore('menu', () => {
 		},
 		{
 			id: 121,
-			name: 'גלידת תפוז',
+			name: 'תפוז',
 			category: 'ice-cream',
 			price: 130,
 			image: '/desserts/icecream.jpg',
 			description:
 				'גלידת תפוז ביתית קילו - סורבה איטלקי מרענן בטעם תפוז טבעי והדרים. גלידה קייצית קלילה ומרעננת. מאפיית מרגליתות בית שמש',
+		},
+		{
+			id: 122,
+			name: 'ריבת חלב',
+			category: 'ice-cream',
+			price: 130,
+			image: '/desserts/icecream.jpg',
+			description:
+				'גלידת ריבת חלב ביתית קילו - גלידת שמנת מרעננת בטעם ריבת חלב. גלידה קייצית קלילה ומרעננת. מאפיית מרגליתות בית שמש',
+		},
+		{
+			id: 123,
+			name: 'לימונענע',
+			category: 'ice-cream',
+			price: 130,
+			image: '/desserts/icecream.jpg',
+			description:
+				'גלידת לימונענע ביתית קילו - גלידת שמנת מרעננת בטעם לימונענע. גלידה קייצית קלילה ומרעננת. מאפיית מרגליתות בית שמש',
 		},
 
 		// פיצות
@@ -973,7 +1025,7 @@ export const useMenuStore = defineStore('menu', () => {
 			category: 'dairy-meals',
 			subcategory: 'quiches',
 			price: 200,
-			image: '/milkMeals/brokoly.jpeg',
+			image: '/milkMeals/qish.jpg',
 			description:
 				'קיש ביתי טרי בטעמים לבחירה - בטטה, ברוקולי, תרד, פטריות או מנגולד. קיש מושלם לאירוח קוטר 24 ס"מ, לארוחת בוקר ולשבת. מאפיית מרגליתות בית שמש מינימום הזמנה: 2 יחידות',
 			popular: false,
@@ -988,15 +1040,15 @@ export const useMenuStore = defineStore('menu', () => {
 		},
 
 		// בורקס
-		{
-			id: 150,
-			name: 'מאפינס גבינות',
-			category: 'dairy-meals',
-			subcategory: 'borax',
-			price: 12,
-			image: '',
-			description: 'מאפים מלוחים אישיים במילוי גבינות איכותיות. אפויים עד להזהבה מושלמת. מאפיית מרגליתות בית שמש',
-		},
+		// {
+		// 	id: 150,
+		// 	name: 'מאפינס גבינות',
+		// 	category: 'dairy-meals',
+		// 	subcategory: 'borax',
+		// 	price: 12,
+		// 	image: '',
+		// 	description: 'מאפים מלוחים אישיים במילוי גבינות איכותיות. אפויים עד להזהבה מושלמת. מאפיית מרגליתות בית שמש',
+		// },
 		// {
 		// 	id: 151,
 		// 	name: 'מאפה עלים בצל ופטריות',
@@ -1012,7 +1064,7 @@ export const useMenuStore = defineStore('menu', () => {
 			category: 'dairy-meals',
 			subcategory: 'borax',
 			price: 180,
-			image: '',
+			image: '/milkMeals/filoroll.jpeg',
 			description:
 				'שבלול פילו גדול ומרשים במילוי גבינות עשיר מנגולד או תרד - מאפה פילו פריך לאירוח. קוטר 26 ס"מ מתאים לכ-8 מנות, מושלם לארוחת בוקר שישי ושבת. מאפיית מרגליתות בית שמש',
 		},
@@ -1022,7 +1074,7 @@ export const useMenuStore = defineStore('menu', () => {
 			category: 'dairy-meals',
 			subcategory: 'borax',
 			price: 140,
-			image: '',
+			image: '/milkMeals/filorollMid.jpeg',
 			description:
 				'שבלול פילו בינוני במילוי גבינות עשיר עם מנגולד או תרד - מאפה פילו פריך לאירוח. מתאים לכ-6 מנות, מושלם לארוחת בוקר שישי ושבת. מאפיית מרגליתות בית שמש',
 		},
@@ -1032,7 +1084,7 @@ export const useMenuStore = defineStore('menu', () => {
 			category: 'dairy-meals',
 			subcategory: 'quiches',
 			price: 180,
-			image: '',
+			image: '/milkMeals/saled',
 			description:
 				'מגוון סלטים צבעוניים ורעננים לבחירתכם. יווני או כרוב או בורגול או טונה או חלומי מאפיית מרגליתות בית שמש מינימום הזמנה: 2 יחידות',
 			popular: false,
@@ -1084,15 +1136,15 @@ export const useMenuStore = defineStore('menu', () => {
 			hasAddOns: true,
 			addOns: [{ id: 'cheese-cream', name: 'תוספת הקרמת גבינה צהובה', price: 20 }],
 		},
-		{
-			id: 163,
-			name: 'דג סלמון שלם בפסטו ושקדים',
-			category: 'dairy-meals',
-			subcategory: 'pastas',
-			price: 350,
-			image: '',
-			description: 'דג סלמון שלם בפסטו ושקדים מעוצב - כ1.5 ק"ג. מאפיית מרגליתות בית שמש',
-		},
+		// {
+		// 	id: 163,
+		// 	name: 'דג סלמון שלם בפסטו ושקדים',
+		// 	category: 'dairy-meals',
+		// 	subcategory: 'pastas',
+		// 	price: 350,
+		// 	image: '',
+		// 	description: 'דג סלמון שלם בפסטו ושקדים מעוצב - כ1.5 ק"ג. מאפיית מרגליתות בית שמש',
+		// },
 		{
 			id: 164,
 			name: 'פלטת ירקות',
@@ -1109,22 +1161,22 @@ export const useMenuStore = defineStore('menu', () => {
 			category: 'dairy-meals',
 			subcategory: 'pastas',
 			price: 300,
-			image: '',
+			image: '/milkMeals/fruitplatter.jpeg',
 			description:
 				'פלטת פירות מעוצבת. מגוון פירות עונתיים צבעוניים. פלטה מרשימה ובריאה לאירועים, למסיבות ולארוח אורחים. מעוצבת בדיוק בקו העיצוב של מאפיית מרגליתות בית שמש.',
 		},
-		{
-			id: 166,
-			name: 'תפוח אדמה מוקרם',
-			category: 'dairy-meals',
-			subcategory: 'pastas',
-			price: 150,
-			image: '',
-			description:
-				'תפוח אדמה מוקרם ברוטב שמנת, פיטריות וערמונים. תפוח אדמה טרי מוקרם דק וגולדי, משולב ברוטב שמנת קרמי עשיר עם פיטריות טריות וערמונים המוסיפים טעם עדין. מנה חגיגית ומרשימה לאירוח ולימי חג. מתאים לכ-6 סועדים. מאפיית מרגליתות בית שמש',
-			hasAddOns: true,
-			addOns: [{ id: 'cheese-cream', name: 'תוספת הקרמת גבינה צהובה', price: 20 }],
-		},
+		// {
+		// 	id: 166,
+		// 	name: 'תפוח אדמה מוקרם',
+		// 	category: 'dairy-meals',
+		// 	subcategory: 'pastas',
+		// 	price: 150,
+		// 	image: '',
+		// 	description:
+		// 		'תפוח אדמה מוקרם ברוטב שמנת, פיטריות וערמונים. תפוח אדמה טרי מוקרם דק וגולדי, משולב ברוטב שמנת קרמי עשיר עם פיטריות טריות וערמונים המוסיפים טעם עדין. מנה חגיגית ומרשימה לאירוח ולימי חג. מתאים לכ-6 סועדים. מאפיית מרגליתות בית שמש',
+		// 	hasAddOns: true,
+		// 	addOns: [{ id: 'cheese-cream', name: 'תוספת הקרמת גבינה צהובה', price: 20 }],
+		// },
 
 		// מגשי אירועים
 
@@ -1134,37 +1186,37 @@ export const useMenuStore = defineStore('menu', () => {
 			category: 'events',
 			subcategory: 'events',
 			price: 300,
-			image: '',
+			image: '/desserts/cupsDessert.jpeg',
 			description:
 				'קינוחי כוסות מעוצבים לאירועים - 25 כוסות ב-2-3 טעמים. קינוחים מיני אלגנטיים לבר מתוקים, חתונות, בר/בת מצווה ואירועים. מאפיית מרגליתות בית שמש',
 		},
-		{
-			id: 171,
-			name: 'פקעות בוטנים',
-			category: 'events',
-			subcategory: 'events',
-			price: 280,
-			image: '',
-			description:
-				'פקעות בוטנים מרוקאיות מסורתיות - כ-40 יחידות. עוגיות חגיגיות במילוי בוטנים עשיר. מושלם למימונה, לחינה ולאירועים משפחתיים. מאפיית מרגליתות בית שמש',
-		},
-		{
-			id: 172,
-			name: 'מקרוד',
-			category: 'events',
-			subcategory: 'events',
-			price: 240,
-			image: '',
-			description:
-				'מקרוד מרוקאי מסורתי - כ-30 יחידות. עוגיות סולת ממולאות תמרים, מטוגנות וטבולות בדבש טבעי. קינוח מסורתי למימונה ולחגים. מאפיית מרגליתות בית שמש',
-		},
+		// {
+		// 	id: 171,
+		// 	name: 'פקעות בוטנים',
+		// 	category: 'events',
+		// 	subcategory: 'events',
+		// 	price: 280,
+		// 	image: '',
+		// 	description:
+		// 		'פקעות בוטנים מרוקאיות מסורתיות - כ-40 יחידות. עוגיות חגיגיות במילוי בוטנים עשיר. מושלם למימונה, לחינה ולאירועים משפחתיים. מאפיית מרגליתות בית שמש',
+		// },
+		// {
+		// 	id: 172,
+		// 	name: 'מקרוד',
+		// 	category: 'events',
+		// 	subcategory: 'events',
+		// 	price: 240,
+		// 	image: '',
+		// 	description:
+		// 		'מקרוד מרוקאי מסורתי - כ-30 יחידות. עוגיות סולת ממולאות תמרים, מטוגנות וטבולות בדבש טבעי. קינוח מסורתי למימונה ולחגים. מאפיית מרגליתות בית שמש',
+		// },
 		{
 			id: 173,
 			name: 'אצבעות פילו שקדים בדבש',
 			category: 'events',
 			subcategory: 'events',
 			price: 200,
-			image: '',
+			image: '/desserts/sigars.jpeg',
 			description:
 				'אצבעות פילו פריכות בדבש - כ-20 יחידות. אצבעות פילו זהובות במילוי שקדים וסירופ דבש עשיר. קינוח מזרחי מפנק לאירועים. מאפיית מרגליתות בית שמש',
 		},
@@ -1174,7 +1226,7 @@ export const useMenuStore = defineStore('menu', () => {
 			category: 'events',
 			subcategory: 'events',
 			price: 190,
-			image: '/cookies/sigars.jpeg',
+			image: '/desserts/sigars.jpeg',
 			description:
 				'סיגרים מרוקאיים במילוי שקדים - כ-30 יחידות. סיגרי פילו מטוגנים זהובים במילוי שקדים קלויים. קינוח חגיגי למימונה ולאירועים. מאפיית מרגליתות בית שמש',
 		},
@@ -1184,7 +1236,7 @@ export const useMenuStore = defineStore('menu', () => {
 			category: 'events',
 			subcategory: 'events',
 			price: 210,
-			image: '',
+			image: '/desserts/sigars.jpeg',
 			description:
 				'סיגרים מרוקאיים פרימיום במילוי פיסטוק - כ-30 יחידות. סיגרי פילו יוקרתיים במילוי פיסטוק איכותי. קינוח מיוחד לאירועים. מאפיית מרגליתות בית שמש',
 		},
@@ -1194,7 +1246,7 @@ export const useMenuStore = defineStore('menu', () => {
 			category: 'events',
 			subcategory: 'events',
 			price: 210,
-			image: '',
+			image: '/desserts/sigars.jpeg',
 			description:
 				'סיגרים מרוקאיים במילוי אגוזי מלך - כ-30 יחידות. סיגרי פילו מטוגנים במילוי אגוזים עשירים. קינוח מסורתי לחגים ולמימונה. מאפיית מרגליתות בית שמש',
 		},
@@ -1204,7 +1256,7 @@ export const useMenuStore = defineStore('menu', () => {
 			category: 'events',
 			subcategory: 'events',
 			price: 180,
-			image: '',
+			image: '/desserts/sfing.jpeg',
 			description:
 				'מגש ספינג מרוקאי מסורתי - כ-32 יחידות. כדורי בצק מטוגנים זהובים בסירופ דבש מתוק. קינוח מסורתי לחנוכה, למימונה ולאירועים. מאפיית מרגליתות בית שמש',
 		},
@@ -1214,7 +1266,7 @@ export const useMenuStore = defineStore('menu', () => {
 			category: 'events',
 			subcategory: 'events',
 			price: 210,
-			image: '',
+			image: '/desserts/baklawa.jpeg',
 			description:
 				'באקלאווה ביתית מסורתית - כ-30 יחידות. שכבות פילו פריכות במילוי אגוזים וסירופ דבש עשיר. קינוח מזרחי קלאסי לאירועים ולחגים. מאפיית מרגליתות בית שמש',
 		},
@@ -1225,83 +1277,83 @@ export const useMenuStore = defineStore('menu', () => {
 			id: 190,
 			name: 'עוגת יום הולדת קלאסית',
 			category: 'birthday-cakes',
-			price: 180,
-			image: '',
+			price: 300,
+			image: '/cakes/birthdayCakes/choclateBirthday.jpeg',
 			description:
 				'עוגת יום הולדת קלאסית - עוגת שכבות עם קרם וניל ופירות טריים. עוגה ל-10 מנות מושלמת לימי הולדת לילדים ולמבוגרים. הזמנת עוגות בבית שמש - מאפיית מרגליתות',
 			popular: true,
 		},
 		{
 			id: 191,
-			name: 'עוגת שוקולד ליום הולדת',
+			name: 'עוגת יום הולדת בצורות',
 			category: 'birthday-cakes',
-			price: 200,
-			image: '',
+			price: 350,
+			image: '/cakes/birthdayCakes/kidsbirthday.jpg',
 			description:
 				'עוגת שוקולד ליום הולדת - עוגת שכבות שוקולד עשירה עם גנאש בלגי. עוגה ל-10 מנות לאוהבי שוקולד. הזמנת עוגות יום הולדת בבית שמש - מאפיית מרגליתות',
 			popular: true,
 		},
-		{
-			id: 192,
-			name: 'עוגת ממתקים',
-			category: 'birthday-cakes',
-			price: 350,
-			image: '',
-			description:
-				'עוגת ממתקים מעוצבת - עוגה צבעונית מכוסה בממתקים וסוכריות. עוגה מרשימה ומושכת עין ליום הולדת לילדים. הזמנת עוגות מעוצבות בבית שמש - מאפיית מרגליתות',
-		},
-		{
-			id: 193,
-			name: 'עוגת טו בשבט מעוצבת',
-			category: 'birthday-cakes',
-			price: 250,
-			image: '',
-			description:
-				'עוגת טו בשבט מעוצבת - עוגת שוקולד בעיצוב פירות וטבע לחג האילנות. עוגה חגיגית לגנים, לכיתות ולמשפחות. הזמנת עוגות לחגים בבית שמש - מאפיית מרגליתות',
-		},
-		{
-			id: 194,
-			name: 'עוגת מספר',
-			category: 'birthday-cakes',
-			price: 220,
-			image: '',
-			description:
-				'עוגת מספר מעוצבת - עוגה בצורת מספר הגיל עם קרם, פירות ומקרונים. עוגת יום הולדת אינסטגרמית ומרשימה. הזמנת עוגות מספר בבית שמש - מאפיית מרגליתות',
-			popular: true,
-		},
+		//{
+		// 	id: 192,
+		// 	name: 'עוגת ממתקים',
+		// 	category: 'birthday-cakes',
+		// 	price: 350,
+		// 	image: '',
+		// 	description:
+		// 		'עוגת ממתקים מעוצבת - עוגה צבעונית מכוסה בממתקים וסוכריות. עוגה מרשימה ומושכת עין ליום הולדת לילדים. הזמנת עוגות מעוצבות בבית שמש - מאפיית מרגליתות',
+		// },
+		// {
+		// 	id: 193,
+		// 	name: 'עוגת טו בשבט מעוצבת',
+		// 	category: 'birthday-cakes',
+		// 	price: 250,
+		// 	image: '',
+		// 	description:
+		// 		'עוגת טו בשבט מעוצבת - עוגת שוקולד בעיצוב פירות וטבע לחג האילנות. עוגה חגיגית לגנים, לכיתות ולמשפחות. הזמנת עוגות לחגים בבית שמש - מאפיית מרגליתות',
+		// },
+		// {
+		// 	id: 194,
+		// 	name: 'עוגת מספר',
+		// 	category: 'birthday-cakes',
+		// 	price: 220,
+		// 	image: '',
+		// 	description:
+		// 		'עוגת מספר מעוצבת - עוגה בצורת מספר הגיל עם קרם, פירות ומקרונים. עוגת יום הולדת אינסטגרמית ומרשימה. הזמנת עוגות מספר בבית שמש - מאפיית מרגליתות',
+		// 	popular: true,
+		// },
 		{
 			id: 195,
 			name: 'עוגת בת/בר מצווה',
 			category: 'birthday-cakes',
 			price: 350,
-			image: '',
+			image: '/cakes/birthdayCakes/birthdaycake.png',
 			description:
 				'עוגת בר מצווה / בת מצווה מעוצבת - עוגה ל-20 מנות בעיצוב אישי מרשים. עוגה חגיגית לאירוע המשפחתי הגדול. הזמנת עוגות לבר מצווה בבית שמש - מאפיית מרגליתות',
 		},
-		{
-			id: 196,
-			name: 'עוגת חתונה/אירוסין',
-			category: 'birthday-cakes',
-			price: 500,
-			image: '',
-			description:
-				'עוגת חתונה או אירוסין מעוצבת - עוגת קומות יוקרתית ל-30 מנות. עיצוב רומנטי ואלגנטי לפי בקשה. הזמנת עוגות חתונה בבית שמש - מאפיית מרגליתות',
-		},
-		{
-			id: 197,
-			name: 'קאפקייקס מעוצבים (12 יח)',
-			category: 'birthday-cakes',
-			price: 120,
-			image: '',
-			description:
-				'קאפקייקס מעוצבים - 12 יחידות בעיצוב לפי נושא לבחירה. קאפקייקס ליום הולדת, למסיבות ולאירועים. צבעים ועיצוב אישי. מאפיית מרגליתות בית שמש',
-		},
+		// {
+		// 	id: 196,
+		// 	name: 'עוגת חתונה/אירוסין',
+		// 	category: 'birthday-cakes',
+		// 	price: 500,
+		// 	image: '',
+		// 	description:
+		// 		'עוגת חתונה או אירוסין מעוצבת - עוגת קומות יוקרתית ל-30 מנות. עיצוב רומנטי ואלגנטי לפי בקשה. הזמנת עוגות חתונה בבית שמש - מאפיית מרגליתות',
+		// },
+		// {
+		// 	id: 197,
+		// 	name: 'קאפקייקס מעוצבים (12 יח)',
+		// 	category: 'birthday-cakes',
+		// 	price: 120,
+		// 	image: '',
+		// 	description:
+		// 		'קאפקייקס מעוצבים - 12 יחידות בעיצוב לפי נושא לבחירה. קאפקייקס ליום הולדת, למסיבות ולאירועים. צבעים ועיצוב אישי. מאפיית מרגליתות בית שמש',
+		// },
 		{
 			id: 198,
 			name: 'עוגת גבינה ליום הולדת',
 			category: 'birthday-cakes',
 			price: 160,
-			image: '',
+			image: '/cakes/cheesecake.jpeg',
 			description:
 				'עוגת גבינה ליום הולדת - עוגת גבינה אפויה קרמית ל-10 מנות עם ציפוי פירות טריים. עוגה קלילה לאוהבי גבינה. הזמנת עוגות בבית שמש - מאפיית מרגליתות',
 		},
@@ -1309,8 +1361,18 @@ export const useMenuStore = defineStore('menu', () => {
 			id: 199,
 			name: 'עוגה מעוצבת בהתאמה אישית',
 			category: 'birthday-cakes',
-			price: 250,
-			image: '',
+			price: 280,
+			image: '/birthdayCakes/eventcake.jpeg',
+			description:
+				'עוגה מעוצבת בהתאמה אישית - עוגה בעיצוב ייחודי לפי דמיון ובקשה. צרו קשר לתיאום פרטים, טעמים ועיצוב. הזמנת עוגות מיוחדות בבית שמש - מאפיית מרגליתות',
+			popular: true,
+		},
+		{
+			id: 200,
+			name: 'עוגה סיום מסכת',
+			category: 'birthday-cakes',
+			price: 280,
+			image: '/birthdayCakes/siyummasechetcake.jpeg',
 			description:
 				'עוגה מעוצבת בהתאמה אישית - עוגה בעיצוב ייחודי לפי דמיון ובקשה. צרו קשר לתיאום פרטים, טעמים ועיצוב. הזמנת עוגות מיוחדות בבית שמש - מאפיית מרגליתות',
 			popular: true,
