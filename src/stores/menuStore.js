@@ -748,7 +748,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'לחמניות שום',
 			category: ['vegan', 'breads'],
 			price: 80,
-			image: '/bread/garlicBread1.png',
+			image: '/bread/garlicBread1.jpg',
 			description:
 				'לחמניות שום ביתיות ארומטיות - מארז 5 יח׳. לחמניות רכות בטעם שום עשיר וחמאתי. מושלמות לצד פסטה איטלקית, מרקים וסלטים - מבית שמש',
 		},
