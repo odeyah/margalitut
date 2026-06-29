@@ -96,7 +96,7 @@ export const useMenuStore = defineStore('menu', () => {
 			id: 'vegan',
 			name: 'טבעוני',
 			image: '/bread/chalakosmin.png',
-			hoverImage: '/bread/garlicRoolls.png',
+			hoverImage: '/bread/garlicRolls.png',
 			description: 'מאפים טבעוניים ללא מוצרי בעלי חיים',
 			color: '#98FB98',
 			tips: [
