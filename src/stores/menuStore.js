@@ -382,7 +382,7 @@ export const useMenuStore = defineStore('menu', () => {
 				'פאי פיצוחים עשיר עם פקאן, אגוזי מלך ושקדים בקרמל ביתי. עוגה אמריקאית קלאסית - קינוח חגיגי לאירועים ולחגים. מאפיית מרגליתות בית שמש',
 		},
 		{
-			id: 37,
+			id: 25,
 			name: 'גבינה אוכמניות / פירות יער',
 			category: 'mixed-cakes',
 			price: 300,
@@ -483,7 +483,7 @@ export const useMenuStore = defineStore('menu', () => {
 		{
 			id: 37,
 			name: 'גבינה פירורים קרה',
-			category: 'chease-cakes',
+			category: 'mixed-cakes',
 			price: 320,
 			image: '/cakes/coldCheaseCake.jpeg',
 			description:
@@ -492,7 +492,7 @@ export const useMenuStore = defineStore('menu', () => {
 		{
 			id: 38,
 			name: 'פס תפוחים ואגוזים',
-			category: 'chease-cakes',
+			category: 'mixed-cakes',
 			price: 80,
 			image: '/cakes/appleNuts.jpeg',
 			description: 'עוגת פס תפוחים אגוזים וקינמון - מאפיית מרגליתות בית שמש',
@@ -1499,7 +1499,7 @@ export const useMenuStore = defineStore('menu', () => {
 		return products.value
 			.filter(product => {
 				// דלג על מוצרים מחוגי אפייה
-				const productCategories = product.categories || [product.category];
+				const productCategories = Array.isArray(product.category) ? product.category : [product.category];
 				if (productCategories.includes('baking-workshops')) return false;
 
 				// חפש בשם המוצר או בתיאור
@@ -1509,7 +1509,8 @@ export const useMenuStore = defineStore('menu', () => {
 				);
 			})
 			.map(product => {
-				const category = categories.value.find(c => c.id === product.category);
+				const categoryId = Array.isArray(product.category) ? product.category[0] : product.category;
+				const category = categories.value.find(c => c.id === categoryId);
 				return {
 					...product,
 					categoryId: product.category,
