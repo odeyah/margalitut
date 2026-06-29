@@ -490,7 +490,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: "מופלאות שוקולד צ'יפס",
 			category: 'cookies',
 			price: 60,
-			image: '/cookies/choclatechips.jpg',
+			image: '/cookies/chocoChip.jpeg',
 			description:
 				"עוגיות שוקולד צ'יפס ביתיות פריכות עם שוקולד בלגי איכותי בנדיבות. כ-11 עוגיות אמריקאיות כמו בבית קפה - נמכרות כמו לחמניות חמות. מאפיית מרגליתות בית שמש",
 			popular: true,
@@ -500,7 +500,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: "שוקולד צ'יפס תות מקורי",
 			category: 'cookies',
 			price: 70,
-			image: '/cookies/choclatechips.jpg',
+			image: '/cookies/chocoChip.jpeg',
 			description:
 				"עוגיות שוקולד צ'יפס עם תותים מיובשים - שילוב מיוחד ומקורי שלא תמצאו במקום אחר. עוגיות פרימיום מושלמות למתנה ולאירוח. מאפיית מרגליתות בית שמש",
 			popular: true,
@@ -1093,7 +1093,7 @@ export const useMenuStore = defineStore('menu', () => {
 			id: 154,
 			name: 'סלט גדול',
 			category: 'dairy-meals',
-			subcategory: 'quiches',
+			subcategory: 'salads',
 			price: 180,
 			image: '/milkMeals/salad.jpeg',
 			description:
@@ -1160,7 +1160,7 @@ export const useMenuStore = defineStore('menu', () => {
 			id: 164,
 			name: 'פלטת ירקות',
 			category: 'dairy-meals',
-			subcategory: 'pastas',
+			subcategory: 'salads',
 			price: 300,
 			image: '/milkMeals/vegetables.jpeg',
 			description:
@@ -1170,7 +1170,7 @@ export const useMenuStore = defineStore('menu', () => {
 			id: 165,
 			name: 'פלטת פירות',
 			category: 'dairy-meals',
-			subcategory: 'pastas',
+			subcategory: 'salads',
 			price: 300,
 			image: '/milkMeals/fruitplatter.jpeg',
 			description:
@@ -1363,7 +1363,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'עוגת גבינה ליום הולדת',
 			category: 'birthday-cakes',
 			price: 160,
-			image: '/cakes/cheesecake.jpeg',
+			image: '/cakes/cheasecake.jpeg',
 			description:
 				'עוגת גבינה ליום הולדת - עוגת גבינה אפויה קרמית ל-10 מנות עם ציפוי פירות טריים. עוגה קלילה לאוהבי גבינה. הזמנת עוגות בבית שמש - מאפיית מרגליתות',
 		},
@@ -1372,7 +1372,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'עוגה מעוצבת בהתאמה אישית',
 			category: 'birthday-cakes',
 			price: 280,
-			image: '/birthdayCakes/eventcake.jpeg',
+			image: '/cakes/birthdayCakes/eventcake.jpeg',
 			description:
 				'עוגה מעוצבת בהתאמה אישית - עוגה בעיצוב ייחודי לפי דמיון ובקשה. צרו קשר לתיאום פרטים, טעמים ועיצוב. הזמנת עוגות מיוחדות בבית שמש - מאפיית מרגליתות',
 			popular: true,
@@ -1382,7 +1382,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'עוגה סיום מסכת',
 			category: 'birthday-cakes',
 			price: 280,
-			image: '/birthdayCakes/siyummasechetcake.jpeg',
+			image: '/cakes/birthdayCakes/siyummasechetcake.jpeg',
 			description:
 				'עוגה מעוצבת בהתאמה אישית - עוגה בעיצוב ייחודי לפי דמיון ובקשה. צרו קשר לתיאום פרטים, טעמים ועיצוב. הזמנת עוגות מיוחדות בבית שמש - מאפיית מרגליתות',
 			popular: true,
