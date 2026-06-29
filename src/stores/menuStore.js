@@ -153,7 +153,7 @@ export const useMenuStore = defineStore('menu', () => {
 			id: 'events',
 			name: 'מגשי אירועים',
 			image: '/desserts/baklawa.jpeg',
-			hoverImage: '/desserts/cupsDessert.jpeg',
+			hoverImage: '/desserts/icecream.jpg',
 			description: 'מגשי קינוחים מזרחיים מרשימים לאירועים, חתונות ומשפחה',
 			color: '#DAA520',
 			tips: [
@@ -1211,7 +1211,7 @@ export const useMenuStore = defineStore('menu', () => {
 			category: 'events',
 			subcategory: 'events',
 			price: 300,
-			image: '/desserts/cupsDessert.jpeg',
+			image: '/desserts/cupdeserts.jpeg',
 			description:
 				'קינוחי כוסות מעוצבים לאירועים - 25 כוסות ב-2-3 טעמים. קינוחים מיני אלגנטיים לבר מתוקים, חתונות, בר/בת מצווה ואירועים. מאפיית מרגליתות בית שמש',
 		},
