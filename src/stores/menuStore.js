@@ -556,7 +556,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'קוקילידה',
 			category: 'cookies',
 			price: 14,
-			image: '/cookies/coocilida.jpg',
+			image: '/cookies/cookilida.jpeg',
 			description:
 				'קוקילידה ביתית - עוגיית קוקוס שוקולד גדולה ופריכה ליחידה. עוגייה נוסטלגית בטעם של פעם שמזכירה את הילדות. מאפיית מרגליתות בית שמש',
 		},
@@ -682,7 +682,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'באקלאווה',
 			category: 'cookies',
 			price: 80,
-			image: '/cakes/baklava.jpeg',
+			image: '/cakes/baqlawa.jpg',
 			description:
 				'באקלאווה ביתית מסורתית - כ-30 יחידות. שכבות פילו פריכות במילוי אגוזים וסירופ דבש עשיר. קינוח מזרחי קלאסי לאירועים ולחגים. מאפיית מרגליתות בית שמש',
 		},
@@ -1084,7 +1084,7 @@ export const useMenuStore = defineStore('menu', () => {
 			category: 'dairy-meals',
 			subcategory: 'quiches',
 			price: 180,
-			image: '/milkMeals/saled',
+			image: '/milkMeals/salad.jpeg',
 			description:
 				'מגוון סלטים צבעוניים ורעננים לבחירתכם. יווני או כרוב או בורגול או טונה או חלומי מאפיית מרגליתות בית שמש מינימום הזמנה: 2 יחידות',
 			popular: false,
@@ -1112,30 +1112,30 @@ export const useMenuStore = defineStore('menu', () => {
 			hasAddOns: true,
 			addOns: [{ id: 'cheese-cream', name: 'תוספת הקרמת גבינה צהובה', price: 20 }],
 		},
-		{
-			id: 161,
-			name: 'רביולי עגבניות',
-			category: 'dairy-meals',
-			subcategory: 'pastas',
-			price: 180,
-			image: '/milkMeals/ravioli.jpeg',
-			description:
-				'רביולי גבינה ברוטב עגבניות ביתי - 400 גרם פסטה איטלקית קלאסית ברוטב עגבניות טרי. מתאים לכ-3-5 סועדים. מאפיית מרגליתות בית שמש',
-			hasAddOns: true,
-			addOns: [{ id: 'cheese-cream', name: 'תוספת הקרמת גבינה צהובה', price: 20 }],
-		},
-		{
-			id: 162,
-			name: 'רביולי פסטו',
-			category: 'dairy-meals',
-			subcategory: 'pastas',
-			price: 180,
-			image: '/milkMeals/ravioli.jpeg',
-			description:
-				'רביולי גבינה ברוטב פסטו טרי - 400 גרם פסטה איטלקית ברוטב בזיליקום ואגוזי צנובר. פסטה ירוקה ורעננת. מאפיית מרגליתות בית שמש',
-			hasAddOns: true,
-			addOns: [{ id: 'cheese-cream', name: 'תוספת הקרמת גבינה צהובה', price: 20 }],
-		},
+		// {
+		// 	id: 161,
+		// 	name: 'רביולי עגבניות',
+		// 	category: 'dairy-meals',
+		// 	subcategory: 'pastas',
+		// 	price: 180,
+		// 	image: '/milkMeals/ravioli.jpeg',
+		// 	description:
+		// 		'רביולי גבינה ברוטב עגבניות ביתי - 400 גרם פסטה איטלקית קלאסית ברוטב עגבניות טרי. מתאים לכ-3-5 סועדים. מאפיית מרגליתות בית שמש',
+		// 	hasAddOns: true,
+		// 	addOns: [{ id: 'cheese-cream', name: 'תוספת הקרמת גבינה צהובה', price: 20 }],
+		// },
+		// {
+		// 	id: 162,
+		// 	name: 'רביולי פסטו',
+		// 	category: 'dairy-meals',
+		// 	subcategory: 'pastas',
+		// 	price: 180,
+		// 	image: '/milkMeals/ravioli.jpeg',
+		// 	description:
+		// 		'רביולי גבינה ברוטב פסטו טרי - 400 גרם פסטה איטלקית ברוטב בזיליקום ואגוזי צנובר. פסטה ירוקה ורעננת. מאפיית מרגליתות בית שמש',
+		// 	hasAddOns: true,
+		// 	addOns: [{ id: 'cheese-cream', name: 'תוספת הקרמת גבינה צהובה', price: 20 }],
+		// },
 		// {
 		// 	id: 163,
 		// 	name: 'דג סלמון שלם בפסטו ושקדים',
@@ -1272,7 +1272,6 @@ export const useMenuStore = defineStore('menu', () => {
 		},
 
 		// עוגות יום הולדת ואירועים
-
 		{
 			id: 190,
 			name: 'עוגת יום הולדת קלאסית',
@@ -1290,7 +1289,7 @@ export const useMenuStore = defineStore('menu', () => {
 			price: 350,
 			image: '/cakes/birthdayCakes/kidsbirthday.jpg',
 			description:
-				'עוגת שוקולד ליום הולדת - עוגת שכבות שוקולד עשירה עם גנאש בלגי. עוגה ל-10 מנות לאוהבי שוקולד. הזמנת עוגות יום הולדת בבית שמש - מאפיית מרגליתות',
+				'עוגת שוקולד ליום הולדת - עוגת שכבות שוקולד עשירה עם גנאש בלגי. עוגה ל-20 מנות לאוהבי שוקולד. הזמנת עוגות יום הולדת בבית שמש - מאפיית מרגליתות',
 			popular: true,
 		},
 		//{
@@ -1330,15 +1329,15 @@ export const useMenuStore = defineStore('menu', () => {
 			description:
 				'עוגת בר מצווה / בת מצווה מעוצבת - עוגה ל-20 מנות בעיצוב אישי מרשים. עוגה חגיגית לאירוע המשפחתי הגדול. הזמנת עוגות לבר מצווה בבית שמש - מאפיית מרגליתות',
 		},
-		// {
-		// 	id: 196,
-		// 	name: 'עוגת חתונה/אירוסין',
-		// 	category: 'birthday-cakes',
-		// 	price: 500,
-		// 	image: '',
-		// 	description:
-		// 		'עוגת חתונה או אירוסין מעוצבת - עוגת קומות יוקרתית ל-30 מנות. עיצוב רומנטי ואלגנטי לפי בקשה. הזמנת עוגות חתונה בבית שמש - מאפיית מרגליתות',
-		// },
+		{
+			id: 196,
+			name: 'עוגת יום הולדת ללא גלוטן',
+			category: ['birthday-cakes', 'gluten-free'],
+			price: 350,
+			image: '/cakes/birthdayCakes/glutenfreebirthday.jpg',
+			description:
+				'עוגת יום הולדת ללא גלוטן מקמח שקדים עוגה מעולה טעימה ויוקרתית כ-30 מנות. עיצוב לפי בקשה. הזמנת עוגות יום הולדת ללא גלוטן בבית שמש - מאפיית מרגליתות',
+		},
 		// {
 		// 	id: 197,
 		// 	name: 'קאפקייקס מעוצבים (12 יח)',
