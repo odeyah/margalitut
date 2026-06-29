@@ -81,8 +81,8 @@ export const useMenuStore = defineStore('menu', () => {
 		{
 			id: 'gluten-free',
 			name: 'ללא גלוטן',
-			image: 'pesachChoclateNuts.jpeg',
-			hoverImage: 'glutenfreebirthday.jpg',
+			image: '/pesach/pesachChoclateNuts.jpeg',
+			hoverImage: '/cakes/birthdayCakes/glutenfreebirthday.jpg',
 			description: 'אפייה ללא גלוטן',
 			color: '#F0E68C',
 			tips: [
@@ -96,7 +96,7 @@ export const useMenuStore = defineStore('menu', () => {
 			id: 'vegan',
 			name: 'טבעוני',
 			image: '/bread/chalakosmin.png',
-			hoverImage: '/bread/garlicRools.png',
+			hoverImage: '/bread/garlicRoolls.png',
 			description: 'מאפים טבעוניים ללא מוצרי בעלי חיים',
 			color: '#98FB98',
 			tips: [
@@ -844,7 +844,7 @@ export const useMenuStore = defineStore('menu', () => {
 			price: 65,
 			image: '/pesach/almondsPesach.jpeg',
 			description:
-				'עוגיות קוקוס ללא גלוטן - עוגיות פריכות משקדים. מתאימות לצליאקים ולרגישים לגלוטן. מאפיית מרגליתות בית שמש',
+				'עוגיות שקדים ללא גלוטן - עוגיות פריכות משקדים. מתאימות לצליאקים ולרגישים לגלוטן. מאפיית מרגליתות בית שמש',
 		},
 		{
 			id: 96,
@@ -853,7 +853,7 @@ export const useMenuStore = defineStore('menu', () => {
 			price: 65,
 			image: '/pesach/pesachChoclateChips.jpeg',
 			description:
-				'עוגיות קוקוס ללא גלוטן - עוגיות פריכות משקדים. מתאימות לצליאקים ולרגישים לגלוטן. מאפיית מרגליתות בית שמש',
+				'עוגיות שוקולד ציפס ללא גלוטן - עוגיות פריכות משקדים. מתאימות לצליאקים ולרגישים לגלוטן. מאפיית מרגליתות בית שמש',
 		},
 
 		// ==================== טבעוני ====================
@@ -890,7 +890,7 @@ export const useMenuStore = defineStore('menu', () => {
 		{
 			id: 111,
 			name: 'שוקולד',
-			category: 'ice-cream',
+			category: ['ice-cream', 'gluten-free'],
 			price: 130,
 			image: '/desserts/icecream.jpg',
 			description:
@@ -899,7 +899,7 @@ export const useMenuStore = defineStore('menu', () => {
 		{
 			id: 112,
 			name: 'תות שמנת',
-			category: 'ice-cream',
+			category: ['ice-cream', 'gluten-free'],
 			price: 130,
 			image: '/desserts/icecream.jpg',
 			description:
@@ -917,7 +917,7 @@ export const useMenuStore = defineStore('menu', () => {
 		{
 			id: 114,
 			name: 'מנגו',
-			category: 'ice-cream',
+			category: ['ice-cream', 'gluten-free'],
 			price: 130,
 			image: '/desserts/icecream.jpg',
 			description:
@@ -926,7 +926,7 @@ export const useMenuStore = defineStore('menu', () => {
 		{
 			id: 115,
 			name: 'לימון',
-			category: 'ice-cream',
+			category: ['ice-cream', 'gluten-free'],
 			price: 130,
 			image: '/desserts/icecreamLemon.jpg',
 			description:
@@ -962,7 +962,7 @@ export const useMenuStore = defineStore('menu', () => {
 		{
 			id: 119,
 			name: 'טריקולד',
-			category: 'ice-cream',
+			category: ['ice-cream', 'gluten-free'],
 			price: 130,
 			image: '/desserts/icecreamTrikolad.jpeg',
 			description:
@@ -971,7 +971,7 @@ export const useMenuStore = defineStore('menu', () => {
 		{
 			id: 120,
 			name: 'פירות יער',
-			category: 'ice-cream',
+			category: ['ice-cream', 'gluten-free'],
 			price: 130,
 			image: '/desserts/icecreamBerrys.jpg',
 			description:
@@ -980,7 +980,7 @@ export const useMenuStore = defineStore('menu', () => {
 		{
 			id: 121,
 			name: 'תפוז',
-			category: 'ice-cream',
+			category: ['ice-cream', 'gluten-free'],
 			price: 130,
 			image: '/desserts/icecream.jpg',
 			description:
@@ -989,7 +989,7 @@ export const useMenuStore = defineStore('menu', () => {
 		{
 			id: 122,
 			name: 'ריבת חלב',
-			category: 'ice-cream',
+			category: ['ice-cream', 'gluten-free'],
 			price: 130,
 			image: '/desserts/icecream.jpg',
 			description:
@@ -998,7 +998,7 @@ export const useMenuStore = defineStore('menu', () => {
 		{
 			id: 123,
 			name: 'לימונענע',
-			category: 'ice-cream',
+			category: ['ice-cream', 'gluten-free'],
 			price: 130,
 			image: '/desserts/icecream.jpg',
 			description:
@@ -1015,6 +1015,17 @@ export const useMenuStore = defineStore('menu', () => {
 			image: '/milkMeals/pizza.jpeg',
 			description:
 				'פיצה ביתית איטלקית עם רוטב עגבניות טרי, מוצרלה נמשכת + 2 תוספות לבחירה. בצק טרי יומי אפוי בתנור ביתי. מאפיית מרגליתות בית שמש',
+			popular: true,
+		},
+		{
+			id: 126,
+			name: 'פיצה ללא גלוטן',
+			category: ['dairy-meals', 'gluten-free'],
+			subcategory: 'pizzas',
+			price: 95,
+			image: '/milkMeals/glutenfreePizza.jpg',
+			description:
+				'פיצה ביתית איטלקית ללא גלוטן עם רוטב עגבניות טרי, מוצרלה נמשכת + 2 תוספות לבחירה. בצק טרי יומי אפוי בתנור ביתי. מאפיית מרגליתות בית שמש',
 			popular: true,
 		},
 
