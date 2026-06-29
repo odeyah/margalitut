@@ -150,6 +150,20 @@ export const useMenuStore = defineStore('menu', () => {
 			],
 		},
 		{
+			id: 'events',
+			name: 'מגשי אירועים',
+			image: '/desserts/baklawa.jpeg',
+			hoverImage: '/desserts/cupsDessert.jpeg',
+			description: 'מגשי קינוחים מזרחיים מרשימים לאירועים, חתונות ומשפחה',
+			color: '#DAA520',
+			tips: [
+				{ icon: '📅', title: 'הזמנה מראש', text: 'מומלץ להזמין מגשי אירועים לפחות 3-5 ימים מראש' },
+				{ icon: '🍽️', title: 'כמות מומלצת', text: 'בדקו את כמות היחידות במגש כדי להתאים לגודל האירוע' },
+				{ icon: '🎉', title: 'גיוון טעמים', text: 'שלבו כמה מגשים שונים לאירוח מגוון ועשיר' },
+				{ icon: '❄️', title: 'אחסון', text: 'מגשים מטוגנים מומלץ להגיש ביום ההזמנה לטריות מקסימלית' },
+			],
+		},
+		{
 			id: 'baking-workshops',
 			name: 'חוגי אפייה',
 			image: '/margalitaf1.jpeg',
@@ -804,7 +818,7 @@ export const useMenuStore = defineStore('menu', () => {
 		{
 			id: 90,
 			name: 'פס שוקולד עשיר',
-			category: ['gluten-free', 'cakes'],
+			category: ['gluten-free', 'mixed-cakes'],
 			price: 75,
 			image: '/pesach/chocletTheQ.jpeg',
 			description:
@@ -831,7 +845,7 @@ export const useMenuStore = defineStore('menu', () => {
 		{
 			id: 93,
 			name: 'שוקולד אגוזים',
-			category: ['gluten-free', 'cakes'],
+			category: ['gluten-free', 'mixed-cakes'],
 			price: 95,
 			image: '/pesach/nutsPesachCake.jpeg',
 			description:
@@ -869,7 +883,7 @@ export const useMenuStore = defineStore('menu', () => {
 		// {
 		// 	id: 101,
 		// 	name: 'מאפינס טבעוניים',
-		// 	category: ['vegan', 'cakes'],
+		// 	category: ['vegan', 'mixed-cakes'],
 		// 	price: 70,
 		// 	image: '',
 		// 	description:
