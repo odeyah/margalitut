@@ -53,7 +53,7 @@ export const useMenuStore = defineStore('menu', () => {
 		{
 			id: 'breads',
 			name: 'לחמים',
-			image: '/bread/rolls.png',
+			image: '/bread/rolls.jpeg',
 			hoverImage: '/bread/chalakosmin2.png',
 			description: 'לחמים טריים מהתנור',
 			color: '#DEB887',
