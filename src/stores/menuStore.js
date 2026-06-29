@@ -35,7 +35,7 @@ export const useMenuStore = defineStore('menu', () => {
 		{
 			id: 'cookies',
 			name: 'עוגיות',
-			image: '/cookies/dateRolls.jpeg',
+			image: '/cookies/jamflower.jpeg',
 			hoverImage: '/cookies/almonds.jpeg',
 			description: 'עוגיות פריכות וטעימות',
 			color: '#D2691E',
@@ -82,7 +82,7 @@ export const useMenuStore = defineStore('menu', () => {
 			id: 'gluten-free',
 			name: 'ללא גלוטן',
 			image: 'pesachChoclateNuts.jpeg',
-			hoverImage: 'pesachChoclateNuts.jpeg',
+			hoverImage: 'glutenfreebirthday.jpg',
 			description: 'אפייה ללא גלוטן',
 			color: '#F0E68C',
 			tips: [
