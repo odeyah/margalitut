@@ -74,6 +74,9 @@
 			@close="showOptionsModal = false"
 			@add="handleOptionsAdd"
 		/>
+
+		<!-- Product Detail Modal -->
+		<ProductModal :product="showProductModal ? product : null" @close="showProductModal = false" />
 	</div>
 </template>
 
@@ -82,6 +85,7 @@ import { ref, computed } from 'vue';
 import { useOrderStore } from '../../stores/orderStore';
 import { useUIStore } from '../../stores/uiStore';
 import ProductOptionsModal from '../ui/ProductOptionsModal.vue';
+import ProductModal from '../ui/ProductModal.vue';
 
 const props = defineProps({
 	product: {
@@ -94,6 +98,7 @@ const orderStore = useOrderStore();
 const uiStore = useUIStore();
 const showAddedIndicator = ref(false);
 const showOptionsModal = ref(false);
+const showProductModal = ref(false);
 
 const isInCart = computed(() => {
 	return orderStore.cart.some(item => item.id === props.product.id);
@@ -135,6 +140,8 @@ const updateQuantity = event => {
 const handleCardClick = () => {
 	if (props.product.hasOptions) {
 		openOptionsModal();
+	} else {
+		showProductModal.value = true;
 	}
 };
 const openOptionsModal = () => {
