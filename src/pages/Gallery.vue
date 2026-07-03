@@ -193,6 +193,34 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { useHead } from '@vueuse/head';
 import { useScrollAnimation } from '../composables/useScrollAnimation';
+import g1 from '/gallery/gallary1.jpg';
+import g2 from '/gallery/gallery2.jpeg';
+import g3 from '/gallery/gallery3.jpeg';
+import g4 from '/gallery/gallery4.jpeg';
+import g5 from '/gallery/gallery5.jpg';
+import g6 from '/gallery/gallery6.jpeg';
+import g7 from '/gallery/gallery7.jpeg';
+import g8 from '/gallery/gallery8.jpg';
+import g9 from '/gallery/gallery9.jpeg';
+import g10 from '/gallery/gallery10.jpeg';
+import g11 from '/gallery/gallery11.jpeg';
+import g12 from '/gallery/gallery12.jpeg';
+import g13 from '/gallery/gallery13.jpeg';
+import g14 from '/gallery/gallery14.jpeg';
+import g15 from '/gallery/gallery15.jpeg';
+import g16 from '/gallery/gallery16.jpeg';
+import g17 from '/gallery/gallery17.jpeg';
+import g18 from '/gallery/gallery18.jpeg';
+import g19 from '/gallery/gallery19.jpeg';
+import g20 from '/gallery/gallery20.jpeg';
+import g21 from '/gallery/gallery21.jpeg';
+import g22 from '/gallery/gallery22.jpeg';
+import g23 from '/gallery/gallery23.jpeg';
+import g24 from '/gallery/gallery24.jpeg';
+import g25 from '/gallery/gallery25.jpg';
+import g26 from '/gallery/galleryPesach.jpeg';
+import g80 from '/gallery/gallery80.jpeg';
+import g100 from '/gallery/gallery100.jpeg';
 
 useScrollAnimation();
 
@@ -230,81 +258,74 @@ const categoryNames = {
 };
 
 // Gallery Images
-// Gallery Images
-const galleryData = [
-	{
-		src: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800',
-		title: 'עוגת שוקולד מפנקת',
-		category: 'cakes',
-		description: 'עוגת שוקולד עשירה עם ציפוי גנאש',
-	},
-	{
-		src: 'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=800',
-		title: 'עוגיות שוקולד צ׳יפס',
-		category: 'cookies',
-		description: 'עוגיות ביתיות עם שוקולד צ׳יפס בלגי',
-	},
-	{
-		src: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800',
-		title: 'חלה לשבת',
-		category: 'bread',
-		description: 'חלה רכה וטרייה לשבת',
-	},
-	{
-		src: 'https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=800',
-		title: 'עוגת גבינה',
-		category: 'cakes',
-		description: 'עוגת גבינה קרמית עם תותים',
-	},
-	{
-		src: 'https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=800',
-		title: 'מאפינס שוקולד',
-		category: 'cakes',
-		description: 'מאפינס שוקולד עם ליבה נוזלת',
-	},
-	{
-		src: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800',
-		title: 'קרואסונים',
-		category: 'bread',
-		description: 'קרואסונים חמאתיים ופריכים',
-	},
-	{
-		src: 'https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=800',
-		title: 'עוגיות לינזר',
-		category: 'cookies',
-		description: 'עוגיות לינזר עם ריבה',
-	},
-	{
-		src: 'https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=800',
-		title: 'עוגת יום הולדת',
-		category: 'events',
-		description: 'עוגה מעוצבת לאירוע מיוחד',
-	},
-	{
-		src: 'https://images.unsplash.com/photo-1562440499-64c9a111f713?w=800',
-		title: 'פיצה ביתית',
-		category: 'dairy',
-		description: 'פיצה עם גבינות וירקות טריים',
-	},
-	{
-		src: 'https://images.unsplash.com/photo-1587668178277-295251f900ce?w=800',
-		title: 'עוגת שכבות',
-		category: 'cakes',
-		description: 'עוגת שכבות מרשימה לאירועים',
-	},
-	{
-		src: 'https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=800',
-		title: 'עוגיות חמאה',
-		category: 'cookies',
-		description: 'עוגיות חמאה מעוצבות',
-	},
-	{
-		src: 'https://images.unsplash.com/photo-1517433670267-08bbd4be890f?w=800',
-		title: 'שולחן מתוקים',
-		category: 'events',
-		description: 'שולחן מתוקים לבר מצווה',
-	},
+const galleryImages = [
+	g1,
+	g2,
+	g3,
+	g4,
+	g5,
+	g6,
+	g7,
+	g8,
+	g9,
+	g10,
+	g11,
+	g12,
+	g13,
+	g14,
+	g15,
+	g16,
+	g17,
+	g18,
+	g19,
+	g20,
+	g21,
+	g22,
+	g23,
+	g24,
+	g25,
+	g26,
+	g80,
+	g100,
 ];
+
+const galleryTitles = [
+	'השולחן שלנו לפני שיוצאים למכירה',
+	'עוגת פאדג מעוצבת',
+	'כדורי גבינה בציפוי שוקולד',
+	'קולאז 1',
+	'שם התמונה 5',
+	'שם התמונה 6',
+	'שם התמונה 7',
+	'שם התמונה 8',
+	'שם התמונה 9',
+	'שם התמונה 10',
+	'שם התמונה 11',
+	'שם התמונה 12',
+	'שם התמונה 13',
+	'שם התמונה 14',
+	'שם התמונה 15',
+	'שם התמונה 16',
+	'שם התמונה 17',
+	'שם התמונה 18',
+	'שם התמונה 19',
+	'שם התמונה 20',
+	'שם התמונה 21',
+	'שם התמונה 22',
+	'שם התמונה 23',
+	'שם התמונה 24',
+	'שם התמונה 25',
+	'שם התמונה 26',
+	'שם התמונה 27',
+	'שם התמונה 28',
+];
+
+const galleryData = galleryImages.map((src, index) => ({
+	src,
+	title: galleryTitles[index] || 'שם התמונה',
+	category: ['cakes', 'cookies', 'bread', 'dairy', 'events'][index % 5],
+	description: 'תמונה מהגלריה של מרגליתות',
+}));
 
 const images = galleryData.map((img, index) => ({
 	...img,
@@ -577,7 +598,9 @@ onUnmounted(() => {
 	transform: translateX(-50%);
 	z-index: 50;
 	border-radius: 2px;
-	box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 0, 0, 0.2);
+	box-shadow:
+		inset 0 0 10px rgba(0, 0, 0, 0.3),
+		0 0 20px rgba(0, 0, 0, 0.2);
 }
 
 .spine-text {
@@ -605,13 +628,17 @@ onUnmounted(() => {
 .left-page {
 	left: 0;
 	border-radius: 10px 0 0 10px;
-	box-shadow: -5px 0 20px rgba(0, 0, 0, 0.15), inset 5px 0 15px rgba(0, 0, 0, 0.05);
+	box-shadow:
+		-5px 0 20px rgba(0, 0, 0, 0.15),
+		inset 5px 0 15px rgba(0, 0, 0, 0.05);
 }
 
 .right-page {
 	right: 0;
 	border-radius: 0 10px 10px 0;
-	box-shadow: 5px 0 20px rgba(0, 0, 0, 0.15), inset -5px 0 15px rgba(0, 0, 0, 0.05);
+	box-shadow:
+		5px 0 20px rgba(0, 0, 0, 0.15),
+		inset -5px 0 15px rgba(0, 0, 0, 0.05);
 }
 
 .page-content {
@@ -700,7 +727,10 @@ onUnmounted(() => {
 	z-index: 200;
 	cursor: pointer;
 	transform-origin: left center;
-	transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1), visibility 0s linear 0.8s, z-index 0s linear 0.4s;
+	transition:
+		transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1),
+		visibility 0s linear 0.8s,
+		z-index 0s linear 0.4s;
 	background: linear-gradient(135deg, var(--pink-primary), var(--pink-secondary));
 	border-radius: 0 12px 12px 0;
 	box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.3);
@@ -1185,13 +1215,17 @@ onUnmounted(() => {
 
 .flip-front {
 	background: linear-gradient(to left, #fffef9, #f5f0e6);
-	box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1), inset 10px 0 30px rgba(0, 0, 0, 0.05);
+	box-shadow:
+		-2px 0 10px rgba(0, 0, 0, 0.1),
+		inset 10px 0 30px rgba(0, 0, 0, 0.05);
 }
 
 .flip-back {
 	background: linear-gradient(to right, #fffef9, #f5f0e6);
 	transform: rotateY(180deg);
-	box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1), inset -10px 0 30px rgba(0, 0, 0, 0.05);
+	box-shadow:
+		2px 0 10px rgba(0, 0, 0, 0.1),
+		inset -10px 0 30px rgba(0, 0, 0, 0.05);
 }
 
 @keyframes flipNext {
