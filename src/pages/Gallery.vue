@@ -22,10 +22,6 @@
 						<div class="page-content">
 							<div class="image-frame" v-if="leftImage" @click="openLightbox(leftImage.index)">
 								<img :src="leftImage.src" :alt="leftImage.title" />
-								<div class="image-info">
-									<h3>{{ leftImage.title }}</h3>
-									<span class="image-category">{{ leftImage.categoryName }}</span>
-								</div>
 								<div class="image-number">{{ leftImage.index + 1 }}</div>
 							</div>
 							<div class="empty-page" v-else>
@@ -39,10 +35,6 @@
 						<div class="page-content">
 							<div class="image-frame" v-if="rightImage" @click="openLightbox(rightImage.index)">
 								<img :src="rightImage.src" :alt="rightImage.title" />
-								<div class="image-info">
-									<h3>{{ rightImage.title }}</h3>
-									<span class="image-category">{{ rightImage.categoryName }}</span>
-								</div>
 								<div class="image-number">{{ rightImage.index + 1 }}</div>
 							</div>
 							<div class="empty-page" v-else>
@@ -64,10 +56,6 @@
 						<div class="page-content">
 							<div class="image-frame" v-if="mobileImage" @click="openLightbox(mobileImage.index)">
 								<img :src="mobileImage.src" :alt="mobileImage.title" />
-								<div class="image-info">
-									<h3>{{ mobileImage.title }}</h3>
-									<span class="image-category">{{ mobileImage.categoryName }}</span>
-								</div>
 								<div class="image-number">{{ mobileImage.index + 1 }}</div>
 							</div>
 						</div>
@@ -294,30 +282,30 @@ const galleryTitles = [
 	'עוגת פאדג מעוצבת',
 	'כדורי גבינה בציפוי שוקולד',
 	'קולאז 1',
-	'שם התמונה 5',
-	'שם התמונה 6',
-	'שם התמונה 7',
-	'שם התמונה 8',
-	'שם התמונה 9',
-	'שם התמונה 10',
-	'שם התמונה 11',
-	'שם התמונה 12',
-	'שם התמונה 13',
-	'שם התמונה 14',
-	'שם התמונה 15',
-	'שם התמונה 16',
-	'שם התמונה 17',
-	'שם התמונה 18',
-	'שם התמונה 19',
-	'שם התמונה 20',
-	'שם התמונה 21',
-	'שם התמונה 22',
-	'שם התמונה 23',
-	'שם התמונה 24',
-	'שם התמונה 25',
-	'שם התמונה 26',
-	'שם התמונה 27',
-	'שם התמונה 28',
+	'השולחן שלנו בהכנות לפני מכירה',
+	'עוגת יום הולדת דובי',
+	'קולאז פיצה שמרים ועוגיות',
+	'מגוון עוגיות למכירה',
+	'עוגת גבינה פירות יער בצורת לב',
+	'חלת מפתח לכבוד שבת שאחרי פסח',
+	'מיקס עוגיות',
+	'קולאז שמרים',
+	'עוגת בר מצווה',
+	'פיצה ללא גלוטן',
+	'פיצה מרגליתות',
+	'קולאז שבועות',
+	'שבלול מנגולד גבינות',
+	'אירוע טעימות של מרגליתות',
+	'ספינג לכבוד חנוכה',
+	'אירוע טעימות של מרגליתות2',
+	'השולחן של מרגליתות לפני שיוצאים למכירה',
+	'שולחן המכירה של מרגליתות',
+	'חלות לכבוד שבת',
+	'גלידות במגוון טעמים',
+	'עוגת גבינה גבוהה מעוצבת',
+	'קולאז ללא גלוטן פסח',
+	'משלוח מנות לפורים',
+	'שולחן המכירה של מרגליתות',
 ];
 
 const galleryData = galleryImages.map((src, index) => ({
