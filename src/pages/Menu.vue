@@ -2,13 +2,13 @@
 	<div class="menu-page">
 		<!-- Page Header -->
 		<header class="page-header animate-on-scroll fade-up">
-			<h1 class="page-title">התפריט שלנו</h1>
-			<p class="page-subtitle">כל המאפים והמטעמים שלנו, מחולקים לקטגוריות</p>
+			<h1 class="page-title">{{ t.title }}</h1>
+			<p class="page-subtitle">{{ t.subtitle }}</p>
 		</header>
 
 		<!-- Categories Grid -->
 		<section class="categories-section">
-			<h2 class="section-title animate-on-scroll fade-up">קטגוריות</h2>
+			<h2 class="section-title animate-on-scroll fade-up">{{ t.categories }}</h2>
 			<div class="categories-grid">
 				<CategoryCard
 					v-for="(category, index) in categories"
@@ -27,7 +27,7 @@
 
 		<!-- Category Previews -->
 		<section class="previews-section">
-			<h2 class="section-title">טעימות מהתפריט</h2>
+			<h2 class="section-title">{{ t.preview }}</h2>
 
 			<CategorySection v-for="category in categories" :key="category.id" :category="category" :limit="5" />
 		</section>
@@ -36,9 +36,9 @@
 		<section class="cta-section">
 			<div class="cta-content">
 				<span class="cta-icon">🎂</span>
-				<h3 class="cta-title">לא מצאתם מה שחיפשתם?</h3>
-				<p class="cta-text">אנחנו מכינים גם הזמנות מיוחדות לפי בקשה</p>
-				<router-link to="/quote" class="cta-btn"> בקשת הצעת מחיר </router-link>
+				<h3 class="cta-title">{{ t.notFound }}</h3>
+				<p class="cta-text">{{ t.custom }}</p>
+				<router-link to="/quote" class="cta-btn"> {{ t.quote }} </router-link>
 			</div>
 		</section>
 	</div>
@@ -46,18 +46,48 @@
 
 <script setup>
 import { computed } from 'vue';
+import { useRoute } from 'vue-router';
 import { useMenuStore } from '../stores/menuStore';
 import { CategoryCard, CategorySection } from '../components/menu';
 import { useHead } from '@vueuse/head';
 import { useScrollAnimation } from '../composables/useScrollAnimation';
 useScrollAnimation();
+
+const route = useRoute();
+const lang = computed(() => (route.query.lang === 'en' ? 'en' : 'he'));
+
+const translations = {
+	he: {
+		title: 'התפריט שלנו',
+		subtitle: 'כל המאפים והמטעמים שלנו, מחולקים לקטגוריות',
+		categories: 'קטגוריות',
+		preview: 'טעימות מהתפריט',
+		notFound: 'לא מצאתם מה שחיפשתם?',
+		custom: 'אנחנו מכינים גם הזמנות מיוחדות לפי בקשה',
+		quote: 'בקשת הצעת מחיר',
+	},
+	en: {
+		title: 'Our Menu',
+		subtitle: 'All our baked goods and treats, organized by categories',
+		categories: 'Categories',
+		preview: 'Menu Highlights',
+		notFound: "Didn't find what you're looking for?",
+		custom: 'We also prepare special custom orders',
+		quote: 'Request a Quote',
+	},
+};
+
+const t = computed(() => translations[lang.value]);
+
 useHead({
-	title: 'תפריט | מרגליתות - מאפייה ביתית בבית שמש',
+	title: lang.value === 'en' ? 'Menu | Margalitot Bakery' : 'תפריט | מרגליתות - מאפייה ביתית בבית שמש',
 	meta: [
 		{
 			name: 'description',
 			content:
-				'תפריט מרגליתות - עוגות שמרים, עוגות בחושות, עוגיות, לחמים, מאפים ללא גלוטן, טבעוניים ועוד. משלוחים לבית שמש.',
+				lang.value === 'en'
+					? 'Margalitot Menu - yeast cakes, layer cakes, cookies, breads, gluten-free and vegan baked goods. Delivery in Beit Shemesh.'
+					: 'תפריט מרגליתות - עוגות שמרים, עוגות בחושות, עוגיות, לחמים, מאפים ללא גלוטן, טבעוניים ועוד. משלוחים לבית שמש.',
 		},
 	],
 });

@@ -1,8 +1,8 @@
 <template>
 	<section class="quote-page">
 		<div class="page-header">
-			<h1 class="page-title">בקשת הצעת מחיר</h1>
-			<p class="page-subtitle">בחרו מוצרים, מלאו פרטים, ונחזור אליכם עם הצעה</p>
+			<h1 class="page-title">{{ t.title }}</h1>
+			<p class="page-subtitle">{{ t.subtitle }}</p>
 		</div>
 
 		<MultiStepForm />
@@ -12,25 +12,44 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
+import { onMounted, computed } from 'vue';
+import { useRoute } from 'vue-router';
 import { useOrderStore } from '../stores/orderStore';
 import MultiStepForm from '../components/form/MultiStepForm.vue';
 import NotificationToast from '../components/ui/NotificationToast.vue';
 import { useHead } from '@vueuse/head';
 
+const route = useRoute();
+const lang = computed(() => (route.query.lang === 'en' ? 'en' : 'he'));
+
+const translations = {
+	he: {
+		title: 'בקשת הצעת מחיר',
+		subtitle: 'בחרו מוצרים, מלאו פרטים, ונחזור אליכם עם הצעה',
+	},
+	en: {
+		title: 'Request a Quote',
+		subtitle: 'Select products, fill in your details, and we will get back to you with an offer',
+	},
+};
+
+const t = computed(() => translations[lang.value]);
+
 useHead({
-	title: 'תפריט | מרגליתות - מאפייה ביתית בבית שמש',
+	title: lang.value === 'en' ? 'Quote | Margalitot Bakery' : 'בקשת הצעת מחיר | מרגליתות',
 	meta: [
 		{
 			name: 'description',
 			content:
-				'תפריט מרגליתות - עוגות שמרים, עוגות בחושות, עוגיות, לחמים, מאפים ללא גלוטן, טבעוניים ועוד. משלוחים לבית שמש.',
+				lang.value === 'en'
+					? 'Request a custom quote from Margalitot Bakery for your special event'
+					: 'בקשת הצעת מחיר ממרגליתות - עוגות מעוצבות, הזמנות מיוחדות לאירועים',
 		},
 	],
 });
+
 const orderStore = useOrderStore();
 
-// Reset form when entering the page
 onMounted(() => {
 	// Uncomment if you want to reset on each visit:
 	// orderStore.resetOrder()

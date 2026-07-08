@@ -3,8 +3,8 @@
 		<!-- Hero Section -->
 		<header class="page-header animate-on-scroll fade-up">
 			<span class="header-icon">💝</span>
-			<h1 class="page-title">אודות מרגליתות</h1>
-			<p class="page-subtitle">מאפייה ביתית עם אהבה מבית שמש</p>
+			<h1 class="page-title">{{ pageTitle }}</h1>
+			<p class="page-subtitle">{{ pageSubtitle }}</p>
 		</header>
 
 		<!-- Story Section -->
@@ -156,16 +156,28 @@
 <script setup>
 import { useHead } from '@vueuse/head';
 import { useScrollAnimation } from '../composables/useScrollAnimation';
+import { useRoute } from 'vue-router';
+import { computed } from 'vue';
 
 useScrollAnimation();
 
+const route = useRoute();
+const lang = computed(() => (route.query.lang === 'en' ? 'en' : 'he'));
+
+const pageTitle = computed(() => (lang.value === 'en' ? 'About Margalitot' : 'אודות מרגליתות'));
+const pageSubtitle = computed(() =>
+	lang.value === 'en' ? 'A home bakery with love from Beit Shemesh' : 'מאפייה ביתית עם אהבה מבית שמש',
+);
+
 useHead({
-	title: 'אודות | מרגליתות - מאפייה ביתית בבית שמש',
+	title: lang.value === 'en' ? 'About | Margalitot Bakery' : 'אודות | מרגליתות - מאפייה ביתית בבית שמש',
 	meta: [
 		{
 			name: 'description',
 			content:
-				'מרגליתות - מאפייה ביתית בבית שמש. חומרי גלם איכותיים, כשרות בד"ץ, עבודת יד באהבה. משלוחים לבית שמש, מטה יהודה, צור הדסה וביתר.',
+				lang.value === 'en'
+					? 'Margalitot - A home bakery in Beit Shemesh. All ingredients are Mehadrin kosher, handmade with love. Delivery to Beit Shemesh, Mateh Yehuda and surrounding areas.'
+					: 'מרגליתות - מאפייה ביתית בבית שמש. כל הרכיבים בכשרות מהדרין, עבודת יד באהבה. משלוחים לבית שמש, מטה יהודה, צור הדסה וביתר.',
 		},
 	],
 });

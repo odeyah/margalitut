@@ -3,8 +3,8 @@
 		<!-- Page Header -->
 		<header class="page-header animate-on-scroll fade-up">
 			<span class="header-icon">📸</span>
-			<h1 class="page-title">הגלריה שלנו</h1>
-			<p class="page-subtitle">דפדפו באלבום היצירות שלנו</p>
+			<h1 class="page-title">{{ galleryTitle }}</h1>
+			<p class="page-subtitle">{{ gallerySubtitle }}</p>
 		</header>
 
 		<!-- Flipbook Gallery -->
@@ -180,6 +180,7 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { useHead } from '@vueuse/head';
+import { useRoute } from 'vue-router';
 import { useScrollAnimation } from '../composables/useScrollAnimation';
 import g1 from '/gallery/gallary1.jpg';
 import g2 from '/gallery/gallery2.jpeg';
@@ -190,7 +191,7 @@ import g6 from '/gallery/gallery6.jpeg';
 import g7 from '/gallery/gallery7.jpeg';
 import g8 from '/gallery/gallery8.jpg';
 import g9 from '/gallery/gallery9.jpeg';
-import g10 from '/gallery/gallery10.jpeg';
+import g10 from '/gallery/gallery10.jpg';
 import g11 from '/gallery/gallery11.jpeg';
 import g12 from '/gallery/gallery12.jpeg';
 import g13 from '/gallery/gallery13.jpeg';
@@ -212,12 +213,25 @@ import g100 from '/gallery/gallery100.jpeg';
 
 useScrollAnimation();
 
+const route = useRoute();
+const lang = computed(() => (route.query.lang === 'en' ? 'en' : 'he'));
+
+const galleryTitle = computed(() => (lang.value === 'en' ? 'Our Gallery' : 'הגלריה שלנו'));
+const gallerySubtitle = computed(() => (lang.value === 'en' ? 'Browse through our creations' : 'דפדפו באלבום היצירות שלנו'));
+const albumTitle = computed(() => (lang.value === 'en' ? 'Photo Album' : 'אלבום התמונות'));
+const margalitotLabel = computed(() => (lang.value === 'en' ? 'Margalitot' : 'מרגליתות'));
+const clickToOpen = computed(() => (lang.value === 'en' ? 'Click to open' : 'לחצו לפתיחה'));
+const photoLabel = computed(() => (lang.value === 'en' ? 'Photo' : 'תמונה'));
+
 useHead({
-	title: 'גלריה | מרגליתות - מאפייה ביתית בבית שמש',
+	title: lang.value === 'en' ? 'Gallery | Margalitot Bakery' : 'גלריה | מרגליתות - מאפייה ביתית בבית שמש',
 	meta: [
 		{
 			name: 'description',
-			content: 'גלריה של עוגות, מאפים וקינוחים ממרגליתות - מאפייה ביתית בבית שמש',
+			content:
+				lang.value === 'en'
+					? 'Gallery of cakes, baked goods and treats from Margalitot - a home bakery in Beit Shemesh'
+					: 'גלריה של עוגות, מאפים וקינוחים ממרגליתות - מאפייה ביתית בבית שמש',
 		},
 	],
 });
@@ -235,15 +249,6 @@ const flipDirection = ref('next'); // 'next' or 'prev'
 
 let autoPlayInterval = null;
 let touchStartX = 0;
-
-// Categories
-const categoryNames = {
-	cakes: 'עוגות',
-	cookies: 'עוגיות',
-	bread: 'לחמים',
-	dairy: 'חלביים',
-	events: 'אירועים',
-};
 
 // Gallery Images
 const galleryImages = [
@@ -303,7 +308,7 @@ const galleryTitles = [
 	'חלות לכבוד שבת',
 	'גלידות במגוון טעמים',
 	'עוגת גבינה גבוהה מעוצבת',
-	'קולאז ללא גלוטן פסח',
+	'קולאז ללא גלוטן או לפסח',
 	'משלוח מנות לפורים',
 	'שולחן המכירה של מרגליתות',
 ];
@@ -311,14 +316,12 @@ const galleryTitles = [
 const galleryData = galleryImages.map((src, index) => ({
 	src,
 	title: galleryTitles[index] || 'שם התמונה',
-	category: ['cakes', 'cookies', 'bread', 'dairy', 'events'][index % 5],
-	description: 'תמונה מהגלריה של מרגליתות',
+	description: 'מרגליתות 🍓 – אפייה ביתית בבית שמש',
 }));
 
 const images = galleryData.map((img, index) => ({
 	...img,
 	index,
-	categoryName: categoryNames[img.category] || img.category,
 }));
 
 // Computed
@@ -1037,10 +1040,10 @@ onUnmounted(() => {
 }
 
 .lightbox-nav.prev {
-	right: -70px;
+	left: -70px;
 }
 .lightbox-nav.next {
-	left: -70px;
+	right: -70px;
 }
 
 .lightbox-info {

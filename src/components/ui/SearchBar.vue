@@ -36,7 +36,10 @@
 						class="result-item"
 						@click="closeSearch"
 					>
-						<span class="result-image">{{ product.image }}</span>
+						<div class="result-image">
+							<img v-if="product.image" :src="product.image" :alt="product.name" />
+							<span v-else class="result-image-placeholder">📦</span>
+						</div>
 						<div class="result-info">
 							<span class="result-name">{{ product.name }}</span>
 							<span class="result-category">{{ getCategoryName(product.categoryId) }}</span>
@@ -239,6 +242,24 @@ function goToFirstResult() {
 }
 
 .result-image {
+	width: 50px;
+	height: 50px;
+	border-radius: 8px;
+	overflow: hidden;
+	flex-shrink: 0;
+	background: var(--bg-secondary);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.result-image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.result-image-placeholder {
 	font-size: 1.5rem;
 }
 

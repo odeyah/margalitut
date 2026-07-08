@@ -400,17 +400,18 @@ function toggleItem(id) {
 .filter-btn {
 	display: flex;
 	align-items: center;
-	gap: 0.4rem;
-	padding: 0.6rem 1rem;
+	gap: 0.35rem;
+	padding: 0.5rem 0.85rem;
 	background: var(--bg-primary);
 	border: 2px solid transparent;
 	border-radius: 25px;
-	font-size: 0.9rem;
+	font-size: 0.85rem;
 	font-weight: 600;
 	color: var(--text-secondary);
 	cursor: pointer;
 	white-space: nowrap;
 	transition: all 0.3s ease;
+	flex-shrink: 0;
 }
 
 .filter-btn:hover {

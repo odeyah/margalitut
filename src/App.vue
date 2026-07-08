@@ -1,5 +1,5 @@
 <template>
-	<div class="app" :class="{ 'menu-open': isMobileMenuOpen, dark: isDark }">
+	<div class="app" :class="{ 'menu-open': isMobileMenuOpen, dark: isDark }" :dir="pageDirection" :lang="pageLanguage">
 		<header class="header">
 			<nav class="container nav-container">
 				<router-link to="/" class="logo-link" @click="closeMobileMenu">
@@ -9,9 +9,13 @@
 
 				<!-- Right Side Actions -->
 				<div class="nav-actions">
-					<router-link v-if="englishPath" :to="englishPath" class="lang-switch-btn" :title="isEnglishPage ? 'עברית' : 'English'">
+					<router-link
+						v-if="englishPath"
+						:to="englishPath"
+						class="lang-switch-btn"
+						:title="isEnglishPage ? 'עברית' : 'English'"
+					>
 						<span class="lang-icon">🌐</span>
-						<span class="lang-text">{{ isEnglishPage ? 'עברית' : 'English' }}</span>
 					</router-link>
 					<SearchBar />
 					<DarkModeToggle class="dark-toggle-desktop" />
@@ -28,15 +32,13 @@
 
 				<!-- Desktop Navigation -->
 				<div class="nav-links-desktop">
-					<router-link class="nav-link" to="/menu">תפריט</router-link>
-					<router-link class="nav-link" to="/gallery">גלריה</router-link>
-					<router-link class="nav-link" to="/about">אודות</router-link>
-					<router-link class="nav-link" to="/my-orders">ההזמנות שלי</router-link>
+					<router-link class="nav-link" to="/menu">{{ navMenu }}</router-link>
+					<router-link class="nav-link" to="/gallery">{{ navGallery }}</router-link>
+					<router-link class="nav-link" to="/about">{{ navAbout }}</router-link>
+					<router-link class="nav-link" to="/my-orders">{{ navOrders }}</router-link>
 
-
-
-					<router-link class="nav-link nav-link-primary" to="/quote">הצעת מחיר</router-link>
-					<router-link class="nav-link" to="/faq">שאלות נפוצות</router-link>
+					<router-link class="nav-link nav-link-primary" to="/quote">{{ navQuote }}</router-link>
+					<router-link class="nav-link" to="/faq">{{ navFAQ }}</router-link>
 				</div>
 			</nav>
 		</header>
@@ -45,24 +47,22 @@
 		<Transition name="slide-menu">
 			<div v-if="isMobileMenuOpen" class="mobile-menu-overlay" @click="closeMobileMenu">
 				<div class="mobile-menu" @click.stop>
-					<router-link class="mobile-nav-link" to="/menu" @click="closeMobileMenu">תפריט</router-link>
-					<router-link class="mobile-nav-link" to="/gallery" @click="closeMobileMenu">גלריה</router-link>
-					<router-link class="mobile-nav-link" to="/about" @click="closeMobileMenu">אודות</router-link>
-					<router-link class="mobile-nav-link" to="/my-orders" @click="closeMobileMenu">ההזמנות שלי</router-link>
-
-
+					<router-link class="mobile-nav-link" to="/menu" @click="closeMobileMenu">{{ navMenu }}</router-link>
+					<router-link class="mobile-nav-link" to="/gallery" @click="closeMobileMenu">{{ navGallery }}</router-link>
+					<router-link class="mobile-nav-link" to="/about" @click="closeMobileMenu">{{ navAbout }}</router-link>
+					<router-link class="mobile-nav-link" to="/my-orders" @click="closeMobileMenu">{{ navOrders }}</router-link>
 
 					<router-link class="mobile-nav-link mobile-nav-link-primary" to="/quote" @click="closeMobileMenu">
-						הצעת מחיר
+						{{ navQuote }}
 					</router-link>
-					<router-link class="mobile-nav-link" to="/faq" @click="closeMobileMenu">שאלות נפוצות</router-link>
+					<router-link class="mobile-nav-link" to="/faq" @click="closeMobileMenu">{{ navFAQ }}</router-link>
 					<DarkModeToggle class="dark-toggle-mobile" />
 
 					<!-- כפתור החלפת שפה במובייל -->
 					<div v-if="englishPath" class="mobile-lang-wrapper">
 						<router-link :to="englishPath" class="mobile-lang-btn" @click="closeMobileMenu">
 							<span class="lang-icon">🌐</span>
-							{{ isEnglishPage ? 'עבור לעברית' : 'Switch to English' }}
+							{{ isEnglishPage ? 'עברית' : 'English' }}
 						</router-link>
 					</div>
 				</div>
@@ -105,6 +105,20 @@ const route = useRoute();
 const uiStore = useUIStore();
 const { isDark } = useDarkMode();
 
+const pageLanguage = computed(() => (route.query.lang === 'en' ? 'en' : 'he'));
+const pageDirection = computed(() => (pageLanguage.value === 'en' ? 'ltr' : 'rtl'));
+// Navigation labels
+const navLabels = {
+	he: { menu: 'תפריט', gallery: 'גלריה', about: 'אודות', orders: 'ההזמנות שלי', quote: 'הצעת מחיר', faq: 'שאלות נפוצות' },
+	en: { menu: 'Menu', gallery: 'Gallery', about: 'About', orders: 'My Orders', quote: 'Quote', faq: 'FAQ' },
+};
+
+const navMenu = computed(() => navLabels[pageLanguage.value].menu);
+const navGallery = computed(() => navLabels[pageLanguage.value].gallery);
+const navAbout = computed(() => navLabels[pageLanguage.value].about);
+const navOrders = computed(() => navLabels[pageLanguage.value].orders);
+const navQuote = computed(() => navLabels[pageLanguage.value].quote);
+const navFAQ = computed(() => navLabels[pageLanguage.value].faq);
 const isMobileMenuOpen = computed(() => uiStore.isMobileMenuOpen);
 const previousPath = ref('');
 const transitionName = ref('fade');
@@ -288,23 +302,23 @@ a {
 .nav-container {
 	display: flex;
 	align-items: center;
-	gap: 1rem;
-	padding: 0.75rem 1rem;
+	gap: 0.25rem;
+	padding: 0.5rem 1rem;
 }
 
 .logo-link {
 	display: flex;
 	align-items: center;
-	gap: 0.75rem;
+	gap: 0.5rem;
 }
 
 .logo-img {
-	height: 48px;
+	height: 40px;
 	width: auto;
 }
 
 .logo-text {
-	font-size: 1.4rem;
+	font-size: 1.2rem;
 	font-weight: 800;
 	background: linear-gradient(135deg, var(--pink-primary), var(--pink-secondary));
 	-webkit-background-clip: text;
@@ -316,16 +330,21 @@ a {
 .nav-links-desktop {
 	display: flex;
 	align-items: center;
-	gap: 0.5rem;
+	gap: 0.1rem;
 	margin-inline-start: auto;
+	flex-wrap: nowrap;
+	overflow: hidden;
 }
 
 .nav-link {
-	padding: 0.5rem 1rem;
-	border-radius: 10px;
+	padding: 0.35rem 0.6rem;
+	border-radius: 8px;
 	font-weight: 600;
+	font-size: 0.85rem;
 	color: var(--text-secondary);
 	transition: all 0.3s ease;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 
 .nav-link:hover,
@@ -376,21 +395,21 @@ a {
 .nav-actions {
 	display: flex;
 	align-items: center;
-	gap: 0.75rem;
+	gap: 0.2rem;
 }
 
 .lang-switch-btn {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	gap: 0.4rem;
-	padding: 0.4rem 1rem;
-	border-radius: 20px;
+	width: 32px;
+	height: 32px;
+	padding: 0;
+	border-radius: 50%;
 	border: 2px solid var(--border-pink);
 	background: var(--bg-primary);
 	color: var(--text-secondary);
 	font-weight: 700;
-	font-size: 0.8rem;
 	transition: all 0.25s ease;
 }
 
@@ -554,7 +573,39 @@ a {
 }
 
 /* ========== Mobile Responsive ========== */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
+	.nav-link {
+		padding: 0.3rem 0.5rem;
+		font-size: 0.8rem;
+	}
+	.lang-switch-btn {
+		width: 30px;
+		height: 30px;
+	}
+}
+
+@media (max-width: 1100px) {
+	.nav-link {
+		padding: 0.25rem 0.45rem;
+		font-size: 0.75rem;
+	}
+}
+
+@media (max-width: 1000px) {
+	.nav-link {
+		padding: 0.2rem 0.4rem;
+		font-size: 0.7rem;
+	}
+	.lang-switch-btn {
+		width: 28px;
+		height: 28px;
+	}
+	.logo-text {
+		font-size: 1rem;
+	}
+}
+
+@media (max-width: 1024px) {
 	.nav-links-desktop {
 		display: none;
 	}
@@ -579,11 +630,8 @@ a {
 		height: 40px;
 	}
 	.lang-switch-btn {
-		padding: 0.3rem 0.6rem;
-		font-size: 0.75rem;
-	}
-	.lang-switch-btn .lang-text {
-		display: none;
+		width: 28px;
+		height: 28px;
 	}
 	.app.menu-open {
 		overflow: hidden;
@@ -642,7 +690,7 @@ a {
 	visibility: hidden;
 	transform: translateY(10px);
 	transition: all 0.3s ease;
-	z-index: 200;
+	z-index: 1000;
 }
 
 .nav-dropdown:hover .dropdown-menu {

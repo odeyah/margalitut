@@ -1,7 +1,5 @@
 <template>
 	<div class="home-page">
-
-
 		<!-- Hero Section -->
 		<section class="hero-section animate-on-scroll fade-up">
 			<div class="hero-background">
@@ -14,8 +12,8 @@
 				<div class="hero-text">
 					<h1 class="hero-title">
 						{{ t.heroWelcome }}
-						<span class="brand-name">מרגליתות</span>
-						<span class="hero-emoji">🍓</span>
+						<span class="brand-name" v-if="lang === 'he'">מרגליתות🍓</span>
+						<span class="brand-name" v-else>Margalitut <span class="hero-emoji">🍓</span> מרגליתות</span>
 					</h1>
 					<p class="hero-subtitle">{{ t.heroSubtitle }}</p>
 					<div class="hero-badges">
@@ -68,7 +66,10 @@
 					:class="`delay-${(index % 5) + 1}`"
 					:style="{ '--category-color': category.color }"
 				>
-					<span class="category-icon">{{ category.icon }}</span>
+					<div class="category-image-wrapper">
+						<img v-if="category.image" :src="category.image" :alt="category.name" class="category-image" />
+						<span v-else class="category-icon">{{ category.icon }}</span>
+					</div>
 					<span class="category-name">{{ category.name }}</span>
 				</router-link>
 			</div>
@@ -175,7 +176,7 @@ useScrollAnimation();
 
 // ─── Language ───────────────────────────────────────────────
 const route = useRoute();
-const lang = computed(() => route.query.lang === 'en' ? 'en' : 'he');
+const lang = computed(() => (route.query.lang === 'en' ? 'en' : 'he'));
 
 const translations = {
 	he: {
@@ -210,7 +211,7 @@ const translations = {
 		heroWelcome: 'Welcome to',
 		heroSubtitle:
 			'A home bakery with a love for dairy sweets: cakes, cookies, breads, ice creams and dairy meals — all fresh, clean and delicious.',
-		badgeKosher: 'Mehadrin kosher certified',
+		badgeKosher: 'All ingredients are Mehadrin kosher',
 		badgeHomemade: 'Home baked',
 		badgeHandmade: 'Handcrafted',
 		btnMenu: 'Our Menu',
@@ -222,7 +223,7 @@ const translations = {
 		viewAll: 'View Full Menu',
 		whyTitle: 'Why Margalitot?',
 		feature1Title: 'Quality Ingredients',
-		feature1Text: 'All our ingredients are mehadrin kosher, fresh and top quality',
+		feature1Text: 'All our ingredients are Mehadrin kosher, fresh and top quality',
 		feature2Title: 'Handcrafted',
 		feature2Text: 'Every product is made by hand with love and attention to detail',
 		feature3Title: 'Highest Cleanliness',
@@ -263,8 +264,6 @@ const popularProducts = computed(() => menuStore.popularProducts.slice(0, 8));
 	max-width: 1200px;
 	margin: 0 auto;
 }
-
-
 
 /* ========== HERO SECTION ========== */
 .hero-section {
@@ -568,6 +567,7 @@ const popularProducts = computed(() => menuStore.popularProducts.slice(0, 8));
 	text-decoration: none;
 	transition: all 0.3s ease;
 	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+	overflow: hidden;
 }
 
 .category-preview:hover {
@@ -577,6 +577,28 @@ const popularProducts = computed(() => menuStore.popularProducts.slice(0, 8));
 
 .category-preview:hover .category-icon {
 	transform: scale(1.2) rotate(-5deg);
+}
+
+.category-preview:hover .category-image {
+	transform: scale(1.1);
+}
+
+.category-image-wrapper {
+	width: 120px;
+	height: 120px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	border-radius: 12px;
+	background: linear-gradient(135deg, var(--pink-light) 0%, rgba(255, 107, 157, 0.05) 100%);
+}
+
+.category-image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.3s ease;
 }
 
 .category-icon {

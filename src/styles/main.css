@@ -112,14 +112,14 @@ select {
 
 /* ===== App Container ===== */
 #app {
-	padding-top: 80px;
+	padding-top: 70px;
 	padding-bottom: 2rem;
 	min-height: 100vh;
 }
 
 @media (max-width: 768px) {
 	#app {
-		padding-top: 70px;
+		padding-top: 65px;
 	}
 }
 
