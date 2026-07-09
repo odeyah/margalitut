@@ -221,7 +221,7 @@ const translations = {
 		popularTitle: 'Our Favorites',
 		popularSubtitle: "Customers' most loved products",
 		viewAll: 'View Full Menu',
-		whyTitle: 'Why Margalitot?',
+		whyTitle: 'Why margalitut?',
 		feature1Title: 'Quality Ingredients',
 		feature1Text: 'All our ingredients are Mehadrin kosher, fresh and top quality',
 		feature2Title: 'Handcrafted',

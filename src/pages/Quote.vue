@@ -36,13 +36,13 @@ const translations = {
 const t = computed(() => translations[lang.value]);
 
 useHead({
-	title: lang.value === 'en' ? 'Quote | Margalitot Bakery' : 'בקשת הצעת מחיר | מרגליתות',
+	title: lang.value === 'en' ? 'Quote | margalitut Bakery' : 'בקשת הצעת מחיר | מרגליתות',
 	meta: [
 		{
 			name: 'description',
 			content:
 				lang.value === 'en'
-					? 'Request a custom quote from Margalitot Bakery for your special event'
+					? 'Request a custom quote from margalitut Bakery for your special event'
 					: 'בקשת הצעת מחיר ממרגליתות - עוגות מעוצבות, הזמנות מיוחדות לאירועים',
 		},
 	],

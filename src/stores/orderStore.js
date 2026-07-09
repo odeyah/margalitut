@@ -9,7 +9,7 @@ export const useOrderStore = defineStore('order', () => {
 	// טעינת עגלה מ-localStorage
 	function loadCartFromStorage() {
 		try {
-			const saved = localStorage.getItem('margalitot_cart');
+			const saved = localStorage.getItem('margalitut_cart');
 			return saved ? JSON.parse(saved) : [];
 		} catch {
 			return [];
@@ -19,7 +19,7 @@ export const useOrderStore = defineStore('order', () => {
 	// שמירת עגלה ל-localStorage
 	function saveCartToStorage(cartData) {
 		try {
-			localStorage.setItem('margalitot_cart', JSON.stringify(cartData));
+			localStorage.setItem('margalitut_cart', JSON.stringify(cartData));
 		} catch (error) {
 			console.error('Failed to save cart:', error);
 		}
@@ -33,13 +33,13 @@ export const useOrderStore = defineStore('order', () => {
 
 	const availableCoupons = ref([
 		{
-		    code: 'TASTING5',
-    		type: 'percent',
-    		value: 5,
-		    minOrder: 40,
-		    description: '5% הנחה למשתתפי יריד הטעימות',
-		    active: true,
-		    expiresAt: new Date('2025-02-18T20:00:00'), // יום רביעי 20:00
+			code: 'TASTING5',
+			type: 'percent',
+			value: 5,
+			minOrder: 40,
+			description: '5% הנחה למשתתפי יריד הטעימות',
+			active: true,
+			expiresAt: new Date('2025-02-18T20:00:00'), // יום רביעי 20:00
 		},
 		{
 			code: 'WELCOME10',
@@ -284,7 +284,7 @@ export const useOrderStore = defineStore('order', () => {
 	function clearCart() {
 		const toastStore = useToastStore();
 		cart.value = [];
-		localStorage.removeItem('margalitot_cart');
+		localStorage.removeItem('margalitut_cart');
 		toastStore.info('הסל רוקן');
 	}
 
@@ -424,7 +424,7 @@ export const useOrderStore = defineStore('order', () => {
 					? {
 							code: appliedCoupon.value.code,
 							discount: couponDiscount.value,
-					  }
+						}
 					: null,
 				date: orderDate.value,
 				time: orderTime.value,

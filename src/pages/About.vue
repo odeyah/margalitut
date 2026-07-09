@@ -164,19 +164,19 @@ useScrollAnimation();
 const route = useRoute();
 const lang = computed(() => (route.query.lang === 'en' ? 'en' : 'he'));
 
-const pageTitle = computed(() => (lang.value === 'en' ? 'About Margalitot' : 'אודות מרגליתות'));
+const pageTitle = computed(() => (lang.value === 'en' ? 'About margalitut' : 'אודות מרגליתות'));
 const pageSubtitle = computed(() =>
 	lang.value === 'en' ? 'A home bakery with love from Beit Shemesh' : 'מאפייה ביתית עם אהבה מבית שמש',
 );
 
 useHead({
-	title: lang.value === 'en' ? 'About | Margalitot Bakery' : 'אודות | מרגליתות - מאפייה ביתית בבית שמש',
+	title: lang.value === 'en' ? 'About | margalitut Bakery' : 'אודות | מרגליתות - מאפייה ביתית בבית שמש',
 	meta: [
 		{
 			name: 'description',
 			content:
 				lang.value === 'en'
-					? 'Margalitot - A home bakery in Beit Shemesh. All ingredients are Mehadrin kosher, handmade with love. Delivery to Beit Shemesh, Mateh Yehuda and surrounding areas.'
+					? 'margalitut - A home bakery in Beit Shemesh. All ingredients are Mehadrin kosher, handmade with love. Delivery to Beit Shemesh, Mateh Yehuda and surrounding areas.'
 					: 'מרגליתות - מאפייה ביתית בבית שמש. כל הרכיבים בכשרות מהדרין, עבודת יד באהבה. משלוחים לבית שמש, מטה יהודה, צור הדסה וביתר.',
 		},
 	],

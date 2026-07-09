@@ -54,9 +54,9 @@
 								<span class="contact-icon">📱</span>
 								<span>052-846-0331</span>
 							</a>
-							<a href="mailto:margalitot@email.com" class="contact-item">
+							<a href="mailto:margalitut@email.com" class="contact-item">
 								<span class="contact-icon">✉️</span>
-								<span>margalitot@email.com</span>
+								<span>margalitut@email.com</span>
 							</a>
 							<div class="contact-item">
 								<span class="contact-icon">📍</span>

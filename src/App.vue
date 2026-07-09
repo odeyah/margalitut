@@ -100,6 +100,33 @@ import ToastContainer from './components/ui/ToastContainer.vue';
 import { CartDrawer, CartButton } from './components/cart';
 import WhatsAppButton from './components/ui/WhatsAppButton.vue';
 import logo from './assets/logo.png';
+import { useHead } from '@vueuse/head';
+
+useHead({
+	script: [
+		{
+			type: 'application/ld+json',
+			children: JSON.stringify({
+				'@context': 'https://schema.org',
+				'@type': 'Bakery',
+				name: 'מרגליתות',
+				alternateName: 'margalitut',
+				description: 'מאפייה ביתית בבית שמש המתמחה בעוגות מעוצבות, קינוחים ומאפים טריים בכשרות בד"ץ',
+				url: 'https://margalitut.co.il',
+				telephone: '+972528460331',
+				address: {
+					'@type': 'PostalAddress',
+					streetAddress: 'שכונת המשקפיים',
+					addressLocality: 'בית שמש',
+					addressCountry: 'IL',
+				},
+				areaServed: ['בית שמש', 'מטה יהודה', 'צור הדסה', 'ביתר עילית'],
+				servesCuisine: 'מאפייה',
+				priceRange: '₪₪',
+			}),
+		},
+	],
+});
 
 const route = useRoute();
 const uiStore = useUIStore();

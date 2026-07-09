@@ -80,13 +80,13 @@ const translations = {
 const t = computed(() => translations[lang.value]);
 
 useHead({
-	title: lang.value === 'en' ? 'Menu | Margalitot Bakery' : 'תפריט | מרגליתות - מאפייה ביתית בבית שמש',
+	title: lang.value === 'en' ? 'Menu | margalitut Bakery' : 'תפריט | מרגליתות - מאפייה ביתית בבית שמש',
 	meta: [
 		{
 			name: 'description',
 			content:
 				lang.value === 'en'
-					? 'Margalitot Menu - yeast cakes, layer cakes, cookies, breads, gluten-free and vegan baked goods. Delivery in Beit Shemesh.'
+					? 'margalitut Menu - yeast cakes, layer cakes, cookies, breads, gluten-free and vegan baked goods. Delivery in Beit Shemesh.'
 					: 'תפריט מרגליתות - עוגות שמרים, עוגות בחושות, עוגיות, לחמים, מאפים ללא גלוטן, טבעוניים ועוד. משלוחים לבית שמש.',
 		},
 	],

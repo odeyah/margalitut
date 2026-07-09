@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://margalitot.co.il/sitemap.xml
+Sitemap: https://margalitut.co.il/sitemap.xml
 
 # Block admin pages
 Disallow: /admin

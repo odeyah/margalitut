@@ -219,18 +219,18 @@ const lang = computed(() => (route.query.lang === 'en' ? 'en' : 'he'));
 const galleryTitle = computed(() => (lang.value === 'en' ? 'Our Gallery' : 'הגלריה שלנו'));
 const gallerySubtitle = computed(() => (lang.value === 'en' ? 'Browse through our creations' : 'דפדפו באלבום היצירות שלנו'));
 const albumTitle = computed(() => (lang.value === 'en' ? 'Photo Album' : 'אלבום התמונות'));
-const margalitotLabel = computed(() => (lang.value === 'en' ? 'Margalitot' : 'מרגליתות'));
+const margalitutLabel = computed(() => (lang.value === 'en' ? 'margalitut' : 'מרגליתות'));
 const clickToOpen = computed(() => (lang.value === 'en' ? 'Click to open' : 'לחצו לפתיחה'));
 const photoLabel = computed(() => (lang.value === 'en' ? 'Photo' : 'תמונה'));
 
 useHead({
-	title: lang.value === 'en' ? 'Gallery | Margalitot Bakery' : 'גלריה | מרגליתות - מאפייה ביתית בבית שמש',
+	title: lang.value === 'en' ? 'Gallery | margalitut Bakery' : 'גלריה | מרגליתות - מאפייה ביתית בבית שמש',
 	meta: [
 		{
 			name: 'description',
 			content:
 				lang.value === 'en'
-					? 'Gallery of cakes, baked goods and treats from Margalitot - a home bakery in Beit Shemesh'
+					? 'Gallery of cakes, baked goods and treats from margalitut - a home bakery in Beit Shemesh'
 					: 'גלריה של עוגות, מאפים וקינוחים ממרגליתות - מאפייה ביתית בבית שמש',
 		},
 	],

@@ -12,7 +12,7 @@
 						type="email"
 						v-model="email"
 						class="form-input"
-						placeholder="admin@margalitot.co.il"
+						placeholder="admin@margalitut.co.il"
 						dir="ltr"
 						@keyup.enter="login"
 					/>
