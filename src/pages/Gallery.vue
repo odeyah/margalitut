@@ -21,7 +21,7 @@
 					<div class="left-page" v-if="!isMobile && bookOpened">
 						<div class="page-content">
 							<div class="image-frame" v-if="leftImage" @click="openLightbox(leftImage.index)">
-								<img :src="leftImage.src" :alt="leftImage.title" />
+								<img :src="leftImage.src" :alt="leftImage.title" loading="lazy" />
 								<div class="image-number">{{ leftImage.index + 1 }}</div>
 							</div>
 							<div class="empty-page" v-else>
@@ -34,7 +34,7 @@
 					<div class="right-page" v-if="!isMobile && bookOpened">
 						<div class="page-content">
 							<div class="image-frame" v-if="rightImage" @click="openLightbox(rightImage.index)">
-								<img :src="rightImage.src" :alt="rightImage.title" />
+								<img :src="rightImage.src" :alt="rightImage.title" loading="lazy" />
 								<div class="image-number">{{ rightImage.index + 1 }}</div>
 							</div>
 							<div class="empty-page" v-else>
@@ -55,7 +55,7 @@
 					<div v-if="isMobile && bookOpened" class="mobile-page">
 						<div class="page-content">
 							<div class="image-frame" v-if="mobileImage" @click="openLightbox(mobileImage.index)">
-								<img :src="mobileImage.src" :alt="mobileImage.title" />
+								<img :src="mobileImage.src" :alt="mobileImage.title" loading="lazy" />
 								<div class="image-number">{{ mobileImage.index + 1 }}</div>
 							</div>
 						</div>
@@ -182,34 +182,34 @@ import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { useHead } from '@vueuse/head';
 import { useRoute } from 'vue-router';
 import { useScrollAnimation } from '../composables/useScrollAnimation';
-import g1 from '/gallery/gallary1.jpg';
-import g2 from '/gallery/gallery2.jpeg';
-import g3 from '/gallery/gallery3.jpeg';
-import g4 from '/gallery/gallery4.jpeg';
-import g5 from '/gallery/gallery5.jpg';
-import g6 from '/gallery/gallery6.jpeg';
-import g7 from '/gallery/gallery7.jpeg';
-import g8 from '/gallery/gallery8.jpg';
-import g9 from '/gallery/gallery9.jpeg';
-import g10 from '/gallery/gallery10.jpg';
-import g11 from '/gallery/gallery11.jpeg';
-import g12 from '/gallery/gallery12.jpeg';
-import g13 from '/gallery/gallery13.jpeg';
-import g14 from '/gallery/gallery14.jpeg';
-import g15 from '/gallery/gallery15.jpeg';
-import g16 from '/gallery/gallery16.jpeg';
-import g17 from '/gallery/gallery17.jpeg';
-import g18 from '/gallery/gallery18.jpeg';
-import g19 from '/gallery/gallery19.jpeg';
-import g20 from '/gallery/gallery20.jpeg';
-import g21 from '/gallery/gallery21.jpeg';
-import g22 from '/gallery/gallery22.jpeg';
-import g23 from '/gallery/gallery23.jpeg';
-import g24 from '/gallery/gallery24.jpeg';
-import g25 from '/gallery/gallery25.jpg';
-import g26 from '/gallery/galleryPesach.jpeg';
-import g80 from '/gallery/gallery80.jpeg';
-import g100 from '/gallery/gallery100.jpeg';
+import g1 from '/gallery/gallary1.webp';
+import g2 from '/gallery/gallery2.webp';
+import g3 from '/gallery/gallery3.webp';
+import g4 from '/gallery/gallery4.webp';
+import g5 from '/gallery/gallery5.webp';
+import g6 from '/gallery/gallery6.webp';
+import g7 from '/gallery/gallery7.webp';
+import g8 from '/gallery/gallery8.webp';
+import g9 from '/gallery/gallery9.webp';
+import g10 from '/gallery/gallery10.webp';
+import g11 from '/gallery/gallery11.webp';
+import g12 from '/gallery/gallery12.webp';
+import g13 from '/gallery/gallery13.webp';
+import g14 from '/gallery/gallery14.webp';
+import g15 from '/gallery/gallery15.webp';
+import g16 from '/gallery/gallery16.webp';
+import g17 from '/gallery/gallery17.webp';
+import g18 from '/gallery/gallery18.webp';
+import g19 from '/gallery/gallery19.webp';
+import g20 from '/gallery/gallery20.webp';
+import g21 from '/gallery/gallery21.webp';
+import g22 from '/gallery/gallery22.webp';
+import g23 from '/gallery/gallery23.webp';
+import g24 from '/gallery/gallery24.webp';
+import g25 from '/gallery/gallery25.webp';
+import g26 from '/gallery/galleryPesach.webp';
+import g80 from '/gallery/gallery80.webp';
+import g100 from '/gallery/gallery100.webp';
 
 useScrollAnimation();
 
@@ -528,7 +528,7 @@ function setSpeed(s) {
 
 function startAutoPlay() {
 	stopAutoPlay();
-	const interval = 3000 / speed.value;
+	const interval = Math.max(1500, 3000 / speed.value) + 600;
 	autoPlayInterval = setInterval(nextPage, interval);
 }
 
