@@ -31,7 +31,7 @@ const isEnglish = computed(() => {
 const t = computed(() => {
 	if (isEnglish.value) {
 		return {
-			title: 'Margalitot — Temporarily Closed',
+			title: 'Margalitut — Temporarily Closed',
 			text: "We are away for a short while for family reasons.<br />We'll be back soon with all the sweetness you love 🧁",
 			sub: 'Feel free to reach out on WhatsApp for urgent inquiries.',
 			whatsapp: 'WhatsApp',
