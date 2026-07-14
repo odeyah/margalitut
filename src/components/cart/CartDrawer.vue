@@ -31,7 +31,7 @@
 					<div class="cart-items">
 						<TransitionGroup name="cart-item">
 							<div v-for="item in cart" :key="item.id" class="cart-item">
-								<span class="item-emoji">{{ item.image }}</span>
+								<img :src="item.image" :alt="item.name" class="item-thumb" />
 								<div class="item-details">
 									<h4 class="item-name">{{ item.name }}</h4>
 									<span class="item-price">₪{{ item.price }} ליחידה</span>
@@ -547,6 +547,7 @@ function updateQuantity(itemId, event) {
 	font-weight: 600;
 	color: var(--text-primary);
 	-moz-appearance: textfield;
+	appearance: textfield;
 }
 
 .qty-input::-webkit-outer-spin-button,
@@ -558,5 +559,12 @@ function updateQuantity(itemId, event) {
 .qty-input:focus {
 	outline: 2px solid var(--pink-primary);
 	outline-offset: -2px;
+}
+
+.item-thumb {
+	width: 60px;
+	height: 60px;
+	object-fit: cover;
+	border-radius: 8px;
 }
 </style>
