@@ -4,15 +4,12 @@
 			<div v-if="show" class="closed-overlay" @click.self="dismiss">
 				<div class="closed-modal">
 					<div class="closed-icon">🍓</div>
-					<h2 class="closed-title">מרגליתות בהפסקה קצרה</h2>
-					<p class="closed-text">
-						אנחנו נעדרים זמנית מסיבות משפחתיות.<br />
-						נחזור בקרוב עם כל המתוק שאתם אוהבים 🧁
-					</p>
-					<p class="closed-sub">ניתן לפנות בוואטסאפ לשאלות דחופות</p>
+					<h2 class="closed-title">{{ t.title }}</h2>
+					<p class="closed-text" v-html="t.text"></p>
+					<p class="closed-sub">{{ t.sub }}</p>
 					<div class="closed-actions">
-						<a href="https://wa.me/972528460331" target="_blank" class="whatsapp-btn"> 💬 וואטסאפ </a>
-						<button class="dismiss-btn" @click="dismiss">הבנתי, המשך לאתר</button>
+						<a href="https://wa.me/972528460331" target="_blank" class="whatsapp-btn"> 💬 {{ t.whatsapp }} </a>
+						<button class="dismiss-btn" @click="dismiss">{{ t.dismiss }}</button>
 					</div>
 				</div>
 			</div>
@@ -21,12 +18,36 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, computed, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
 
+const route = useRoute();
 const show = ref(false);
 
+const isEnglish = computed(() => {
+	return route.path.includes('-en') || route.query.lang === 'en';
+});
+
+const t = computed(() => {
+	if (isEnglish.value) {
+		return {
+			title: 'Margalitot — Temporarily Closed',
+			text: "We are away for a short while for family reasons.<br />We'll be back soon with all the sweetness you love 🧁",
+			sub: 'Feel free to reach out on WhatsApp for urgent inquiries.',
+			whatsapp: 'WhatsApp',
+			dismiss: 'Got it, continue to the site',
+		};
+	}
+	return {
+		title: 'מרגליתות בהפסקה קצרה',
+		text: 'אנחנו נעדרים זמנית מסיבות משפחתיות.<br />נחזור בקרוב עם כל המתוק שאתם אוהבים 🧁',
+		sub: 'ניתן לפנות בוואטסאפ לשאלות דחופות.',
+		whatsapp: 'וואטסאפ',
+		dismiss: 'הבנתי, המשך לאתר',
+	};
+});
+
 onMounted(() => {
-	// מציג את ההודעה בכל כניסה לאתר
 	show.value = true;
 });
 
@@ -131,7 +152,6 @@ const dismiss = () => {
 	color: var(--pink-primary);
 }
 
-/* Transition */
 .banner-fade-enter-active,
 .banner-fade-leave-active {
 	transition: opacity 0.4s ease;
