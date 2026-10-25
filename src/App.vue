@@ -84,7 +84,6 @@
 		<NotificationToast />
 		<ToastContainer />
 		<WhatsAppButton />
-		<ClosedBanner />
 	</div>
 </template>
 
@@ -102,7 +101,6 @@ import { CartDrawer, CartButton } from './components/cart';
 import WhatsAppButton from './components/ui/WhatsAppButton.vue';
 import logo from './assets/logo.png';
 import { useHead } from '@vueuse/head';
-import ClosedBanner from './components/ui/ClosedBanner.vue';
 
 useHead({
 	script: [
