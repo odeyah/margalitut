@@ -102,7 +102,53 @@ import WhatsAppButton from './components/ui/WhatsAppButton.vue';
 import logo from './assets/logo.png';
 import { useHead } from '@vueuse/head';
 
+const siteUrl = 'https://margalitut.co.il';
+const route = useRoute();
+
+const canonicalUrl = computed(() => `${siteUrl}${route.path === '/' ? '' : route.path}`);
+const pageDescription = computed(() => {
+	if (route.query.lang === 'en') {
+		return 'margalitut bakery in Beit Shemesh offers custom cakes, pastries, breads, vegan and gluten-free treats, and delivery across Beit Shemesh and nearby communities.';
+	}
+
+	return 'מרגליתות - מאפייה ביתית בבית שמש עם עוגות מעוצבות, מאפים טריים, לחמים, קינוחים, מתכונים טבעוניים וללא גלוטן ומשלוחים לכל האזור.';
+});
+
+const pageKeywords = computed(() => {
+	if (route.query.lang === 'en') {
+		return 'Beit Shemesh bakery, custom cakes, pastries, gluten free bakery, vegan desserts, artisan breads, local bakery, cake delivery';
+	}
+
+	return 'מאפייה בבית שמש, עוגות מעוצבות, מאפים, לחמים, קינוחים, מאפה ללא גלוטן, טבעוני, משלוח בית שמש, חוגי אפייה';
+});
+
 useHead({
+	meta: [
+		{ name: 'description', content: pageDescription },
+		{ name: 'keywords', content: pageKeywords },
+		{ name: 'robots', content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' },
+		{ name: 'author', content: 'מרגליתות' },
+		{ property: 'og:type', content: 'website' },
+		{ property: 'og:site_name', content: 'מרגליתות' },
+		{ property: 'og:title', content: 'מרגליתות | מאפייה ביתית בבית שמש' },
+		{ property: 'og:description', content: pageDescription },
+		{ property: 'og:url', content: canonicalUrl },
+		{ property: 'og:image', content: `${siteUrl}/og-image.jpg` },
+		{ property: 'og:locale', content: route.query.lang === 'en' ? 'en_US' : 'he_IL' },
+		{ name: 'twitter:card', content: 'summary_large_image' },
+		{ name: 'twitter:title', content: 'מרגליתות | מאפייה ביתית בבית שמש' },
+		{ name: 'twitter:description', content: pageDescription },
+		{ name: 'twitter:image', content: `${siteUrl}/og-image.jpg` },
+	],
+	link: [
+		{ rel: 'canonical', href: canonicalUrl },
+		{ rel: 'alternate', hreflang: 'he', href: canonicalUrl },
+		{
+			rel: 'alternate',
+			hreflang: 'en',
+			href: computed(() => `${siteUrl}${route.path}${route.path.includes('?') ? '' : '?lang=en'}`),
+		},
+	],
 	script: [
 		{
 			type: 'application/ld+json',
@@ -112,7 +158,7 @@ useHead({
 				name: 'מרגליתות',
 				alternateName: 'margalitut',
 				description: 'מאפייה ביתית בבית שמש המתמחה בעוגות מעוצבות, קינוחים ומאפים טריים בכשרות בד"ץ',
-				url: 'https://margalitut.co.il',
+				url: siteUrl,
 				telephone: '+972528460331',
 				address: {
 					'@type': 'PostalAddress',
@@ -123,12 +169,13 @@ useHead({
 				areaServed: ['בית שמש', 'מטה יהודה', 'צור הדסה', 'ביתר עילית'],
 				servesCuisine: 'מאפייה',
 				priceRange: '₪₪',
+				image: `${siteUrl}/og-image.jpg`,
+				sameAs: ['https://wa.me/972528460331'],
 			}),
 		},
 	],
 });
 
-const route = useRoute();
 const uiStore = useUIStore();
 const { isDark } = useDarkMode();
 

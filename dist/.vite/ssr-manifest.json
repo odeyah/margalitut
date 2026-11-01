@@ -1,0 +1,555 @@
+{
+  "\u0000plugin-vue:export-helper": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "\u0000vite/modulepreload-polyfill.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "\u0000vite/preload-helper.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "../gallery/gallary1.webp": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "../gallery/gallery10.webp": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "../gallery/gallery100.webp": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "../gallery/gallery11.webp": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "../gallery/gallery12.webp": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "../gallery/gallery13.webp": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "../gallery/gallery14.webp": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "../gallery/gallery15.webp": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "../gallery/gallery16.webp": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "../gallery/gallery17.webp": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "../gallery/gallery18.webp": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "../gallery/gallery19.webp": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "../gallery/gallery2.webp": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "../gallery/gallery20.webp": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "../gallery/gallery21.webp": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "../gallery/gallery22.webp": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "../gallery/gallery23.webp": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "../gallery/gallery24.webp": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "../gallery/gallery25.webp": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "../gallery/gallery3.webp": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "../gallery/gallery4.webp": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "../gallery/gallery5.webp": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "../gallery/gallery6.webp": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "../gallery/gallery7.webp": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "../gallery/gallery8.webp": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "../gallery/gallery80.webp": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "../gallery/gallery9.webp": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "../gallery/galleryPesach.webp": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "firebase.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "index.html": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/@emailjs/browser/es/api/sendPost.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/@emailjs/browser/es/errors/blockedEmailError/blockedEmailError.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/@emailjs/browser/es/errors/headlessError/headlessError.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/@emailjs/browser/es/errors/limitRateError/limitRateError.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/@emailjs/browser/es/index.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/@emailjs/browser/es/methods/init/init.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/@emailjs/browser/es/methods/send/send.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/@emailjs/browser/es/methods/sendForm/sendForm.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/@emailjs/browser/es/models/EmailJSResponseStatus.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/@emailjs/browser/es/store/store.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/@emailjs/browser/es/utils/buildOptions/buildOptions.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/@emailjs/browser/es/utils/createWebStorage/createWebStorage.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/@emailjs/browser/es/utils/isBlockedValueInParams/isBlockedValueInParams.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/@emailjs/browser/es/utils/isHeadless/isHeadless.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/@emailjs/browser/es/utils/isLimitRateHit/isLimitRateHit.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/@emailjs/browser/es/utils/validateBlockListParams/validateBlockListParams.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/@emailjs/browser/es/utils/validateForm/validateForm.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/@emailjs/browser/es/utils/validateLimitRateParams/validateLimitRateParams.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/@emailjs/browser/es/utils/validateParams/validateParams.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/@emailjs/browser/es/utils/validateTemplateParams/validateTemplateParams.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/@firebase/app/dist/esm/index.esm.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/@firebase/auth/dist/esm/index-36fcbc82.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/@firebase/component/dist/esm/index.esm.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/@firebase/firestore/dist/index.esm.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/@firebase/logger/dist/esm/index.esm.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/@firebase/util/dist/index.esm.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/@firebase/util/dist/postinstall.mjs": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/@firebase/webchannel-wrapper/dist/bloom-blob/esm/bloom_blob_es2018.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/@firebase/webchannel-wrapper/dist/webchannel-blob/esm/webchannel_blob_es2018.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/@unhead/vue/dist/client.mjs": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/@unhead/vue/dist/shared/vue.Cd6dkybA.mjs": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/@vue/runtime-dom/dist/runtime-dom.esm-bundler.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/@vue/shared/dist/shared.esm-bundler.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/@vueuse/head/node_modules/@unhead/vue/dist/shared/vue.-sixQ7xP.mjs": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/@vueuse/head/node_modules/@unhead/vue/dist/shared/vue.ziyDaVMR.mjs": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/@vueuse/head/node_modules/unhead/dist/index.mjs": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/firebase/app/dist/esm/index.esm.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/idb/build/index.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/idb/build/wrap-idb-value.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/pinia/dist/pinia.mjs": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/unhead/dist/client.mjs": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/unhead/dist/shared/unhead.AvDFlk_u.mjs": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/unhead/dist/shared/unhead.BrXkGDAU.mjs": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/unhead/dist/shared/unhead.ChXiQvI8.mjs": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/unhead/dist/shared/unhead.J7R8psSN.mjs": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/unhead/node_modules/hookable/dist/index.mjs": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/vite-ssg/dist/index.mjs": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/vite-ssg/dist/shared/vite-ssg.C6pK7rvr.mjs": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/vite-ssg/dist/shared/vite-ssg.ETIvV-80.mjs": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "node_modules/vue-router/dist/vue-router.mjs": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/App.vue": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/App.vue?vue&type=style&index=0&lang.css": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/App.vue?vue&type=style&index=1&scoped=ab524e24&lang.css": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/assets/logo.png": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/cart/CartButton.vue": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/cart/CartButton.vue?vue&type=style&index=0&scoped=cdcaacfd&lang.css": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/cart/CartDrawer.vue": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/cart/CartDrawer.vue?vue&type=style&index=0&scoped=9f0099f7&lang.css": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/checkout/CouponInput.vue": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/checkout/CouponInput.vue?vue&type=style&index=0&scoped=d3366c00&lang.css": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/form/MultiStepForm.vue": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/form/MultiStepForm.vue?vue&type=style&index=0&scoped=c5a34f7a&lang.css": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/form/StepDetails.vue": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/form/StepDetails.vue?vue&type=style&index=0&scoped=9e664487&lang.css": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/form/StepProducts.vue": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/form/StepProducts.vue?vue&type=style&index=0&scoped=b4be7c1c&lang.css": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/form/StepReview.vue": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/form/StepReview.vue?vue&type=style&index=0&scoped=24a0585b&lang.css": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/form/StepSuccess.vue": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/form/StepSuccess.vue?vue&type=style&index=0&scoped=0f41f51e&lang.css": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/home/TestimonialsSection.vue": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/home/TestimonialsSection.vue?vue&type=style&index=0&scoped=ccda6792&lang.css": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/layout/AppFooter.vue": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/layout/AppFooter.vue?vue&type=style&index=0&scoped=33c9880d&lang.css": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/menu/CategoryCard.vue": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/menu/CategoryCard.vue?vue&type=style&index=0&scoped=18d33e06&lang.css": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/menu/CategorySection.vue": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/menu/CategorySection.vue?vue&type=style&index=0&scoped=0cbaed3a&lang.css": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/menu/CategoryTips.vue": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/menu/CategoryTips.vue?vue&type=style&index=0&scoped=72541a31&lang.css": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/menu/ProductCard.vue": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/menu/ProductCard.vue?vue&type=style&index=0&scoped=c371d913&lang.css": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/ui/AnimatedButton.vue": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/ui/AnimatedButton.vue?vue&type=style&index=0&scoped=e6903b93&lang.css": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/ui/AnimatedInput.vue": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/ui/AnimatedInput.vue?vue&type=style&index=0&scoped=76a100af&lang.css": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/ui/DarkModeToggle.vue": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/ui/DarkModeToggle.vue?vue&type=style&index=0&scoped=5315c5ee&lang.css": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/ui/NotificationToast.vue": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/ui/NotificationToast.vue?vue&type=style&index=0&scoped=695fa0bd&lang.css": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/ui/ProductModal.vue": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/ui/ProductModal.vue?vue&type=style&index=0&scoped=d8a7faca&lang.css": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/ui/ProductOptionsModal.vue": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/ui/ProductOptionsModal.vue?vue&type=style&index=0&scoped=49298ec8&lang.css": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/ui/ProgressSteps.vue": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/ui/ProgressSteps.vue?vue&type=style&index=0&scoped=b8b514c7&lang.css": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/ui/SearchBar.vue": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/ui/SearchBar.vue?vue&type=style&index=0&scoped=5b952610&lang.css": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/ui/ToastContainer.vue": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/ui/ToastContainer.vue?vue&type=style&index=0&scoped=6711645a&lang.css": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/ui/WhatsAppButton.vue": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/components/ui/WhatsAppButton.vue?vue&type=style&index=0&scoped=06d49679&lang.css": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/composables/useDarkMode.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/composables/useFormValidation.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/composables/useScrollAnimation.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/main.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/pages/About.vue": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/pages/About.vue?vue&type=style&index=0&scoped=e328760c&lang.css": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/pages/Admin.vue": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/pages/Admin.vue?vue&type=style&index=0&scoped=f77573b3&lang.css": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/pages/BakingWorkshops.vue": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/pages/BakingWorkshops.vue?vue&type=style&index=0&scoped=dcb18337&lang.css": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/pages/Checkout.vue": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/pages/Checkout.vue?vue&type=style&index=0&scoped=6a6783cf&lang.css": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/pages/FAQ.vue": [
+    "/assets/FAQ-wcAXPjrj.js",
+    "/assets/FAQ-CVlAz774.css"
+  ],
+  "src/pages/FAQ.vue?vue&type=style&index=0&scoped=f74e6886&lang.css": [
+    "/assets/FAQ-wcAXPjrj.js",
+    "/assets/FAQ-CVlAz774.css"
+  ],
+  "src/pages/Gallery.vue": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/pages/Gallery.vue?vue&type=style&index=0&scoped=5b0bea59&lang.css": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/pages/Home.vue": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/pages/Home.vue?vue&type=style&index=0&scoped=7c2b4d63&lang.css": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/pages/Menu.vue": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/pages/Menu.vue?vue&type=style&index=0&scoped=0f9334f0&lang.css": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/pages/MenuCategory.vue": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/pages/MenuCategory.vue?vue&type=style&index=0&scoped=a065a09c&lang.css": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/pages/MyOrders.vue": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/pages/MyOrders.vue?vue&type=style&index=0&scoped=717095ab&lang.css": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/pages/NotFound.vue": [
+    "/assets/NotFound-YzHyt1X3.js",
+    "/assets/NotFound-gDDpbWpY.css"
+  ],
+  "src/pages/NotFound.vue?vue&type=style&index=0&scoped=ae6de7c5&lang.css": [
+    "/assets/NotFound-YzHyt1X3.js",
+    "/assets/NotFound-gDDpbWpY.css"
+  ],
+  "src/pages/Pesach.vue": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/pages/Pesach.vue?vue&type=style&index=0&scoped=9588ad77&lang.css": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/pages/PesachEn.vue": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/pages/PesachEn.vue?vue&type=style&index=0&scoped=fb79c28b&lang.css": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/pages/Purim.vue": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/pages/Purim.vue?vue&type=style&index=0&scoped=65b58a22&lang.css": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/pages/PurimEn.vue": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/pages/PurimEn.vue?vue&type=style&index=0&scoped=c004f0cf&lang.css": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/pages/Quote.vue": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/pages/Quote.vue?vue&type=style&index=0&scoped=1771591a&lang.css": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/pages/Tasting.vue": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/pages/Tasting.vue?vue&type=style&index=0&scoped=be16a292&lang.css": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/router.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/services/emailService.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/services/ordersService.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/stores/menuStore.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/stores/orderStore.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/stores/toastStore.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/stores/uiStore.js": [
+    "/assets/logo-CbLXBLT5.png"
+  ],
+  "src/styles/main.css": [
+    "/assets/logo-CbLXBLT5.png"
+  ]
+}

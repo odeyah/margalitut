@@ -73,6 +73,7 @@
 
 <script setup>
 import { ref, computed } from 'vue';
+import { useHead } from '@vueuse/head';
 import { useScrollAnimation } from '../composables/useScrollAnimation';
 useScrollAnimation();
 const searchQuery = ref('');
@@ -271,6 +272,41 @@ const faqItems = ref([
 			'המטבח שלנו נשמר <strong>נקי ומסודר ברמה הגבוהה ביותר</strong>. אנחנו מקפידים על הפרדה בין מוצרים שונים ועל שימוש בכלים נפרדים למוצרים ללא גלוטן.',
 	},
 ]);
+
+useHead({
+	title: 'שאלות נפוצות | מרגליתות - מאפייה ביתית בבית שמש',
+	meta: [
+		{
+			name: 'description',
+			content:
+				'שאלות נפוצות על הזמנות, משלוחים, כשרות, עוגות מעוצבות, חוגי אפייה ומאפים בבית שמש. כל מה שצריך לדעת לפני להזמין ממרגליתות.',
+		},
+		{
+			name: 'keywords',
+			content: 'שאלות נפוצות מאפייה בית שמש, משלוחים בית שמש, עוגות מעוצבות, חוגי אפייה, מאפייה כשרה, הזמנת עוגה',
+		},
+	],
+	script: [
+		{
+			type: 'application/ld+json',
+			children: JSON.stringify({
+				'@context': 'https://schema.org',
+				'@type': 'FAQPage',
+				mainEntity: faqItems.value.slice(0, 8).map(item => ({
+					'@type': 'Question',
+					name: item.question,
+					acceptedAnswer: {
+						'@type': 'Answer',
+						text: item.answer
+							.replace(/<[^>]+>/g, '')
+							.replace(/\s+/g, ' ')
+							.trim(),
+					},
+				})),
+			}),
+		},
+	],
+});
 
 const filteredFAQ = computed(() => {
 	let items = faqItems.value;

@@ -74,10 +74,10 @@
 
 		<!-- Back to Menu -->
 		<div class="back-section">
-			<router-link to="/menu" class="back-link">
+			<button type="button" class="back-link" @click="goBackOrMenu">
 				<span class="back-arrow">→</span>
 				חזרה לתפריט
-			</router-link>
+			</button>
 		</div>
 		<!-- Tips Section -->
 		<CategoryTips v-if="category?.tips" :tips="category.tips" :categoryName="category.name" />
@@ -87,13 +87,13 @@
 	<div v-else class="not-found">
 		<span class="not-found-icon">😕</span>
 		<h2>הקטגוריה לא נמצאה</h2>
-		<router-link to="/menu" class="back-btn">חזרה לתפריט</router-link>
+		<button type="button" class="back-btn" @click="goBackOrMenu">חזרה לתפריט</button>
 	</div>
 </template>
 
 <script setup>
 import { ref, computed, watch } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { useMenuStore } from '../stores/menuStore';
 import { ProductCard } from '../components/menu';
 import { useHead } from '@vueuse/head';
@@ -101,7 +101,17 @@ import { CategoryTips } from '../components/menu';
 
 const props = defineProps(['categoryId']);
 const menuStore = useMenuStore();
+const router = useRouter();
 const category = computed(() => menuStore.getCategoryById(props.categoryId));
+
+const goBackOrMenu = () => {
+	if (window.history.length > 1) {
+		router.back();
+		return;
+	}
+
+	router.push('/menu');
+};
 
 useHead({
 	title: computed(() => `${category.value?.name || 'קטגוריה'} | מרגליתות - מאפייה ביתית`),
