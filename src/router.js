@@ -16,7 +16,7 @@ import PurimEn from './pages/PurimEn.vue';
 import Pesach from './pages/Pesach.vue';
 import PesachEn from './pages/PesachEn.vue';
 
-const routes = [
+export const routes = [
 	{ path: '/', name: 'home', component: Home },
 	{ path: '/menu', name: 'menu', component: Menu },
 	{ path: '/menu/:categoryId', name: 'menu-category', component: MenuCategory, props: true },

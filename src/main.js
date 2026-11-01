@@ -1,15 +1,19 @@
-import { createApp } from 'vue';
+import { ViteSSG } from 'vite-ssg';
 import { createPinia } from 'pinia';
-import { createHead } from '@vueuse/head';
 import App from './App.vue';
-import router from './router';
+import { routes } from './router';
 import './styles/main.css';
 
-const app = createApp(App);
-const head = createHead();
-
-app.use(createPinia());
-app.use(router);
-app.use(head);
-
-app.mount('#app');
+export const createApp = ViteSSG(
+	App,
+	{
+		routes,
+		scrollBehavior: (to, from, saved) => saved || { top: 0 },
+	},
+	({ app, initialState }) => {
+		const pinia = createPinia();
+		app.use(pinia);
+		if (import.meta.env.SSR) initialState.pinia = pinia.state.value;
+		else pinia.state.value = initialState.pinia || {};
+	},
+);
