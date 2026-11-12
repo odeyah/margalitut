@@ -425,7 +425,7 @@
   "src/pages/About.vue": [
     "/assets/logo-CbLXBLT5.png"
   ],
-  "src/pages/About.vue?vue&type=style&index=0&scoped=e328760c&lang.css": [
+  "src/pages/About.vue?vue&type=style&index=0&scoped=54d9cdfe&lang.css": [
     "/assets/logo-CbLXBLT5.png"
   ],
   "src/pages/Admin.vue": [
@@ -447,17 +447,17 @@
     "/assets/logo-CbLXBLT5.png"
   ],
   "src/pages/FAQ.vue": [
-    "/assets/FAQ-a61FGXI8.js",
-    "/assets/FAQ-CVlAz774.css"
+    "/assets/FAQ-Y5Ji5FXx.js",
+    "/assets/FAQ-DvCkeDpT.css"
   ],
-  "src/pages/FAQ.vue?vue&type=style&index=0&scoped=f74e6886&lang.css": [
-    "/assets/FAQ-a61FGXI8.js",
-    "/assets/FAQ-CVlAz774.css"
+  "src/pages/FAQ.vue?vue&type=style&index=0&scoped=89010e29&lang.css": [
+    "/assets/FAQ-Y5Ji5FXx.js",
+    "/assets/FAQ-DvCkeDpT.css"
   ],
   "src/pages/Gallery.vue": [
     "/assets/logo-CbLXBLT5.png"
   ],
-  "src/pages/Gallery.vue?vue&type=style&index=0&scoped=5b0bea59&lang.css": [
+  "src/pages/Gallery.vue?vue&type=style&index=0&scoped=b9df983b&lang.css": [
     "/assets/logo-CbLXBLT5.png"
   ],
   "src/pages/Home.vue": [
@@ -485,11 +485,11 @@
     "/assets/logo-CbLXBLT5.png"
   ],
   "src/pages/NotFound.vue": [
-    "/assets/NotFound-7DjEA4_b.js",
+    "/assets/NotFound-Bkz9M6k3.js",
     "/assets/NotFound-gDDpbWpY.css"
   ],
   "src/pages/NotFound.vue?vue&type=style&index=0&scoped=ae6de7c5&lang.css": [
-    "/assets/NotFound-7DjEA4_b.js",
+    "/assets/NotFound-Bkz9M6k3.js",
     "/assets/NotFound-gDDpbWpY.css"
   ],
   "src/pages/Pesach.vue": [

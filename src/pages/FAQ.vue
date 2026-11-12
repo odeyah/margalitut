@@ -265,8 +265,6 @@ const englishFaqItems = [
 
 const faqItems = computed(() => (lang.value === 'en' ? englishFaqItems : hebrewFaqItems));
 
-const route = useRoute();
-
 useHead({
 	title: lang.value === 'en' ? 'FAQ | margalitut Bakery' : 'שאלות נפוצות | מרגליתות - מאפייה ביתית בבית שמש',
 	meta: [
