@@ -1,22 +1,19 @@
 <template>
 	<div class="faq-page">
-		<!-- Hero Section -->
 		<header class="page-header">
 			<span class="header-icon">❓</span>
-			<h1 class="page-title">שאלות נפוצות</h1>
-			<p class="page-subtitle">כל מה שרצית לדעת על מרגליתות</p>
+			<h1 class="page-title">{{ lang === 'en' ? 'Frequently Asked Questions' : 'שאלות נפוצות' }}</h1>
+			<p class="page-subtitle">{{ lang === 'en' ? 'Everything you wanted to know about margalitut' : 'כל מה שרצית לדעת על מרגליתות' }}</p>
 		</header>
 
-		<!-- Search -->
 		<div class="search-section">
 			<div class="search-box">
 				<span class="search-icon">🔍</span>
-				<input type="text" v-model="searchQuery" placeholder="חיפוש שאלה..." class="search-input" />
+				<input type="text" v-model="searchQuery" :placeholder="lang === 'en' ? 'Search a question...' : 'חיפוש שאלה...'" class="search-input" />
 				<button v-if="searchQuery" class="clear-btn" @click="searchQuery = ''">✕</button>
 			</div>
 		</div>
 
-		<!-- Categories Filter -->
 		<div class="categories-filter">
 			<button
 				v-for="category in categories"
@@ -30,7 +27,6 @@
 			</button>
 		</div>
 
-		<!-- FAQ List -->
 		<div class="faq-list">
 			<TransitionGroup name="faq">
 				<div v-for="item in filteredFAQ" :key="item.id" class="faq-item animate-on-scroll fade-up">
@@ -47,24 +43,22 @@
 				</div>
 			</TransitionGroup>
 
-			<!-- No Results -->
 			<div v-if="filteredFAQ.length === 0" class="no-results">
 				<span class="no-results-icon">🤔</span>
-				<h3>לא נמצאו תוצאות</h3>
-				<p>נסו לחפש במילים אחרות או צרו איתנו קשר</p>
+				<h3>{{ lang === 'en' ? 'No results found' : 'לא נמצאו תוצאות' }}</h3>
+				<p>{{ lang === 'en' ? 'Try another search term or contact us directly.' : 'נסו לחפש במילים אחרות או צרו איתנו קשר' }}</p>
 			</div>
 		</div>
 
-		<!-- Still Have Questions -->
 		<section class="contact-section">
 			<div class="contact-card">
 				<span class="contact-icon">💬</span>
-				<h2>עדיין יש שאלות?</h2>
-				<p>אנחנו כאן בשבילכם! צרו קשר ונשמח לעזור</p>
+				<h2>{{ lang === 'en' ? 'Still have questions?' : 'עדיין יש שאלות?' }}</h2>
+				<p>{{ lang === 'en' ? 'We are here for you — feel free to reach out.' : 'אנחנו כאן בשבילכם! צרו קשר ונשמח לעזור' }}</p>
 				<div class="contact-buttons">
-					<a href="https://wa.me/972528460331" target="_blank" class="contact-btn whatsapp"> <span>💬</span> וואטסאפ </a>
+					<a href="https://wa.me/972528460331" target="_blank" class="contact-btn whatsapp"> <span>💬</span> {{ lang === 'en' ? 'WhatsApp' : 'וואטסאפ' }} </a>
 					<a href="tel:0528460331" class="contact-btn phone"> <span>📱</span> 052-846-0331 </a>
-					<a href="mailto:margalital3@gmail.com" class="contact-btn email"> <span>📧</span> אימייל </a>
+					<a href="mailto:margalital3@gmail.com" class="contact-btn email"> <span>📧</span> {{ lang === 'en' ? 'Email' : 'אימייל' }} </a>
 				</div>
 			</div>
 		</section>
@@ -74,216 +68,81 @@
 <script setup>
 import { ref, computed } from 'vue';
 import { useHead } from '@vueuse/head';
+import { useRoute } from 'vue-router';
 import { useScrollAnimation } from '../composables/useScrollAnimation';
 useScrollAnimation();
+const route = useRoute();
 const searchQuery = ref('');
 const activeCategory = ref('all');
 const openItems = ref([]);
+const lang = computed(() => (route.query.lang === 'en' ? 'en' : 'he'));
 
-const categories = [
-	{ id: 'all', name: 'הכל', icon: '📋' },
-	{ id: 'orders', name: 'הזמנות', icon: '🛒' },
-	{ id: 'delivery', name: 'משלוחים', icon: '🚗' },
-	{ id: 'products', name: 'מוצרים', icon: '🍰' },
-	{ id: 'payment', name: 'תשלום', icon: '💳' },
-	{ id: 'workshops', name: 'חוגים', icon: '👩‍🍳' },
-	{ id: 'kashrut', name: 'כשרות', icon: '✡️' },
+const categories = computed(() => (
+	lang.value === 'en'
+		? [
+				{ id: 'all', name: 'All', icon: '📋' },
+				{ id: 'orders', name: 'Orders', icon: '🛒' },
+				{ id: 'delivery', name: 'Delivery', icon: '🚗' },
+				{ id: 'products', name: 'Products', icon: '🍰' },
+				{ id: 'payment', name: 'Payment', icon: '💳' },
+				{ id: 'workshops', name: 'Workshops', icon: '👩‍🍳' },
+				{ id: 'kashrut', name: 'Kosher', icon: '✡️' },
+			]
+		: [
+				{ id: 'all', name: 'הכל', icon: '📋' },
+				{ id: 'orders', name: 'הזמנות', icon: '🛒' },
+				{ id: 'delivery', name: 'משלוחים', icon: '🚗' },
+				{ id: 'products', name: 'מוצרים', icon: '🍰' },
+				{ id: 'payment', name: 'תשלום', icon: '💳' },
+				{ id: 'workshops', name: 'חוגים', icon: '👩‍🍳' },
+				{ id: 'kashrut', name: 'כשרות', icon: '✡️' },
+			]
+));
+
+const hebrewFaqItems = [
+	{ id: 1, category: 'orders', icon: '📅', question: 'כמה זמן מראש צריך להזמין?', answer: 'מומלץ להזמין <strong>לפחות 2-3 ימים מראש</strong>. לאירועים גדולים או עוגות מעוצבות מורכבות - מומלץ להזמין שבוע מראש. להזמנות דחופות - צרו קשר ונראה מה אפשר לעשות! 😊' },
+	{ id: 2, category: 'orders', icon: '📝', question: 'איך מזמינים?', answer: 'אפשר להזמין דרך האתר, בוואטסאפ, או בטלפון. פשוט בחרו את המוצרים שאתם רוצים, הוסיפו לסל, ועברו לתשלום. קל ופשוט!' },
+	{ id: 3, category: 'orders', icon: '🔄', question: 'אפשר לבטל או לשנות הזמנה?', answer: 'כן, אפשר לבטל או לשנות הזמנה <strong>עד 24 שעות לפני מועד האיסוף/משלוח</strong>. לאחר מכן, ייתכן שלא נוכל לבצע שינויים כי כבר התחלנו להכין את ההזמנה.' },
+	{ id: 10, category: 'delivery', icon: '🚗', question: 'לאן אתם מבצעים משלוחים?', answer: "אנחנו מבצעים משלוחים ל<strong>בית שמש וכל השכונות</strong> (כולל רמת בית שמש א', ב', ג'), ולישובים הסמוכים. לישובים רחוקים יותר - צרו קשר ונבדוק." },
+	{ id: 20, category: 'products', icon: '🎂', question: 'אפשר להזמין עוגה בעיצוב אישי?', answer: 'כן! אנחנו מתמחים בעוגות מעוצבות לימי הולדת, בר/בת מצווה, חתונות ואירועים. שלחו לנו את הרעיון שלכם ונשמח להגשים אותו!' },
+	{ id: 21, category: 'products', icon: '🌾', question: 'יש מוצרים ללא גלוטן?', answer: 'כן! יש לנו <strong>מגוון מוצרים ללא גלוטן</strong> - עוגות, עוגיות ולחמים. כל המוצרים מוכנים בכלים נפרדים למניעת זיהום צולב.' },
+	{ id: 30, category: 'payment', icon: '💳', question: 'באילו אמצעי תשלום אפשר לשלם?', answer: 'אנחנו מקבלים:<br>• <strong>Bit</strong> - 052-844-1093<br>• <strong>PayBox</strong> - 052-846-0331<br>• <strong>מזומן</strong> - בעת האיסוף/משלוח' },
+	{ id: 40, category: 'workshops', icon: '👧', question: 'לאיזה גילאים החוגים מתאימים?', answer: 'יש לנו חוגים לכל הגילאים:<br>• <strong>גילאי 3.5-6</strong> - אפרוחי האפייה<br>• <strong>גילאי 6-9</strong> - שפים צעירים<br>• <strong>גילאי 9-12</strong> - אופים מקצועיים' },
+	{ id: 50, category: 'kashrut', icon: '✡️', question: 'מה הכשרות של המוצרים?', answer: 'כל המוצרים שלנו בכשרות <strong>מהדרין</strong>. אנחנו משתמשים רק בחומרי גלם עם הכשר מהדרין.' },
 ];
 
-const faqItems = ref([
-	// הזמנות
-	{
-		id: 1,
-		category: 'orders',
-		icon: '📅',
-		question: 'כמה זמן מראש צריך להזמין?',
-		answer:
-			'מומלץ להזמין <strong>לפחות 2-3 ימים מראש</strong>. לאירועים גדולים או עוגות מעוצבות מורכבות - מומלץ להזמין שבוע מראש. להזמנות דחופות - צרו קשר ונראה מה אפשר לעשות! 😊',
-	},
-	{
-		id: 2,
-		category: 'orders',
-		icon: '📝',
-		question: 'איך מזמינים?',
-		answer:
-			'אפשר להזמין דרך האתר, בוואטסאפ, או בטלפון. פשוט בחרו את המוצרים שאתם רוצים, הוסיפו לסל, ועברו לתשלום. קל ופשוט!',
-	},
-	{
-		id: 3,
-		category: 'orders',
-		icon: '🔄',
-		question: 'אפשר לבטל או לשנות הזמנה?',
-		answer:
-			'כן, אפשר לבטל או לשנות הזמנה <strong>עד 24 שעות לפני מועד האיסוף/משלוח</strong>. לאחר מכן, ייתכן שלא נוכל לבצע שינויים כי כבר התחלנו להכין את ההזמנה.',
-	},
-	{
-		id: 4,
-		category: 'orders',
-		icon: '📦',
-		question: 'מה הכמות המינימלית להזמנה?',
-		answer: 'אין כמות מינימלית להזמנה! אפשר להזמין אפילו מוצר אחד. למשלוחים יש מינימום של ₪50.',
-	},
+const englishFaqItems = [
+	{ id: 1, category: 'orders', icon: '📅', question: 'How far in advance should I order?', answer: 'We recommend ordering <strong>at least 2–3 days in advance</strong>. For large events or more complex custom cakes, we suggest ordering a week ahead. For urgent requests, please contact us and we will see what we can do.' },
+	{ id: 2, category: 'orders', icon: '📝', question: 'How do I place an order?', answer: 'You can order through the website, WhatsApp, or by phone. Simply choose the products you want, add them to the cart, and proceed to payment.' },
+	{ id: 3, category: 'orders', icon: '🔄', question: 'Can I cancel or change my order?', answer: 'Yes — you can cancel or change an order <strong>up to 24 hours before pickup or delivery</strong>. After that, changes may not be possible because production has already begun.' },
+	{ id: 10, category: 'delivery', icon: '🚗', question: 'Where do you deliver?', answer: 'We deliver throughout <strong>Beit Shemesh and nearby neighborhoods</strong>, including Ramat Beit Shemesh and surrounding communities. For farther locations, please contact us to check availability.' },
+	{ id: 20, category: 'products', icon: '🎂', question: 'Can I order a custom-designed cake?', answer: 'Yes! We specialize in custom cakes for birthdays, bar/bat mitzvahs, weddings, and special events. Send us your idea and we would be happy to bring it to life.' },
+	{ id: 21, category: 'products', icon: '🌾', question: 'Do you offer gluten-free products?', answer: 'Yes! We have a <strong>selection of gluten-free products</strong> including cakes, cookies, and breads. They are prepared with separate tools to reduce cross-contamination.' },
+	{ id: 30, category: 'payment', icon: '💳', question: 'What payment methods do you accept?', answer: 'We accept:<br>• <strong>Bit</strong> - 052-844-1093<br>• <strong>PayBox</strong> - 052-846-0331<br>• <strong>Cash</strong> - on pickup or delivery' },
+	{ id: 40, category: 'workshops', icon: '👧', question: 'What age groups are the workshops for?', answer: 'We have workshops for all ages:<br>• <strong>3.5–6 years</strong> - Little bakers<br>• <strong>6–9 years</strong> - Young chefs<br>• <strong>9–12 years</strong> - Junior bakers' },
+	{ id: 50, category: 'kashrut', icon: '✡️', question: 'What is the kashrut standard?', answer: 'All of our products are made under <strong>mehadrin kosher</strong> standards, using ingredients with strict kosher certification.' },
+];
 
-	// משלוחים
-	{
-		id: 10,
-		category: 'delivery',
-		icon: '🚗',
-		question: 'לאן אתם מבצעים משלוחים?',
-		answer:
-			"אנחנו מבצעים משלוחים ל<strong>בית שמש וכל השכונות</strong> (כולל רמת בית שמש א', ב', ג'), ולישובים הסמוכים. לישובים רחוקים יותר - צרו קשר ונבדוק.",
-	},
-	{
-		id: 11,
-		category: 'delivery',
-		icon: '💰',
-		question: 'כמה עולה משלוח?',
-		answer:
-			"מחיר המשלוח תלוי במיקום:<br>• <strong>בית שמש ישנה ורמת בית שמש א'</strong> - ₪20<br>• <strong>רמת בית שמש ב' וג'</strong> - ₪25<br>• <strong>ישובים סמוכים</strong> - ₪35",
-	},
-	{
-		id: 12,
-		category: 'delivery',
-		icon: '⏰',
-		question: 'מתי מגיע המשלוח?',
-		answer:
-			"המשלוחים מתבצעים בין השעות <strong>09:00-21:00</strong> בימים א'-ה', וביום שישי עד 14:00. נתאם אתכם שעה משוערת.",
-	},
-	{
-		id: 13,
-		category: 'delivery',
-		icon: '🏠',
-		question: 'אפשר לאסוף עצמי?',
-		answer: 'בטח! איסוף עצמי מ<strong>שכונת המשקפיים, בית שמש</strong>. יש לתאם מראש שעת איסוף. איסוף עצמי ללא עלות!',
-	},
+const faqItems = computed(() => (lang.value === 'en' ? englishFaqItems : hebrewFaqItems));
 
-	// מוצרים
-	{
-		id: 20,
-		category: 'products',
-		icon: '🎂',
-		question: 'אפשר להזמין עוגה בעיצוב אישי?',
-		answer:
-			'כן! אנחנו מתמחים בעוגות מעוצבות לימי הולדת, בר/בת מצווה, חתונות ואירועים. שלחו לנו את הרעיון שלכם ונשמח להגשים אותו!',
-	},
-	{
-		id: 21,
-		category: 'products',
-		icon: '🌾',
-		question: 'יש מוצרים ללא גלוטן?',
-		answer:
-			'כן! יש לנו <strong>מגוון מוצרים ללא גלוטן</strong> - עוגות, עוגיות ולחמים. כל המוצרים מוכנים בכלים נפרדים למניעת זיהום צולב.',
-	},
-	{
-		id: 22,
-		category: 'products',
-		icon: '🌱',
-		question: 'יש מוצרים טבעוניים?',
-		answer: 'בטח! יש לנו מבחר מוצרים טבעוניים - עוגות, עוגיות ומאפים ללא ביצים ומוצרי חלב. בדקו בקטגוריה "טבעוני" בתפריט.',
-	},
-	{
-		id: 23,
-		category: 'products',
-		icon: '🍬',
-		question: 'יש מוצרים ללא סוכר?',
-		answer:
-			'כן! יש לנו מוצרים ממותקים בתחליפי סוכר טבעיים כמו תמרים, דבש וסטיביה. מושלם לסוכרתיים או למי ששומר על תזונה בריאה.',
-	},
-	{
-		id: 24,
-		category: 'products',
-		icon: '❄️',
-		question: 'איך לשמור על המוצרים?',
-		answer:
-			'רוב המוצרים נשמרים <strong>3-4 ימים בטמפרטורת החדר</strong> או <strong>שבוע במקרר</strong>. עוגות שמרים אפשר להקפיא עד 3 חודשים!',
-	},
-
-	// תשלום
-	{
-		id: 30,
-		category: 'payment',
-		icon: '💳',
-		question: 'באילו אמצעי תשלום אפשר לשלם?',
-		answer:
-			'אנחנו מקבלים:<br>• <strong>Bit</strong> - 052-844-1093<br>• <strong>PayBox</strong> - 052-846-0331<br>• <strong>מזומן</strong> - בעת האיסוף/משלוח',
-	},
-	{
-		id: 31,
-		category: 'payment',
-		icon: '🧾',
-		question: 'מתי משלמים?',
-		answer: 'התשלום מתבצע <strong>לפני האיסוף/משלוח</strong>. ב-Bit או PayBox - מיד אחרי ההזמנה. במזומן - בעת קבלת המוצרים.',
-	},
-	{
-		id: 32,
-		category: 'payment',
-		icon: '🎫',
-		question: 'יש הנחות או מבצעים?',
-		answer: 'כן! עקבו אחרינו בפייסבוק ובוואטסאפ לעדכונים על מבצעים. יש גם קודי קופון להנחות - שווה לבדוק בעמוד הבית!',
-	},
-
-	// חוגים
-	{
-		id: 40,
-		category: 'workshops',
-		icon: '👧',
-		question: 'לאיזה גילאים החוגים מתאימים?',
-		answer:
-			'יש לנו חוגים לכל הגילאים:<br>• <strong>גילאי 3.5-6</strong> - אפרוחי האפייה<br>• <strong>גילאי 6-9</strong> - שפים צעירים<br>• <strong>גילאי 9-12</strong> - אופים מקצועיים',
-	},
-	{
-		id: 41,
-		category: 'workshops',
-		icon: '📍',
-		question: 'איפה מתקיימים החוגים?',
-		answer: 'החוגים מתקיימים <strong>בשכונת המשקפיים, בית שמש</strong>. אפשר גם להזמין סדנה פרטית לימי הולדת או אירועים!',
-	},
-	{
-		id: 42,
-		category: 'workshops',
-		icon: '🥣',
-		question: 'מה כולל החוג?',
-		answer:
-			'כל חוג כולל: <strong>חומרי גלם</strong>, <strong>הדרכה מקצועית</strong>, והילדים לוקחים את מה שהכינו הביתה! המון כיף ויצירתיות 🎉',
-	},
-
-	// כשרות
-	{
-		id: 50,
-		category: 'kashrut',
-		icon: '✡️',
-		question: 'מה הכשרות של המוצרים?',
-		answer: 'כל המוצרים שלנו בכשרות <strong>מהדרין</strong>. אנחנו משתמשים רק בחומרי גלם עם הכשר מהדרין.',
-	},
-	{
-		id: 51,
-		category: 'kashrut',
-		icon: '🥛',
-		question: 'המוצרים חלביים או פרווה?',
-		answer:
-			'רוב המוצרים שלנו <strong>פרווה</strong>. יש לנו גם מוצרים חלביים. ויש גם מוצרים טבעוניים. המידע מופיע בתיאור כל מוצר.',
-	},
-	{
-		id: 52,
-		category: 'kashrut',
-		icon: '🧹',
-		question: 'איך מבטיחים ניקיון וכשרות?',
-		answer:
-			'המטבח שלנו נשמר <strong>נקי ומסודר ברמה הגבוהה ביותר</strong>. אנחנו מקפידים על הפרדה בין מוצרים שונים ועל שימוש בכלים נפרדים למוצרים ללא גלוטן.',
-	},
-]);
+const route = useRoute();
 
 useHead({
-	title: 'שאלות נפוצות | מרגליתות - מאפייה ביתית בבית שמש',
+	title: lang.value === 'en' ? 'FAQ | margalitut Bakery' : 'שאלות נפוצות | מרגליתות - מאפייה ביתית בבית שמש',
 	meta: [
 		{
 			name: 'description',
 			content:
-				'שאלות נפוצות על הזמנות, משלוחים, כשרות, עוגות מעוצבות, חוגי אפייה ומאפים בבית שמש. כל מה שצריך לדעת לפני להזמין ממרגליתות.',
+				lang.value === 'en'
+					? 'Frequently asked questions about ordering, delivery, kosher certification, custom cakes, workshops, and bakery products from margalitut in Beit Shemesh.'
+					: 'שאלות נפוצות על הזמנות, משלוחים, כשרות, עוגות מעוצבות, חוגי אפייה ומאפים בבית שמש. כל מה שצריך לדעת לפני להזמין ממרגליתות.',
 		},
 		{
 			name: 'keywords',
-			content: 'שאלות נפוצות מאפייה בית שמש, משלוחים בית שמש, עוגות מעוצבות, חוגי אפייה, מאפייה כשרה, הזמנת עוגה',
+			content:
+				lang.value === 'en'
+					? 'FAQ bakery Beit Shemesh, delivery, custom cakes, workshops, kosher bakery, order cake'
+					: 'שאלות נפוצות מאפייה בית שמש, משלוחים בית שמש, עוגות מעוצבות, חוגי אפייה, מאפייה כשרה, הזמנת עוגה',
 		},
 	],
 	script: [

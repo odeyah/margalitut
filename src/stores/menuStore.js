@@ -1357,7 +1357,7 @@ export const useMenuStore = defineStore('menu', () => {
 			name: 'עוגה מעוצבת בהתאמה אישית',
 			category: 'birthday-cakes',
 			price: 280,
-			image: '/cakes/birthdayCakes/eventcake.jpg',
+			image: '/cakes/birthdayCakes/eventcake.jpeg',
 			description:
 				'עוגה מעוצבת בהתאמה אישית - עוגה בעיצוב ייחודי לפי דמיון ובקשה. צרו קשר לתיאום פרטים, טעמים ועיצוב. הזמנת עוגות מיוחדות בבית שמש - מאפיית מרגליתות',
 			popular: true,

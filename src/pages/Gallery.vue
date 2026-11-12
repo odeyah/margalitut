@@ -67,9 +67,9 @@
 					<div class="book-cover" :class="{ 'is-open': bookOpened }" @click="!bookOpened && openBook()">
 						<div class="cover-content">
 							<span class="cover-icon">📸</span>
-							<h2>אלבום התמונות</h2>
-							<p>מרגליתות</p>
-							<span class="cover-hint">לחצו לפתיחה</span>
+							<h2>{{ albumTitle }}</h2>
+							<p>{{ margalitutLabel }}</p>
+							<span class="cover-hint">{{ clickToOpen }}</span>
 						</div>
 					</div>
 				</div>
@@ -84,7 +84,9 @@
 				</button>
 
 				<!-- Open Book Button -->
-				<button v-if="!bookOpened" class="open-book-btn" @click="openBook">פתחו את האלבום 📖</button>
+				<button v-if="!bookOpened" class="open-book-btn" @click="openBook">
+					{{ lang === 'en' ? 'Open the album' : 'פתחו את האלבום' }} 📖
+				</button>
 			</div>
 
 			<!-- Progress -->
@@ -93,7 +95,15 @@
 					<div class="progress-fill" :style="{ width: progressPercent + '%' }"></div>
 				</div>
 				<span class="progress-text">
-					{{ isMobile ? `תמונה ${currentPage + 1} מתוך ${totalImages}` : `עמוד ${currentPage + 1} מתוך ${totalPages}` }}
+					{{
+						isMobile
+							? lang === 'en'
+								? `Image ${currentPage + 1} of ${totalImages}`
+								: `תמונה ${currentPage + 1} מתוך ${totalImages}`
+							: lang === 'en'
+								? `Page ${currentPage + 1} of ${totalPages}`
+								: `עמוד ${currentPage + 1} מתוך ${totalPages}`
+					}}
 				</span>
 			</div>
 
@@ -101,11 +111,11 @@
 			<div class="book-controls" v-show="bookOpened">
 				<button class="control-btn" @click="toggleAutoPlay">
 					<span>{{ isAutoPlaying ? '⏸️' : '▶️' }}</span>
-					{{ isAutoPlaying ? 'עצור' : 'דפדוף אוטומטי' }}
+					{{ isAutoPlaying ? (lang === 'en' ? 'Pause' : 'עצור') : (lang === 'en' ? 'Auto browse' : 'דפדוף אוטומטי') }}
 				</button>
 
 				<div class="speed-control">
-					<span class="speed-label">מהירות:</span>
+					<span class="speed-label">{{ lang === 'en' ? 'Speed:' : 'מהירות:' }}</span>
 					<button
 						v-for="s in [1, 2, 3, 4, 5]"
 						:key="s"
@@ -119,7 +129,7 @@
 
 				<button class="control-btn" @click="closeBook">
 					<span>📕</span>
-					סגור אלבום
+					{{ lang === 'en' ? 'Close album' : 'סגור אלבום' }}
 				</button>
 			</div>
 
@@ -166,11 +176,11 @@
 		<section class="cta-section animate-on-scroll zoom-in">
 			<div class="cta-card">
 				<span class="cta-icon">✨</span>
-				<h2>רוצים שניצור גם לכם?</h2>
-				<p>כל עוגה ומאפה מותאמים אישית לפי בקשתכם</p>
+				<h2>{{ lang === 'en' ? 'Want us to create something for you too?' : 'רוצים שניצור גם לכם?' }}</h2>
+				<p>{{ lang === 'en' ? 'Every cake and pastry is customized to fit your request.' : 'כל עוגה ומאפה מותאמים אישית לפי בקשתכם' }}</p>
 				<div class="cta-buttons">
-					<router-link to="/quote" class="cta-btn primary"> בקשת הצעת מחיר </router-link>
-					<router-link to="/menu" class="cta-btn secondary"> לתפריט </router-link>
+					<router-link to="/quote" class="cta-btn primary"> {{ lang === 'en' ? 'Request a Quote' : 'בקשת הצעת מחיר' }} </router-link>
+					<router-link to="/menu" class="cta-btn secondary"> {{ lang === 'en' ? 'Menu' : 'לתפריט' }} </router-link>
 				</div>
 			</div>
 		</section>
