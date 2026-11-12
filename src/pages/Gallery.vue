@@ -111,7 +111,7 @@
 			<div class="book-controls" v-show="bookOpened">
 				<button class="control-btn" @click="toggleAutoPlay">
 					<span>{{ isAutoPlaying ? '⏸️' : '▶️' }}</span>
-					{{ isAutoPlaying ? (lang === 'en' ? 'Pause' : 'עצור') : (lang === 'en' ? 'Auto browse' : 'דפדוף אוטומטי') }}
+					{{ isAutoPlaying ? (lang === 'en' ? 'Pause' : 'עצור') : lang === 'en' ? 'Auto browse' : 'דפדוף אוטומטי' }}
 				</button>
 
 				<div class="speed-control">
@@ -177,9 +177,17 @@
 			<div class="cta-card">
 				<span class="cta-icon">✨</span>
 				<h2>{{ lang === 'en' ? 'Want us to create something for you too?' : 'רוצים שניצור גם לכם?' }}</h2>
-				<p>{{ lang === 'en' ? 'Every cake and pastry is customized to fit your request.' : 'כל עוגה ומאפה מותאמים אישית לפי בקשתכם' }}</p>
+				<p>
+					{{
+						lang === 'en'
+							? 'Every cake and pastry is customized to fit your request.'
+							: 'כל עוגה ומאפה מותאמים אישית לפי בקשתכם'
+					}}
+				</p>
 				<div class="cta-buttons">
-					<router-link to="/quote" class="cta-btn primary"> {{ lang === 'en' ? 'Request a Quote' : 'בקשת הצעת מחיר' }} </router-link>
+					<router-link to="/quote" class="cta-btn primary">
+						{{ lang === 'en' ? 'Request a Quote' : 'בקשת הצעת מחיר' }}
+					</router-link>
 					<router-link to="/menu" class="cta-btn secondary"> {{ lang === 'en' ? 'Menu' : 'לתפריט' }} </router-link>
 				</div>
 			</div>
