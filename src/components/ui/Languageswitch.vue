@@ -13,12 +13,34 @@ const route = useRoute();
 
 // מיפוי דפים עברית <-> אנגלית
 const languageMap = {
+	'/': '/?lang=en',
+	'/?lang=en': '/',
+	'/menu': '/menu?lang=en',
+	'/menu?lang=en': '/menu',
+	'/gallery': '/gallery?lang=en',
+	'/gallery?lang=en': '/gallery',
+	'/about': '/about?lang=en',
+	'/about?lang=en': '/about',
+	'/quote': '/quote?lang=en',
+	'/quote?lang=en': '/quote',
+	'/checkout': '/checkout?lang=en',
+	'/checkout?lang=en': '/checkout',
+	'/admin': '/admin?lang=en',
+	'/admin?lang=en': '/admin',
+	'/my-orders': '/my-orders?lang=en',
+	'/my-orders?lang=en': '/my-orders',
+	'/workshops': '/workshops?lang=en',
+	'/workshops?lang=en': '/workshops',
+	'/faq': '/faq?lang=en',
+	'/faq?lang=en': '/faq',
 	'/Purim': '/Purim-en',
 	'/Purim-en': '/Purim',
 	'/purim': '/purim-en',
 	'/purim-en': '/purim',
 	'/tasting': '/tasting?lang=en',
 	'/tasting?lang=en': '/tasting',
+	'/Pesach': '/Pesach-en',
+	'/Pesach-en': '/Pesach',
 };
 
 const currentPath = computed(() => {

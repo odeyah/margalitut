@@ -551,7 +551,7 @@ export const useMenuStore = defineStore('menu', () => {
 			id: 49,
 			name: 'מגולגלות תמרים ללא סוכר',
 			category: ['cookies', 'sugar-free'],
-			price: 60,
+			price: 80,
 			image: '/cookies/dateRolls.jpeg',
 			description:
 				'מגולגלות תמרים ללא סוכר מוסף - עוגיות מעמול פריכות במילוי תמרים טבעי. מתאימות לסוכרתיים ולדיאטה - טעם מלא בלי סוכר. מאפיית מרגליתות בית שמש',

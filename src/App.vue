@@ -202,11 +202,20 @@ const closeMobileMenu = () => uiStore.closeMobileMenu();
 
 const pagesWithEnglish = {
 	'/': '/?lang=en',
+	'/menu': '/menu?lang=en',
+	'/gallery': '/gallery?lang=en',
+	'/about': '/about?lang=en',
+	'/quote': '/quote?lang=en',
+	'/checkout': '/checkout?lang=en',
+	'/admin': '/admin?lang=en',
+	'/my-orders': '/my-orders?lang=en',
+	'/workshops': '/workshops?lang=en',
+	'/tasting': '/tasting?lang=en',
+	'/faq': '/faq?lang=en',
 	'/Purim': '/Purim-en',
 	'/Purim-en': '/Purim',
 	'/Pesach': '/Pesach-en',
 	'/Pesach-en': '/Pesach',
-	'/tasting': '/tasting?lang=en',
 };
 
 const isEnglishPage = computed(() => {

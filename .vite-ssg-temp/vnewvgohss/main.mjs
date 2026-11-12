@@ -932,7 +932,7 @@ const useMenuStore = defineStore("menu", () => {
       id: 49,
       name: "מגולגלות תמרים ללא סוכר",
       category: ["cookies", "sugar-free"],
-      price: 60,
+      price: 80,
       image: "/cookies/dateRolls.jpeg",
       description: "מגולגלות תמרים ללא סוכר מוסף - עוגיות מעמול פריכות במילוי תמרים טבעי. מתאימות לסוכרתיים ולדיאטה - טעם מלא בלי סוכר. מאפיית מרגליתות בית שמש"
     },
@@ -1668,7 +1668,7 @@ const useMenuStore = defineStore("menu", () => {
       name: "עוגה מעוצבת בהתאמה אישית",
       category: "birthday-cakes",
       price: 280,
-      image: "/cakes/birthdayCakes/eventcake.jpeg",
+      image: "/cakes/birthdayCakes/eventcake.jpg",
       description: "עוגה מעוצבת בהתאמה אישית - עוגה בעיצוב ייחודי לפי דמיון ובקשה. צרו קשר לתיאום פרטים, טעמים ועיצוב. הזמנת עוגות מיוחדות בבית שמש - מאפיית מרגליתות",
       popular: true
     },
@@ -2992,11 +2992,20 @@ const _sfc_main$v = {
     const closeMobileMenu = () => uiStore.closeMobileMenu();
     const pagesWithEnglish = {
       "/": "/?lang=en",
+      "/menu": "/menu?lang=en",
+      "/gallery": "/gallery?lang=en",
+      "/about": "/about?lang=en",
+      "/quote": "/quote?lang=en",
+      "/checkout": "/checkout?lang=en",
+      "/admin": "/admin?lang=en",
+      "/my-orders": "/my-orders?lang=en",
+      "/workshops": "/workshops?lang=en",
+      "/tasting": "/tasting?lang=en",
+      "/faq": "/faq?lang=en",
       "/Purim": "/Purim-en",
       "/Purim-en": "/Purim",
       "/Pesach": "/Pesach-en",
-      "/Pesach-en": "/Pesach",
-      "/tasting": "/tasting?lang=en"
+      "/Pesach-en": "/Pesach"
     };
     const isEnglishPage = computed(() => {
       return route.path.includes("-en") || route.query.lang === "en";
@@ -3028,7 +3037,7 @@ const _sfc_main$v = {
         class: ["app", { "menu-open": isMobileMenuOpen.value, dark: unref(isDark2) }],
         dir: pageDirection.value,
         lang: pageLanguage.value
-      }, _attrs))} data-v-ab524e24><header class="header" data-v-ab524e24><nav class="container nav-container" data-v-ab524e24>`);
+      }, _attrs))} data-v-f834d6be><header class="header" data-v-f834d6be><nav class="container nav-container" data-v-f834d6be>`);
       _push(ssrRenderComponent(_component_router_link, {
         to: "/",
         class: "logo-link",
@@ -3036,7 +3045,7 @@ const _sfc_main$v = {
       }, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<img${ssrRenderAttr("src", unref(logo))} alt="מרגליתות לוגו" class="logo-img" data-v-ab524e24${_scopeId}><span class="logo-text" data-v-ab524e24${_scopeId}>מרגליתות <span aria-hidden="true" data-v-ab524e24${_scopeId}>🍓</span></span>`);
+            _push2(`<img${ssrRenderAttr("src", unref(logo))} alt="מרגליתות לוגו" class="logo-img" data-v-f834d6be${_scopeId}><span class="logo-text" data-v-f834d6be${_scopeId}>מרגליתות <span aria-hidden="true" data-v-f834d6be${_scopeId}>🍓</span></span>`);
           } else {
             return [
               createVNode("img", {
@@ -3053,7 +3062,7 @@ const _sfc_main$v = {
         }),
         _: 1
       }, _parent));
-      _push(`<div class="nav-actions" data-v-ab524e24>`);
+      _push(`<div class="nav-actions" data-v-f834d6be>`);
       if (englishPath.value) {
         _push(ssrRenderComponent(_component_router_link, {
           to: englishPath.value,
@@ -3062,7 +3071,7 @@ const _sfc_main$v = {
         }, {
           default: withCtx((_, _push2, _parent2, _scopeId) => {
             if (_push2) {
-              _push2(`<span class="lang-icon" data-v-ab524e24${_scopeId}>🌐</span>`);
+              _push2(`<span class="lang-icon" data-v-f834d6be${_scopeId}>🌐</span>`);
             } else {
               return [
                 createVNode("span", { class: "lang-icon" }, "🌐")
@@ -3077,7 +3086,7 @@ const _sfc_main$v = {
       _push(ssrRenderComponent(SearchBar, null, null, _parent));
       _push(ssrRenderComponent(DarkModeToggle, { class: "dark-toggle-desktop" }, null, _parent));
       _push(ssrRenderComponent(unref(CartButton), null, null, _parent));
-      _push(`<button class="mobile-menu-btn" aria-label="תפריט" data-v-ab524e24><span class="${ssrRenderClass([{ active: isMobileMenuOpen.value }, "hamburger"])}" data-v-ab524e24><span data-v-ab524e24></span><span data-v-ab524e24></span><span data-v-ab524e24></span></span></button></div><div class="nav-links-desktop" data-v-ab524e24>`);
+      _push(`<button class="mobile-menu-btn" aria-label="תפריט" data-v-f834d6be><span class="${ssrRenderClass([{ active: isMobileMenuOpen.value }, "hamburger"])}" data-v-f834d6be><span data-v-f834d6be></span><span data-v-f834d6be></span><span data-v-f834d6be></span></span></button></div><div class="nav-links-desktop" data-v-f834d6be>`);
       _push(ssrRenderComponent(_component_router_link, {
         class: "nav-link",
         to: "/menu"
@@ -3170,7 +3179,7 @@ const _sfc_main$v = {
       }, _parent));
       _push(`</div></nav></header>`);
       if (isMobileMenuOpen.value) {
-        _push(`<div class="mobile-menu-overlay" data-v-ab524e24><div class="mobile-menu" data-v-ab524e24>`);
+        _push(`<div class="mobile-menu-overlay" data-v-f834d6be><div class="mobile-menu" data-v-f834d6be>`);
         _push(ssrRenderComponent(_component_router_link, {
           class: "mobile-nav-link",
           to: "/menu",
@@ -3269,7 +3278,7 @@ const _sfc_main$v = {
         }, _parent));
         _push(ssrRenderComponent(DarkModeToggle, { class: "dark-toggle-mobile" }, null, _parent));
         if (englishPath.value) {
-          _push(`<div class="mobile-lang-wrapper" data-v-ab524e24>`);
+          _push(`<div class="mobile-lang-wrapper" data-v-f834d6be>`);
           _push(ssrRenderComponent(_component_router_link, {
             to: englishPath.value,
             class: "mobile-lang-btn",
@@ -3277,7 +3286,7 @@ const _sfc_main$v = {
           }, {
             default: withCtx((_, _push2, _parent2, _scopeId) => {
               if (_push2) {
-                _push2(`<span class="lang-icon" data-v-ab524e24${_scopeId}>🌐</span> ${ssrInterpolate(isEnglishPage.value ? "עברית" : "English")}`);
+                _push2(`<span class="lang-icon" data-v-f834d6be${_scopeId}>🌐</span> ${ssrInterpolate(isEnglishPage.value ? "עברית" : "English")}`);
               } else {
                 return [
                   createVNode("span", { class: "lang-icon" }, "🌐"),
@@ -3295,7 +3304,7 @@ const _sfc_main$v = {
       } else {
         _push(`<!---->`);
       }
-      _push(`<main class="main container" data-v-ab524e24>`);
+      _push(`<main class="main container" data-v-f834d6be>`);
       _push(ssrRenderComponent(_component_router_view, null, {
         default: withCtx(({ Component, route: route2 }, _push2, _parent2, _scopeId) => {
           if (_push2) {
@@ -3337,7 +3346,7 @@ _sfc_main$v.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("src/App.vue");
   return _sfc_setup$v ? _sfc_setup$v(props, ctx) : void 0;
 };
-const App = /* @__PURE__ */ _export_sfc(_sfc_main$v, [["__scopeId", "data-v-ab524e24"]]);
+const App = /* @__PURE__ */ _export_sfc(_sfc_main$v, [["__scopeId", "data-v-f834d6be"]]);
 const _sfc_main$u = {
   __name: "CategoryCard",
   __ssrInlineRender: true,
