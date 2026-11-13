@@ -1,5 +1,3 @@
-import { createRouter, createWebHistory } from 'vue-router';
-
 import Home from './pages/Home.vue';
 import Menu from './pages/Menu.vue';
 import MenuCategory from './pages/MenuCategory.vue';
@@ -35,14 +33,3 @@ export const routes = [
 	{ path: '/:pathMatch(.*)*', name: 'not-found', component: () => import('./pages/NotFound.vue') },
 	{ path: '/faq', name: 'faq', component: () => import('./pages/FAQ.vue') },
 ];
-
-const router = createRouter({
-	history: createWebHistory(),
-	routes,
-	scrollBehavior(to, from, savedPosition) {
-		if (savedPosition) return savedPosition;
-		return { top: 0, behavior: 'smooth' };
-	},
-});
-
-export default router;

@@ -8,7 +8,7 @@ export const createApp = ViteSSG(
 	App,
 	{
 		routes,
-		scrollBehavior: (to, from, saved) => saved || { top: 0 },
+		scrollBehavior: (to, from, saved) => saved || { top: 0, behavior: 'smooth' },
 	},
 	({ app, initialState }) => {
 		const pinia = createPinia();
